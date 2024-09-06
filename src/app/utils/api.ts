@@ -1,6 +1,6 @@
 // api.tsx
 
-export const fetchPromotionalClaim = async () => {
+export const fetchClaim = async () => {
   const baseUrl:any = process.env.NEXT_PUBLIC_API_URL;
   console.log("Fetching promotional claim from:", baseUrl);
   
@@ -11,7 +11,7 @@ export const fetchPromotionalClaim = async () => {
     }
     const data = await response.json();
     // console.log("Promotional claim data:", data);
-    return data?.data[0]?.attributes || 'Default Claim Text';
+    return data?.data || 'Default Claim Text';
   } catch (error) {
     console.error('Error fetching promotional claim:', error);
     return 'Default Claim Text'; 

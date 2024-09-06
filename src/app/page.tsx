@@ -6,19 +6,20 @@ import FeaturesSection from "./components/FeatureSection";
 import ScopioX100 from "./components/Scropix";
 import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
-import { fetchPromotionalClaim } from "./utils/api";
+import { fetchClaim } from "./utils/api";
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
   // Fetch the data directly in the component
-  const promotionalClaim = await fetchPromotionalClaim();
+  const claim = await fetchClaim();
+  
 
   return (
     <main className="bg-white">
       
       <HeroSection />
-      <ImageSection promotionalClaim={promotionalClaim?.PromotionalClaim} /> {/* Pass the prop */}
-      <FeaturesSection featureClaim={promotionalClaim?.ChannelVariants} />
+      <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} />
+      <FeaturesSection claimsData={claim} />
       <ScopioX100 />
       <VideoSection />
       <Footer />

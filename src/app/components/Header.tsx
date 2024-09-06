@@ -34,8 +34,8 @@ export default function Header() {
             <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Industries</Link>
             <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Resources</Link>
             <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About</Link>
-            <button onClick={handleSignupClick} className="bg-teal-300 text-[rgb(0,0,0)] font-open-sans text-[15px] font-light leading-[27px] px-6 py-2 rounded-sm duration-300 hover:shadow-lg hover:shadow-teal-300 border-blue-100 border-2 hover:bg-white">Sign up</button>
-            <button onClick={handleLoginClick} className="bg-pink-500 text-[rgb(255,255,255)] font-open-sans text-[15px] font-light leading-[22.5px] px-4 py-2 rounded-sm  duration-300 hover:shadow-lg hover:shadow-pink-500 border-pink-500 border-2 hover:bg-white hover:text-black">Login</button>
+            <button onClick={handleSignupClick} className="bg-teal-300 text-[rgb(0,0,0)] font-open-sans text-[15px] font-light leading-[27px] px-6 py-2 rounded-sm duration-300  border-teal-300 border-2 hover:bg-white">Sign up</button>
+            <button onClick={handleLoginClick} className="bg-pink-500 text-[rgb(255,255,255)] font-open-sans text-[15px] font-light leading-[22.5px] px-4 py-2 rounded-sm  duration-300  border-pink-500 border-2 hover:bg-white hover:text-black">Login</button>
             <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-gray-800">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -63,8 +63,8 @@ export default function Header() {
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Industries</Link>
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Resources</Link>
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About</Link>
-            <button onClick={handleSignupClick} className=" block bg-teal-300 text-[rgb(0,0,0)] font-open-sans text-[15px] font-light leading-[27px] px-6 py-2 rounded-sm duration-300 hover:shadow-lg hover:shadow-teal-300 border-blue-100 border-2 hover:bg-white">Sign up</button>
-            <button onClick={handleLoginClick} className="block bg-pink-500 text-[rgb(255,255,255)] font-open-sans text-[15px] font-light leading-[22.5px] px-4 py-2 rounded-sm  duration-300 hover:shadow-lg hover:shadow-pink-500 border-pink-500 border-2 hover:bg-white hover:text-black">Login</button>
+            <button onClick={handleSignupClick} className=" block bg-teal-300 text-[rgb(0,0,0)] font-open-sans text-[15px] font-light leading-[27px] px-6 py-2 rounded-sm duration-300  border-blue-100 border-2 hover:bg-white">Sign up</button>
+            <button onClick={handleLoginClick} className="block bg-pink-500 text-[rgb(255,255,255)] font-open-sans text-[15px] font-light leading-[22.5px] px-4 py-2 rounded-sm  duration-300  border-pink-500 border-2 hover:bg-white hover:text-black">Login</button>
           </div>
         </div>
       )}

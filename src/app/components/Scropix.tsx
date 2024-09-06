@@ -22,7 +22,7 @@ function ScopioX100() {
             <li className="text-[30px] font-[600] leading-[33.75px] text-[rgb(239,26,169)] font-favorit">15 Slide/H for 200 WBC Diff</li>
           </ul>
           <div className="flex justify-center">
-            <button className="border-2 border-[rgb(239,26,169)] text-black font-bold py-2 px-4 rounded duration-300 hover:bg-pink-500">
+            <button className="border-2 border-[rgb(239,26,169)] text-black font-bold py-2 px-4 duration-300 hover:bg-pink-500">
               Learn about the X100
             </button>
           </div>
@@ -45,7 +45,7 @@ function ScopioX100() {
             <li className="text-[30px] font-[600] leading-[33.75px] text-[rgb(239,26,169)] font-favorit">40 Slide/H for 200 WBC Diff</li>
           </ul>
           <div className="flex justify-center">
-            <button className="border-2 border-[rgb(239,26,169)] text-black font-bold py-2 px-4 rounded duration-300 hover:bg-pink-500">
+            <button className="border-2 border-[rgb(239,26,169)] text-black font-bold py-2 px-4 duration-300 hover:bg-pink-500">
               Learn about the X100HT
             </button>
           </div>

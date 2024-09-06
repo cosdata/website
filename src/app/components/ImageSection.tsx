@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { fetchPromotionalClaim } from '../utils/api';
 
 interface ImageSectionProps {
   promotionalClaim: string;
@@ -24,7 +23,7 @@ export default function ImageSection({ promotionalClaim }: ImageSectionProps) {
           </p>
           <a 
             href="#" 
-            className="inline-block bg-transparent border border-pink-500 text-white px-6 py-3 rounded-md 
+            className="inline-block bg-transparent border border-pink-500 text-white px-6 py-3
                        font-[700] text-[16px] leading-[16px] duration-300 hover:bg-pink-500 hover:text-white"
           >
             Explore More

@@ -14,7 +14,7 @@ const HeroSection = () => {
           <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
             Introducing a revolution in digital cell morphology that will transform the way you see, work, and diagnose.
           </p>
-          <a href="#" className="inline-block bg-pink-400 text-white px-6 py-3 rounded-md shadow-md duration-300 hover:bg-pink-600">
+          <a href="#" className="inline-block bg-pink-400 text-white px-6 py-3 duration-300 hover:bg-pink-600">
             Book a meeting
           </a>
         </div>
