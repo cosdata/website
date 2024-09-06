@@ -101,7 +101,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
                 width={80}
                 height={80}
                 />
-              <h1 className="text-[24px] font-[600] leading-[30px] font-[Favorit, sans-serif] mb-12 inline">
+              <h1 className="text-[20px] font-[600] leading-[30px] font-[Favorit, sans-serif] mb-12 inline">
                 {claim.attributes.ChannelVariants.Website}
               </h1>
               {/* <p className="text-[18px] font-[400] leading-[20px] text-gray-200 font-[Favorit, sans-serif]">

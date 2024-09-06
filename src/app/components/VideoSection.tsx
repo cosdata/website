@@ -8,7 +8,7 @@ export default function VideoSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-gray-100  overflow-hidden">
           <div className="relative w-full h-[300px]">
             <Image
               src="https://scopiolabs.com/wp-content/uploads/2022/01/x100ht-hero-shot.jpg"
@@ -25,7 +25,7 @@ export default function VideoSection() {
           </div>
         </div>
       
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-gray-100  overflow-hidden">
           <div className="relative w-full h-[300px]">
             <Image
               src="https://scopiolabs.com/wp-content/uploads/2022/01/x100ht-hero-shot.jpg"
@@ -42,7 +42,7 @@ export default function VideoSection() {
           </div>
         </div>
       
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-gray-100  overflow-hidden">
           <div className="relative w-full h-[300px]">
             <Image
               src="https://scopiolabs.com/wp-content/uploads/2022/01/x100ht-hero-shot.jpg"

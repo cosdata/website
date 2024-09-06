@@ -7,7 +7,7 @@ function ScopioX100() {
         Two sizes. Infinite possibilities.
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="rounded-lg shadow-md p-6 bg-gray-100">
+        <div className="p-6 bg-gray-100">
           <div className="flex justify-center">
             <Image src="https://scopiolabs.com/wp-content/uploads/2022/01/x100ht-hero-shot.jpg" alt="Scopio X100" width={300} height={200} />
           </div>
@@ -30,7 +30,7 @@ function ScopioX100() {
             <p className="text-gray-700">FDA cleared, CE marked</p>
           </div>
         </div>
-        <div className="rounded-lg shadow-md p-6 bg-gray-100">
+        <div className="p-6 bg-gray-100">
           <div className="flex justify-center">
             <Image src="https://scopiolabs.com/wp-content/uploads/2022/01/x100ht-hero-shot.jpg" alt="Scopio X100HT" width={300} height={200} />
           </div>
