@@ -174,7 +174,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               {/* Claims Items */}
               <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
                 {section.claims.map((claim: any) => (
-                  <div key={claim.id} className={`p-2 bg-gray-200 w-full max-w-[230px] h-[400px] ${bgColors[index % bgColors.length]} ${index !== currentIndex ? 'opacity-70' : ''}`}>
+                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[400px] ${bgColors[index % bgColors.length]} ${index !== currentIndex ? 'opacity-70' : ''}`}>
                     <div className='relative'>
                     <Image
                     src={`/images/image(${claim.id%2 +1}).jpg`}
