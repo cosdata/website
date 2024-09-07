@@ -53,7 +53,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
 
   // Array of background colors for carousel items
   const bgColors = ['bg-red-200', 'bg-blue-200', 'bg-green-200', 'bg-yellow-200', 'bg-purple-200'];
-  const headingColor=[ 'text-blue-500', 'text-green-500', 'text-yellow-500', 'text-purple-500','text-red-500'];
+
 
   // Grouping claimsData by AttributeMain
   const groupedByAttributeMain = claimsData.reduce((acc, claim) => {
@@ -74,11 +74,16 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
 
   // Duplicate the first and last items for infinite scrolling
   const infiniteGroupedItems = [
-    groupedItems[groupedItems.length - 1], // Last item
+    groupedItems[groupedItems.length - 1], // Lasts item
     ...groupedItems,
-    groupedItems[0], // First item
+    ...groupedItems,
+    ...groupedItems 
   ];
-
+  const headingItems=[
+    ...groupedItems,
+    ...groupedItems,
+    ...groupedItems
+  ]
 
 
   const totalSections = infiniteGroupedItems.length;
@@ -99,7 +104,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
       const nextIndex = (prevIndex + 1) % totalSections;
-      if (nextIndex === totalSections - 1) {
+      if (nextIndex === 0) {
         // Reset index to show the first item without animation
         setTimeout(() => setCurrentIndex(1), 500);
       }
@@ -135,8 +140,8 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   }, [currentIndex]);
 
   const headingsCarouselStyle = {
-    transform: `translateX(-${activeHeadingIndex < 5 ? activeHeadingIndex * 300 : 4 * 300}px)`, // Move the active heading to the left
-    width: `${groupedItems.length * 300}px`, // Total width of all headings
+    transform: `translateX(-${activeHeadingIndex * 300 }px)`, // Move the active heading to the left
+    width: `${headingItems.length * 300}px`, // Total width of all headings
     transition: 'transform 0.5s', // Add transition effect
   };
 
@@ -148,14 +153,14 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
       <div className="max-w-7xl bg-[#f0f2f5] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
         {/* Headings Carousel */}
         <div className="headings-carousel flex overflow-hidden whitespace-nowrap" style={headingsCarouselStyle}>
-          {groupedItems.map((section, index) => (
+          {headingItems.map((section, index) => (
             <div
               key={index}
               className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-[#b5cff5]' : 'bg-[#c7d9f3]'}`}
               onClick={() => handleHeadingClick(index)}
               style={{ width: '300px' }}
             >
-              <h2 className={`font-semibold duration-300 ${index===currentIndex-1?headingColor[index%headingColor.length]:'text-black'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
+              <h2 className={`font-semibold duration-300 ${index===currentIndex-1? 'text-blue-600':'text-black'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
             </div>
           ))}
         </div>
@@ -174,9 +179,9 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               {/* Claims Items */}
               <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
                 {section.claims.map((claim: any) => (
-                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[400px] ${bgColors[index % bgColors.length]} ${index !== currentIndex ? 'opacity-70' : ''}`}>
+                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[300px] dur  ${index !== currentIndex ? 'opacity-70 bg-pink-200' : 'bg-gradient-to-b from-[#f66786] to-[#f8e2e7]'}`}>
                     <div className='relative'>
-                    <Image
+                    {/* <Image
                     src={`/images/image(${claim.id%2 +1}).jpg`}
                     alt="Image"
                     width={250}
@@ -188,7 +193,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
                     alt="Logo"
                     width={50}
                     height={50}
-                    />
+                    /> */}
                     
                     </div>
                     {/* Render AttributePart as the headline */}
@@ -197,7 +202,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
                         {claim.attributes.Attribute.AttributePart}
                       </h2>
                     )}
-                    <p className="text-md mt-4 text-gray-500">
+                    <p className={`text-md mt-4 ${index!=currentIndex ? 'text-gray-700' : 'text-black'}`}>
                       {claim.attributes.ChannelVariants.Website.length < 150
                         ? claim.attributes.ChannelVariants.Website
                         : claim.attributes.ChannelVariants.WebsiteShort.length < 150
