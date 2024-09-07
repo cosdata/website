@@ -5,7 +5,11 @@ export const fetchClaim = async () => {
   console.log("Fetching promotional claim from:", baseUrl);
   
   try {
-    const response = await fetch(baseUrl);
+    const response = await fetch(baseUrl,{
+      headers: {
+        'Cache-Control':  'no-cache',
+      }
+    });
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }

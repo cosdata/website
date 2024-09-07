@@ -1,4 +1,6 @@
+"use client";
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface Attribute {
   id: number;
@@ -45,90 +47,80 @@ interface FeatureSectionProps {
 }
 
 export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
-  const claimsrow1 = claimsData.slice(0, 3);
-  const claimsrow2 = claimsData.slice(3, 6);
-  const claimsrow3 = claimsData.slice(6, 9);
-  const claimsrow4 = claimsData.slice(9, 12);
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Handle Next/Prev functionality with boundaries
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex < Object.keys(groupedByAttributeMain).length - 1 ? prevIndex + 1 : prevIndex
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+  };
+
+  // Grouping claimsData by AttributeMain
+  const groupedByAttributeMain = claimsData.reduce((acc, claim) => {
+    const attributeMain = claim.attributes.Attribute.AttributeMain;
+    if (!acc[attributeMain]) {
+      acc[attributeMain] = [];
+    }
+    acc[attributeMain].push(claim);
+    return acc;
+  }, {} as Record<string, typeof claimsData>);
+
   return (
-    <section className="bg-white py-16 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap justify-around gap-8 mb-8 ">
-          {claimsrow1.map((claim) => (
-            <div key={claim.id} className="bg-gray-600 flex flex-col text-white p-8 pt-12 h-[350px] w-[350px]  items-center relative">
-              <Image
-                className=" absolute top-[-20px] left-[-20px]"
-                src={`/svgs/icon${claim.id}.drawio.svg`}
-                alt="Logo"
-                width={80}
-                height={80}
-                />
-              <h1 className="text-[20px] font-[600] leading-[30px] font-[Favorit, sans-serif] mb-12 inline">
-                {claim.attributes.ChannelVariants.Website}
-              </h1>
-              {/* <p className="text-[18px] font-[400] leading-[20px] text-gray-200 font-[Favorit, sans-serif]">
-                {claim.attributes.ChannelVariants.Website}
-              </p> */}
+    <section className="bg-white py-16">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden bg-gray-200">
+        <div
+          className="carousel flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }} // Shift the carousel based on currentIndex
+        >
+          {Object.values(groupedByAttributeMain).map((attributeMain: any, index: number) => (
+            <div
+              key={index}
+              className="carousel-item w-full flex-shrink-0 flex-grow-0 h-[500px] border-1 border-black border-solid" // Ensures each item takes the full width of the container
+            >
+              <div className="p-6 flex justify-center items-center">
+                <h1 className="text-2xl font-bold text-black">{attributeMain[0].attributes.Attribute.AttributeMain}</h1>
+              </div>
+              <div className='flex justify-center gap-3'>
+                {attributeMain.map((claim: any) => (
+                  <div key={claim.id} className="p-4 bg-gray-500 w-[300px] h-[300px]">
+                    {/* Render AttributePart as the headline */}
+                    {claim.attributes.Attribute.AttributePart && (
+                      <h2 className="text-2xl font-bold mt-2">{claim.attributes.Attribute.AttributePart}</h2>
+                    )}
+                    <h2 className="text-md mt-4">
+                      {claim.attributes.ChannelVariants.WebsiteShort}
+                    </h2>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap justify-around gap-8 mb-8">
-          {claimsrow2.map((claim) => (
-            <div key={claim.id} className="bg-gray-200 flex flex-col text-gray-800 p-8 pt-12 h-[350px] w-[350px]  items-center relative">
-            <Image
-              className=" absolute top-[-20px] left-[-20px]"
-              src={`/svgs/icon${claim.id}.drawio.svg`}
-              alt="Logo"
-              width={80}
-              height={80}
-              />
-            <h1 className="text-[20px] font-[600] leading-[30px] font-[Favorit, sans-serif] mb-12 inline">
-              {claim.attributes.ChannelVariants.Website}
-            </h1>
-            {/* <p className="text-[18px] font-[400] leading-[20px] text-gray-200 font-[Favorit, sans-serif]">
-              {claim.attributes.ChannelVariants.Website}
-            </p> */}
-          </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap justify-around gap-8 mb-8 ">
-          {claimsrow3.map((claim) => (
-              <div key={claim.id} className="bg-gray-600 flex flex-col text-white p-8 pt-12 h-[350px] w-[350px]  items-center relative">
-              <Image
-                className=" absolute top-[-20px] left-[-20px]"
-                src={`/svgs/icon${claim.id}.drawio.svg`}
-                alt="Logo"
-                width={80}
-                height={80}
-                />
-              <h1 className="text-[20px] font-[600] leading-[30px] font-[Favorit, sans-serif] mb-12 inline">
-                {claim.attributes.ChannelVariants.Website}
-              </h1>
-              {/* <p className="text-[18px] font-[400] leading-[20px] text-gray-200 font-[Favorit, sans-serif]">
-                {claim.attributes.ChannelVariants.Website}
-              </p> */}
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap justify-around gap-8 mb-8">
-          {claimsrow4.map((claim) => (
-                        <div key={claim.id} className="bg-gray-200 flex flex-col text-gray-800 p-8 pt-12 h-[350px] w-[350px]  items-center relative">
-                        <Image
-                          className=" absolute top-[-20px] left-[-20px]"
-                          src={`/svgs/icon${claim.id}.drawio.svg`}
-                          alt="Logo"
-                          width={80}
-                          height={80}
-                          />
-                        <h1 className="text-[20px] font-[600] leading-[30px] font-[Favorit, sans-serif] mb-12 inline">
-                          {claim.attributes.ChannelVariants.Website}
-                        </h1>
-                        {/* <p className="text-[18px] font-[400] leading-[20px] text-gray-200 font-[Favorit, sans-serif]">
-                          {claim.attributes.ChannelVariants.Website}
-                        </p> */}
-                      </div>
-          ))}
-        </div>
+
+
+      </div>
+      {/* Carousel Controls */}
+      <div className="carousel-controls flex justify-center gap-8 mt-8">
+        <button
+          className="bg-gray-300 px-4 py-2"
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+        >
+        	&lt;
+        </button>
+        <button
+          className="bg-gray-300 px-4 py-2"
+          onClick={handleNext}
+          disabled={currentIndex === Object.keys(groupedByAttributeMain).length - 1}
+        >
+        &gt;
+        </button>
       </div>
     </section>
   );
