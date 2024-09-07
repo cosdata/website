@@ -80,37 +80,39 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
     const totalWidth = acc.length > 0 ? acc[acc.length - 1] + width : width;
     return [...acc, totalWidth];
   }, [] as number[]);
-const handleNext = () => {
-  setCurrentIndex((prevIndex) => {
-    const nextIndex = (prevIndex + 1) % totalSections;
-    if (nextIndex === totalSections-2) {
-      // Reset index to show the first item without animation
-      setTimeout(() => setCurrentIndex(1), 500);
-    }
-    return nextIndex;
-  });
-};
 
-const handlePrev = () => {
-  setCurrentIndex((prevIndex) => {
-    const prevIndexAdjusted = (prevIndex - 1 + totalSections) % totalSections;
-    if (prevIndexAdjusted === totalSections - 1) {
-      // Reset index to show the last item without animation
-      setTimeout(() => setCurrentIndex(totalSections - 2), 500);
-    }
-    return prevIndexAdjusted;
-  });
-};
-const carouselStyle = {
-  transform: `translateX(-${cumulativeWidths[currentIndex] || 0}px)`,
-  width: `${cumulativeWidths[totalSections - 1] || 0}px`,
-};
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % totalSections;
+      if (nextIndex === totalSections - 1) {
+        // Reset index to show the first item without animation
+        setTimeout(() => setCurrentIndex(1), 500);
+      }
+      return nextIndex;
+    });
+  };
 
-if (currentIndex === 0) {
-  carouselStyle.transform = `translateX(-${cumulativeWidths[1] || 0}px)`;
-} else if (currentIndex === totalSections - 1) {
-  carouselStyle.transform = `translateX(-${cumulativeWidths[totalSections - 2] || 0}px)`;
-}
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => {
+      const prevIndexAdjusted = (prevIndex - 1 ) % totalSections;
+      if (prevIndexAdjusted === 0) {
+        // Reset index to show the last item without animation
+        setTimeout(() => setCurrentIndex(totalSections - 2), 500);
+      }
+      return prevIndexAdjusted;
+    });
+  };
+
+  const carouselStyle = {
+    transform: `translateX(-${currentIndex==0? 0: cumulativeWidths[currentIndex-1]}px)`,
+    width: `${cumulativeWidths[totalSections - 1] || 0}px`,
+  };
+
+  // if (currentIndex === 0) {
+  //   carouselStyle.transform = `translateX(-${cumulativeWidths[1] || 0}px)`;
+  // } else if (currentIndex === totalSections - 1) {
+  //   carouselStyle.transform = `translateX(-${cumulativeWidths[totalSections - 2] || 0}px)`;
+  // }
 
   return (
     <section className="bg-white py-16">
@@ -125,7 +127,7 @@ if (currentIndex === 0) {
           {infiniteGroupedItems.map((section, index) => (
             <div
               key={index}
-              className="carousel-item flex-shrink-0"
+              className={`carousel-item flex-shrink-0 ${index !== currentIndex ? 'blur-[2px]' : ''}`} // Apply blur effect
               style={{ width: `${section.width}px` }} // Set dynamic width
             >
               {/* AttributeMain Heading */}
@@ -144,10 +146,12 @@ if (currentIndex === 0) {
                       </h2>
                     )}
                     <p className="text-md mt-4 text-gray-500">
-  {claim.attributes.ChannelVariants.Website.length < 150 
-    ? claim.attributes.ChannelVariants.Website 
-    : claim.attributes.ChannelVariants.WebsiteShort.length<150 ? claim.attributes.ChannelVariants.WebsiteShort : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150)+'...'}` }
-</p>
+                      {claim.attributes.ChannelVariants.Website.length < 150
+                        ? claim.attributes.ChannelVariants.Website
+                        : claim.attributes.ChannelVariants.WebsiteShort.length < 150
+                          ? claim.attributes.ChannelVariants.WebsiteShort
+                          : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
+                    </p>
                   </div>
                 ))}
               </div>
