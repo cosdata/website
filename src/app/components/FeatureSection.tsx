@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 import Image from 'next/image'
 
 interface Attribute {
@@ -51,9 +51,6 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   const [headingsOffset, setHeadingsOffset] = useState(0);
   const [activeHeadingIndex, setActiveHeadingIndex] = useState(0);
 
-  // Array of background colors for carousel items
-  const bgColors = ['bg-red-200', 'bg-blue-200', 'bg-green-200', 'bg-yellow-200', 'bg-purple-200'];
-
 
   // Grouping claimsData by AttributeMain
   const groupedByAttributeMain = claimsData.reduce((acc, claim) => {
@@ -65,12 +62,15 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
     return acc;
   }, {} as Record<string, typeof claimsData>);
 
-  // Convert to array of sections with their widths
+  // Calculate the width of each section
   const groupedItems = Object.entries(groupedByAttributeMain).map(([attributeMain, claims]) => ({
-    attributeMain,
-    claims,
-    width: 250 * claims.length // Width based on number of claims
-  }));
+      attributeMain,
+      claims,
+      width: 250 * claims.length // Width based on number of claims
+    }));
+
+  if(window.screen.width>1280){
+
 
   // Duplicate the first and last items for infinite scrolling
   const infiniteGroupedItems = [
@@ -146,7 +146,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   };
 
   return (
-    <div className="bg-white text-black py-16">
+    <div className="bg-white text-[#59606c] py-16">
       {/* Heading */}
       <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
 
@@ -160,7 +160,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               onClick={() => handleHeadingClick(index)}
               style={{ width: '300px' }}
             >
-              <h2 className={`font-semibold duration-300 ${index===currentIndex-1? 'text-blue-600':'text-black'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
+              <h2 className={`font-semibold duration-300 ${index===currentIndex-1? 'text-blue-600':'text-[#6da7f8]'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
             </div>
           ))}
         </div>
@@ -179,30 +179,14 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               {/* Claims Items */}
               <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
                 {section.claims.map((claim: any) => (
-                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[300px] dur  ${index !== currentIndex ? 'opacity-70 bg-pink-200' : 'bg-gradient-to-b from-[#f66786] to-[#f8e2e7]'}`}>
-                    <div className='relative'>
-                    {/* <Image
-                    src={`/images/image(${claim.id%2 +1}).jpg`}
-                    alt="Image"
-                    width={250}
-                    height={250}
-                    />
-                    <Image
-                    src={`/svgs/icon${claim.id%12 +1}.drawio.svg`}
-                    className='absolute bottom-1 left-1'
-                    alt="Logo"
-                    width={50}
-                    height={50}
-                    /> */}
-                    
-                    </div>
+                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[300px] duration-500   ${index !== currentIndex ? 'opacity-70 bg-gray-100' : 'bg-gradient-to-b from-[#ffffff] to-[#f5dede]'}`}>
                     {/* Render AttributePart as the headline */}
                     {claim.attributes.Attribute.AttributePart && (
-                      <h2 className="text-xl font-bold mt-2 text-gray-800">
+                      <h2 className="text-xl font-bold mt-2 text-[#20477e]">
                         {claim.attributes.Attribute.AttributePart}
                       </h2>
                     )}
-                    <p className={`text-md mt-4 ${index!=currentIndex ? 'text-gray-700' : 'text-black'}`}>
+                    <p className={`text-md mt-4 text-[#59606c]`}>
                       {claim.attributes.ChannelVariants.Website.length < 150
                         ? claim.attributes.ChannelVariants.Website
                         : claim.attributes.ChannelVariants.WebsiteShort.length < 150
@@ -235,4 +219,39 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
       </div>
     </div>
   );
+    
+  }
+  return (
+    <div className='text-4xl text-[#21365b]'>
+      <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
+      <div className='flex flex-wrap justify-center gap-4'>
+      {groupedItems.map((section, index) => (
+        <div key={index} className='max-w-96 bg-gradient-to-b from-[#f5dede] to-[#fff1f1] p-2'>
+          <h2 className="text-2xl font-bold mb-4">{section.attributeMain}</h2>
+          <ul typeof='unordered' className="flex flex-wrap justify-start gap-0">
+      
+            {section.claims.map((claim: any) => (
+              <li key={claim.id} className="p-2">
+                {/* Render AttributePart as the headline */}
+                {claim.attributes.Attribute.AttributePart && (
+                  <h2 className="text-xl font-bold mt-1 text-[#20477e]">
+                    {claim.attributes.Attribute.AttributePart}
+                  </h2>
+                )}
+                <p className="text-sm mt-4 text-[#59606c]">
+                  {claim.attributes.ChannelVariants.Website.length < 150
+                    ? claim.attributes.ChannelVariants.Website
+                    : claim.attributes.ChannelVariants.WebsiteShort.length < 150
+                      ? claim.attributes.ChannelVariants.WebsiteShort
+                      : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      </div>
+    </div>
+  )
+  
 }
