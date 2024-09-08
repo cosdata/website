@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect,useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image'
 
 interface Attribute {
@@ -50,6 +50,18 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(1); // Start at the first cloned section
   const [headingsOffset, setHeadingsOffset] = useState(0);
   const [activeHeadingIndex, setActiveHeadingIndex] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // This block of code will only run in the client environment
+      if (window.screen.width > 1280) {
+        setIsLargeScreen(true);
+      } else {
+        setIsLargeScreen(false);
+      }
+    }
+  }, []);
 
 
   // Grouping claimsData by AttributeMain
@@ -64,194 +76,194 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
 
   // Calculate the width of each section
   const groupedItems = Object.entries(groupedByAttributeMain).map(([attributeMain, claims]) => ({
-      attributeMain,
-      claims,
-      width: 250 * claims.length // Width based on number of claims
-    }));
+    attributeMain,
+    claims,
+    width: 250 * claims.length // Width based on number of claims
+  }));
 
-  if(window.screen.width>1280){
-
-
-  // Duplicate the first and last items for infinite scrolling
-  const infiniteGroupedItems = [
-    groupedItems[groupedItems.length - 1], // Lasts item
-    ...groupedItems,
-    ...groupedItems,
-    ...groupedItems 
-  ];
-  const headingItems=[
-    ...groupedItems,
-    ...groupedItems,
-    ...groupedItems
-  ]
+  if (window.screen.width > 1280) {
 
 
-  const totalSections = infiniteGroupedItems.length;
+    // Duplicate the first and last items for infinite scrolling
+    const infiniteGroupedItems = [
+      groupedItems[groupedItems.length - 1], // Lasts item
+      ...groupedItems,
+      ...groupedItems,
+      ...groupedItems
+    ];
+    const headingItems = [
+      ...groupedItems,
+      ...groupedItems,
+      ...groupedItems
+    ]
 
-  // Calculate cumulative widths of sections
-  const cumulativeWidths = infiniteGroupedItems.reduce((acc, section, index) => {
-    const width = section.width;
-    const totalWidth = acc.length > 0 ? acc[acc.length - 1] + width : width;
-    return [...acc, totalWidth];
-  }, [] as number[]);
 
-  // Handle navigation to specific section based on heading click
-  const handleHeadingClick = (index: number) => {
-    setCurrentIndex(index + 1); // +1 to account for the cloned last section
-  };
+    const totalSections = infiniteGroupedItems.length;
 
-  // Handle Next and Prev buttons
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = (prevIndex + 1) % totalSections;
-      if (nextIndex === 0) {
-        // Reset index to show the first item without animation
-        setTimeout(() => setCurrentIndex(1), 500);
-      }
-      return nextIndex;
-    });
-  };
+    // Calculate cumulative widths of sections
+    const cumulativeWidths = infiniteGroupedItems.reduce((acc, section, index) => {
+      const width = section.width;
+      const totalWidth = acc.length > 0 ? acc[acc.length - 1] + width : width;
+      return [...acc, totalWidth];
+    }, [] as number[]);
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => {
-      const prevIndexAdjusted = (prevIndex - 1 + totalSections) % totalSections;
-      if (prevIndexAdjusted === 0) {
-        // Reset index to show the last item without animation
-        setTimeout(() => setCurrentIndex(totalSections - 2), 500);
-      }
-      return prevIndexAdjusted;
-    });
-  };
+    // Handle navigation to specific section based on heading click
+    const handleHeadingClick = (index: number) => {
+      setCurrentIndex(index + 1); // +1 to account for the cloned last section
+    };
 
-  const carouselStyle = {
-    transform: `translateX(-${currentIndex == 0 ? 0 : cumulativeWidths[currentIndex - 1]}px)`,
-    width: `${cumulativeWidths[totalSections - 1] || 0}px`,
-  };
+    // Handle Next and Prev buttons
+    const handleNext = () => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % totalSections;
+        if (nextIndex === 0) {
+          // Reset index to show the first item without animation
+          setTimeout(() => setCurrentIndex(1), 500);
+        }
+        return nextIndex;
+      });
+    };
 
-  useEffect(() => {
-    const headingWidth = 240; // Width of each heading item
-    const visibleHeadingsCount = Math.floor(document.querySelector('.headings-carousel')!.clientWidth / headingWidth);
-    const newOffset = Math.max(0, (currentIndex - 1) * headingWidth - (visibleHeadingsCount - 1) * headingWidth);
-    setHeadingsOffset(newOffset);
-  }, [currentIndex]);
+    const handlePrev = () => {
+      setCurrentIndex((prevIndex) => {
+        const prevIndexAdjusted = (prevIndex - 1 + totalSections) % totalSections;
+        if (prevIndexAdjusted === 0) {
+          // Reset index to show the last item without animation
+          setTimeout(() => setCurrentIndex(totalSections - 2), 500);
+        }
+        return prevIndexAdjusted;
+      });
+    };
 
-  useEffect(() => {
-    setActiveHeadingIndex(currentIndex - 1); // Update the active heading index
-  }, [currentIndex]);
+    const carouselStyle = {
+      transform: `translateX(-${currentIndex == 0 ? 0 : cumulativeWidths[currentIndex - 1]}px)`,
+      width: `${cumulativeWidths[totalSections - 1] || 0}px`,
+    };
 
-  const headingsCarouselStyle = {
-    transform: `translateX(-${activeHeadingIndex * 300 }px)`, // Move the active heading to the left
-    width: `${headingItems.length * 300}px`, // Total width of all headings
-    transition: 'transform 0.5s', // Add transition effect
-  };
+    useEffect(() => {
+      const headingWidth = 240; // Width of each heading item
+      const visibleHeadingsCount = Math.floor(document.querySelector('.headings-carousel')!.clientWidth / headingWidth);
+      const newOffset = Math.max(0, (currentIndex - 1) * headingWidth - (visibleHeadingsCount - 1) * headingWidth);
+      setHeadingsOffset(newOffset);
+    }, [currentIndex]);
 
-  return (
-    <div className="bg-white text-[#59606c] py-16">
-      {/* Heading */}
-      <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
+    useEffect(() => {
+      setActiveHeadingIndex(currentIndex - 1); // Update the active heading index
+    }, [currentIndex]);
 
-      <div className="max-w-7xl bg-[#f0f2f5] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
-        {/* Headings Carousel */}
-        <div className="headings-carousel flex overflow-hidden whitespace-nowrap" style={headingsCarouselStyle}>
-          {headingItems.map((section, index) => (
-            <div
-              key={index}
-              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-[#b5cff5]' : 'bg-[#c7d9f3]'}`}
-              onClick={() => handleHeadingClick(index)}
-              style={{ width: '300px' }}
-            >
-              <h2 className={`font-semibold duration-300 ${index===currentIndex-1? 'text-blue-600':'text-[#6da7f8]'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
-            </div>
-          ))}
-        </div>
+    const headingsCarouselStyle = {
+      transform: `translateX(-${activeHeadingIndex * 300}px)`, // Move the active heading to the left
+      width: `${headingItems.length * 300}px`, // Total width of all headings
+      transition: 'transform 0.5s', // Add transition effect
+    };
 
-        {/* Main Carousel */}
-        <div
-          className="carousel flex transition-transform duration-500 ease-in-out"
-          style={carouselStyle}
-        >
-          {infiniteGroupedItems.map((section, index) => (
-            <div
-              key={index}
-              className={`carousel-item flex-shrink-0`} // Apply different background colors
-              style={{ width: `${section.width}px` }} // Set dynamic width
-            >
-              {/* Claims Items */}
-              <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
-                {section.claims.map((claim: any) => (
-                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[300px] duration-500   ${index !== currentIndex ? 'opacity-70 bg-gray-100' : 'bg-gradient-to-b from-[#ffffff] to-[#f5dede]'}`}>
-                    {/* Render AttributePart as the headline */}
-                    {claim.attributes.Attribute.AttributePart && (
-                      <h2 className="text-xl font-bold mt-2 text-[#20477e]">
-                        {claim.attributes.Attribute.AttributePart}
-                      </h2>
-                    )}
-                    <p className={`text-md mt-4 text-[#59606c]`}>
-                      {claim.attributes.ChannelVariants.Website.length < 150
-                        ? claim.attributes.ChannelVariants.Website
-                        : claim.attributes.ChannelVariants.WebsiteShort.length < 150
-                          ? claim.attributes.ChannelVariants.WebsiteShort
-                          : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
-                    </p>
-                  </div>
-                ))}
+    return (
+      <div className="bg-white text-[#59606c] py-16">
+        {/* Heading */}
+        <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
+
+        <div className="max-w-7xl bg-[#f0f2f5] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+          {/* Headings Carousel */}
+          <div className="headings-carousel flex overflow-hidden whitespace-nowrap" style={headingsCarouselStyle}>
+            {headingItems.map((section, index) => (
+              <div
+                key={index}
+                className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-[#b5cff5]' : 'bg-[#c7d9f3]'}`}
+                onClick={() => handleHeadingClick(index)}
+                style={{ width: '300px' }}
+              >
+                <h2 className={`font-semibold duration-300 ${index === currentIndex - 1 ? 'text-blue-600' : 'text-[#6da7f8]'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Carousel Controls */}
-        <div className="carousel-controls flex justify-center gap-8 mt-8">
-          <button
-            className="bg-gray-300 px-4 py-2"
-            onClick={handlePrev}
-            disabled={currentIndex === 1} // Disable "Prev" button at the start
+          {/* Main Carousel */}
+          <div
+            className="carousel flex transition-transform duration-500 ease-in-out"
+            style={carouselStyle}
           >
-            &lt;
-          </button>
-          <button
-            className="bg-gray-300 px-4 py-2"
-            onClick={handleNext}
-          >
-            &gt;
-          </button>
+            {infiniteGroupedItems.map((section, index) => (
+              <div
+                key={index}
+                className={`carousel-item flex-shrink-0`} // Apply different background colors
+                style={{ width: `${section.width}px` }} // Set dynamic width
+              >
+                {/* Claims Items */}
+                <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
+                  {section.claims.map((claim: any) => (
+                    <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[300px] duration-500   ${index !== currentIndex ? 'opacity-70 bg-gray-100' : 'bg-gradient-to-b from-[#ffffff] to-[#f5dede]'}`}>
+                      {/* Render AttributePart as the headline */}
+                      {claim.attributes.Attribute.AttributePart && (
+                        <h2 className="text-xl font-bold mt-2 text-[#20477e]">
+                          {claim.attributes.Attribute.AttributePart}
+                        </h2>
+                      )}
+                      <p className={`text-md mt-4 text-[#59606c]`}>
+                        {claim.attributes.ChannelVariants.Website.length < 150
+                          ? claim.attributes.ChannelVariants.Website
+                          : claim.attributes.ChannelVariants.WebsiteShort.length < 150
+                            ? claim.attributes.ChannelVariants.WebsiteShort
+                            : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Carousel Controls */}
+          <div className="carousel-controls flex justify-center gap-8 mt-8">
+            <button
+              className="bg-gray-300 px-4 py-2"
+              onClick={handlePrev}
+              disabled={currentIndex === 1} // Disable "Prev" button at the start
+            >
+              &lt;
+            </button>
+            <button
+              className="bg-gray-300 px-4 py-2"
+              onClick={handleNext}
+            >
+              &gt;
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-    
+    );
+
   }
   return (
     <div className='text-4xl text-[#21365b]'>
       <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
       <div className='flex flex-wrap justify-center gap-4'>
-      {groupedItems.map((section, index) => (
-        <div key={index} className='max-w-96 bg-gradient-to-b from-[#f5dede] to-[#fff1f1] p-2'>
-          <h2 className="text-2xl font-bold mb-4">{section.attributeMain}</h2>
-          <ul typeof='unordered' className="flex flex-wrap justify-start gap-0">
-      
-            {section.claims.map((claim: any) => (
-              <li key={claim.id} className="p-2">
-                {/* Render AttributePart as the headline */}
-                {claim.attributes.Attribute.AttributePart && (
-                  <h2 className="text-xl font-bold mt-1 text-[#20477e]">
-                    {claim.attributes.Attribute.AttributePart}
-                  </h2>
-                )}
-                <p className="text-sm mt-4 text-[#59606c]">
-                  {claim.attributes.ChannelVariants.Website.length < 150
-                    ? claim.attributes.ChannelVariants.Website
-                    : claim.attributes.ChannelVariants.WebsiteShort.length < 150
-                      ? claim.attributes.ChannelVariants.WebsiteShort
-                      : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+        {groupedItems.map((section, index) => (
+          <div key={index} className='max-w-96 bg-gradient-to-b from-[#f5dede] to-[#fff1f1] p-2'>
+            <h2 className="text-2xl font-bold mb-4">{section.attributeMain}</h2>
+            <ul typeof='unordered' className="flex flex-wrap justify-start gap-0">
+
+              {section.claims.map((claim: any) => (
+                <li key={claim.id} className="p-2">
+                  {/* Render AttributePart as the headline */}
+                  {claim.attributes.Attribute.AttributePart && (
+                    <h2 className="text-xl font-bold mt-1 text-[#20477e]">
+                      {claim.attributes.Attribute.AttributePart}
+                    </h2>
+                  )}
+                  <p className="text-sm mt-4 text-[#59606c]">
+                    {claim.attributes.ChannelVariants.Website.length < 150
+                      ? claim.attributes.ChannelVariants.Website
+                      : claim.attributes.ChannelVariants.WebsiteShort.length < 150
+                        ? claim.attributes.ChannelVariants.WebsiteShort
+                        : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   )
-  
+
 }
