@@ -150,13 +150,13 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
       {/* Heading */}
       <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
 
-      <div className="max-w-7xl bg-[#f0f2f5] mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+      <div className="max-w-7xl bg-[#fcfcfc] mx-auto px-0 overflow-hidden relative">
         {/* Headings Carousel */}
         <div className="headings-carousel flex overflow-hidden whitespace-nowrap" style={headingsCarouselStyle}>
           {headingItems.map((section, index) => (
             <div
               key={index}
-              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-[#b5cff5]' : 'bg-[#c7d9f3]'}`}
+              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-gradient-to-r from-[#3d8bff] to-[#f0f2f5] w-[320px]' : 'bg-[#f0f2f5]'}`}
               onClick={() => handleHeadingClick(index)}
               style={{ width: '300px' }}
             >
@@ -179,14 +179,14 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               {/* Claims Items */}
               <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
                 {section.claims.map((claim: any) => (
-                  <div key={claim.id} className={`p-2 w-full max-w-[230px] h-[300px] duration-500   ${index !== currentIndex ? 'opacity-70 bg-gray-100' : 'bg-gradient-to-b from-[#ffffff] to-[#f5dede]'}`}>
+                  <div key={claim.id} className={`p-2 pt-20 w-full max-w-[230px] h-[300px] duration-500   ${index !== currentIndex ? ' bg-gradient-to-b from-[#ffffff] to-[#f0f2f5]' : 'bg-gradient-to-b from-[#ffffff] to-[#f5dede]'}`}>
                     {/* Render AttributePart as the headline */}
                     {claim.attributes.Attribute.AttributePart && (
                       <h2 className="text-xl font-bold mt-2 text-[#20477e]">
                         {claim.attributes.Attribute.AttributePart}
                       </h2>
                     )}
-                    <p className={`text-md mt-4 text-[#59606c]`}>
+                    <p className={`text-md mt-4 text-[#71767e]`}>
                       {claim.attributes.ChannelVariants.Website.length < 150
                         ? claim.attributes.ChannelVariants.Website
                         : claim.attributes.ChannelVariants.WebsiteShort.length < 150
