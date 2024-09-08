@@ -20,6 +20,11 @@
   }
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   font-family: 'Favorit', sans-serif;
   color: rgb(var(--foreground-rgb));

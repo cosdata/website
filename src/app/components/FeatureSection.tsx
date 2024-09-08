@@ -6,6 +6,7 @@ interface Attribute {
   id: number;
   AttributeMain: string;
   AttributePart: string | null;
+  AttributeMainCasual:string;
 }
 
 interface ChannelVariants {
@@ -55,19 +56,25 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   // Grouping claimsData by AttributeMain
   const groupedByAttributeMain = claimsData.reduce((acc, claim) => {
     const attributeMain = claim.attributes.Attribute.AttributeMain;
+    const attributeMainCasual = claim.attributes.Attribute.AttributeMainCasual; // Store casual version
     if (!acc[attributeMain]) {
-      acc[attributeMain] = [];
+      acc[attributeMain] = {
+        claims: [],
+        attributeMain,
+        attributeMainCasual // Store casual name
+      };
     }
-    acc[attributeMain].push(claim);
+    acc[attributeMain].claims.push(claim);
     return acc;
-  }, {} as Record<string, typeof claimsData>);
+  }, {} as Record<string, { claims: typeof claimsData; attributeMain: string; attributeMainCasual: string }>);
 
   // Convert to array of sections with their widths
-  const groupedItems = Object.entries(groupedByAttributeMain).map(([attributeMain, claims]) => ({
-      attributeMain,
-      claims,
-      width: 250 * claims.length // Width based on number of claims
-    }));
+  const groupedItems = Object.values(groupedByAttributeMain).map(({ attributeMain, attributeMainCasual, claims }) => ({
+    attributeMain,
+    attributeMainCasual, // Store casual name for use
+    claims,
+    width: 250 * claims.length // Width based on number of claims
+  }));
 
   // if(window.screen.width>1280){
     
@@ -129,19 +136,20 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   };
 
   useEffect(() => {
-    const headingWidth = 240; // Width of each heading item
+    const headingWidth = 350; // Width of each heading item
     const visibleHeadingsCount = Math.floor(document.querySelector('.headings-carousel')!.clientWidth / headingWidth);
     const newOffset = Math.max(0, (currentIndex - 1) * headingWidth - (visibleHeadingsCount - 1) * headingWidth);
     setHeadingsOffset(newOffset);
   }, [currentIndex]);
 
   useEffect(() => {
+    console.log(claimsData)
     setActiveHeadingIndex(currentIndex - 1); // Update the active heading index
   }, [currentIndex]);
 
   const headingsCarouselStyle = {
-    transform: `translateX(-${activeHeadingIndex * 300 }px)`, // Move the active heading to the left
-    width: `${headingItems.length * 300}px`, // Total width of all headings
+    transform: `translateX(-${activeHeadingIndex * 400 }px)`, // Move the active heading to the left
+    width: `${headingItems.length * 400}px`, // Total width of all headings
     transition: 'transform 0.5s', // Add transition effect
   };
 
@@ -150,17 +158,17 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
       {/* Heading */}
       <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
 
-      <div className="max-w-7xl bg-[#fcfcfc] mx-auto px-0 overflow-hidden relative">
+      <div className="max-w-7xl bg-[#fcfcfc] mx-auto px-0 hidden xl:block overflow-hidden relative">
         {/* Headings Carousel */}
         <div className="headings-carousel flex overflow-hidden whitespace-nowrap" style={headingsCarouselStyle}>
           {headingItems.map((section, index) => (
             <div
               key={index}
-              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-gradient-to-r from-[#3d8bff] to-[#f0f2f5] w-[320px]' : 'bg-[#f0f2f5]'}`}
+              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-gradient-to-r from-[#3d8bff] to-[#f0f2f5] w-[450px]' : 'bg-[#f0f2f5]'}`}
               onClick={() => handleHeadingClick(index)}
-              style={{ width: '300px' }}
+              style={{ width: '450px' }}
             >
-              <h2 className={`font-semibold duration-300 ${index===currentIndex-1? 'text-blue-600':'text-[#6da7f8]'} ${index === currentIndex - 1 ? 'text-3xl' : 'text-lg'}`}>{section.attributeMain}</h2>
+              <h2 className={`font-semibold duration-300 ${index===currentIndex-1? 'text-[#1f5095]':'text-[#6da7f8]'} ${index === currentIndex - 1 ? 'text-2xl' : 'text-lg'}`}>{section.attributeMainCasual}</h2>
             </div>
           ))}
         </div>
@@ -216,6 +224,41 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
             &gt;
           </button>
         </div>
+      </div>
+
+
+      {/* Mobile version*/}
+      <div className='flex flex-wrap xl:hidden justify-center gap-4'>
+         {groupedItems.map((section, index) => (
+        <div key={index} className='max-w-96 bg-[#f0f2f5] p-4 pt-8'>
+          <h2 className="text-2xl font-bold mb-2 text-[#0055c8]">{section.attributeMainCasual}</h2>
+          <div className="flex flex-wrap justify-start gap-0">
+      
+            {section.claims.map((claim: any) => (
+              <div key={claim.id} className="p-2">
+                {/* Render AttributePart as the headline */}
+                <Image
+                src={`/svgs/icon${claim.id%12+1}.drawio.svg`}
+                alt='icon'
+                width={50}
+                height={50}/>
+                {claim.attributes.Attribute.AttributePart && (
+                  <div className="text-xl font-bold mt-3 text-[#686c6e]">
+                    &#x2022;{claim.attributes.Attribute.AttributePart}
+                  </div>
+                )}
+                <p className="text-sm my-4 text-[#59606c]">
+                  {claim.attributes.ChannelVariants.Website.length < 150
+                    ? claim.attributes.ChannelVariants.Website
+                    : claim.attributes.ChannelVariants.WebsiteShort.length < 150
+                      ? claim.attributes.ChannelVariants.WebsiteShort
+                      : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
       </div>
     </div>
   );

@@ -7,7 +7,9 @@ export const fetchClaim = async () => {
   try {
     const response = await fetch(baseUrl,{
       headers: {
-        'Cache-Control':  'no-cache',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',  // Prevents caching
+        'Pragma': 'no-cache',  // For HTTP/1.0 backward compatibility
+        'Expires': '0',  // Forces expiration
       }
     });
     if (!response.ok) {
