@@ -143,7 +143,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   }, [currentIndex]);
 
   useEffect(() => {
-    console.log(claimsData)
+    // console.log(claimsData)
     setActiveHeadingIndex(currentIndex - 1); // Update the active heading index
   }, [currentIndex]);
 
@@ -164,7 +164,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
           {headingItems.map((section, index) => (
             <div
               key={index}
-              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-gradient-to-r from-[#3d8bff] to-[#f0f2f5] w-[450px]' : 'bg-[#f0f2f5]'}`}
+              className={`heading-item flex place-items-end cursor-pointer px-4 py-2 ${index === currentIndex - 1 ? 'bg-gradient-to-r from-[#b9d2f7] to-[#f0f2f5] w-[450px]' : 'bg-[#f0f2f5]'}`}
               onClick={() => handleHeadingClick(index)}
               style={{ width: '450px' }}
             >
@@ -185,7 +185,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               style={{ width: `${section.width}px` }} // Set dynamic width
             >
               {/* Claims Items */}
-              <div className="flex flex-wrap justify-center gap-4 mt-4 border-x-[1px] border-gray-400">
+              <div className="flex flex-wrap justify-center gap-4 mt-4">
                 {section.claims.map((claim: any) => (
                   <div key={claim.id} className={`p-2 pt-20 w-full max-w-[230px] h-[300px] duration-500   ${index !== currentIndex ? ' bg-gradient-to-b from-[#ffffff] to-[#f0f2f5]' : 'bg-gradient-to-b from-[#ffffff] to-[#f5dede]'}`}>
                     {/* Render AttributePart as the headline */}
@@ -238,13 +238,13 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               <div key={claim.id} className="p-2">
                 {/* Render AttributePart as the headline */}
                 <Image
-                src={`/svgs/icon${claim.id%12+1}.drawio.svg`}
+                src={`/svgs/icon(${claim.id%12+1}).drawio.svg`}
                 alt='icon'
                 width={50}
                 height={50}/>
                 {claim.attributes.Attribute.AttributePart && (
                   <div className="text-xl font-bold mt-3 text-[#686c6e]">
-                    &#x2022;{claim.attributes.Attribute.AttributePart}
+                    {claim.attributes.Attribute.AttributePart}
                   </div>
                 )}
                 <p className="text-sm my-4 text-[#59606c]">
@@ -262,39 +262,5 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
       </div>
     </div>
   );
-    
-  // }
-  // return (
-  //   <div className='text-4xl text-[#21365b]'>
-  //     <h1 className="text-4xl font-bold text-center mb-8">Features</h1>
-  //     <div className='flex flex-wrap justify-center gap-4'>
-  //     {groupedItems.map((section, index) => (
-  //       <div key={index} className='max-w-96 bg-gradient-to-b from-[#f5dede] to-[#fff1f1] p-2'>
-  //         <h2 className="text-2xl font-bold mb-4">{section.attributeMain}</h2>
-  //         <ul typeof='unordered' className="flex flex-wrap justify-start gap-0">
-      
-  //           {section.claims.map((claim: any) => (
-  //             <li key={claim.id} className="p-2">
-  //               {/* Render AttributePart as the headline */}
-  //               {claim.attributes.Attribute.AttributePart && (
-  //                 <div className="text-xl font-bold mt-1 text-[#20477e]">
-  //                   {claim.attributes.Attribute.AttributePart}
-  //                 </div>
-  //               )}
-  //               <p className="text-sm mt-4 text-[#59606c]">
-  //                 {claim.attributes.ChannelVariants.Website.length < 150
-  //                   ? claim.attributes.ChannelVariants.Website
-  //                   : claim.attributes.ChannelVariants.WebsiteShort.length < 150
-  //                     ? claim.attributes.ChannelVariants.WebsiteShort
-  //                     : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150) + '...'}`}
-  //               </p>
-  //             </li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     ))}
-  //     </div>
-  //   </div>
-  // )
   
 }
