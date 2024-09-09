@@ -1,13 +1,10 @@
 import Image from 'next/image';
 
 const HeroSection = () => {
-  
-
   return (
     <main className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col lg:flex-row gap-8 ">
-       
-        <div className="flex-1 bg-gray-100 p-5">
+      <div className="flex flex-col lg:flex-row gap-8 justify-center items-center">
+        <div className="bg-gray-100 p-5 lg:w-1/2">
           <h1 className="text-[64px] font-[500] leading-[72px] text-[rgb(0,21,55)] font-[Favorit,sans-serif] mb-6">
             Not just a better view of cells, a bigger vision of the future.
           </h1>
@@ -19,32 +16,19 @@ const HeroSection = () => {
           </a>
         </div>
 
-       
-        <div className="flex-1 flex flex-col md:flex-row md:space-x-4 mt-8 lg:mt-0 space-y-4 md:space-y-0">
-          <div className="w-full md:w-1/2 rounded-md shadow-md relative">
+        <div className="flex justify-center md:ml-6 w-full lg:w-1/2">
+          <div className="w-full h-[400px] relative">
             <Image
-              src="https://scopiolabs.com/wp-content/uploads/2022/01/x100ht-hero-shot.jpg"
-              alt="Cell Image 1"
-              // layout="fill"
+              src="/svgs/hybrid.drawio.svg"
+              alt="Image"
               fill
-              style={{ objectFit: 'cover' }}
-              className="rounded-md"
-            />
-          </div>
-          <div className="w-full md:w-1/2 rounded-md shadow-md relative">
-            <Image
-              src="https://scopiolabs.com/wp-content/uploads/2022/01/purple-and-pink-cells.jpg"
-              alt="Cell Image 2"
-              // layout="fill"
-              fill
-              style={{ objectFit: 'cover' }}
-              className="rounded-md"
+              className="object-contain" // This replaces the inline objectFit style
             />
           </div>
         </div>
       </div>
     </main>
   );
-}
+};
 
 export default HeroSection;

@@ -238,7 +238,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
               <div key={claim.id} className="p-2">
                 {/* Render AttributePart as the headline */}
                 <Image
-                src={`/svgs/icon(${claim.id%12+1}).drawio.svg`}
+                src={`/svgs/features/icon(${claim.id%12+1}).drawio.svg`}
                 alt='icon'
                 width={50}
                 height={50}/>
