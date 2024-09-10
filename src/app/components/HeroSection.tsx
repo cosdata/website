@@ -17,21 +17,21 @@ const HeroSection = () => {
         </div>
 
         <div className="flex justify-center lg:ml-6 w-full lg:w-8/12">
-          <div className="w-full p-0  h-[450px] relative duration-100 hover:scale-110">
+          <div className="w-full p-0  h-[450px] relative duration-300 hover:scale-110">
             <Image
               src="/svgs/hybrid.drawio.svg"
               alt="Image"
               fill
               className="object-contain" // This replaces the inline objectFit style
             />
-            <div className='hover:opacity-100 duration-500 absolute top-0 left-0 w-full h-full z-[1] opacity-0'>
-              <div className='absolute top-[35%] left-[10%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold'>
-                HNSW index (dense vector)
+            <div className='duration-500 absolute top-0 left-0 w-full h-full z-[1] opacity-100'>
+              <div className='absolute top-[23%] left-[8%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold rotate-[-29deg] duration-300 hover:top-[21%]'>
+                HNSW index
               </div>
-              <div className='absolute bottom-[43%] right-[30%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold'>
-                Inverted index (sparse vector)
+              <div className='absolute bottom-[55%] right-[36%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold rotate-[-29deg] duration-300 hover:bottom-[57%]'>
+                Inverted index
               </div>
-              <div className='absolute bottom-[21%] right-[12%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold'>
+              <div className='absolute bottom-[27%] right-[14%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold rotate-[-29deg] duration-300 hover:bottom-[29%]'>
                 Knowledge graphs
               </div>
             </div>
