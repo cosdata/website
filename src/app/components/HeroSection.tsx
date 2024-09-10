@@ -3,27 +3,38 @@ import Image from 'next/image';
 const HeroSection = () => {
   return (
     <main className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col lg:flex-row gap-8 justify-center items-center">
-        <div className="bg-gray-100 p-5 lg:w-1/2">
-          <h1 className="text-[64px] font-[500] leading-[72px] text-[rgb(0,21,55)] font-[Favorit,sans-serif] mb-6">
-            Not just a better view of cells, a bigger vision of the future.
+      <div className="flex flex-col lg:flex-row gap-8 justify-center items-center lg:justify-between">
+        <div className="bg-gray-100 p-5 lg:w-4/12">
+          <h1 className="text-[50px] font-[500] leading-[72px] text-[#0055c8] font-[Favorit,sans-serif] mb-6">
+            <span className='text-[#f47a96] italic'>Supercharged</span> AI <span className='font-bold text-[#0055c8]'>RAG</span> Data Platform for the Next Generation of Search.
           </h1>
           <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
             Introducing a revolution in digital cell morphology that will transform the way you see, work, and diagnose.
           </p>
-          <a href="#" className="inline-block bg-pink-400 text-white px-6 py-3 duration-300 hover:bg-pink-600">
+          <a href="#" className="inline-block bg-[#e47da0] text-white px-6 py-3 duration-300 hover:bg-[#f47a96]">
             Book a meeting
           </a>
         </div>
 
-        <div className="flex justify-center md:ml-6 w-full lg:w-1/2">
-          <div className="w-full h-[400px] relative">
+        <div className="flex justify-center lg:ml-6 w-full lg:w-8/12">
+          <div className="w-full p-0  h-[450px] relative duration-100 hover:scale-110">
             <Image
               src="/svgs/hybrid.drawio.svg"
               alt="Image"
               fill
               className="object-contain" // This replaces the inline objectFit style
             />
+            <div className='hover:opacity-100 duration-500 absolute top-0 left-0 w-full h-full z-[1] opacity-0'>
+              <div className='absolute top-[35%] left-[10%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold'>
+                HNSW index (dense vector)
+              </div>
+              <div className='absolute bottom-[43%] right-[30%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold'>
+                Inverted index (sparse vector)
+              </div>
+              <div className='absolute bottom-[21%] right-[12%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold'>
+                Knowledge graphs
+              </div>
+            </div>
           </div>
         </div>
       </div>
