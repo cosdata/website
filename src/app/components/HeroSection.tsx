@@ -25,13 +25,13 @@ const HeroSection = () => {
               className="object-contain" // This replaces the inline objectFit style
             />
             <div className='duration-500 absolute top-0 left-0 w-full h-full z-[1] opacity-100'>
-              <div className='absolute top-[23%] left-[8%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold rotate-[-29deg] duration-300 hover:top-[21%]'>
+              <div className='absolute top-[23%] left-[8%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold  duration-300 hover:top-[20%] cursor-pointer' style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}>
                 HNSW index
               </div>
-              <div className='absolute bottom-[55%] right-[36%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold rotate-[-29deg] duration-300 hover:bottom-[57%]'>
+              <div className='absolute bottom-[55%] right-[36%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold duration-300 hover:bottom-[58%] cursor-pointer' style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}>
                 Inverted index
               </div>
-              <div className='absolute bottom-[27%] right-[14%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold rotate-[-29deg] duration-300 hover:bottom-[29%]'>
+              <div className='absolute bottom-[28%] right-[15%] w-48 h-8 z-[-1] text-[#646465] text-xl font-semibold duration-300 hover:bottom-[30%] cursor-pointer' style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}>
                 Knowledge graphs
               </div>
             </div>
