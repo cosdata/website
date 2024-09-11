@@ -61,7 +61,7 @@ body {
 
 /* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
-  0%, 100% { transform: translate(50%, 20%) scale(2);}
+  0%, 100% { transform: translate(50%, 0%) scale(2);}
   75% { transform: translate(-50%, 0%) scale(2); }
   /* 99% { transform: translate(50%, 0%) scale(2); } */
   100% { transform: translate(0, 0) scale(1); }
@@ -81,11 +81,12 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .image-container {
     max-width: 300px;
   }
 }
+
 
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -11,7 +11,7 @@ const HeroSection = () => {
     const timer = setTimeout(() => {
       console.log("Timer finished, setting showLabel to true");
       setShowLabel(true);
-    }, 8000);
+    }, 4000);
 
     return () => {
       console.log("Cleaning up timer");
@@ -47,19 +47,19 @@ const HeroSection = () => {
             {showLabel && (
               <div className='absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in'>
                 <div
-                  className='absolute top-[31%] left-[2%] md:top-[31%] md:left-[2%] w-48 h-8 text-[#646465]  font-semibold transform-gpu transition-all duration-300 md:hover:top-[29%] cursor-pointer'
+                  className='absolute top-[31%] left-[-1%] hover:top-[28%] sm:top-[28%] sm:left-[1%] sm:hover:top-[26%] md:top-[31%] md:left-[2%] w-48 h-8 text-[#646465]  font-semibold transform-gpu transition-all duration-300 md:hover:top-[29%] cursor-pointer'
                   style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}
                 >
                   HNSW index
                 </div>
                 <div
-                  className='absolute md:bottom-[51%] md:right-[28%] lg:bottom-[51%] lg:right-[36%] w-48 h-8 text-[#646465]  font-semibold transform-gpu transition-all duration-300 md:hover:bottom-[53%] cursor-pointer'
+                  className='absolute bottom-[52%] right-[8%] hover:bottom-[54%] sm:bottom-[52%] sm:right-[19%] sm:hover:bottom-[54%] md:bottom-[51%] md:right-[28%] lg:bottom-[51%] lg:right-[36%] w-48 h-8 text-[#646465]  font-semibold transform-gpu transition-all duration-300 md:hover:bottom-[53%] cursor-pointer'
                   style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}
                 >
                   Inverted index
                 </div>
                 <div
-                  className='absolute md:bottom-[35%] md:right-[4%] md:hover:bottom-[37%] lg:bottom-[35%] lg:right-[10%] w-48 h-8 text-[#646465] font-semibold transform-gpu transition-all duration-300 lg:hover:bottom-[37%] cursor-pointer'
+                  className='absolute bottom-[40%] right-[-18%] hover:bottom-[42%] sm:bottom-[34%] sm:right-[-2%] sm:hover:bottom-[36%] md:bottom-[35%] md:right-[4%] md:hover:bottom-[37%] lg:bottom-[35%] lg:right-[9%] w-48 h-8 text-[#646465] font-semibold transform-gpu transition-all duration-300 lg:hover:bottom-[37%] cursor-pointer'
                   style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}
                 >
                   Knowledge graphs
