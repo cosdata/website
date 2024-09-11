@@ -185,7 +185,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
 
 
       {/* Mobile version*/}
-      <div className='flex flex-wrap justify-center gap-4'>
+      <div className='flex flex-wrap justify-center gap-4 m-2'>
         {groupedItems.map((section, index) => (
           <div
             key={index}

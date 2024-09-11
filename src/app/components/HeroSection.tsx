@@ -11,7 +11,7 @@ const HeroSection = () => {
     const timer = setTimeout(() => {
       console.log("Timer finished, setting showLabel to true");
       setShowLabel(true);
-    }, 4000);
+    }, 2000);
 
     return () => {
       console.log("Cleaning up timer");

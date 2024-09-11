@@ -56,7 +56,7 @@ body {
   position: absolute;
   /* width: 150%;  Make the image larger than the container */
   /* height: 150%; Make the image larger than the container */
-  animation: moveImage 4s linear;
+  animation: moveImage 2s linear;
 }
 
 /* Keyframes for moving the image and zooming out */
