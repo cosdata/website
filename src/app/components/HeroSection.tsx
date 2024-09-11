@@ -11,7 +11,7 @@ const HeroSection = () => {
     const timer = setTimeout(() => {
       console.log("Timer finished, setting showLabel to true");
       setShowLabel(true);
-    }, 2000);
+    }, 6000);
 
     return () => {
       console.log("Cleaning up timer");
@@ -37,7 +37,7 @@ const HeroSection = () => {
         </div>
 
         <div className="flex justify-center lg:ml-6 w-full xl:w-9/12 overflow-hidden">
-          <div className="w-full p-0 h-[300px] sm:h-[400px] md:h-[600px]  xl:h-[600px] relative overflow-hidden duration-300 scale-[1.4] image-container">
+          <div className="w-full p-0 h-[200px] sm:h-[400px] md:h-[600px]  xl:h-[600px] relative overflow-hidden duration-300 scale-[1.4] image-container">
             <Image
               src="/svgs/hybrid.drawio.svg"
               alt="Image"

@@ -56,13 +56,13 @@ body {
   position: absolute;
   /* width: 150%;  Make the image larger than the container */
   /* height: 150%; Make the image larger than the container */
-  animation: moveImage 2s linear;
+  animation: moveImage 6s linear;
 }
 
 /* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
-  0%, 100% { transform: translate(50%, 0%) scale(2);}
-  75% { transform: translate(-50%, 0%) scale(2); }
+  0% { transform: translate(48%, 48%) scale(2);}
+  50% { transform: translate(-45%, -45%) scale(2); }
   /* 99% { transform: translate(50%, 0%) scale(2); } */
   100% { transform: translate(0, 0) scale(1); }
 }
@@ -84,6 +84,11 @@ body {
 @media (max-width: 640px) {
   .image-container {
     max-width: 300px;
+  }
+}
+@media (max-width: 440px) {
+  .image-container {
+    max-width: 280px;
   }
 }
 
