@@ -45,6 +45,7 @@ body {
 /* Container that holds the image */
 .image-container {
   width: 600px;  /* Set desired box size */
+  max-width: 600px;
   height: 600px; /* Set desired box size */
   overflow: hidden; /* Hide the parts of the image that exceed the container */
   position: relative;
@@ -53,47 +54,37 @@ body {
 /* Image styling */
 .image {
   position: absolute;
-  width: 150%;  /* Make the image larger than the container */
-  height: 150%; /* Make the image larger than the container */
-  animation: moveImage 8s linear;
+  /* width: 150%;  Make the image larger than the container */
+  /* height: 150%; Make the image larger than the container */
+  animation: moveImage 4s linear;
 }
 
 /* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
-  0%, 100% { transform: translate(50%, 0%) scale(2); }
-  3.125% { transform: translate(48.91%, 9.78%) scale(2); }
-  6.25% { transform: translate(45.31%, 19.13%) scale(2); }
-  9.375% { transform: translate(40.29%, 27.78%) scale(2); }
-  12.5% { transform: translate(35.36%, 35.36%) scale(2); }
-  15.625% { transform: translate(27.78%, 40.29%) scale(2); }
-  18.75% { transform: translate(19.13%, 45.31%) scale(2); }
-  21.875% { transform: translate(9.78%, 48.91%) scale(2); }
-  25% { transform: translate(0%, 50%) scale(2); }
-  28.125% { transform: translate(-9.78%, 48.91%) scale(2); }
-  31.25% { transform: translate(-19.13%, 45.31%) scale(2); }
-  34.375% { transform: translate(-27.78%, 40.29%) scale(2); }
-  37.5% { transform: translate(-35.36%, 35.36%) scale(2); }
-  40.625% { transform: translate(-40.29%, 27.78%) scale(2); }
-  43.75% { transform: translate(-45.31%, 19.13%) scale(2); }
-  46.875% { transform: translate(-48.91%, 9.78%) scale(2); }
-  50% { transform: translate(-50%, 0%) scale(2); }
-  53.125% { transform: translate(-48.91%, -9.78%) scale(2); }
-  56.25% { transform: translate(-45.31%, -19.13%) scale(2); }
-  59.375% { transform: translate(-40.29%, -27.78%) scale(2); }
-  62.5% { transform: translate(-35.36%, -35.36%) scale(2); }
-  65.625% { transform: translate(-27.78%, -40.29%) scale(2); }
-  68.75% { transform: translate(-19.13%, -45.31%) scale(2); }
-  71.875% { transform: translate(-9.78%, -48.91%) scale(2); }
-  75% { transform: translate(0%, -50%) scale(2); }
-  78.125% { transform: translate(9.78%, -48.91%) scale(2); }
-  81.25% { transform: translate(19.13%, -45.31%) scale(2); }
-  84.375% { transform: translate(27.78%, -40.29%) scale(2); }
-  87.5% { transform: translate(35.36%, -35.36%) scale(2); }
-  90.625% { transform: translate(40.29%, -27.78%) scale(2); }
-  93.75% { transform: translate(45.31%, -19.13%) scale(2); }
-  96.875% { transform: translate(48.91%, -9.78%) scale(2); }
+  0%, 100% { transform: translate(50%, 20%) scale(2);}
+  75% { transform: translate(-50%, 0%) scale(2); }
   /* 99% { transform: translate(50%, 0%) scale(2); } */
   100% { transform: translate(0, 0) scale(1); }
+}
+
+@media (max-width: 1024px) {
+  .image-container {
+    max-width: 500px;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    max-width: 400px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    max-width: 300px;
+  }
 }
 
 @keyframes fadeIn {
