@@ -37,7 +37,7 @@ const HeroSection = () => {
         </div>
 
         <div className="flex justify-center lg:ml-6 w-full lg:w-9/12">
-          <div className="w-full p-0 h-[450px] relative overflow-hidden duration-300 scale-110 hover:scale-[1.2] image-container">
+          <div className="w-full p-0 h-[1000px] relative overflow-hidden duration-300 scale-125 image-container">
             <Image
               src="/svgs/hybrid.drawio.svg"
               alt="Image"
