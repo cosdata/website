@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @font-face {
   font-family: 'Favorit', sans-serif;
   src: url('/path-to-your-font/favorit.woff2') format('woff2');
@@ -64,9 +64,12 @@ body {
 /* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
   0% { transform: translate(60%, -0%) scale(2);}
+  20%{ transform: translate(60%, 40%) scale(2);}
   25%{ transform: translate(60%, 40%) scale(2);}
   50%{transform: translate(-40%, -0%) scale(2);}
+  55%{transform: translate(-40%, -0%) scale(2);}
   75%{ transform: translate(40%, -40%) scale(2);}
+  80%{ transform: translate(40%, -40%) scale(2);}
   100% { transform: translate(0, 0) scale(1); }
 }
 
@@ -105,9 +108,3 @@ body {
   animation: fadeIn 1s ease-in;
 }
 
-
-.audiowide-regular {
-  font-family: "Audiowide", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}

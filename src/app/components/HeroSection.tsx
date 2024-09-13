@@ -2,7 +2,17 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Orbitron, Audiowide } from 'next/font/google';
 
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: '500',
+})
+
+const audiowide = Audiowide({
+  subsets: ['latin'],
+  weight: '400',
+})
 
 const HeroSection = () => {
   const [showLabel, setShowLabel] = useState(false);
@@ -26,8 +36,8 @@ const HeroSection = () => {
     <main className="max-w-7xl mx-auto py-16 px-0 sm:px-6 lg:px-8">
       <div className="flex flex-col xl:flex-row gap-12 justify-center   xl:items-center xl:justify-between">
         <div className="bg-gray-100 p-5 xl:w-3/12">
-          <h1 className="text-[36px] font-[500] leading-[72px] text-[#0055c8]  mb-6">
-            <div className='text-[#f47a96] audiowide-regular' style={{ fontFamily: 'Audiowide, sans-serif' }}>Supercharged</div> AI <span className='font-bold text-[#0055c8]'>RAG</span> Data Platform for the Next Generation of Search.
+          <h1 className="text-[28px] font-[500] leading-[72px] text-[#0055c8]  mb-6">
+            <div className={`text-[#f47a96] text-3xl ${audiowide.className}`} >Supercharged</div> AI <span className='font-bold text-[#0055c8]'>RAG</span> Data Platform for the Next Generation of Search.
           </h1>
           <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
             Introducing a revolution in digital cell morphology that will transform the way you see, work, and diagnose.
