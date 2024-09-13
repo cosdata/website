@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
@@ -13,11 +14,11 @@ export default function Header() {
   };
 
   const handleLoginClick = () => {
-    router.push('/signin'); 
+    router.push('/signin');
   };
 
   const handleSignupClick = () => {
-    router.push('/signup'); 
+    router.push('/signup');
   };
 
   return (
@@ -25,7 +26,7 @@ export default function Header() {
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">
-            <Link href="/"> Cosdata</Link>
+            <Link href="/" ><div className='w-32 h-8 relative'><Image src="/images/logo.webp" alt='logo' fill /></div> </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
 
@@ -54,7 +55,7 @@ export default function Header() {
         </div>
       </header>
 
-     
+
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-4 py-6 space-y-4">
