@@ -20,69 +20,70 @@ const HeroSection = () => {
   const [animationEnded, setAnimationEnded] = useState(false); // Track if the animation has ended
 
   useEffect(() => {
-    // First animation for 20 seconds
     const timer = setTimeout(() => {
       setShowPoint(false); // Hide the point after 20 seconds
-      // Hide the board after 20 seconds
       setAnimationEnded(true); // Mark animation as ended
     }, 20000); // 20 seconds duration
     const secondtimer = setTimeout(() => {
       setShowBoard(false);
-    }, 3000)
+    }, 3500)
     return () => {
       clearTimeout(timer);
       clearTimeout(secondtimer);
-    }; // Cleanup timer on component unmount
-  }, []);
+    };
+  }, [animationEnded]);
 
-  // Replay animation
   const handleReplay = () => {
     if (!animationEnded) return; // Only allow replay if the animation has ended
 
-    setAnimationEnded(false); // Reset the state to restart the animation
+    const ele = document.getElementById("heroImage");
+    if (ele) {
+      // Remove the animation class and force reflow (restarts animation)
+      ele.classList.remove("image");
+
+      // Trigger a reflow to restart the animation
+      void ele.offsetWidth;
+
+      // Re-add the class after a small delay
+      setTimeout(() => {
+        ele.classList.add("image");
+      }, 50);
+    }
+
+    setAnimationEnded(false);
     setShowPoint(true);
     setShowBoard(true);
-
-    // Start animation again for 20 seconds
-    setTimeout(() => {
-      setShowPoint(false);
-      setAnimationEnded(true); // Mark animation as ended again
-    }, 20000);
-    setTimeout(() => {
-      setShowBoard(false);
-    }, 3000)
   };
 
-  // Zoom on hover functionality
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!animationEnded) return; // Prevent zoom before animation ends
     const imageContainer = e.currentTarget;
     const rect = imageContainer.getBoundingClientRect();
-    const x = e.clientX - rect.left; // X coordinate relative to the container
-    const y = e.clientY - rect.top;  // Y coordinate relative to the container
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
     const xPercent = (x / rect.width) * 100;
     const yPercent = (y / rect.height) * 100;
 
     setImageStyle({
       transformOrigin: `${xPercent}% ${yPercent}%`,
-      transform: 'scale(2)', // Zoom in on hover
-      transition: 'transform 0.5s ease', // Smooth transition
+      transform: 'scale(2)',
+      transition: 'transform 0.5s ease',
     });
   };
 
   const handleMouseLeave = () => {
-    if (!animationEnded) return; // Prevent reset before animation ends
+    if (!animationEnded) return;
     setImageStyle({
-      transform: 'scale(1)', // Reset zoom when hover ends
-      transition: 'transform 0.5s ease', // Smooth transition
+      transform: 'scale(1)',
+      transition: 'transform 0.5s ease',
     });
   };
 
   return (
-    <main className="max-w-7xl mx-auto py-16 px-0 sm:px-6 lg:px-8">
-      <div className="flex flex-col xl:flex-row justify-center xl:items-center xl:justify-between">
-        <div className="bg-gray-100 p-5 flex flex-col justify-center xl:w-4/12">
-          <h1 className="text-[36px] font-[500] leading-[50px] text-[#0055c8] mb-6">
+    <main className="max-w-7xl mx-auto py-16 px-0 sm:px-6">
+      <div className="flex flex-col xl:flex-row justify-center items-stretch">
+        <div className="bg-gray-100 flex-grow gap-2 flex flex-col justify-center xl:w-5/12 xl:h-[800px] p-6">
+          <h1 className="text-[48px] font-[500] leading-[50px] text-[#0055c8] mb-6">
             <div className="text-[#f23665] font-bold">Supercharge Your AI</div>
             <div>with Unified, Intelligent Search</div>
           </h1>
@@ -90,15 +91,15 @@ const HeroSection = () => {
             The future ready AI data platform to power the next generation search pipelines.
           </p>
           <div>
-            <a href="#" className="inline-block bg-[#f23665] text-white px-6 py-3 duration-300">
+            <a href="#" className="inline-block bg-[#f47a96] text-white px-6 py-3 duration-300">
               Learn more
             </a>
           </div>
         </div>
 
-        <div className="flex justify-center w-full xl:w-8/12 overflow-hidden">
+        <div className="flex-grow flex justify-center w-full xl:w-7/12 overflow-hidden">
           <div
-            className="w-full p-0 h-[200px] sm:h-[400px] md:h-[600px] xl:h-[600px] relative overflow-hidden image-container"
+            className="w-full h-[200px] sm:h-[400px] md:h-[800px] relative overflow-hidden image-container"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
@@ -107,29 +108,31 @@ const HeroSection = () => {
               alt="Image"
               fill
               className="object-contain image"
+              id="heroImage"
               style={imageStyle} // Apply zoom effect
             />
             {showPoint && (
               <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in flex justify-center items-center">
-                <div className="w-5 h-5 rounded-full bg-[#f23665]"></div>
+                <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
               </div>
             )}
             {showBoard && (
               <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[2] bg-transparent flex justify-center items-end">
-                <div className="w-[32rem] h-[10rem] bg-white"></div>
+                <div className="w-full h-[33%] bg-white"></div>
               </div>
             )}
           </div>
         </div>
       </div>
+      <div className='flex justify-end'>
+        <button
+          onClick={handleReplay}
+          className={`mt-4 bg-[#3d8bff] text-white px-4 py-2 opoacity-70 ${!animationEnded ? 'cursor-not-allowed opacity-50' : ''}`}
+          disabled={!animationEnded}
+        >
+          Replay
+        </button> </div>
 
-      <button
-        onClick={handleReplay}
-        className={`mt-4 bg-blue-500 text-white px-4 py-2 ${!animationEnded ? 'cursor-not-allowed opacity-50' : ''}`}
-        disabled={!animationEnded} // Disable replay button until animation ends
-      >
-        Replay Animation
-      </button>
     </main>
   );
 };

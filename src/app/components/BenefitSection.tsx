@@ -133,6 +133,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                     >
                                         Magic Under the Hood
                                     </h2>
+                                    <div className="absolute h-[2px] bottom-0 w-[400px]"></div>
                                 </>
                             ) : (
                                 <>
@@ -150,6 +151,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                     >
                                         Blazing-Fast Performance, Always
                                     </h2>
+                                    <div className="absolute h-[2px] bottom-0 w-[400px]"></div>
                                 </>
                             )}
                         </div>
@@ -164,7 +166,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             >
                                 {carouselItems.map((item, index) => (
                                     <div key={index} className="min-w-72 p-4">
-                                        <div className="p-2 pt-20 w-full max-w-[230px] h-[300px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f47a96]">
+                                        <div className="p-2 pt-20 w-full max-w-[230px] h-[300px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
                                             <h3 className="text-lg font-bold mb-2 text-[#20477e]">{item.title}</h3>
                                             <p className="text-sm">{item.description}</p>
                                         </div>
@@ -172,9 +174,9 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                 ))}
                             </div>
                         </div>
-                        <div className="mt-8 cursor-pointer flex justify-end">
-                            {activeSection == 'blazing' ? <h2 onClick={showMagicUnderTheHood} className='bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>How do we achieve this?</h2>
-                                : <h2 onClick={showBlazingPerformance} className='bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>Back</h2>}
+                        <div className="mt-8 flex justify-end">
+                            {activeSection == 'blazing' ? <h2 onClick={showMagicUnderTheHood} className=' cursor-pointer bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>How do we achieve this?</h2>
+                                : <h2 onClick={showBlazingPerformance} className='cursor-pointer bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>Back</h2>}
 
                         </div>
                     </div>

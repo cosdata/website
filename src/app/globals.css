@@ -46,9 +46,9 @@ body {
 
 /* Container that holds the image */
 .image-container {
-  width: 600px;  /* Set desired box size */
-  max-width: 600px;
-  height: 600px; /* Set desired box size */
+  /* width: 600px;  Set desired box size */
+  /* max-width: 600px; */
+  /* height: 600px; Set desired box size */
   overflow: hidden; /* Hide the parts of the image that exceed the container */
   position: relative;
 }
@@ -76,38 +76,17 @@ body {
   100% { transform: translate(0, 0) scale(1); }
 }
 
-@media (max-width: 1024px) {
-  .image-container {
-    max-width: 500px;
-    max-height: 500px;
-  }
-}
-
-@media (max-width: 768px) {
-  .image-container {
-    max-width: 400px;
-    max-height: 400px;
-  }
-}
-
-@media (max-width: 640px) {
-  .image-container {
-    max-width: 300px;
-  }
-}
-@media (max-width: 440px) {
-  .image-container {
-    max-width: 280px;
-  }
-}
-
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 
 .animate-fade-in {
   animation: fadeIn 1s ease-in;
 }
 
+.throbbing{
+  animation: throb 1s infinite;
+}
+
+@keyframes throb {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
