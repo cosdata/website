@@ -15,14 +15,14 @@ const audiowide = Audiowide({
 })
 
 const HeroSection = () => {
-  const [showLabel, setShowLabel] = useState(false);
+  const [showPoint, setShowPoint] = useState(true);
 
   useEffect(() => {
     console.log("Component mounted, setting up timer");
     const timer = setTimeout(() => {
       console.log("Timer finished, setting showLabel to true");
-      setShowLabel(true);
-    }, 3000);
+      setShowPoint(true);
+    }, 18000);
 
     return () => {
       console.log("Cleaning up timer");
@@ -30,7 +30,7 @@ const HeroSection = () => {
     };
   }, []);
 
-  console.log("Current showLabel state:", showLabel);
+  console.log("Current showLabel state:", showPoint);
 
   return (
     <main className="max-w-7xl mx-auto py-16 px-0 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ const HeroSection = () => {
             The future ready AI data platform to power the next generation search pipelines.
           </p>
           <div><a href="#" className="inline-block bg-[#e47da0] text-white px-6 py-3 duration-300 hover:bg-[#f47a96]">
-            Book a meeting
+            Learn more
           </a></div>
         </div>
 
@@ -55,28 +55,14 @@ const HeroSection = () => {
               fill
               className="object-contain image"
             />
-            {/* {showLabel && (
-              <div className='absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in'>
-                <div
-                  className='absolute top-[31%] left-[-1%] hover:top-[28%] sm:top-[28%] sm:left-[1%] sm:hover:top-[26%] md:top-[31%] md:left-[2%] w-48 h-8 text-[#646465]  font-semibold transform-gpu transition-all duration-300 md:hover:top-[29%] cursor-pointer'
-                  style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}
-                >
-                  Knowledge graphs
+            {showPoint && (
+              <div className='absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in flex justify-center items-center'>
+                <div className='w-5 h-5 rounded-full bg-[#f47a96]'>
+
                 </div>
-                <div
-                  className='absolute bottom-[52%] right-[8%] hover:bottom-[54%] sm:bottom-[52%] sm:right-[19%] sm:hover:bottom-[54%] md:bottom-[51%] md:right-[28%] lg:bottom-[51%] lg:right-[36%] w-48 h-8 text-[#646465]  font-semibold transform-gpu transition-all duration-300 md:hover:bottom-[53%] cursor-pointer'
-                  style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}
-                >
-                  HNSW index
-                </div>
-                <div
-                  className='absolute bottom-[40%] right-[-18%] hover:bottom-[42%] sm:bottom-[34%] sm:right-[-2%] sm:hover:bottom-[36%] md:bottom-[35%] md:right-[4%] md:hover:bottom-[37%] lg:bottom-[35%] lg:right-[9%] w-48 h-8 text-[#646465] font-semibold transform-gpu transition-all duration-300 lg:hover:bottom-[37%] cursor-pointer'
-                  style={{ transform: 'rotateZ(-29deg) skewX(-30deg)' }}
-                >
-                  Inverted index
-                </div>
+
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

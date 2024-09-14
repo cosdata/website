@@ -58,19 +58,21 @@ body {
   position: absolute;
   /* width: 150%;  Make the image larger than the container */
   /* height: 150%; Make the image larger than the container */
-  animation: moveImage 8s linear;
+  animation: moveImage 20s ease-in-out;
 }
 
 /* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
-  0% { transform: translate(60%, -0%) scale(2);}
-  10% {transform: translate(60%, -0%) scale(2);}
-  25%{ transform: translate(60%, 40%) scale(2);}
-  35%{ transform: translate(60%, 40%) scale(2);}
-  50%{transform: translate(-40%, -0%) scale(2);}
-  60%{transform: translate(-40%, -0%) scale(2);}
-  75%{ transform: translate(40%, -40%) scale(2);}
-  85%{ transform: translate(40%, -40%) scale(2);}
+  0% { transform: translate(70%,-20%) scale(2);}
+  15% {transform: translate(70%, -20%) scale(2);}
+  20%{ transform: translate(70%,75%) scale(2);}
+  35%{ transform: translate(70%,75%) scale(2);}
+  40%{ transform: translate(10%,37%) scale(2);}
+  55%{ transform: translate(10%,37%) scale(2);}
+  60%{transform: translate(-40%, 5%) scale(2);}
+  75%{transform: translate(-40%, 5%) scale(2);}
+  80%{ transform: translate(65%, -42%) scale(2)}
+  95%{ transform: translate(65%, -42%) scale(2)}
   100% { transform: translate(0, 0) scale(1); }
 }
 
