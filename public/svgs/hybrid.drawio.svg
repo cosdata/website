@@ -24,11 +24,11 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.41751438"
-     inkscape:cx="787.99681"
-     inkscape:cy="841.88717"
+     inkscape:zoom="0.83502876"
+     inkscape:cx="795.18219"
+     inkscape:cy="484.41445"
      inkscape:window-width="1876"
-     inkscape:window-height="1136"
+     inkscape:window-height="1156"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -88,7 +88,7 @@
        id="linearGradient31"
        inkscape:collect="always">
       <stop
-         style="stop-color:#f37a96;stop-opacity:0.6;"
+         style="stop-color:#f33565;stop-opacity:0.90196079;"
          offset="0"
          id="stop31" />
       <stop
@@ -271,8 +271,8 @@
      fill="#ffffff"
      width="99.820557%"
      height="99.549934%"
-     x="-0.029799202"
-     y="0.2258759"
+     x="3.8716383"
+     y="3.8092105"
      id="rect1"
      style="mix-blend-mode:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.996852" />
   <g
@@ -295,7 +295,7 @@
              transform="matrix(1,0,0,-1,0,2233)"
              pointer-events="all"
              id="path1"
-             style="opacity:0.6;fill:#f47a96;fill-opacity:1;stroke:#f47a96;stroke-opacity:1" />
+             style="opacity:0.6;fill:#f33565;fill-opacity:0.90196079;stroke:#f47a96;stroke-opacity:1" />
         </g>
       </g>
       <g
@@ -312,7 +312,7 @@
              transform="matrix(1,0,0,-1,0,1585)"
              pointer-events="all"
              id="path2"
-             style="display:inline;opacity:0.6;fill:#f47a96;fill-opacity:1" />
+             style="display:inline;opacity:0.6;fill:#f33565;fill-opacity:0.90196079" />
         </g>
       </g>
       <g
@@ -329,7 +329,7 @@
              transform="matrix(1,0,0,-1,0,1585)"
              pointer-events="all"
              id="path2-3"
-             style="display:inline;opacity:0.6;fill:#f47a96;fill-opacity:1" />
+             style="display:inline;opacity:0.6;fill:#f33565;fill-opacity:0.90196079" />
         </g>
       </g>
       <g
@@ -1268,7 +1268,7 @@
      style="fill:url(#linearGradient39)" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.6;fill:#0054c9;fill-opacity:1;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.90196079;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
      x="145.39594"
      y="1134.6316"
      id="text27"><tspan
@@ -1276,24 +1276,24 @@
        id="tspan27"
        x="145.39594"
        y="1134.6316"
-       style="fill:#0054c9;fill-opacity:1"><tspan
-   style="font-weight:bold;fill:#0054c9;fill-opacity:1"
+       style="fill:#0054c9;fill-opacity:0.90196079"><tspan
+   style="font-weight:bold;fill:#0054c9;fill-opacity:0.90196079"
    id="tspan31">Query</tspan>: </tspan><tspan
        sodipodi:role="line"
        x="145.39594"
        y="1174.6316"
        id="tspan30"
-       style="fill:#0054c9;fill-opacity:1">   &quot;What are the health benefits</tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.90196079">   &quot;What are the health benefits</tspan><tspan
        sodipodi:role="line"
        x="145.39594"
        y="1214.6316"
        id="tspan28"
-       style="fill:#0054c9;fill-opacity:1">    of Mediterranean diet for</tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.90196079">    of Mediterranean diet for</tspan><tspan
        sodipodi:role="line"
        x="145.39594"
        y="1254.6316"
        id="tspan29"
-       style="fill:#0054c9;fill-opacity:1">    heart disease prevention?&quot;</tspan></text>
+       style="fill:#0054c9;fill-opacity:0.90196079">    heart disease prevention?&quot;</tspan></text>
   <path
      d="m 558.38445,47.117203 -502.634097,1.8396 c -19.8798,0.073 -35.9243,16.1201 -36,36 l -0.3672,96.465797 c -0.1195,31.4106 12.0291,40.3025 31.9091,40.292 l 543.245297,-1.8758 -0.1531,-136.721597 c -0.022,-19.88 -16.1202,-36.0728 -36,-36 z"
      fill="#10739e"
@@ -1304,7 +1304,7 @@
      style="fill:url(#linearGradient41)" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.6;fill:#0054c9;fill-opacity:1;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
      x="56.553009"
      y="84.453064"
      id="text27-9"><tspan
@@ -1312,21 +1312,21 @@
        id="tspan27-8"
        x="56.553009"
        y="84.453064"
-       style="font-weight:bold;fill:#0054c9;fill-opacity:1">HNSW index (Dense vectors): </tspan><tspan
+       style="font-weight:bold;fill:#0054c9;fill-opacity:0.901961">HNSW Index (Dense Vectors): </tspan><tspan
        sodipodi:role="line"
        x="56.553009"
        y="124.45306"
        id="tspan29-9"
-       style="fill:#0054c9;fill-opacity:1">   &quot;cardiovascular health improvements </tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961">   &quot;Cardiovascular health improvements </tspan><tspan
        sodipodi:role="line"
        x="56.553009"
        y="164.45306"
-       style="fill:#0054c9;fill-opacity:1"
+       style="fill:#0054c9;fill-opacity:0.901961"
        id="tspan47">   from Southern European eating habits&quot; </tspan><tspan
        sodipodi:role="line"
        x="56.553009"
        y="204.45306"
-       style="fill:#0054c9;fill-opacity:1"
+       style="fill:#0054c9;fill-opacity:0.901961"
        id="tspan48">   sans &quot;Mediterranean diet/ heart disease&quot;</tspan></text>
   <path
      d="m 1219.1968,461.44079 -502.63405,1.8396 c -19.8799,0.073 -35.9243,16.1201 -36,36 l -0.3672,96.4658 c -0.1196,31.4106 12.0291,40.3025 31.9091,40.292 l 543.24535,-1.8758 -0.1532,-136.7216 c -0.022,-19.88 -16.1202,-36.0728 -36,-36 z"
@@ -1338,7 +1338,7 @@
      style="fill:url(#linearGradient43)" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.6;fill:#0054c9;fill-opacity:1;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
      x="717.36536"
      y="498.77667"
      id="text27-0"><tspan
@@ -1346,21 +1346,21 @@
        id="tspan27-0"
        x="717.36536"
        y="498.77667"
-       style="font-weight:bold;fill:#0054c9;fill-opacity:1">Inverted Index (Sparse vectors): </tspan><tspan
+       style="font-weight:bold;fill:#0054c9;fill-opacity:0.901961">Inverted Index (Sparse Vectors): </tspan><tspan
        sodipodi:role="line"
        x="717.36536"
        y="538.77667"
        id="tspan29-0"
-       style="fill:#0054c9;fill-opacity:1">  match docs with exact phrases like </tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961">  Match docs with exact phrases like </tspan><tspan
        sodipodi:role="line"
        x="717.36536"
        y="578.77667"
-       style="fill:#0054c9;fill-opacity:1"
+       style="fill:#0054c9;fill-opacity:0.901961"
        id="tspan50">  &quot;Mediterranean diet&quot;, &quot;heart disease&quot;,</tspan><tspan
        sodipodi:role="line"
        x="717.36536"
        y="618.77667"
-       style="fill:#0054c9;fill-opacity:1"
+       style="fill:#0054c9;fill-opacity:0.901961"
        id="tspan51">  and &quot;health benefits&quot;</tspan></text>
   <path
      d="m 1786.4396,808.58701 -502.6339,1.8396 c -19.8799,0.073 -35.9244,16.1201 -36,36 l -0.3673,96.4658 c -0.1195,31.4106 12.0292,40.3025 31.9091,40.292 l 543.2453,-1.8758 -0.1532,-136.7216 c -0.022,-19.88 -16.1201,-36.0728 -36,-36 z"
@@ -1372,7 +1372,7 @@
      style="fill:url(#linearGradient45)" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.6;fill:#0054c9;fill-opacity:1;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
      x="1284.6082"
      y="845.92285"
      id="text27-7"><tspan
@@ -1380,22 +1380,22 @@
        id="tspan27-3"
        x="1284.6082"
        y="845.92285"
-       style="font-weight:bold;fill:#0054c9;fill-opacity:1">Knowledge graph (Structured):  </tspan><tspan
+       style="font-weight:bold;fill:#0054c9;fill-opacity:0.901961">Knowledge Graph (Structured):  </tspan><tspan
        sodipodi:role="line"
        x="1284.6082"
        y="885.92285"
        id="tspan29-5"
-       style="fill:#0054c9;fill-opacity:1">  Link &quot;Mediterranean diet&quot; to specific </tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961">  Link &quot;Mediterranean diet&quot; to specific </tspan><tspan
        sodipodi:role="line"
        x="1284.6082"
        y="925.92285"
-       style="fill:#0054c9;fill-opacity:1"
-       id="tspan60">  foods (olive oil, fish, vegetables), </tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961"
+       id="tspan61">  foods (olive oil, fish, figs), connect</tspan><tspan
        sodipodi:role="line"
        x="1284.6082"
        y="965.92285"
-       style="fill:#0054c9;fill-opacity:1"
-       id="tspan61">  connect &quot;heart disease&quot; to risk factors</tspan></text>
+       style="fill:#0054c9;fill-opacity:0.901961"
+       id="tspan1">  &quot;heart disease&quot; to risk factors</tspan></text>
   <path
      d="m 652.88124,1334.7712 -502.634,1.8396 c -19.8799,0.073 -36.0738,16.12 -36,35.9999 l 0.9096,245.2389 c 0.1165,31.4107 12.0292,40.3607 31.9091,40.292 l 543.2453,-1.8758 -1.43,-285.4946 c -0.1,-19.8798 -16.1202,-36.0728 -36,-36 z"
      fill="#10739e"
@@ -1403,10 +1403,10 @@
      pointer-events="all"
      id="path1-8-1"
      sodipodi:nodetypes="ssssscss"
-     style="mix-blend-mode:normal;fill:url(#linearGradient32);fill-opacity:0.6" />
+     style="mix-blend-mode:normal;fill:url(#linearGradient32);fill-opacity:0.6;stroke:none;stroke-opacity:1;opacity:1" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.6;fill:#0054c9;fill-opacity:1;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
      x="150.07715"
      y="1400.9182"
      id="text27-8"><tspan
@@ -1414,30 +1414,30 @@
        id="tspan27-01"
        x="150.07715"
        y="1400.9182"
-       style="font-weight:bold;fill:#0054c9;fill-opacity:1">Response: </tspan><tspan
+       style="font-weight:bold;fill:#0054c9;fill-opacity:0.901961">Response: </tspan><tspan
        sodipodi:role="line"
        x="150.07715"
        y="1440.9182"
        id="tspan29-03"
-       style="fill:#0054c9;fill-opacity:1">   Mediterranean diet rich in olive oil, fish,</tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961">    Mediterranean diet rich in olive oil, fish,</tspan><tspan
        sodipodi:role="line"
        x="150.07715"
        y="1480.9182"
-       style="fill:#0054c9;fill-opacity:1"
-       id="tspan63">   and vegetables may reduce heart disease</tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961"
+       id="tspan63">    and vegetables may reduce heart disease</tspan><tspan
        sodipodi:role="line"
        x="150.07715"
        y="1520.9182"
-       style="fill:#0054c9;fill-opacity:1"
-       id="tspan64">   risk by lowering cholesterol and blood </tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961"
+       id="tspan64">    risk by lowering cholesterol and blood </tspan><tspan
        sodipodi:role="line"
        x="150.07715"
        y="1560.9182"
-       style="fill:#0054c9;fill-opacity:1"
-       id="tspan65">   pressure. Studies show potential 30% </tspan><tspan
+       style="fill:#0054c9;fill-opacity:0.901961"
+       id="tspan65">    pressure. Studies show potential 30% </tspan><tspan
        sodipodi:role="line"
        x="150.07715"
        y="1600.9182"
-       style="fill:#0054c9;fill-opacity:1"
-       id="tspan66">   reduction in cardiovascular events.</tspan></text>
+       style="fill:#0054c9;fill-opacity:0.901961"
+       id="tspan66">    reduction in cardiovascular events.</tspan></text>
 </svg>

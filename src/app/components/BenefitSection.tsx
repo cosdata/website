@@ -113,21 +113,22 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
 
             {/* Main Container */}
             <div className='flex flex-col items-center w-full'>
-                <div className='w-full bg-[#f0f2f5] py-12'>
+                <div className='w-full py-12'>
                     <div className='max-w-6xl mx-auto'>
 
                         {/* Subheading */}
-                        <div className='flex justify-between w-full mb-6'>
+                        <div className='flex justify-between w-full mb-6 relative'>
                             {activeSection === 'blazing' ? (
                                 <>
                                     <h2
-                                        className="text-2xl font-semibold text-[#3d8bff] cursor-pointer"
+                                        className="text-2xl font-semibold text-[#0055c8] cursor-pointer"
                                         onClick={showBlazingPerformance}
                                     >
                                         Blazing-Fast Performance, Always
                                     </h2>
+                                    <div className="absolute h-[2px] bg-gradient-to-r from-[#f23665] to-[#f0f2f5] bottom-0 w-[400px]"></div>
                                     <h2
-                                        className="text-2xl font-semibold cursor-pointer"
+                                        className="text-2xl font-semibold cursor-pointer text-[#3d8bff]"
                                         onClick={showMagicUnderTheHood}
                                     >
                                         Magic Under the Hood
@@ -136,14 +137,15 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             ) : (
                                 <>
                                     <h2
-                                        className="text-2xl font-semibold text-[#3d8bff] cursor-pointer"
+                                        className="text-2xl font-semibold text-[#0055c8] cursor-pointer"
                                         onClick={showMagicUnderTheHood}
                                     >
                                         Magic Under the Hood
                                     </h2>
+                                    <div className="absolute h-[2px] bg-gradient-to-r from-[#f23665] to-[#f0f2f5] bottom-0 w-[260px]"></div>
                                     <h2
 
-                                        className="text-2xl font-semibold cursor-pointer"
+                                        className="text-2xl font-semibold cursor-pointer text-[#3d8bff]"
                                         onClick={showBlazingPerformance}
                                     >
                                         Blazing-Fast Performance, Always
@@ -162,16 +164,17 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             >
                                 {carouselItems.map((item, index) => (
                                     <div key={index} className="min-w-72 p-4">
-                                        <div className="bg-white p-6 border border-[#dae4f1] h-full flex flex-col justify-between">
-                                            <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                                        <div className="p-2 pt-20 w-full max-w-[230px] h-[300px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f47a96]">
+                                            <h3 className="text-lg font-bold mb-2 text-[#20477e]">{item.title}</h3>
                                             <p className="text-sm">{item.description}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div onClick={showMagicUnderTheHood} className="mt-8 cursor-pointer">
-                            <h2 className='bg-[#f47a96] border-[#f47a96] border-2 border-solid duration-100 hover:bg-[white] hover:text-[#f47a96] text-white w-fit p-2'>How do we achieve this?</h2>
+                        <div className="mt-8 cursor-pointer flex justify-end">
+                            {activeSection == 'blazing' ? <h2 onClick={showMagicUnderTheHood} className='bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>How do we achieve this?</h2>
+                                : <h2 onClick={showBlazingPerformance} className='bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>Back</h2>}
 
                         </div>
                     </div>
