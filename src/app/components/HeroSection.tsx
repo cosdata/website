@@ -34,21 +34,21 @@ const HeroSection = () => {
 
   return (
     <main className="max-w-7xl mx-auto py-16 px-0 sm:px-6 lg:px-8">
-      <div className="flex flex-col xl:flex-row gap-12 justify-center   xl:items-center xl:justify-between">
-        <div className="bg-gray-100 p-5 xl:w-3/12">
-          <h1 className="text-[28px] font-[500] leading-[72px] text-[#0055c8]  mb-6">
-            <div className={`text-[#f47a96] text-3xl ${audiowide.className}`} >Supercharged</div> AI <span className='font-bold text-[#0055c8]'>RAG</span> Data Platform for the Next Generation of Search.
+      <div className="flex flex-col xl:flex-row justify-centerxl:items-center xl:justify-between">
+        <div className="bg-gray-100 p-5 flex flex-col justify-center xl:w-4/12">
+          <h1 className="text-[28px] font-[500] leading-[50px] text-[#0055c8]  mb-6">
+            <div className={`text-[#f47a96] text-3xl`} >Supercharge Your AI</div> <div>with Unified, Intelligent Search</div>
           </h1>
           <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
-            Introducing a revolution in digital cell morphology that will transform the way you see, work, and diagnose.
+            The future ready AI data platform to power the next generation search pipelines.
           </p>
-          <a href="#" className="inline-block bg-[#e47da0] text-white px-6 py-3 duration-300 hover:bg-[#f47a96]">
+          <div><a href="#" className="inline-block bg-[#e47da0] text-white px-6 py-3 duration-300 hover:bg-[#f47a96]">
             Book a meeting
-          </a>
+          </a></div>
         </div>
 
-        <div className="flex justify-center lg:ml-6 w-full xl:w-9/12 overflow-hidden">
-          <div className="w-full p-0 h-[200px] sm:h-[400px] md:h-[600px]  xl:h-[600px] relative overflow-hidden duration-300 scale-[1.4] image-container">
+        <div className="flex justify-center w-full xl:w-8/12 overflow-hidden">
+          <div className="w-full p-0 h-[200px] sm:h-[400px] md:h-[600px]  xl:h-[600px] relative overflow-hidden duration-300 scale-[1.3] image-container">
             <Image
               src="/svgs/hybrid.drawio.svg"
               alt="Image"

@@ -7,6 +7,7 @@ import ScopioX100 from "./components/Scropix";
 import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
 import { fetchClaim } from "./utils/api";
+import BenefitSection from "./components/BenefitSection";
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
@@ -18,8 +19,9 @@ export default async function Home() {
     <main className="bg-white">
       
       <HeroSection />
-      <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} />
-      <FeaturesSection claimsData={claim} />
+      {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
+      {/* <FeaturesSection claimsData={claim} /> */}
+      <BenefitSection claimsData={claim} />
       <ScopioX100 />
       <VideoSection />
       <Footer />
