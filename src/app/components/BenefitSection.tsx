@@ -49,58 +49,63 @@ interface BenefitSectionProps {
 }
 
 export default function BenefitSection({ claimsData }: BenefitSectionProps) {
-    const [currentIndex, setCurrentIndex] = useState(1); // Start at the first cloned section
-    const [headingsOffset, setHeadingsOffset] = useState(0);
-    const [activeHeadingIndex, setActiveHeadingIndex] = useState(0);
+    const cardsPerView = 4;
 
-
-    // Grouping claimsData by AttributeMain
-    const orderedAttributesCasual = [
-        "Blazing-Fast Performance, Always",
-        "Careful with money",
-        "Find What Truly Matters",
-        "Intuitive, No Hassles",
-        "Tailored to Fit Your Needs",
-        "Built for Serious Business",
-        "Ready to Grow with You",
-        "All-in-One Multimodal Power"
+    // Data for the carousel cards
+    const carouselItems = [
+        {
+            title: "Requests per Second",
+            description: "Delivers exceptional concurrent requests per second (RPS) under heavy load.",
+        },
+        {
+            title: "Latency",
+            description: "Lightning-fast search performance—our vector database is engineered to deliver exceptionally fast query.",
+        },
+        {
+            title: "Indexing",
+            description: "Ultra-fast indexing for sparse and dense vectors, optimized for handling high-dimensional data at scale.",
+        },
+        {
+            title: "Resource Utilization",
+            description: "Ingenious provably efficient data structures and algorithms ensure outsized performance.",
+        },
+        {
+            title: "Quantization",
+            description: "Fine-tune compression with quarter-nary (2-bit) and octal (3-bit) resolutions for better recall trade-offs.",
+        },
+        {
+            title: "Product Quantization",
+            description: "Our pioneering approach compresses data more effectively while enhancing recall performance.",
+        },
+        {
+            title: "",
+            description: "- Vectorization / SIMD - Buffered memory mapped IO",
+        },
+        {
+            title: "",
+            description: "- Lazy loadable cache - Custom file format / serialization",
+        },
     ];
 
-    const groupedByAttributeMain = claimsData.reduce((acc, claim) => {
-        const attributeMain = claim.attributes.Attribute.AttributeMain;
-        const attributeMainCasual = claim.attributes.Attribute.AttributeMainCasual;
-
-        // Only process claims if attributeMainCasual is in the ordered array
-        if (orderedAttributesCasual.includes(attributeMainCasual)) {
-            if (!acc[attributeMain]) {
-                acc[attributeMain] = {
-                    claims: [],
-                    attributeMain,
-                    attributeMainCasual // Store casual name
-                };
-            }
-            acc[attributeMain].claims.push(claim);
-        }
-        return acc;
-    }, {} as Record<string, { claims: any[]; attributeMain: string; attributeMainCasual: string }>);
-
-    // Ensure the claims are grouped in the correct order based on `orderedAttributesCasual`
-    const orderedGroupedByAttributeMain = orderedAttributesCasual.map(attributeMainCasual => {
-        const matchingGroup = Object.values(groupedByAttributeMain).find(
-            group => group.attributeMainCasual === attributeMainCasual
-        );
-        return matchingGroup ? matchingGroup : null;
-    }).filter(group => group !== null);
+    // State for current slide index
+    const [currentIndex, setCurrentIndex] = useState(0);
 
 
-    // Convert to array of sections with their widths
-    const groupedItems = Object.values(orderedGroupedByAttributeMain).map(({ attributeMain, attributeMainCasual, claims }) => ({
-        attributeMain,
-        attributeMainCasual, // Store casual name for use
-        claims,
-        width: 250 * claims.length // Width based on number of claims
-    }));
 
+    // State for active section
+    const [activeSection, setActiveSection] = useState('blazing');
+
+    // Handler for Blazing-Fast Performance
+    const showBlazingPerformance = () => {
+        setCurrentIndex(0); // Show first 4 cards
+        setActiveSection('blazing'); // Set active section
+    };
+
+    // Handler for Magic Under the Hood
+    const showMagicUnderTheHood = () => {
+        setCurrentIndex(4); // Show next 4 cards
+        setActiveSection('magic'); // Set active section
+    };
     return (
         <div className="bg-white text-[#59606c] py-16 mx-auto">
             {/* Main Heading */}
@@ -113,50 +118,68 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
 
                         {/* Subheading */}
                         <div className='flex justify-between w-full mb-6'>
-                            <h2 className="text-2xl font-semibold text-[#3d8bff]">Blazing-Fast Performance, Always</h2>
-                            <Link href="#" className="text-2xl font-semibold">Magic Under the Hood</Link>
+                            {activeSection === 'blazing' ? (
+                                <>
+                                    <h2
+                                        className="text-2xl font-semibold text-[#3d8bff] cursor-pointer"
+                                        onClick={showBlazingPerformance}
+                                    >
+                                        Blazing-Fast Performance, Always
+                                    </h2>
+                                    <h2
+                                        className="text-2xl font-semibold cursor-pointer"
+                                        onClick={showMagicUnderTheHood}
+                                    >
+                                        Magic Under the Hood
+                                    </h2>
+                                </>
+                            ) : (
+                                <>
+                                    <h2
+                                        className="text-2xl font-semibold text-[#3d8bff] cursor-pointer"
+                                        onClick={showMagicUnderTheHood}
+                                    >
+                                        Magic Under the Hood
+                                    </h2>
+                                    <h2
+
+                                        className="text-2xl font-semibold cursor-pointer"
+                                        onClick={showBlazingPerformance}
+                                    >
+                                        Blazing-Fast Performance, Always
+                                    </h2>
+                                </>
+                            )}
                         </div>
 
-                        {/* Card Section */}
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-                            <div className='bg-white p-6 border border-[#dae4f1]    '>
-                                <h3 className="text-lg font-bold mb-2">Requests per Second</h3>
-                                <p className="text-sm">
-                                    Delivers exceptional concurrent requests per second (RPS) under heavy load.
-                                </p>
-                            </div>
-
-                            <div className='bg-white p-6 border border-[#dae4f1]    '>
-                                <h3 className="text-lg font-bold mb-2">Latency</h3>
-                                <p className="text-sm">
-                                    Lightning-fast search performance—our vector database is engineered to deliver exceptionally fast query.
-                                </p>
-                            </div>
-
-                            <div className='bg-white p-6 border border-[#dae4f1]    '>
-                                <h3 className="text-lg font-bold mb-2">Indexing</h3>
-                                <p className="text-sm">
-                                    Ultra-fast indexing for sparse and dense vectors, optimized for handling high-dimensional data at scale.
-                                </p>
-                            </div>
-
-                            <div className='bg-white p-6 border border-[#dae4f1]    '>
-                                <h3 className="text-lg font-bold mb-2">Resource Utilization</h3>
-                                <p className="text-sm">
-                                    Ingenious provably efficient data structures and algorithms ensure outsized performance while providing increasingly relevant search results.
-                                </p>
+                        {/* Carousel Container */}
+                        <div className="overflow-hidden w-full">
+                            <div
+                                className="flex transition-transform duration-300 ease-in-out"
+                                style={{
+                                    transform: `translateX(-${(100 / 4) * currentIndex}%)`,
+                                }}
+                            >
+                                {carouselItems.map((item, index) => (
+                                    <div key={index} className="min-w-72 p-4">
+                                        <div className="bg-white p-6 border border-[#dae4f1] h-full flex flex-col justify-between">
+                                            <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                                            <p className="text-sm">{item.description}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div className='mt-4'>
-                            <Link href="#" > How do we achieve this</Link>
+                        <div onClick={showMagicUnderTheHood} className="mt-8 cursor-pointer">
+                            <h2 className='bg-[#f47a96] border-[#f47a96] border-2 border-solid duration-100 hover:bg-[white] hover:text-[#f47a96] text-white w-fit p-2'>How do we achieve this?</h2>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
-
-    )
+    );
     {/* Mobile version*/ }
     {/* <div className='flex flex-wrap justify-center gap-4 m-2'>
         {groupedItems.map((section, index) => (

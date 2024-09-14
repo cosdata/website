@@ -21,7 +21,7 @@ const HeroSection = () => {
     console.log("Component mounted, setting up timer");
     const timer = setTimeout(() => {
       console.log("Timer finished, setting showLabel to true");
-      setShowPoint(true);
+      setShowPoint(false);
     }, 18000);
 
     return () => {
@@ -37,12 +37,12 @@ const HeroSection = () => {
       <div className="flex flex-col xl:flex-row justify-centerxl:items-center xl:justify-between">
         <div className="bg-gray-100 p-5 flex flex-col justify-center xl:w-4/12">
           <h1 className="text-[28px] font-[500] leading-[50px] text-[#0055c8]  mb-6">
-            <div className={`text-[#f47a96] text-3xl`} >Supercharge Your AI</div> <div>with Unified, Intelligent Search</div>
+            <div className={`text-[#f47a96] text-3xl font-bold`} >Supercharge Your AI</div> <div>with Unified, Intelligent Search</div>
           </h1>
           <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
             The future ready AI data platform to power the next generation search pipelines.
           </p>
-          <div><a href="#" className="inline-block bg-[#e47da0] text-white px-6 py-3 duration-300 hover:bg-[#f47a96]">
+          <div><a href="#" className="inline-block bg-[#f47a96] text-white px-6 py-3 duration-300 ">
             Learn more
           </a></div>
         </div>
