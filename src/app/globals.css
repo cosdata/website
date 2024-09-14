@@ -48,9 +48,24 @@ body {
 .image-container {
   /* width: 600px;  Set desired box size */
   /* max-width: 600px; */
-  /* height: 600px; Set desired box size */
+  height: 800px; 
   overflow: hidden; /* Hide the parts of the image that exceed the container */
   position: relative;
+}
+@media screen and (max-width:900px) {
+  .image-container{
+    height: 700px;
+  }
+}
+@media screen and (max-width:700px) {
+  .image-container{
+    height: 600px;
+  }
+}
+@media screen and (max-width:500px) {
+  .image-container{
+    height: 400px;
+  }
 }
 
 /* Image styling */

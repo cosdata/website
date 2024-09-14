@@ -99,7 +99,7 @@ const HeroSection = () => {
 
         <div className="flex-grow flex justify-center w-full xl:w-7/12 overflow-hidden">
           <div
-            className="w-full h-[200px] sm:h-[400px] md:h-[800px] relative overflow-hidden image-container"
+            className="w-full  relative overflow-hidden image-container"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >

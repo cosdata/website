@@ -121,7 +121,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             {activeSection === 'blazing' ? (
                                 <>
                                     <h2
-                                        className="text-2xl font-semibold text-[#0055c8] cursor-pointer"
+                                        className="text-3xl font-semibold text-[#0055c8] cursor-pointer"
                                         onClick={showBlazingPerformance}
                                     >
                                         Blazing-Fast Performance, Always
@@ -138,7 +138,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             ) : (
                                 <>
                                     <h2
-                                        className="text-2xl font-semibold text-[#0055c8] cursor-pointer"
+                                        className="text-3xl font-semibold text-[#0055c8] cursor-pointer"
                                         onClick={showMagicUnderTheHood}
                                     >
                                         Magic Under the Hood
