@@ -89,7 +89,7 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="bg-transparent min-h-[100vh]">
+    <main className="bg-transparent min-h-[100vh] py-10">
       <div className='max-w-7xl mx-auto py-0 px-0 sm:px-6'>
         <div className="flex flex-col xl:flex-row justify-center items-stretch">
           <div className="flex-grow gap-3 flex flex-col justify-center xl:w-5/12 xl:h-[600px] p-6">
@@ -101,7 +101,7 @@ const HeroSection = () => {
               The future ready AI data platform to power the next generation search pipelines.
             </p>
             <div>
-              <a href="#" className="inline-block bg-[#f47a96] text-white px-6 py-3 duration-300">
+              <a href="#" className="inline-block bg-[#f23665] text-white px-3 py-1 duration-300">
                 Learn more
               </a>
             </div>

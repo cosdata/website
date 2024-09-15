@@ -41,8 +41,8 @@ const GradientBackground: React.FC = () => {
 
         const updateSize = () => {
             canvas.width = window.innerWidth * 1.2;
-            // Adjust the height based on window height. Multiply by a factor to reduce the height.
-            canvas.height = window.innerHeight * 0.7; // Decrease the height factor here
+            // Set the height to be the minimum of 1000px or 70% of window height.
+            canvas.height = Math.min(window.innerHeight * 0.7, 1000);
             createEllipses();
         };
 
