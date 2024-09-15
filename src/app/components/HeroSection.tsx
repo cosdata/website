@@ -18,6 +18,7 @@ const HeroSection = () => {
   const [showBoard, setShowBoard] = useState(true);
   const [imageStyle, setImageStyle] = useState({}); // For zoom effect
   const [animationEnded, setAnimationEnded] = useState(false); // Track if the animation has ended
+  const [lastMousePosition, setLastMousePosition] = useState({ xPercent: 50, yPercent: 50 }); // Track last mouse position
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -64,6 +65,9 @@ const HeroSection = () => {
     const xPercent = (x / rect.width) * 100;
     const yPercent = (y / rect.height) * 100;
 
+    // Save the last mouse position in state
+    setLastMousePosition({ xPercent, yPercent });
+
     setImageStyle({
       transformOrigin: `${xPercent}% ${yPercent}%`,
       transform: 'scale(1.5)',
@@ -73,7 +77,12 @@ const HeroSection = () => {
 
   const handleMouseLeave = () => {
     if (!animationEnded) return;
+
+    // Keep the last mouse position as the transform origin
+    const { xPercent, yPercent } = lastMousePosition;
+
     setImageStyle({
+      transformOrigin: `${xPercent}% ${yPercent}%`, // Use last mouse position for zoom-out
       transform: 'scale(1)',
       transition: 'transform 1s ease',
     });
@@ -100,7 +109,7 @@ const HeroSection = () => {
 
           <div className="flex-grow xl:flex hidden justify-center w-full xl:w-7/12 overflow-hidden">
             <div
-              className="w-full  relative overflow-hidden image-container"
+              className="w-full relative overflow-hidden image-container"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
@@ -117,11 +126,6 @@ const HeroSection = () => {
                   <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
                 </div>
               )}
-              {/* {showBoard && (
-                <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[2] bg-transparent flex justify-center items-end">
-                  <div className="w-full h-[33%] bg-gradient-to-r from-[#f7f8fa] to-[#ffffff]"></div>
-                </div>
-              )} */}
             </div>
           </div>
         </div>
@@ -132,7 +136,8 @@ const HeroSection = () => {
             disabled={!animationEnded}
           >
             Replay
-          </button> </div>
+          </button>
+        </div>
       </div>
     </main>
   );
