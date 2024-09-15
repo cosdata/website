@@ -27,9 +27,9 @@ const GradientBackground: React.FC = () => {
         let animationFrameId: number;
 
         const colors: ColorArray[] = [
-            [255, 77, 125], // Pink/Red #FF4D7D
-            [77, 169, 255], // Light blue #4DA9FF
-            [0, 102, 204], // Dark blue #0066CC
+            [255, 182, 193], // Lighter Pink #FFB6C1
+            [77, 169, 255],  // Light blue #4DA9FF
+            [0, 102, 204],   // Dark blue #0066CC
             [255, 255, 255], // White #FFFFFF
         ];
 
