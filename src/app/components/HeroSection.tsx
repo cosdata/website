@@ -83,7 +83,7 @@ const HeroSection = () => {
     <main className="bg-transparent">
       <div className='max-w-7xl mx-auto py-16 px-0 sm:px-6'>
         <div className="flex flex-col xl:flex-row justify-center items-stretch">
-          <div className="flex-grow gap-3 flex flex-col justify-start xl:w-5/12 xl:h-[800px] p-6">
+          <div className="flex-grow gap-3 flex flex-col justify-center xl:w-5/12 xl:h-[800px] p-6">
             <h1 className="text-[48px] font-[500] leading-[56px] text-[#0055c8] mb-6">
               <div className="text-[#f23665] text-[56px] font-bold">Supercharge Your AI</div>
               <div>with Unified, Intelligent Search</div>
