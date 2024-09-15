@@ -104,7 +104,8 @@ const GradientBackground: React.FC = () => {
             const b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
             const color2 = [r2, g2, b2];
 
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            // Create a gradient from the bottom-left to top-right
+            const gradient = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
             gradient.addColorStop(0, `rgb(${color1.join(",")})`);
             gradient.addColorStop(1, `rgb(${color2.join(",")})`);
 
@@ -150,6 +151,7 @@ const GradientBackground: React.FC = () => {
 
             animationFrameId = requestAnimationFrame(animate);
         };
+
 
         updateSize();
         window.addEventListener("resize", updateSize);

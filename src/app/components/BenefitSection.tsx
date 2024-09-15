@@ -107,7 +107,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
         setActiveSection('magic'); // Set active section
     };
     return (
-        <div className="bg-white text-[#59606c] py-16 mx-auto">
+        <div className="bg-transparent text-[#59606c] py-16 mx-auto">
             {/* Main Heading */}
             <h1 className="text-4xl font-bold text-center mb-8">The Fast and Effortless Way to Data</h1>
 

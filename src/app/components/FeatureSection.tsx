@@ -178,7 +178,7 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   // };
 
   return (
-    <div className="bg-white text-[#59606c] py-16 max-w-7xl mx-auto">
+    <div className="bg-transparnet text-[#59606c] py-16 max-w-7xl mx-auto">
       {/* Heading */}
       <h1 className="text-4xl font-bold text-center mb-8">The Fast and Effortless Way to Data</h1>
 
