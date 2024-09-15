@@ -15,7 +15,6 @@ const audiowide = Audiowide({
 
 const HeroSection = () => {
   const [showPoint, setShowPoint] = useState(true);
-  const [showBoard, setShowBoard] = useState(true);
   const [imageStyle, setImageStyle] = useState({}); // For zoom effect
   const [animationEnded, setAnimationEnded] = useState(false); // Track if the animation has ended
   const [lastMousePosition, setLastMousePosition] = useState({ xPercent: 50, yPercent: 50 }); // Track last mouse position
@@ -25,36 +24,10 @@ const HeroSection = () => {
       setShowPoint(false); // Hide the point after 20 seconds
       setAnimationEnded(true); // Mark animation as ended
     }, 20000); // 20 seconds duration
-    const secondtimer = setTimeout(() => {
-      setShowBoard(false);
-    }, 3500)
     return () => {
       clearTimeout(timer);
-      clearTimeout(secondtimer);
     };
   }, [animationEnded]);
-
-  const handleReplay = () => {
-    if (!animationEnded) return; // Only allow replay if the animation has ended
-
-    const ele = document.getElementById("heroImage");
-    if (ele) {
-      // Remove the animation class and force reflow (restarts animation)
-      ele.classList.remove("image");
-
-      // Trigger a reflow to restart the animation
-      void ele.offsetWidth;
-
-      // Re-add the class after a small delay
-      setTimeout(() => {
-        ele.classList.add("image");
-      }, 50);
-    }
-
-    setAnimationEnded(false);
-    setShowPoint(true);
-    setShowBoard(true);
-  };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!animationEnded) return; // Prevent zoom before animation ends
@@ -89,7 +62,7 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="bg-transparent min-h-[100vh] py-10">
+    <main className="bg-transparent min-h-[80vh] py-10">
       <div className='max-w-7xl mx-auto py-0 px-0 sm:px-6'>
         <div className="flex flex-col xl:flex-row justify-center items-stretch">
           <div className="flex-grow gap-3 flex flex-col justify-center xl:w-5/12 xl:h-[600px] p-6">
@@ -128,15 +101,6 @@ const HeroSection = () => {
               )}
             </div>
           </div>
-        </div>
-        <div className='xl:flex hidden justify-end'>
-          <button
-            onClick={handleReplay}
-            className={`mt-4 bg-[#3d8bff] text-white px-4 py-2 opoacity-70 ${!animationEnded ? 'cursor-not-allowed opacity-50' : ''}`}
-            disabled={!animationEnded}
-          >
-            Replay
-          </button>
         </div>
       </div>
     </main>

@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image'
-import Link from 'next/link';
+import { useState } from 'react';
+import Image from 'next/image';
 
 interface Attribute {
     id: number;
@@ -90,10 +89,11 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
     // State for current slide index
     const [currentIndex, setCurrentIndex] = useState(0);
 
-
-
     // State for active section
     const [activeSection, setActiveSection] = useState('blazing');
+
+    // State for showing Magic Under the Hood in mobile version
+    const [showMagic, setShowMagic] = useState(false);
 
     // Handler for Blazing-Fast Performance
     const showBlazingPerformance = () => {
@@ -106,52 +106,53 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
         setCurrentIndex(4); // Show next 4 cards
         setActiveSection('magic'); // Set active section
     };
+
+    // Toggle for showing "Magic Under the Hood" section on mobile
+    const toggleShowMagic = () => {
+        setShowMagic(!showMagic);
+    };
+
     return (
-        <div className="bg-transparent text-[#59606c] mx-auto">
+        <div className="bg-transparent mx-auto mt-10">
             {/* Main Heading */}
-            <h1 className="text-4xl font-bold text-center mb-8">The Fast and Effortless Way to Data</h1>
+            <h1 className="text-4xl font-bold text-center mb-8 text-[#0055c8]">The Fast and Effortless Way to Data</h1>
 
             {/* Main Container */}
-            <div className='hidden lg:flex flex-col items-center w-6xl '>
+            <div className='hidden lg:flex flex-col items-center w-6xl'>
+                {/* Desktop Version */}
                 <div className='w-full py-12'>
                     <div className='max-w-6xl mx-auto'>
-
                         {/* Subheading */}
                         <div className='flex justify-between w-full mb-6 relative'>
                             {activeSection === 'blazing' ? (
                                 <>
                                     <h2
-                                        className="text-3xl font-semibold text-[#0055c8] cursor-pointer"
+                                        className="text-3xl font-semibold text-[#f23665] cursor-pointer"
                                         onClick={showBlazingPerformance}
                                     >
                                         Blazing-Fast Performance, Always
                                     </h2>
-                                    <div className="absolute h-[2px] bg-gradient-to-r from-[#f23665] to-[#f0f2f5] bottom-0 w-[400px]"></div>
                                     <h2
                                         className="text-2xl font-semibold cursor-pointer text-[#3d8bff]"
                                         onClick={showMagicUnderTheHood}
                                     >
-                                        Magic Under the Hood
+                                        <span className='text-[#f23665]'>»</span> Magic Under the Hood
                                     </h2>
-                                    <div className="absolute h-[2px] bottom-0 w-[400px]"></div>
                                 </>
                             ) : (
                                 <>
                                     <h2
-                                        className="text-3xl font-semibold text-[#0055c8] cursor-pointer"
+                                        className="text-3xl font-semibold text-[#f23665] cursor-pointer"
                                         onClick={showMagicUnderTheHood}
                                     >
                                         Magic Under the Hood
                                     </h2>
-                                    <div className="absolute h-[2px] bg-gradient-to-r from-[#f23665] to-[#f0f2f5] bottom-0 w-[260px]"></div>
                                     <h2
-
                                         className="text-2xl font-semibold cursor-pointer text-[#3d8bff]"
                                         onClick={showBlazingPerformance}
                                     >
-                                        Blazing-Fast Performance, Always
+                                        <span className='text-[#f23665]'>»</span> Blazing-Fast Performance, Always
                                     </h2>
-                                    <div className="absolute h-[2px] bottom-0 w-[400px]"></div>
                                 </>
                             )}
                         </div>
@@ -176,18 +177,12 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                 ))}
                             </div>
                         </div>
-                        <div className="mt-8 flex justify-end">
-                            {activeSection == 'blazing' ? <h2 onClick={showMagicUnderTheHood} className=' cursor-pointer bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>How do we achieve this?</h2>
-                                : <h2 onClick={showBlazingPerformance} className='cursor-pointer bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100   text-[#0055c8] w-fit p-2'>Back</h2>}
-
-                        </div>
                     </div>
-
                 </div>
             </div>
+
             {/* Mobile version */}
             <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2'>
-
                 {/* Blazing-Fast Performance Section */}
                 <div className='mb-8 bg-[#f0f2f5] max-w-[400px] p-8'>
                     <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
@@ -197,18 +192,15 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                         {carouselItems.slice(0, 4).map((item, index) => (
                             <div
                                 key={index}
-                                className={`p-4 pt-8 w-96 `}
+                                className={`p-4 pt-8 w-96`}
                             >
                                 <Image src={`./svgs/features/icon(${index}).drawio.svg`}
                                     alt='svg' width={50} height={50} />
-                                {/* Render Title if available */}
                                 {item.title && (
                                     <h3 className="text-xl font-bold my-2 text-[#3d8bff]">
                                         {item.title}
                                     </h3>
                                 )}
-
-                                {/* Render Description */}
                                 <div className="">
                                     <p className="text-sm my-4 text-[#3d8bff]">
                                         {item.description}
@@ -219,39 +211,51 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                     </div>
                 </div>
 
-                {/* Magic Under the Hood Section */}
-                <div className='bg-[#f0f2f5] max-w-[400px] p-8'>
-                    <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
-                        Magic Under the Hood
-                    </h2>
-                    <div className='flex flex-wrap justify-center gap-4'>
-                        {carouselItems.slice(4).map((item, index) => (
-                            <div
-                                key={index}
-                                className={`p-4 pt-8 w-96`}
-                            >
-                                {/* Render Title if available */}
-                                {item.title && (
-                                    <h3 className="text-xl font-bold mb-2 text-[#0055c8]">
-                                        {item.title}
-                                    </h3>
-                                )}
-
-                                {/* Render Description */}
-                                <div className="p-2">
-                                    <p className="text-sm my-4 text-[#59606c]">
-                                        {item.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                {/* Toggle button for Magic Under the Hood */}
+                {!showMagic ? (
+                    <div className='justify-self-end'>
+                        <button
+                            onClick={toggleShowMagic}
+                            className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
+                        >
+                            How do we achieve this?
+                        </button>
                     </div>
-                </div>
+                ) : (
+                    <div className='bg-[#f0f2f5] max-w-[400px] p-8'>
+                        <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
+                            Magic Under the Hood
+                        </h2>
+                        <div className='flex flex-wrap justify-center gap-4'>
+                            {carouselItems.slice(4).map((item, index) => (
+                                <div
+                                    key={index}
+                                    className={`p-4 pt-8 w-96`}
+                                >
+                                    <Image src={`./svgs/features/icon(${index}).drawio.svg`}
+                                        alt='svg' width={50} height={50} />
+                                    {item.title && (
+                                        <h3 className="text-xl font-bold my-2 text-[#3d8bff]">
+                                            {item.title}
+                                        </h3>
+                                    )}
+                                    <div className="">
+                                        <p className="text-sm my-4 text-[#3d8bff]">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <button
+                            onClick={toggleShowMagic}
+                            className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
+                        >
+                            Back
+                        </button>
+                    </div>
+                )}
             </div>
-
         </div>
     );
-
-
 }
-
