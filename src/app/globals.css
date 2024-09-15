@@ -78,16 +78,16 @@ body {
 
 /* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
-  0% { transform: translate(70%,-20%) scale(2);}
-  15% {transform: translate(70%, -20%) scale(2);}
-  20%{ transform: translate(70%,75%) scale(2);}
-  35%{ transform: translate(70%,75%) scale(2);}
-  40%{ transform: translate(10%,37%) scale(2);}
-  55%{ transform: translate(10%,37%) scale(2);}
-  60%{transform: translate(-40%, 5%) scale(2);}
-  75%{transform: translate(-40%, 5%) scale(2);}
-  80%{ transform: translate(65%, -42%) scale(2)}
-  95%{ transform: translate(65%, -42%) scale(2)}
+  0% { transform: translate(100%,-25%) scale(3)}
+  15% {transform: translate(100%,-25%) scale(3)}
+  20%{ transform: translate(70%,100%) scale(2);}
+  35%{ transform: translate(70%,100%) scale(2);}
+  40%{ transform: translate(20%,50%) scale(2);}
+  55%{ transform: translate(20%,50%) scale(2);}
+  60%{transform: translate(-40%, 10%) scale(2);}
+  75%{transform: translate(-40%, 10%) scale(2);}
+  80%{ transform: translate(65%, -50%) scale(2);}
+  95%{ transform: translate(65%, -50%) scale(2);}
   100% { transform: translate(0, 0) scale(1); }
 }
 

@@ -107,7 +107,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
         setActiveSection('magic'); // Set active section
     };
     return (
-        <div className="bg-transparent text-[#59606c] py-16 mx-auto">
+        <div className="bg-transparent text-[#59606c] mx-auto">
             {/* Main Heading */}
             <h1 className="text-4xl font-bold text-center mb-8">The Fast and Effortless Way to Data</h1>
 
@@ -166,8 +166,10 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             >
                                 {carouselItems.map((item, index) => (
                                     <div key={index} className="min-w-72 p-4">
-                                        <div className="p-8 pt-24 w-full max-w-[270px] h-[300px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
-                                            <h3 className="text-lg font-bold mb-6 text-[#3d8bff]">{item.title}</h3>
+                                        <div className="p-8 pt-16 w-full max-w-[270px] h-[350px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
+                                            <Image src={`./svgs/features/icon(${index}).drawio.svg`}
+                                                alt='svg' width={50} height={50} />
+                                            <h3 className="text-lg font-bold mb-6 mt-2 text-[#3d8bff]">{item.title}</h3>
                                             <p className="text-sm text-[#3d8bff]">{item.description}</p>
                                         </div>
                                     </div>
@@ -197,16 +199,18 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                 key={index}
                                 className={`p-4 pt-8 w-96 `}
                             >
+                                <Image src={`./svgs/features/icon(${index}).drawio.svg`}
+                                    alt='svg' width={50} height={50} />
                                 {/* Render Title if available */}
                                 {item.title && (
-                                    <h3 className="text-xl font-bold mb-2 text-[#0055c8]">
+                                    <h3 className="text-xl font-bold my-2 text-[#3d8bff]">
                                         {item.title}
                                     </h3>
                                 )}
 
                                 {/* Render Description */}
-                                <div className="p-2">
-                                    <p className="text-sm my-4 text-[#59606c]">
+                                <div className="">
+                                    <p className="text-sm my-4 text-[#3d8bff]">
                                         {item.description}
                                     </p>
                                 </div>

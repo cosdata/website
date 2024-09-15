@@ -66,7 +66,7 @@ const HeroSection = () => {
 
     setImageStyle({
       transformOrigin: `${xPercent}% ${yPercent}%`,
-      transform: 'scale(2)',
+      transform: 'scale(1.5)',
       transition: 'transform 1s ease',
     });
   };
@@ -80,7 +80,7 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="bg-transparent">
+    <main className="bg-transparent min-h-[100vh]">
       <div className='max-w-7xl mx-auto py-0 px-0 sm:px-6'>
         <div className="flex flex-col xl:flex-row justify-center items-stretch">
           <div className="flex-grow gap-3 flex flex-col justify-center xl:w-5/12 xl:h-[600px] p-6">
@@ -117,15 +117,15 @@ const HeroSection = () => {
                   <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
                 </div>
               )}
-              {showBoard && (
+              {/* {showBoard && (
                 <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[2] bg-transparent flex justify-center items-end">
                   <div className="w-full h-[33%] bg-gradient-to-r from-[#f7f8fa] to-[#ffffff]"></div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
-        <div className='flex justify-end'>
+        <div className='xl:flex hidden justify-end'>
           <button
             onClick={handleReplay}
             className={`mt-4 bg-[#3d8bff] text-white px-4 py-2 opoacity-70 ${!animationEnded ? 'cursor-not-allowed opacity-50' : ''}`}
