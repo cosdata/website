@@ -67,7 +67,7 @@ const HeroSection = () => {
     setImageStyle({
       transformOrigin: `${xPercent}% ${yPercent}%`,
       transform: 'scale(2)',
-      transition: 'transform 0.5s ease',
+      transition: 'transform 1s ease',
     });
   };
 
@@ -75,64 +75,65 @@ const HeroSection = () => {
     if (!animationEnded) return;
     setImageStyle({
       transform: 'scale(1)',
-      transition: 'transform 0.5s ease',
+      transition: 'transform 1s ease',
     });
   };
 
   return (
-    <main className="max-w-7xl mx-auto py-16 px-0 sm:px-6">
-      <div className="flex flex-col xl:flex-row justify-center items-stretch">
-        <div className="bg-gray-100 flex-grow gap-2 flex flex-col justify-center xl:w-5/12 xl:h-[800px] p-6">
-          <h1 className="text-[48px] font-[500] leading-[50px] text-[#0055c8] mb-6">
-            <div className="text-[#f23665] font-bold">Supercharge Your AI</div>
-            <div>with Unified, Intelligent Search</div>
-          </h1>
-          <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
-            The future ready AI data platform to power the next generation search pipelines.
-          </p>
-          <div>
-            <a href="#" className="inline-block bg-[#f47a96] text-white px-6 py-3 duration-300">
-              Learn more
-            </a>
+    <main className="bg-transparent">
+      <div className='max-w-7xl mx-auto py-16 px-0 sm:px-6'>
+        <div className="flex flex-col xl:flex-row justify-center items-stretch">
+          <div className="flex-grow gap-3 flex flex-col justify-start xl:w-5/12 xl:h-[800px] p-6">
+            <h1 className="text-[48px] font-[500] leading-[56px] text-[#0055c8] mb-6">
+              <div className="text-[#f23665] text-[56px] font-bold">Supercharge Your AI</div>
+              <div>with Unified, Intelligent Search</div>
+            </h1>
+            <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+              The future ready AI data platform to power the next generation search pipelines.
+            </p>
+            <div>
+              <a href="#" className="inline-block bg-[#f47a96] text-white px-6 py-3 duration-300">
+                Learn more
+              </a>
+            </div>
+          </div>
+
+          <div className="flex-grow xl:flex hidden justify-center w-full xl:w-7/12 overflow-hidden">
+            <div
+              className="w-full  relative overflow-hidden image-container"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Image
+                src="/svgs/hybrid.drawio.svg"
+                alt="Image"
+                fill
+                className="object-contain image"
+                id="heroImage"
+                style={imageStyle} // Apply zoom effect
+              />
+              {showPoint && (
+                <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in flex justify-center items-center">
+                  <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
+                </div>
+              )}
+              {showBoard && (
+                <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[2] bg-transparent flex justify-center items-end">
+                  <div className="w-full h-[33%] bg-gradient-to-r from-[#f7f8fa] to-[#ffffff]"></div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-
-        <div className="flex-grow flex justify-center w-full xl:w-7/12 overflow-hidden">
-          <div
-            className="w-full  relative overflow-hidden image-container"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+        <div className='flex justify-end'>
+          <button
+            onClick={handleReplay}
+            className={`mt-4 bg-[#3d8bff] text-white px-4 py-2 opoacity-70 ${!animationEnded ? 'cursor-not-allowed opacity-50' : ''}`}
+            disabled={!animationEnded}
           >
-            <Image
-              src="/svgs/hybrid.drawio.svg"
-              alt="Image"
-              fill
-              className="object-contain image"
-              id="heroImage"
-              style={imageStyle} // Apply zoom effect
-            />
-            {showPoint && (
-              <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in flex justify-center items-center">
-                <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
-              </div>
-            )}
-            {showBoard && (
-              <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[2] bg-transparent flex justify-center items-end">
-                <div className="w-full h-[33%] bg-white"></div>
-              </div>
-            )}
-          </div>
-        </div>
+            Replay
+          </button> </div>
       </div>
-      <div className='flex justify-end'>
-        <button
-          onClick={handleReplay}
-          className={`mt-4 bg-[#3d8bff] text-white px-4 py-2 opoacity-70 ${!animationEnded ? 'cursor-not-allowed opacity-50' : ''}`}
-          disabled={!animationEnded}
-        >
-          Replay
-        </button> </div>
-
     </main>
   );
 };

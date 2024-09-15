@@ -24,9 +24,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.83502876"
-     inkscape:cx="795.18219"
-     inkscape:cy="484.41445"
+     inkscape:zoom="0.5904545"
+     inkscape:cx="740.95464"
+     inkscape:cy="1001.7707"
      inkscape:window-width="1876"
      inkscape:window-height="1156"
      inkscape:window-x="0"
@@ -40,7 +40,7 @@
        id="linearGradient44"
        inkscape:collect="always">
       <stop
-         style="stop-color:#f1f3f5;stop-opacity:0.90196102;"
+         style="stop-color:#d1e7fd;stop-opacity:0.90196079;"
          offset="0"
          id="stop44" />
       <stop
@@ -52,7 +52,7 @@
        id="linearGradient42"
        inkscape:collect="always">
       <stop
-         style="stop-color:#f1f3f5;stop-opacity:0.90196102;"
+         style="stop-color:#d1e7fd;stop-opacity:0.90196079;"
          offset="0"
          id="stop42" />
       <stop
@@ -64,7 +64,7 @@
        id="linearGradient40"
        inkscape:collect="always">
       <stop
-         style="stop-color:#f1f3f5;stop-opacity:0.90196102;"
+         style="stop-color:#d1e7fd;stop-opacity:0.90196103;"
          offset="0"
          id="stop40" />
       <stop
@@ -76,7 +76,7 @@
        id="linearGradient38"
        inkscape:collect="always">
       <stop
-         style="stop-color:#f1f3f5;stop-opacity:0.90196102;"
+         style="stop-color:#d1e7fd;stop-opacity:0.90196079;"
          offset="0"
          id="stop38" />
       <stop
@@ -88,7 +88,7 @@
        id="linearGradient31"
        inkscape:collect="always">
       <stop
-         style="stop-color:#f33565;stop-opacity:0.90196079;"
+         style="stop-color:#ff6088;stop-opacity:0.90196079;"
          offset="0"
          id="stop31" />
       <stop
@@ -225,7 +225,7 @@
        x2="2756.3325"
        y2="228.56886"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-2069.5211,1112.9551)" />
+       gradientTransform="matrix(1.3396985,0,0,0.99805166,-2811.0297,1113.7023)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient38"
@@ -245,7 +245,7 @@
        x2="1642.3083"
        y2="335.13815"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-1047.7708,-200.72238)" />
+       gradientTransform="matrix(1.2583094,0,0,1,-1323.4265,-200.72238)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient42"
@@ -255,7 +255,7 @@
        x2="2197.1831"
        y2="654.89166"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-941.83325,-106.15229)" />
+       gradientTransform="matrix(1.1858673,0,0,1,-1243.3152,-106.15229)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient44"
@@ -267,14 +267,6 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(-963.43618,-91.865727)" />
   </defs>
-  <rect
-     fill="#ffffff"
-     width="99.820557%"
-     height="99.549934%"
-     x="3.8716383"
-     y="3.8092105"
-     id="rect1"
-     style="mix-blend-mode:normal;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.996852" />
   <g
      id="g220"
      transform="translate(-39.681129,-269.49871)">
@@ -295,7 +287,7 @@
              transform="matrix(1,0,0,-1,0,2233)"
              pointer-events="all"
              id="path1"
-             style="opacity:0.6;fill:#f33565;fill-opacity:0.90196079;stroke:#f47a96;stroke-opacity:1" />
+             style="opacity:1;fill:#ff6088;fill-opacity:0.90196079;stroke:#f47a96;stroke-opacity:1" />
         </g>
       </g>
       <g
@@ -312,7 +304,7 @@
              transform="matrix(1,0,0,-1,0,1585)"
              pointer-events="all"
              id="path2"
-             style="display:inline;opacity:0.6;fill:#f33565;fill-opacity:0.90196079" />
+             style="display:inline;opacity:1;fill:#ff6088;fill-opacity:0.90196079" />
         </g>
       </g>
       <g
@@ -329,7 +321,7 @@
              transform="matrix(1,0,0,-1,0,1585)"
              pointer-events="all"
              id="path2-3"
-             style="display:inline;opacity:0.6;fill:#f33565;fill-opacity:0.90196079" />
+             style="display:inline;opacity:1;fill:#ff6088;fill-opacity:0.90196079" />
         </g>
       </g>
       <g
@@ -1265,7 +1257,7 @@
      pointer-events="all"
      id="path1-8"
      sodipodi:nodetypes="ssssscss"
-     style="fill:url(#linearGradient39)" />
+     style="fill:url(#linearGradient39);opacity:0.6" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.90196079;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
@@ -1295,13 +1287,13 @@
        id="tspan29"
        style="fill:#0054c9;fill-opacity:0.90196079">    heart disease prevention?&quot;</tspan></text>
   <path
-     d="m 558.38445,47.117203 -502.634097,1.8396 c -19.8798,0.073 -35.9243,16.1201 -36,36 l -0.3672,96.465797 c -0.1195,31.4106 12.0291,40.3025 31.9091,40.292 l 543.245297,-1.8758 -0.1531,-136.721597 c -0.022,-19.88 -16.1202,-36.0728 -36,-36 z"
+     d="m 697.61378,47.117203 -632.469211,1.8396 c -25.01494,0.073 -45.203885,16.1201 -45.299139,36 L 19.383379,181.4226 c -0.150368,31.4106 15.136329,40.3025 40.151521,40.292 l 683.57067,-1.8758 -0.19265,-136.721597 c -0.0277,-19.88 -20.2842,-36.0728 -45.29914,-36 z"
      fill="#10739e"
      stroke="none"
      pointer-events="all"
      id="path1-8-9"
      sodipodi:nodetypes="ssssscss"
-     style="fill:url(#linearGradient41)" />
+     style="opacity:0.6;fill:url(#linearGradient41);stroke-width:1.12174" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
@@ -1329,13 +1321,13 @@
        style="fill:#0054c9;fill-opacity:0.901961"
        id="tspan48">   sans &quot;Mediterranean diet/ heart disease&quot;</tspan></text>
   <path
-     d="m 1219.1968,461.44079 -502.63405,1.8396 c -19.8799,0.073 -35.9243,16.1201 -36,36 l -0.3672,96.4658 c -0.1196,31.4106 12.0291,40.3025 31.9091,40.292 l 543.24535,-1.8758 -0.1532,-136.7216 c -0.022,-19.88 -16.1202,-36.0728 -36,-36 z"
+     d="m 1319.3797,461.44079 -596.05731,1.8396 c -23.57493,0.073 -42.60146,16.1201 -42.69123,36 l -0.43545,96.4658 c -0.14183,31.4106 14.26492,40.3025 37.83996,40.292 l 644.21693,-1.8758 -0.1817,-136.7216 c -0.026,-19.88 -19.1164,-36.0728 -42.6912,-36 z"
      fill="#10739e"
      stroke="none"
      pointer-events="all"
      id="path1-8-2"
      sodipodi:nodetypes="ssssscss"
-     style="fill:url(#linearGradient43)" />
+     style="fill:url(#linearGradient43);stroke-width:1.08898;opacity:0.6" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
@@ -1356,7 +1348,7 @@
        x="717.36536"
        y="578.77667"
        style="fill:#0054c9;fill-opacity:0.901961"
-       id="tspan50">  &quot;Mediterranean diet&quot;, &quot;heart disease&quot;,</tspan><tspan
+       id="tspan50">  &quot;Mediterranean diet&quot;, &quot;heart disease&quot;</tspan><tspan
        sodipodi:role="line"
        x="717.36536"
        y="618.77667"
@@ -1369,7 +1361,7 @@
      pointer-events="all"
      id="path1-8-8"
      sodipodi:nodetypes="ssssscss"
-     style="fill:url(#linearGradient45)" />
+     style="fill:url(#linearGradient45);opacity:0.6" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
@@ -1397,13 +1389,13 @@
        style="fill:#0054c9;fill-opacity:0.901961"
        id="tspan1">  &quot;heart disease&quot; to risk factors</tspan></text>
   <path
-     d="m 652.88124,1334.7712 -502.634,1.8396 c -19.8799,0.073 -36.0738,16.12 -36,35.9999 l 0.9096,245.2389 c 0.1165,31.4107 12.0292,40.3607 31.9091,40.292 l 543.2453,-1.8758 -1.43,-285.4946 c -0.1,-19.8798 -16.1202,-36.0728 -36,-36 z"
+     d="m 836.16865,1335.0862 -673.37802,1.836 c -26.63307,0.073 -48.32802,16.0886 -48.22915,35.9298 l 1.21859,244.7611 c 0.15608,31.3495 16.11551,40.282 42.74858,40.2135 l 727.78491,-1.8722 -1.91577,-284.9383 c -0.13397,-19.8411 -21.59621,-36.0025 -48.22914,-35.9299 z"
      fill="#10739e"
      stroke="none"
      pointer-events="all"
      id="path1-8-1"
      sodipodi:nodetypes="ssssscss"
-     style="mix-blend-mode:normal;fill:url(#linearGradient32);fill-opacity:0.6;stroke:none;stroke-opacity:1;opacity:1" />
+     style="opacity:1;mix-blend-mode:normal;fill:url(#linearGradient32);fill-opacity:0.6;stroke:none;stroke-width:4.65444;stroke-dasharray:none;stroke-opacity:0.901961" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#0054c9;fill-opacity:0.901961;stroke:none;stroke-width:4.40315;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"

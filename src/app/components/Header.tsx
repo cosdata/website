@@ -22,8 +22,8 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-gray-100">
-      <header className="bg-white shadow">
+    <div className="bg-transparent">
+      <header className="bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">
             <Link href="/" ><div className='w-32 h-8 relative'><Image src="/images/logo.webp" alt='logo' fill /></div> </Link>
@@ -57,14 +57,14 @@ export default function Header() {
 
 
       {isOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="md:hidden bg-transparent">
           <div className="px-4 py-6 space-y-4">
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Products</Link>
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Industries</Link>
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Resources</Link>
             <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About</Link>
-            <button onClick={handleSignupClick} className=" block bg-teal-300 text-[rgb(0,0,0)] font-open-sans text-[15px] font-light leading-[27px] px-6 py-2 rounded-sm duration-300  border-blue-100 border-2 hover:bg-white">Sign up</button>
+            <button onClick={handleSignupClick} className=" block bg-teal-300 text-[rgb(0,0,0)] font-open-sans text-[15px] font-light leading-[27px] px-6 py-2 rounded-sm duration-300  hover:border-blue-100 hover:border-2 hover:bg-white">Sign up</button>
             <button onClick={handleLoginClick} className="block bg-pink-500 text-[rgb(255,255,255)] font-open-sans text-[15px] font-light leading-[22.5px] px-4 py-2 rounded-sm  duration-300  border-pink-500 border-2 hover:bg-white hover:text-black">Login</button>
           </div>
         </div>

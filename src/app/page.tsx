@@ -16,7 +16,7 @@ export default async function Home() {
   
 
   return (
-    <main className="bg-white">
+    <main className="bg-transparent">
       
       <HeroSection />
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}

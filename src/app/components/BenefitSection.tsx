@@ -112,7 +112,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
             <h1 className="text-4xl font-bold text-center mb-8">The Fast and Effortless Way to Data</h1>
 
             {/* Main Container */}
-            <div className='flex flex-col items-center w-full'>
+            <div className='hidden lg:flex flex-col items-center w-6xl '>
                 <div className='w-full py-12'>
                     <div className='max-w-6xl mx-auto'>
 
@@ -166,9 +166,9 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                             >
                                 {carouselItems.map((item, index) => (
                                     <div key={index} className="min-w-72 p-4">
-                                        <div className="p-2 pt-20 w-full max-w-[230px] h-[300px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
-                                            <h3 className="text-lg font-bold mb-2 text-[#20477e]">{item.title}</h3>
-                                            <p className="text-sm">{item.description}</p>
+                                        <div className="p-8 pt-24 w-full max-w-[270px] h-[300px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
+                                            <h3 className="text-lg font-bold mb-6 text-[#3d8bff]">{item.title}</h3>
+                                            <p className="text-sm text-[#3d8bff]">{item.description}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -183,47 +183,71 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
 
                 </div>
             </div>
+            {/* Mobile version */}
+            <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2'>
+
+                {/* Blazing-Fast Performance Section */}
+                <div className='mb-8 bg-[#f0f2f5] max-w-[400px] p-8'>
+                    <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
+                        Blazing-Fast Performance, Always
+                    </h2>
+                    <div className='flex flex-wrap justify-center gap-4'>
+                        {carouselItems.slice(0, 4).map((item, index) => (
+                            <div
+                                key={index}
+                                className={`p-4 pt-8 w-96 `}
+                            >
+                                {/* Render Title if available */}
+                                {item.title && (
+                                    <h3 className="text-xl font-bold mb-2 text-[#0055c8]">
+                                        {item.title}
+                                    </h3>
+                                )}
+
+                                {/* Render Description */}
+                                <div className="p-2">
+                                    <p className="text-sm my-4 text-[#59606c]">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Magic Under the Hood Section */}
+                <div className='bg-[#f0f2f5] max-w-[400px] p-8'>
+                    <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
+                        Magic Under the Hood
+                    </h2>
+                    <div className='flex flex-wrap justify-center gap-4'>
+                        {carouselItems.slice(4).map((item, index) => (
+                            <div
+                                key={index}
+                                className={`p-4 pt-8 w-96`}
+                            >
+                                {/* Render Title if available */}
+                                {item.title && (
+                                    <h3 className="text-xl font-bold mb-2 text-[#0055c8]">
+                                        {item.title}
+                                    </h3>
+                                )}
+
+                                {/* Render Description */}
+                                <div className="p-2">
+                                    <p className="text-sm my-4 text-[#59606c]">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
-    {/* Mobile version*/ }
-    {/* <div className='flex flex-wrap justify-center gap-4 m-2'>
-        {groupedItems.map((section, index) => (
-          <div
-            key={index}
-            className={`p-4 pt-8 bg-[#f0f2f5] ${index % 3 === 2 ? 'w-96 md:w-full' : 'w-96 md:w-[49%]'}`}
-          >
-            <h2 className="text-2xl font-bold mb-2 text-[#0055c8]">{section.attributeMainCasual}</h2>
-            <div className={`flex justify-start gap-0  ${index % 3 === 2 ? 'flex-wrap' : 'flex-col'}`}>
-              {section.claims.map((claim: any) => (
-                <div key={claim.id} className={`p-2  ${index % 3 === 2 ? 'w-full md:w-[49%]' : 'w-full'}`}>
-                  {/* Render AttributePart as the headline 
-                  <Image
-                    src={`/svgs/features/icon(${claim.id % 12 + 1}).drawio.svg`}
-                    alt='icon'
-                    width={50}
-                    height={50}
-                  />
-                  {claim.attributes.Attribute.AttributePart && (
-                    <div className="text-xl font-bold mt-3 text-[#686c6e]">
-                      {claim.attributes.Attribute.AttributePart}
-                    </div>
-                  )}
-                  <p className="text-sm my-4 text-[#59606c]">
-                    {claim.attributes.ChannelVariants.Website.length < 150
-                      ? claim.attributes.ChannelVariants.Website
-                      : claim.attributes.ChannelVariants.WebsiteShort.length < 150
-                        ? claim.attributes.ChannelVariants.WebsiteShort
-                        : `${claim.attributes.ChannelVariants.WebsiteShort.substring(0, 150)}...`}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div> */}
 
-    // </div >
-    // );
 
 }
 
