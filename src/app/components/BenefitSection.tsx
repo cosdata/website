@@ -185,7 +185,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
             <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2'>
                 {/* Blazing-Fast Performance Section */}
                 <div className='mb-8 bg-[#f0f2f5] max-w-[400px] p-8'>
-                    <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
+                    <h2 className="text-3xl font-bold mb-4 text-[#f23665]">
                         Blazing-Fast Performance, Always
                     </h2>
                     <div className='flex flex-wrap justify-center gap-4'>
@@ -213,7 +213,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
 
                 {/* Toggle button for Magic Under the Hood */}
                 {!showMagic ? (
-                    <div className='justify-self-end'>
+                    <div className='flex justify-end w-full max-w-[400px]'>
                         <button
                             onClick={toggleShowMagic}
                             className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
@@ -222,37 +222,41 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                         </button>
                     </div>
                 ) : (
-                    <div className='bg-[#f0f2f5] max-w-[400px] p-8'>
-                        <h2 className="text-3xl font-bold mb-4 text-[#0055c8]">
-                            Magic Under the Hood
-                        </h2>
-                        <div className='flex flex-wrap justify-center gap-4'>
-                            {carouselItems.slice(4).map((item, index) => (
-                                <div
-                                    key={index}
-                                    className={`p-4 pt-8 w-96`}
-                                >
-                                    <Image src={`./svgs/features/icon(${index}).drawio.svg`}
-                                        alt='svg' width={50} height={50} />
-                                    {item.title && (
-                                        <h3 className="text-xl font-bold my-2 text-[#3d8bff]">
-                                            {item.title}
-                                        </h3>
-                                    )}
-                                    <div className="">
-                                        <p className="text-sm my-4 text-[#3d8bff]">
-                                            {item.description}
-                                        </p>
+                    <div>
+                        <div className='bg-[#f0f2f5] max-w-[400px] p-8 mb-8'>
+                            <h2 className="text-3xl font-bold mb-4 text-[#f23665]">
+                                Magic Under the Hood
+                            </h2>
+                            <div className='flex flex-wrap justify-center gap-4'>
+                                {carouselItems.slice(4).map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className={`p-4 pt-8 w-96`}
+                                    >
+                                        <Image src={`./svgs/features/icon(${index}).drawio.svg`}
+                                            alt='svg' width={50} height={50} />
+                                        {item.title && (
+                                            <h3 className="text-xl font-bold my-2 text-[#3d8bff]">
+                                                {item.title}
+                                            </h3>
+                                        )}
+                                        <div className="">
+                                            <p className="text-sm my-4 text-[#3d8bff]">
+                                                {item.description}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
-                        <button
-                            onClick={toggleShowMagic}
-                            className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
-                        >
-                            Back
-                        </button>
+                        <div className='flex justify-end w-full max-w-[400px]'>
+                            <button
+                                onClick={toggleShowMagic}
+                                className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
+                            >
+                                Hide
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
