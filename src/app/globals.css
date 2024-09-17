@@ -48,6 +48,7 @@ body {
 .image-container {
   /* width: 600px;  Set desired box size */
   /* max-width: 600px; */
+  /* background-color: white; */
   height: 600px; 
   overflow: hidden; /* Hide the parts of the image that exceed the container */
   position: relative;

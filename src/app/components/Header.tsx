@@ -26,7 +26,7 @@ export default function Header() {
       <header className="bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">
-            <Link href="/" ><div className='w-[15rem] h-10 relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
+            <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
 

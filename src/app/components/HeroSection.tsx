@@ -1,17 +1,8 @@
 "use client";
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { Orbitron, Audiowide } from 'next/font/google';
 
-const orbitron = Orbitron({
-  subsets: ['latin'],
-  weight: '500',
-});
 
-const audiowide = Audiowide({
-  subsets: ['latin'],
-  weight: '400',
-});
 
 const HeroSection = () => {
   const [showPoint, setShowPoint] = useState(true);
@@ -90,7 +81,7 @@ const HeroSection = () => {
                 src="/svgs/hybrid.drawio.svg"
                 alt="Image"
                 fill
-                className="object-contain image"
+                className="object-contain image z-10"
                 id="heroImage"
                 style={imageStyle} // Apply zoom effect
               />
