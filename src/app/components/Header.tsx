@@ -37,11 +37,11 @@ export default function Header() {
             <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About</Link>
             <button onClick={handleSignupClick} className="bg-[#3d8bff] text-[#ffffff] font-open-sans text-[15px] font-light leading-[22.5x] px-4 py-2  duration-300  border-[#3d8bff] border-2 hover:bg-white hover:text-black" >Sign up</button>
             <button onClick={handleLoginClick} className="bg-[#f23665] text-[#ffffff] font-open-sans text-[15px] font-light leading-[22.5px] px-4 py-2   duration-300  border-[#f23665] border-2 hover:bg-white hover:text-black">Login</button>
-            <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-gray-800">
+            {/* <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-gray-800">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
               </svg>
-            </Link>
+            </Link> */}
           </nav>
 
           {/* Hamburger Icon */}

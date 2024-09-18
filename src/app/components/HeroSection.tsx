@@ -53,7 +53,7 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="bg-transparent min-h-[80vh] py-10">
+    <main className="bg-transparent min-h-[50vh] py-10">
       <div className='max-w-7xl mx-auto py-0 px-0 sm:px-6'>
         <div className="flex flex-col xl:flex-row justify-center items-stretch">
           <div className="flex-grow gap-3 flex flex-col justify-center xl:w-5/12 xl:h-[600px] p-6">

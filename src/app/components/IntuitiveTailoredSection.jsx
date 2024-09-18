@@ -32,7 +32,7 @@ export default function IntuitiveTailoredSection() {
                 <div className="flex flex-col">
                     {items.map((item, index) => (
                         <div>
-                            <div className="flex gap-2 items-center justify-between space-y-4 my-6 mb-8" key={index}>
+                            <div className="flex flex-col lg:flex-row gap-2 items-center justify-between space-y-4 my-6 mb-8" key={index}>
                                 <div className="flex items-center gap-4">
                                     <Image
                                         src={`/svgs/features/icon(${index + 1}).drawio.svg`}
@@ -44,10 +44,10 @@ export default function IntuitiveTailoredSection() {
                                     </h1>
 
                                 </div>
-                                <div className="w-[600px]">
+                                <div className="lg:w-[600px] w-full">
                                     {item.points.map((point, index) => (
                                         <div className="text-[#3d8bff] my-1 flex gap-2" key={index}>
-                                            <span className=''>{'\u2022'}</span><span>{point}</span>
+                                            <span className=''>{'\u2022'}</span>{point}
                                         </div>
                                     ))}
                                 </div>

@@ -10,6 +10,7 @@ import { fetchClaim } from "./utils/api";
 import BenefitSection from "./components/BenefitSection";
 import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection.jsx"
 import EnterpisePowerSection from "./components/EnterprisePowerSection"
+import ElevateExperienceSection from "./components/ElevateExperienceSection"
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
@@ -23,6 +24,7 @@ export default async function Home() {
       <HeroSection />
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
       {/* <FeaturesSection claimsData={claim} /> */}
+      <ElevateExperienceSection />
       <BenefitSection claimsData={claim} />
       <IntuitiveTailoredSection />
       <EnterpisePowerSection />
