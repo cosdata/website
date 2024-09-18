@@ -1,4 +1,4 @@
-
+import Image from 'next/image';
 export default function IntuitiveTailoredSection() {
     const items = [
         {
@@ -33,7 +33,12 @@ export default function IntuitiveTailoredSection() {
                     {items.map((item, index) => (
                         <div>
                             <div className="flex gap-2 items-center justify-between space-y-4 my-6 mb-8" key={index}>
-                                <div className="w-[400px]">
+                                <div className="flex items-center gap-2">
+                                    <Image
+                                        src={`/svgs/features/icon(${index+1}).drawio.svg`}
+                                        alt="svg"
+                                        width={50}
+                                        height={50} />
                                     <h1 className="text-2xl font-semibold text-[#f23665] w-fit">
                                         {item.title}
                                     </h1>
@@ -41,13 +46,13 @@ export default function IntuitiveTailoredSection() {
                                 </div>
                                 <div className="w-[600px]">
                                     {item.points.map((point, index) => (
-                                        <div className="text-[#3d8bff]" key={index}>
-                                            {point}
+                                        <div className="text-[#3d8bff] my-1 flex" key={index}>
+                                            <span className='text-[#ffffff]'>{'\u2022'}</span><span>{point}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="w-full h-[1px] bg-[#f0f2f5] mt-4">
+                            <div className="w-full h-[2px] bg-[#ffffff] mt-4">
 
                             </div>
                         </div>

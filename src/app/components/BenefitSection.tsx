@@ -168,10 +168,10 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                 {carouselItems.map((item, index) => (
                                     <div key={index} className="min-w-72 p-4">
                                         <div className="p-8 pt-16 w-full max-w-[270px] h-[350px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
-                                            <Image src={`./svgs/features/icon(${index}).drawio.svg`}
+                                            <Image src={`./svgs/features/icon(${index + 1}).drawio.svg`}
                                                 alt='svg' height={50} width={50} />
                                             <h3 className="text-lg font-bold mb-6 mt-2 text-[#3d8bff]">{item.title}</h3>
-                                            <p className="text-sm text-[#3d8bff]">{item.description}</p>
+                                            <p className=" text-[#3d8bff]">{item.description}</p>
                                         </div>
                                     </div>
                                 ))}
