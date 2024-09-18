@@ -2,7 +2,7 @@ import Image from 'next/image';
 import GradientBackground from "./GradientBackground"
 export default function ElevateExperienceSection() {
     return (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
             <h1 className="text-[#0055c8] text-4xl font-bold mb-4 text-center">
                 Elevate Your Search Experience
             </h1>
@@ -20,9 +20,6 @@ export default function ElevateExperienceSection() {
                 </div>
                 <div className="relative w-1/2 h-[300px]">
                     {/* <div className=" w-[360px] h-[300px]"> */}
-                    <div className="relative w-[360px] h-[300px]  inset-0 z-0">
-                        <GradientBackground angle={0} />
-                    </div>
                     <Image
                         src={"/svgs/triangles.svg"}
                         alt="triangle"
