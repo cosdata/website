@@ -8,6 +8,7 @@ import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
 import { fetchClaim } from "./utils/api";
 import BenefitSection from "./components/BenefitSection";
+import IntuitiveTailoredSection  from "./components/IntuitiveTailoredSection.jsx"
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
@@ -22,6 +23,7 @@ export default async function Home() {
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
       {/* <FeaturesSection claimsData={claim} /> */}
       <BenefitSection claimsData={claim} />
+      <IntuitiveTailoredSection />
       <ScopioX100 />
       <VideoSection />
       <Footer />
