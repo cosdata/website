@@ -37,7 +37,7 @@ export default function EnterprisePowerSection() {
                     <div>
                         <div className="flex gap-2 items-center justify-between space-y-4 my-6 mb-8" key={index}>
                             <div className="flex items-center gap-2">
-                                <h1 className="text-2xl font-semibold text-[#f23665] w-fit">
+                                <h1 className="text-2xl font-semibold text-[#f23665] w-[400px]">
                                     {item.title}
                                 </h1>
                                 <Image
@@ -48,13 +48,13 @@ export default function EnterprisePowerSection() {
                             </div>
                             <div className="w-[600px]">
                                 {item.points.map((point, index) => (
-                                    <div className="text-[#3d8bff] my-1 flex" key={index}>
-                                        <span className='text-[#f0f2f5]'>{'\u2022'}</span><span>{point}</span>
+                                    <div className="text-[#3d8bff] my-1 flex gap-2" key={index}>
+                                        <span>{'\u2022'}</span><span>{point}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="w-full h-[1px] bg-[#f0f2f5] mt-4">
+                        <div className={`w-full h-[2px] bg-[#f0f2f5] mt-4 ${index === items.length - 1 ? 'hidden' : ''}`}>
 
                         </div>
                     </div>
