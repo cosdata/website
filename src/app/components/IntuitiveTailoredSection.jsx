@@ -1,4 +1,3 @@
-import { title } from "process"
 
 export default function IntuitiveTailoredSection() {
     const items = [
@@ -25,17 +24,17 @@ export default function IntuitiveTailoredSection() {
         }
     ]
     return (
-        <div className="bg-[#e7effc] p-6">
+        <div className="bg-[#f2f6fc] p-6">
             <div className="flex flex-col max-w-6xl mx-auto">
-                <div className="text-[#f23665] text-3xl font-semibold">
+                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center mb-6">
                     Intuitive and Tailored to Your Needs
                 </div>
                 <div className="flex flex-col">
                     {items.map((item, index) => (
                         <div>
-                            <div className="flex gap-2 items-center justify-between space-y-4 mt-4" key={index}>
+                            <div className="flex gap-2 items-center justify-between space-y-4 my-6 mb-8" key={index}>
                                 <div className="w-[400px]">
-                                    <h1 className="text-2xl font-semibold text-[#f47a96] w-fit">
+                                    <h1 className="text-2xl font-semibold text-[#f23665] w-fit">
                                         {item.title}
                                     </h1>
 
@@ -48,7 +47,7 @@ export default function IntuitiveTailoredSection() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="w-full h-[1px] bg-red-300 mt-4">
+                            <div className="w-full h-[1px] bg-[#f0f2f5] mt-4">
 
                             </div>
                         </div>

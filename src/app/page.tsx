@@ -8,22 +8,24 @@ import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
 import { fetchClaim } from "./utils/api";
 import BenefitSection from "./components/BenefitSection";
-import IntuitiveTailoredSection  from "./components/IntuitiveTailoredSection.jsx"
+import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection.jsx"
+import EnterpisePowerSection from "./components/EnterprisePowerSection"
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
   // Fetch the data directly in the component
   const claim = await fetchClaim();
-  
+
 
   return (
     <main className="bg-transparent">
-      
+
       <HeroSection />
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
       {/* <FeaturesSection claimsData={claim} /> */}
       <BenefitSection claimsData={claim} />
       <IntuitiveTailoredSection />
+      <EnterpisePowerSection />
       <ScopioX100 />
       <VideoSection />
       <Footer />
