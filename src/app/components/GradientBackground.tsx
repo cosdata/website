@@ -13,8 +13,11 @@ interface Ellipse {
     speedY: number;
     rotation: number;
 }
+interface GradientBackgroundProps {
+    angle: number;
+}
 
-const GradientBackground: React.FC = () => {
+const GradientBackground: React.FC<GradientBackgroundProps> = ({angle}) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
     useEffect(() => {
@@ -167,7 +170,7 @@ const GradientBackground: React.FC = () => {
         <div className="absolute inset-0 -z-10 max-h-[800px]">
             <canvas
                 ref={canvasRef}
-                className="w-full h-full transform -skew-y-12 origin-top-left"
+                className={`w-full h-full transform -skew-y-${angle} origin-top-left`}
             />
         </div>
     );
