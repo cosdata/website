@@ -28,8 +28,13 @@ export default function EnterprisePowerSection() {
         }
     ]
     return (
-        <div className="max-w-6xl md:mx-auto mt-20 mx-5 p-6">
-            <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-6">
+        <div className="max-w-6xl md:mx-auto mx-5 p-6">
+            {/* <div className='relative w-full h-[300px]'>
+                <Image
+                    src={"/svgs/lines.svg"}
+                    fill />
+            </div> */}
+            <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-6  mt-20">
                 Enterprise Power: Infinite Scale, Ironclad Security, Instant Rewind
             </div>
             <div className="flex flex-col">

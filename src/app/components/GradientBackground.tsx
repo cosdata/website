@@ -63,14 +63,13 @@ const GradientBackground: React.FC = () => {
       }));
     };
 
-    const drawRoundedTriangle = (
+    const drawTriangle = (
       x: number,
       y: number,
       size: number,
       rotation: number,
       color: string
     ) => {
-      const radius = size * 0.05; // Reduced radius for edgier look
       const height = size * Math.sqrt(3) / 2;
 
       ctx.save();
@@ -79,12 +78,9 @@ const GradientBackground: React.FC = () => {
       ctx.fillStyle = color;
 
       ctx.beginPath();
-      // Move to the top point
-      ctx.moveTo(0, -height / 2 + radius);
-      // Draw top edge with rounded corner
-      ctx.arcTo(-size / 2, height / 2, size / 2, height / 2, radius);
-      ctx.arcTo(size / 2, height / 2, 0, -height / 2, radius);
-      ctx.arcTo(0, -height / 2, -size / 2, height / 2, radius);
+      ctx.moveTo(0, -height / 2); // Top point of the triangle
+      ctx.lineTo(-size / 2, height / 2); // Bottom-left point
+      ctx.lineTo(size / 2, height / 2); // Bottom-right point
       ctx.closePath();
 
       ctx.fill();
@@ -125,7 +121,7 @@ const GradientBackground: React.FC = () => {
         const baseColor = lerpColor(color1, color2, t);
         const triangleColor = lerpColor(baseColor, [255, 255, 255], 0.2);
 
-        drawRoundedTriangle(
+        drawTriangle(
           shape.x,
           shape.y,
           shape.size,

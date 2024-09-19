@@ -28,9 +28,9 @@ export default async function Home() {
       <BenefitSection claimsData={claim} />
       <IntuitiveTailoredSection />
       <EnterpisePowerSection />
-      <ScopioX100 />
+      {/* <ScopioX100 />
       <VideoSection />
-      <Footer />
+      <Footer /> */}
     </main>
   );
 }
