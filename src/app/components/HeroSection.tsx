@@ -86,7 +86,7 @@ const HeroSection = () => {
                 style={imageStyle} // Apply zoom effect
               />
               {showPoint && (
-                <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-[1] fade-in flex justify-center items-center">
+                <div className="absolute  text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-10 fade-in flex justify-center items-center">
                   <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
                 </div>
               )}
