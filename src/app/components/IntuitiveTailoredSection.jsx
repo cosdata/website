@@ -39,7 +39,7 @@ export default function IntuitiveTailoredSection() {
                                         alt="svg"
                                         width={50}
                                         height={50} />
-                                    <h1 className="text-2xl font-semibold text-[#f23665] w-fit">
+                                    <h1 className="text-3xl font-semibold text-[#f23665] w-fit">
                                         {item.title}
                                     </h1>
 

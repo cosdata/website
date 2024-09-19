@@ -28,7 +28,7 @@ export default function EnterprisePowerSection() {
         }
     ]
     return (
-        <div className="max-w-6xl md:mx-auto mt-20 mx-5  p-6">
+        <div className="max-w-6xl md:mx-auto mt-20 mx-5 p-6">
             <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-6">
                 Enterprise Power: Infinite Scale, Ironclad Security, Instant Rewind
             </div>
@@ -42,7 +42,7 @@ export default function EnterprisePowerSection() {
                                     alt="svg"
                                     width={50}
                                     height={50} />
-                                <h1 className="text-2xl font-semibold text-[#f23665]">
+                                <h1 className="text-3xl font-semibold text-[#f23665]">
                                     {item.title}
                                 </h1>
 
