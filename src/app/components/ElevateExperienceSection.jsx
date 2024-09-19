@@ -10,11 +10,17 @@ export default function ElevateExperienceSection() {
                 <div className="lg:w-1/2">
 
                     <div className="flex flex-col gap-4">
-                        <p className="text-[#3d8bff] leading-relaxed">
-                            <span className="text-[#f23665] text-2xl font-semibold">Hybrid Search:</span> Fuse sparse and dense vector searches for unparalleled precision. Our vector database combines traditional keyword matching with AI-driven semantic understanding.
+                        <p className="text-[#3d8bff] leading-relaxed flex flex-col">
+                            <span className="text-[#f23665] text-2xl font-semibold">Hybrid Search</span>
+                            <span className='leading-[28px]'>
+                                Enhance search precision with our vector database, leveraging the power of combined sparse and dense vector searches to deliver highly relevant, context-rich results for complex queries.
+                            </span>
                         </p>
-                        <p className="text-[#3d8bff] leading-relaxed">
-                            <span className="text-[#f23665] text-2xl font-semibold">Knowledge-Graph Integration:</span> Enhance relevance by mapping structured data to vector embeddings. Seamlessly blend ontological relationships with contextual semantics.
+                        <p className="text-[#3d8bff] leading-relaxed flex flex-col">
+                            <span className="text-[#f23665] text-2xl font-semibold">Knowledge-Graph Integration</span>
+                            <span className='leading-[28px]'>
+                                Enhance relevance by mapping structured data to vector embeddings. Seamlessly blend ontological relationships with contextual semantics.
+                            </span>
                         </p>
                     </div>
                 </div>

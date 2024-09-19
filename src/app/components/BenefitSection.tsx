@@ -202,7 +202,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                     </h3>
                                 )}
                                 <div className="">
-                                    <p className="text-sm my-4 text-[#3d8bff]">
+                                    <p className=" my-4 text-[#3d8bff]">
                                         {item.description}
                                     </p>
                                 </div>
@@ -241,7 +241,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                             </h3>
                                         )}
                                         <div className="">
-                                            <p className="text-sm my-4 text-[#3d8bff]">
+                                            <p className="my-4 text-[#3d8bff]">
                                                 {item.description}
                                             </p>
                                         </div>
