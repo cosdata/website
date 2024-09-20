@@ -15,6 +15,7 @@ interface Shape {
 
 const GradientBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const svgImageRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -63,27 +64,27 @@ const GradientBackground: React.FC = () => {
       }));
     };
 
-    const drawTriangle = (
+    const drawTriangleSVG = (
       x: number,
       y: number,
       size: number,
-      rotation: number,
-      color: string
+      rotation: number
     ) => {
-      const height = size * Math.sqrt(3) / 2;
+      if (!svgImageRef.current) return;
 
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(rotation);
-      ctx.fillStyle = color;
 
-      ctx.beginPath();
-      ctx.moveTo(0, -height / 2); // Top point of the triangle
-      ctx.lineTo(-size / 2, height / 2); // Bottom-left point
-      ctx.lineTo(size / 2, height / 2); // Bottom-right point
-      ctx.closePath();
+      // Draw the SVG image to the canvas, scaling it based on size.
+      ctx.drawImage(
+        svgImageRef.current,
+        -size / 2,
+        -size / 2,
+        size,
+        size
+      );
 
-      ctx.fill();
       ctx.restore();
     };
 
@@ -117,17 +118,7 @@ const GradientBackground: React.FC = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       shapes.forEach((shape) => {
-        const t = shape.y / canvas.height;
-        const baseColor = lerpColor(color1, color2, t);
-        const triangleColor = lerpColor(baseColor, [255, 255, 255], 0.2);
-
-        drawTriangle(
-          shape.x,
-          shape.y,
-          shape.size,
-          shape.rotation,
-          `rgba(${triangleColor.join(",")},0.2)`
-        );
+        drawTriangleSVG(shape.x, shape.y, shape.size, shape.rotation);
 
         shape.x += shape.speedX;
         shape.y += shape.speedY;
@@ -170,6 +161,12 @@ const GradientBackground: React.FC = () => {
       <canvas
         ref={canvasRef}
         className="w-full h-full transform -skew-y-12 origin-top-left"
+      />
+      <img
+        ref={svgImageRef}
+        src={"/svgs/blue_triangle.svg"}
+        alt="Triangle SVG"
+        style={{ display: "none" }} // Hide the image element
       />
     </div>
   );
