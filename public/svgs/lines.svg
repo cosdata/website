@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    version="1.1"
-   width="1166.7439"
-   height="155.93739"
-   viewBox="-0.5 -0.5 1166.7439 155.93739"
+   width="1167.0103"
+   height="155.85551"
+   viewBox="-0.5 -0.5 1167.0103 155.85551"
    id="svg55"
    sodipodi:docname="lines.svg"
    inkscape:export-filename="lines.svg"
@@ -27,7 +27,7 @@
      id="defs1" />
   <g
      id="g55"
-     transform="matrix(1,0,0,0.84049161,-40.499997,-0.49999819)">
+     transform="matrix(2.027485,0,0,1.4087999,-81.599398,-0.5)">
     <g
        data-cell-id="0"
        id="g54"
@@ -122,90 +122,6 @@
                  stroke="none"
                  pointer-events="all"
                  id="path11" />
-            </g>
-          </g>
-          <g
-             data-cell-id="T83nffvXhVvffU0h5fAT-1803"
-             id="g15"
-             transform="translate(-1.9656076,-93.543304)">
-            <g
-               id="g14">
-              <path
-                 d="m 615,279 c -26.21,0 -49.85,-15.74 -59.96,-39.92 -10.12,-24.17 -4.72,-52.06 13.68,-70.72 l 10.64,10.5 c -14.17,14.37 -18.32,35.84 -10.53,54.45 7.78,18.62 25.99,30.74 46.17,30.74 z"
-                 fill="#f47a96"
-                 stroke="none"
-                 pointer-events="all"
-                 id="path13" />
-            </g>
-          </g>
-          <g
-             data-cell-id="T83nffvXhVvffU0h5fAT-1804"
-             id="g17"
-             transform="translate(-2.1673272,-93.543304)">
-            <g
-               id="g16">
-              <path
-                 d="m 615,264 c -20.16,0 -38.35,-12.11 -46.13,-30.7 -7.78,-18.6 -3.63,-40.05 10.53,-54.41 l 10.68,10.53 c -9.91,10.05 -12.81,25.07 -7.37,38.09 5.45,13.02 18.18,21.49 32.29,21.49 z"
-                 fill="#0054c9"
-                 stroke="none"
-                 pointer-events="all"
-                 id="path15" />
-            </g>
-          </g>
-          <g
-             data-cell-id="T83nffvXhVvffU0h5fAT-1805"
-             id="g19"
-             transform="translate(-2.386243,-93.282843)">
-            <g
-               id="g18">
-              <path
-                 d="m 615,249 c -14.11,0 -26.84,-8.47 -32.29,-21.49 -5.44,-13.02 -2.54,-28.03 7.36,-38.08 L 600.79,200 c -5.64,5.72 -7.3,14.28 -4.19,21.7 3.1,7.42 10.36,12.25 18.4,12.25 z"
-                 fill="#3d8bff"
-                 stroke="none"
-                 pointer-events="all"
-                 id="path17" />
-            </g>
-          </g>
-          <g
-             data-cell-id="T83nffvXhVvffU0h5fAT-1806"
-             id="g21"
-             transform="translate(-18.035659,5.5015875)">
-            <g
-               id="g20">
-              <path
-                 d="m 630.55208,150.22686 h 561.00002 l 30,-15 H 630.55208 Z"
-                 fill="#3d8bff"
-                 stroke="none"
-                 pointer-events="all"
-                 id="path19" />
-            </g>
-          </g>
-          <g
-             data-cell-id="T83nffvXhVvffU0h5fAT-1807"
-             id="g23"
-             transform="translate(-17.643407,5.7694576)">
-            <g
-               id="g22">
-              <path
-                 d="m 630.26989,164.89111 h 531.00001 l 30,-15 H 630.26989 Z"
-                 fill="#0054c9"
-                 stroke="none"
-                 pointer-events="all"
-                 id="path21" />
-            </g>
-          </g>
-          <g
-             data-cell-id="T83nffvXhVvffU0h5fAT-1808"
-             id="g25"
-             transform="translate(-17.347887,5.6400457)">
-            <g
-               id="g24">
-              <path
-                 d="m 629.97538,179.89111 h 501.00002 l 30,-15 H 629.97538 Z"
-                 fill="#f47a96"
-                 stroke="none"
-                 pointer-events="all"
-                 id="path23" />
             </g>
           </g>
         </g>

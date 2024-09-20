@@ -35,8 +35,8 @@ export default function EnterprisePowerSection() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div className="max-w-6xl md:mx-auto ">
-            <div className="relative w-full h-[100px] sm:h-[150px] lg:h-[300px] bg-cover bg-center bg-no-repeat" >
+        <div className="max-w-6xl md:mx-auto">
+            <div className="relative w-full h-[100px] sm:h-[150px] lg:h-[300px] bg-cover bg-center bg-no-repeat -z-10 ">
                 <Image
                     src={"/svgs/lines.svg"}
                     fill
@@ -44,7 +44,7 @@ export default function EnterprisePowerSection() {
                 />
             </div>
 
-            <div className="mx-5 p-6">
+            <div className="mx-5 p-6 bg-white">
                 <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16">
                     Enterprise Power: Infinite Scale, Ironclad Security, Instant Rewind
                 </div>
@@ -56,7 +56,7 @@ export default function EnterprisePowerSection() {
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className={`cursor-pointer p-4 mb-2 duration-100 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"
+                                className={`cursor-pointer p-4 mb-8 duration-100 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"
                                     }`}
                                 onClick={() => setActiveIndex(index)}
                             >
@@ -71,8 +71,7 @@ export default function EnterprisePowerSection() {
 
                                     {/* Heading section that expands */}
                                     <h2
-                                        className={`text-3xl font-semibold flex-grow ${index === activeIndex ? "text-[#f23665]" : "text-gray-700"
-                                            }`}
+                                        className={`text-3xl font-semibold flex-grow text-[#f23665]`}
                                     >
                                         {item.title}
                                     </h2>
@@ -85,7 +84,7 @@ export default function EnterprisePowerSection() {
 
                                 {/* Show points below the active heading */}
                                 <div
-                                    className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${index === activeIndex ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
                                         }`}
                                 >
                                     {item.points.map((point, idx) => (
@@ -95,13 +94,24 @@ export default function EnterprisePowerSection() {
                                     ))}
                                 </div>
 
+                                {/* Right column content under each headline in mobile view */}
+                                <div className="block lg:hidden mt-4">
+                                    {index === activeIndex && (
+                                        <div>
+                                            {item.points.map((point, idx) => (
+                                                <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
+                                                    <span>{'\u2022'}</span>{point}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         ))}
                     </div>
 
-
                     {/* Right column for the content of the selected heading */}
-                    <div className="lg:w-[400px] w-full p-6">
+                    <div className="hidden lg:block lg:w-[400px] w-full p-6">
                         <div className="lg:w-[600px] w-full">
                             {items[activeIndex].points.map((point, idx) => (
                                 <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
