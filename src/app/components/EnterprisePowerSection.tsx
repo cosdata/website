@@ -35,7 +35,7 @@ export default function EnterprisePowerSection() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div className="max-w-6xl md:mx-auto">
+        <div className="max-w-6xl md:mx-auto mt-20">
 
             <div className=" bg-white">
                 <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16">
