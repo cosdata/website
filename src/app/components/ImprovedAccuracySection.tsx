@@ -7,14 +7,14 @@ const ImprovedAccuracySection: React.FC = () => {
                 <div className="bg-gradient-to-b from-[#ffffff] to-[#f5dede] p-6 flex flex-col justify-between text-[#7db1ff] duration-300 hover:translate-y-[-20px]">
                     <h3 className="text-2xl font-bold mb-8 text-[#0055c8]">Improved accuracy leads to better decision-making.</h3>
                     <p className='text-[#7db1ff]'>
-                        CosData's unified hybrid search and knowledge graph approach combines precision with context, delivering spot-on results for complex queries. Find exactly what you need, leveraging both semantic connections and data relationships to enhance decision-making and improve outcomes.
+                        Unified hybrid search and knowledge graphs combine precision with context, delivering spot-on results for complex queries. Find precisely what you need, using semantic and relational data to improve decisions and outcomes.
                     </p>
                 </div>
 
                 <div className="bg-gradient-to-b from-[#ffffff] to-[#f5dede] p-6 flex flex-col justify-between text-[#7db1ff]  duration-300 hover:translate-y-[-20px]">
                     <h3 className="text-2xl font-bold mb-8 text-[#0055c8]  ">Faster and smoother user experience at any scale.</h3>
                     <p className='text-[#7db1ff]'>
-                        Lightning-fast indexing and querying, powered by optimized algorithms, advanced vectorization, and smart quantization techniques, keep CosData swift as your data grows. Enjoy instant responses and seamless interactions, regardless of dataset size or query complexity.
+                        Optimized vectorization and smart quantization enable rapid indexing and querying, maintaining speed as data volume increases. Experience swift responses and fluid interactions, unaffected by dataset size or query intricacy.
                     </p>
                 </div>
 
