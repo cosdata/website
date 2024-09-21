@@ -112,7 +112,7 @@ export default function EnterprisePowerSection() {
 
                     {/* Right column for the content of the selected heading */}
                     <div className="hidden lg:block lg:w-[400px] w-full p-6">
-                        <div className="lg:w-[600px] w-full">
+                        <div className="w-full">
                             {items[activeIndex].points.map((point, idx) => (
                                 <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
                                     <span>{'\u2022'}</span>{point}

@@ -9,7 +9,7 @@ export default function ElevateExperienceSection() {
             <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-4 lg:gap-1 lg:p-6">
                 <div className="lg:w-1/2">
 
-                    <div className="flex flex-col  gap-12">
+                    <div className="flex flex-col  gap-12 bg-white">
                         <p className="text-[#3d8bff] leading-relaxed flex flex-col">
                             <span className="text-[#f23665] text-3xl font-semibold mb-3">Hybrid Search</span>
                             <span className='leading-[30px]'>

@@ -2,8 +2,6 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-
-
 const HeroSection = () => {
   const [showPoint, setShowPoint] = useState(true);
   const [imageStyle, setImageStyle] = useState({}); // For zoom effect
@@ -53,12 +51,12 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="bg-transparent min-h-[50vh] py-10">
-      <div className='max-w-7xl mx-auto py-0 px-0 sm:px-6'>
-        <div className="flex flex-col xl:flex-row justify-center items-stretch">
-          <div className="flex-grow gap-3 flex flex-col justify-center xl:w-5/12 xl:h-[600px] p-6">
-            <h1 className="text-[48px] font-[500] leading-[56px] text-[#0055c8] mb-6">
-              <div className="text-[#f23665] text-[56px] font-bold">Supercharge Your AI</div>
+    <main className="bg-transparent min-h-[80vh] py-10 flex items-center justify-center">
+      <div className="max-w-6xl mx-auto py-0 px-0 sm:px-6">
+        <div className="flex w-full justify-center">
+          <div className="flex-grow flex flex-col p-6">
+            <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-[500] leading-[64px] text-[#0055c8] mb-6">
+              <div className="text-[#f23665] text-[50px] sm:text-[56px] lg:text-[72px] font-bold">Supercharge Your AI</div>
               <div>with Unified, Intelligent Search</div>
             </h1>
             <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
@@ -71,7 +69,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex-grow xl:flex hidden justify-center w-full xl:w-7/12 overflow-hidden">
+          {/* <div className="flex-grow xl:flex hidden justify-center w-full xl:w-7/12 overflow-hidden">
             <div
               className="w-full relative overflow-hidden image-container"
               onMouseMove={handleMouseMove}
@@ -91,7 +89,7 @@ const HeroSection = () => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </main>

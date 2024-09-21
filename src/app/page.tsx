@@ -8,9 +8,10 @@ import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
 import { fetchClaim } from "./utils/api";
 import BenefitSection from "./components/BenefitSection";
-import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection.jsx"
+import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection"
 import EnterpisePowerSection from "./components/EnterprisePowerSection"
 import ElevateExperienceSection from "./components/ElevateExperienceSection"
+import ImprovedAccuracySection from "./components/ImprovedAccuracySection"
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
@@ -24,6 +25,7 @@ export default async function Home() {
       <HeroSection />
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
       {/* <FeaturesSection claimsData={claim} /> */}
+      <ImprovedAccuracySection />
       <ElevateExperienceSection />
       <BenefitSection claimsData={claim} />
       <IntuitiveTailoredSection />

@@ -113,15 +113,15 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
     };
 
     return (
-        <div className="bg-transparent mx-auto mt-10">
+        <div className="bg-transparent mx-auto mt-10 ">
             {/* Main Heading */}
-            <h1 className="text-4xl font-bold text-center mb-8 text-[#0055c8]">The Fast and Effortless Way to Data</h1>
+            <h1 className="text-4xl font-bold text-center mb-8 text-[#0055c8] bg-white w-fit mx-auto">The Fast and Effortless Way to Data</h1>
 
             {/* Main Container */}
-            <div className='hidden lg:flex flex-col items-center w-6xl'>
+            <div className='hidden lg:flex flex-col items-center w-6xl '>
                 {/* Desktop Version */}
-                <div className='w-full py-12'>
-                    <div className='max-w-6xl mx-auto'>
+                <div className='w-full py-12 '>
+                    <div className='max-w-6xl mx-auto bg-white'>
                         {/* Subheading */}
                         <div className='flex justify-between w-full mb-6 relative'>
                             {activeSection === 'blazing' ? (
@@ -192,7 +192,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                         {carouselItems.slice(0, 4).map((item, index) => (
                             <div
                                 key={index}
-                                className={`p-4 pt-8 w-96`}
+                                className={`p-4 pt-8 max-w-96 w-full`}
                             >
                                 <Image src={`./svgs/features/icon(${index}).drawio.svg`}
                                     alt='svg' width={50} height={50} />
@@ -231,7 +231,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                 {carouselItems.slice(4).map((item, index) => (
                                     <div
                                         key={index}
-                                        className={`p-4 pt-8 w-96`}
+                                        className={`p-4 pt-8 max-w-96 w-full`}
                                     >
                                         <Image src={`./svgs/features/icon(${index}).drawio.svg`}
                                             alt='svg' width={50} height={50} />
