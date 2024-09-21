@@ -37,7 +37,7 @@ export default function EnterprisePowerSection() {
     return (
         <div className="max-w-6xl md:mx-auto">
 
-            <div className="mx-5 p-6 bg-white">
+            <div className=" bg-white">
                 <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16">
                     Enterprise Power: Infinite Scale, Ironclad Security, Instant Rewind
                 </div>
