@@ -11,15 +11,15 @@ const ImprovedAccuracySection: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="bg-[#7db1ff] p-6 flex flex-col justify-between">
-                    <h3 className="text-2xl font-bold text-[#f0f2f5] mb-8">Faster and smoother user experience at any scale.</h3>
-                    <p className='text-[#f23665]'>
+                <div className="bg-[#f0f2f5] p-6 flex flex-col justify-between">
+                    <h3 className="text-2xl font-bold text-[#f23665] mb-8">Faster and smoother user experience at any scale.</h3>
+                    <p className='text-[#7db1ff]'>
                         Lightning-fast indexing and querying, powered by optimized algorithms, advanced vectorization, and smart quantization techniques, keep CosData swift as your data grows. Enjoy instant responses and seamless interactions, regardless of dataset size or query complexity.
                     </p>
                 </div>
 
-                <div className="bg-[#f47a96] p-6 flex flex-col justify-between">
-                    <h3 className="text-2xl font-bold text-[#0055c8] mb-8">Saves time and money while simplifying processes.</h3>
+                <div className="bg-[#f0f2f5] p-6 flex flex-col justify-between">
+                    <h3 className="text-2xl font-bold text-[#f23665] mb-8">Saves time and money while simplifying processes.</h3>
                     <p className='text-[#7db1ff]'>
                         Intuitive APIs and smart auto-configuration streamline data management. Spend less time on setup and maintenance, more on utilizing insights. Simplify complex tasks and reduce costs with efficient, user-friendly tools.
                     </p>
