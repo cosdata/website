@@ -36,13 +36,6 @@ export default function EnterprisePowerSection() {
 
     return (
         <div className="max-w-6xl md:mx-auto">
-            <div className="relative w-full h-[100px] sm:h-[150px] lg:h-[300px] bg-cover bg-center bg-no-repeat -z-10 ">
-                <Image
-                    src={"/svgs/lines.svg"}
-                    fill
-                    alt="background lines"
-                />
-            </div>
 
             <div className="mx-5 p-6 bg-white">
                 <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16">
