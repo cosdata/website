@@ -14,15 +14,15 @@ const BackgroundOverlay = () => {
             <img
                 src="/svgs/dotted_triangle.svg" // Adjust the path as necessary
                 alt="Dotted Triangle"
-                className="absolute left-[0px] xl:left-[-500px] top-1/2 w-[1000px] h-[1000px] transform -translate-y-1/2 translate-x-1/2"
+                className="absolute left-[-500px] rotate-[30deg] top-1/2 w-[1000px] h-[1000px] transform -translate-y-1/2 translate-x-1/2"
             />
 
             {/* Bottom Middle Triangle */}
-            <img
+            {/* <img
                 src="/svgs/dotted_triangle.svg" // Adjust the path as necessary
                 alt="Dotted Triangle"
                 className="absolute left-1/2 bottom-0 w-[1000px] h-[1000px] rotate-[30deg] transform translate-x-1/2 translate-y-1/2"
-            />
+            /> */}
         </div>
     );
 };

@@ -51,7 +51,7 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="bg-transparent min-h-[80vh] xl:min-h-[50vh] py-10 flex justify-center">
+    <main className="bg-transparent lg:mb-10 py-10 flex justify-center">
       <div className="max-w-6xl mx-auto py-0 px-0 sm:px-6">
         <div className="flex w-full justify-center">
           <div className="flex-grow flex flex-col p-6">
