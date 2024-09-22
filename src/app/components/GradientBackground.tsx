@@ -37,53 +37,46 @@ const GradientBackground: React.FC = () => {
     let gradientSpeed = 0.002;
     let step = 0;
 
-    let shapes: Shape[] = [];
+    const shapes: Shape[] = [];
+    const fixedSize = 120; // Set a fixed size for all triangles
 
     const updateSize = () => {
       canvas.width = window.innerWidth * 1.2;
-      // Set the height to be the minimum of 1000px or 70% of window height.
       canvas.height = Math.min(window.innerHeight * 0.7, 1000);
       createShapes();
     };
 
     const createShapes = () => {
-      const size = canvas.width * 0.35; // Increased size of triangles
       const positions = [
         { x: canvas.width * 0.125, y: canvas.height * 0.125 },
         { x: canvas.width * 0.75, y: canvas.height * 0.25 },
         { x: canvas.width * 0.5, y: canvas.height * 0.95 },
       ];
 
-      shapes = positions.map((pos) => ({
-        x: pos.x,
-        y: pos.y,
-        size: size / 2,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        rotation: Math.random() * Math.PI * 2,
-      }));
+      shapes.length = 0; // Clear existing shapes
+
+      shapes.push(
+        ...positions.map((pos) => ({
+          x: pos.x,
+          y: pos.y,
+          size: fixedSize, // Use fixed size for all shapes
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          rotation: Math.random() * Math.PI * 2,
+        }))
+      );
     };
 
-    const drawTriangleSVG = (
-      x: number,
-      y: number,
-      size: number,
-      rotation: number
-    ) => {
+    const drawTriangleSVG = (x: number, y: number, size: number, rotation: number) => {
       if (!svgImageRef.current) return;
 
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(rotation);
 
-      // Draw the SVG image to the canvas, scaling it based on size.
-      ctx.drawImage(
-        svgImageRef.current,
-        -size / 2,
-        -size / 2,
-        size,
-        size
-      );
+      // Draw the SVG image to the canvas without stretching.
+      const offset = size / 2;
+      ctx.drawImage(svgImageRef.current, -offset, -offset, size, size); // Keep the size constant
 
       ctx.restore();
     };

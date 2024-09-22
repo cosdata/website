@@ -31,7 +31,7 @@ const BackgroundOverlay = () => {
             <img
                 src="/svgs/dotted_triangle.svg" // Adjust the path as necessary
                 alt="Dotted Triangle"
-                className="absolute left-[-500px] top-1/2 w-[1000px] h-[1000px]"
+                className="absolute lg:left-[-500px] top-1/2 w-[1000px] h-[1000px]"
                 style={{
                     transform: `translateX(50%) translateY(${scrollY * 0.005}px) rotate(${scrollY * 0.003}deg)` // Adjust movement and rotation factor as needed
                 }}
