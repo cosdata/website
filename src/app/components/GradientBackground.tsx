@@ -47,24 +47,20 @@ const GradientBackground: React.FC = () => {
     };
 
     const createShapes = () => {
-      const positions = [
-        { x: canvas.width * 0.125, y: canvas.height * 0.125 },
-        { x: canvas.width * 0.75, y: canvas.height * 0.25 },
-        { x: canvas.width * 0.5, y: canvas.height * 0.95 },
-      ];
+      const numTriangles = 6; // Set the number of triangles you want
 
       shapes.length = 0; // Clear existing shapes
 
-      shapes.push(
-        ...positions.map((pos) => ({
-          x: pos.x,
-          y: pos.y,
+      for (let i = 0; i < numTriangles; i++) {
+        shapes.push({
+          x: Math.random() * canvas.width, // Random X position
+          y: Math.random() * canvas.height, // Random Y position
           size: fixedSize, // Use fixed size for all shapes
           speedX: (Math.random() - 0.5) * 0.3,
           speedY: (Math.random() - 0.5) * 0.3,
           rotation: Math.random() * Math.PI * 2,
-        }))
-      );
+        });
+      }
     };
 
     const drawTriangleSVG = (x: number, y: number, size: number, rotation: number) => {

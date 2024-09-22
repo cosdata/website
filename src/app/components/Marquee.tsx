@@ -13,18 +13,23 @@ const Marquee: React.FC = () => {
     ];
 
     return (
-        <div className="relative overflow-hidden py-14 bg-white max-w-6xl mx-auto my-20">
+        <div className="relative overflow-hidden bg-white max-w-6xl mx-auto ">
             <div className="flex animate-marquee">
                 {[...images, ...images].map((src, index) => (
                     <img
                         key={index}
                         src={src}
                         alt={`Logo ${index + 1}`}
-                        className="w-48 ml-10"
+                        className="w-36 ml-10 filter grayscale"
                     />
                 ))}
             </div>
+            {/* Blur effect at the start */}
+            <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+            {/* Blur effect at the end */}
+            <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
         </div>
+
     );
 };
 

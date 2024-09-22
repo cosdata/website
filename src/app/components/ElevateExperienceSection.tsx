@@ -2,7 +2,7 @@ import Image from 'next/image';
 import GradientBackground from "./GradientBackground"
 export default function ElevateExperienceSection() {
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 my-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 mb-20">
             <h1 className="text-[#0055c8] text-4xl font-bold mb-12 text-center">
                 Elevate Your Search Experience
             </h1>
