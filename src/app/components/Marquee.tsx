@@ -7,9 +7,9 @@ const Marquee: React.FC = () => {
         <div className="relative overflow-hidden bg-white max-w-6xl mx-auto ">
             <div className='w-full h-[1px] bg-black'></div>
             <div className="flex animate-marquee items-center my-5">
-                <img src="./svgs/combined.svg" alt="logos" className=" w-[588px] ml-5 filter grayscale" />
-                <img src="./svgs/combined.svg" alt="logos" className="w-[588px] ml-5 filter grayscale" />
-                <img src="./svgs/combined.svg" alt="logos" className="w-[588px] ml-5 filter grayscale" />
+                <img src="./svgs/combined.svg" alt="logos" className=" h-[20px] ml-[20px] filter grayscale" />
+                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] ml-[20px] filter grayscale" />
+                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] ml-[20px] filter grayscale" />
             </div>
             <div className='w-full h-[1px] bg-black'></div>
             {/* Blur effect at the start */}

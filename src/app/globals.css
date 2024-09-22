@@ -102,12 +102,20 @@ body {
 
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-610px); } /* Adjust based on total width */
+  100% { transform: translateX(-738px); } /* Adjust based on total width */
 }
+
+@media screen and (max-width:360px) {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-728px); } /* Adjust based on total width */
+  }
+}
+
 
 .animate-marquee {
   display: flex;
-  animation: marquee 15s linear infinite; /* Adjust duration for speed */
+  animation: marquee 7s linear infinite; /* Adjust duration for speed */
   width: calc(100% * 2); /* Ensures it covers both sets */
   will-change: transform;
 }
