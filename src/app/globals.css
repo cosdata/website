@@ -102,7 +102,7 @@ body {
 
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-590px); } /* Adjust based on total width */
+  100% { transform: translateX(-610px); } /* Adjust based on total width */
 }
 
 .animate-marquee {

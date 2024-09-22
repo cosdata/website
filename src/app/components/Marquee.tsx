@@ -2,28 +2,14 @@
 import React from 'react';
 
 const Marquee: React.FC = () => {
-    const images = [
-        "/svgs/marquee_logos/amazon.svg",
-        "/svgs/marquee_logos/google.svg",
-        "/svgs/marquee_logos/cohere.svg",
-        "/svgs/marquee_logos/microsoft.svg",
-        "/svgs/marquee_logos/meta.svg",
-        "/svgs/marquee_logos/openai.svg",
-        "/svgs/marquee_logos/huggingface.svg",
-    ];
 
     return (
         <div className="relative overflow-hidden bg-white max-w-6xl mx-auto ">
             <div className='w-full h-[1px] bg-black'></div>
-            <div className="flex animate-marquee items-center">
-                {[...images, ...images, ...images].map((src, index) => (
-                    <img
-                        key={index}
-                        src={src}
-                        alt={`Logo ${index + 1}`}
-                        className=" w-16 ml-5 filter grayscale"
-                    />
-                ))}
+            <div className="flex animate-marquee items-center my-5">
+                <img src="./svgs/combined.svg" alt="logos" className=" w-[588px] ml-5 filter grayscale" />
+                <img src="./svgs/combined.svg" alt="logos" className="w-[588px] ml-5 filter grayscale" />
+                <img src="./svgs/combined.svg" alt="logos" className="w-[588px] ml-5 filter grayscale" />
             </div>
             <div className='w-full h-[1px] bg-black'></div>
             {/* Blur effect at the start */}
