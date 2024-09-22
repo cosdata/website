@@ -12,7 +12,7 @@ const ImprovedAccuracySection: React.FC = () => {
                 </div>
 
                 <div className="bg-gradient-to-b from-[#ffffff] to-[#f5dede] p-6 flex flex-col  text-[#3d8bff]  duration-300 hover:translate-y-[-20px]">
-                    <h3 className="text-2xl font-bold mb-4 text-[#0055c8]  ">Enjoy quick, smooth performance, regardless of size.</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-[#0055c8]  ">Enjoy quick, smooth performance at any scale.</h3>
                     <p className='text-[#3d8bff]'>
                         Optimized vectorization and smart quantization enable rapid indexing and querying, maintaining speed as data volume increases. Experience swift responses and fluid interactions, unaffected by dataset size or query intricacy.
                     </p>
