@@ -3,52 +3,55 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
-  const [showPoint, setShowPoint] = useState(true);
-  const [imageStyle, setImageStyle] = useState({}); // For zoom effect
-  const [animationEnded, setAnimationEnded] = useState(false); // Track if the animation has ended
-  const [lastMousePosition, setLastMousePosition] = useState({ xPercent: 50, yPercent: 50 }); // Track last mouse position
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPoint(false); // Hide the point after 20 seconds
-      setAnimationEnded(true); // Mark animation as ended
-    }, 20000); // 20 seconds duration
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [animationEnded]);
+  // Image Animation code
+  
+  // const [showPoint, setShowPoint] = useState(true);
+  // const [imageStyle, setImageStyle] = useState({}); // For zoom effect
+  // const [animationEnded, setAnimationEnded] = useState(false); // Track if the animation has ended
+  // const [lastMousePosition, setLastMousePosition] = useState({ xPercent: 50, yPercent: 50 }); // Track last mouse position
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!animationEnded) return; // Prevent zoom before animation ends
-    const imageContainer = e.currentTarget;
-    const rect = imageContainer.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const xPercent = (x / rect.width) * 100;
-    const yPercent = (y / rect.height) * 100;
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowPoint(false); // Hide the point after 20 seconds
+  //     setAnimationEnded(true); // Mark animation as ended
+  //   }, 20000); // 20 seconds duration
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [animationEnded]);
 
-    // Save the last mouse position in state
-    setLastMousePosition({ xPercent, yPercent });
+  // const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   if (!animationEnded) return; // Prevent zoom before animation ends
+  //   const imageContainer = e.currentTarget;
+  //   const rect = imageContainer.getBoundingClientRect();
+  //   const x = e.clientX - rect.left;
+  //   const y = e.clientY - rect.top;
+  //   const xPercent = (x / rect.width) * 100;
+  //   const yPercent = (y / rect.height) * 100;
 
-    setImageStyle({
-      transformOrigin: `${xPercent}% ${yPercent}%`,
-      transform: 'scale(1.5)',
-      transition: 'transform 1s ease',
-    });
-  };
+  //   // Save the last mouse position in state
+  //   setLastMousePosition({ xPercent, yPercent });
 
-  const handleMouseLeave = () => {
-    if (!animationEnded) return;
+  //   setImageStyle({
+  //     transformOrigin: `${xPercent}% ${yPercent}%`,
+  //     transform: 'scale(1.5)',
+  //     transition: 'transform 1s ease',
+  //   });
+  // };
 
-    // Keep the last mouse position as the transform origin
-    const { xPercent, yPercent } = lastMousePosition;
+  // const handleMouseLeave = () => {
+  //   if (!animationEnded) return;
 
-    setImageStyle({
-      transformOrigin: `${xPercent}% ${yPercent}%`, // Use last mouse position for zoom-out
-      transform: 'scale(1)',
-      transition: 'transform 1s ease',
-    });
-  };
+  //   // Keep the last mouse position as the transform origin
+  //   const { xPercent, yPercent } = lastMousePosition;
+
+  //   setImageStyle({
+  //     transformOrigin: `${xPercent}% ${yPercent}%`, // Use last mouse position for zoom-out
+  //     transform: 'scale(1)',
+  //     transition: 'transform 1s ease',
+  //   });
+  // };
 
   return (
     <main className="bg-transparent lg:mb-10 py-20 flex justify-center">

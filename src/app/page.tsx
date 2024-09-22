@@ -12,6 +12,7 @@ import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection"
 import EnterpisePowerSection from "./components/EnterprisePowerSection"
 import ElevateExperienceSection from "./components/ElevateExperienceSection"
 import ImprovedAccuracySection from "./components/ImprovedAccuracySection"
+import Marquee from "./components/Marquee";
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
@@ -26,6 +27,7 @@ export default async function Home() {
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
       {/* <FeaturesSection claimsData={claim} /> */}
       <ImprovedAccuracySection />
+      <Marquee />
       <ElevateExperienceSection />
       <BenefitSection claimsData={claim} />
       <IntuitiveTailoredSection />

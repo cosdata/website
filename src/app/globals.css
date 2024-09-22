@@ -45,12 +45,9 @@ body {
 }
 
 /* Container that holds the image */
-.image-container {
-  /* width: 600px;  Set desired box size */
-  /* max-width: 600px; */
-  /* background-color: white; */
+/* .image-container {
   height: 600px; 
-  overflow: hidden; /* Hide the parts of the image that exceed the container */
+  overflow: hidden; 
   position: relative;
 }
 @media screen and (max-width:900px) {
@@ -69,15 +66,11 @@ body {
   }
 }
 
-/* Image styling */
 .image {
   position: absolute;
-  /* width: 150%;  Make the image larger than the container */
-  /* height: 150%; Make the image larger than the container */
   animation: moveImage 20s ease-in-out;
 }
 
-/* Keyframes for moving the image and zooming out */
 @keyframes moveImage {
   0% { transform: translate(100%,-25%) scale(3)}
   15% {transform: translate(100%,-25%) scale(3)}
@@ -105,6 +98,17 @@ body {
   0% { transform: scale(1); }
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
+} */
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-71.5%); } /* Adjust based on total width */
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 10s linear infinite; /* Adjust duration for speed */
+  width: calc(100% * 2); /* Ensures it covers both sets */
 }
 
 
