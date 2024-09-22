@@ -115,7 +115,7 @@ body {
 
 .animate-marquee {
   display: flex;
-  animation: marquee 7s linear infinite; /* Adjust duration for speed */
+  animation: marquee 15s linear infinite; /* Adjust duration for speed */
   width: calc(100% * 2); /* Ensures it covers both sets */
   will-change: transform;
 }
