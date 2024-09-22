@@ -102,13 +102,14 @@ body {
 
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-71.5%); } /* Adjust based on total width */
+  100% { transform: translateX(-1620px); } /* Adjust based on total width */
 }
 
 .animate-marquee {
   display: flex;
   animation: marquee 10s linear infinite; /* Adjust duration for speed */
   width: calc(100% * 2); /* Ensures it covers both sets */
+  will-change: transform;
 }
 
 
