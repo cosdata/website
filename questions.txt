@@ -15,3 +15,5 @@
     - Github
     - Blog? A blog can be a good way to keep people in the loop and provide content that can be linked to in other places. For example, the technology overview can be a blog post to start
     - Anything else?
+-I think ideally the marquee would be above the ImprovedAccuracySection component, but it's difficult to make this look good with the shifting gradient in the background. I would consider making the gradient static and moving the marquee up
+-
