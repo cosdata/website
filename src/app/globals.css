@@ -102,14 +102,7 @@ body {
 
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-738px); } /* Adjust based on total width */
-}
-
-@media screen and (max-width:360px) {
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-728px); } /* Adjust based on total width */
-  }
+  100% { transform: translateX(-1154px); } /* Adjust based on total width */
 }
 
 
