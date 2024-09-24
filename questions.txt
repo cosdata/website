@@ -1,0 +1,17 @@
+-What is the right call to action (or two) for the hero block for the initial landing page? Options include...
+    - Sign up for a newsletter
+    - Sign up for a demo
+    - Sign up for a waitlist
+    - View Github
+    - Learn more
+        - Directs to Github
+        - Directs to a blog post
+-What is "a future ready AI data platform"? Is there a clearer way to position the product? Options include...
+    -Next-gen Vector Database. What I like about this is that it's clear that the core product is a Vector Database, and next-gen indicates that it's the latest and greatest.
+    -Other?
+-What should be included in the navbar for the initial landing page? Should optimize for getting something launched asap.
+    - About / Technology
+    - Get Early Access
+    - Github
+    - Blog? A blog can be a good way to keep people in the loop and provide content that can be linked to in other places. For example, the technology overview can be a blog post to start
+    - Anything else?
