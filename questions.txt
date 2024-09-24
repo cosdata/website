@@ -16,4 +16,6 @@
     - Blog? A blog can be a good way to keep people in the loop and provide content that can be linked to in other places. For example, the technology overview can be a blog post to start
     - Anything else?
 -I think ideally the marquee would be above the ImprovedAccuracySection component, but it's difficult to make this look good with the shifting gradient in the background. I would consider making the gradient static and moving the marquee up
--
+-What should the learn more button on the ImprovedAccuracySection lead to?
+    - A blog post? Could create a blog post with three sections covering each of these categories and link to the appropriate section using anchor links.
+-In the "Elevate Your Search Experience" section, what are the key things we want to convey?

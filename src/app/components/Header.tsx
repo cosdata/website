@@ -29,9 +29,9 @@ export default function Header() {
             <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
-            <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About Us</Link>
-            <Link href="#" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
+            <Link href="/blog#intelligent-queries" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
+            <Link href="/blog" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About Us</Link>
+            <Link href="/blog" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <a href="#" className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-sm">
               Get Early Access
             </a>
@@ -58,9 +58,9 @@ export default function Header() {
       {isOpen && (
         <div className="md:hidden bg-transparent">
           <div className="px-4 py-6 space-y-4">
-            <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
-            <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
-            <Link href="#" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
+            <Link href="/blog#intelligent-queries" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
+            <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
+            <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <a href="#" className="block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 text-sm text-center">
               Get Early Access
             </a>

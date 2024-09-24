@@ -1,13 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface FeatureItem {
     title: string;
     svg: string;
     description: string;
+    anchorLink: string;
 }
 
-const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description }) => {
+const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLink }) => {
     return (
         <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 text-[#3d8bff] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
             <div className="flex flex-col">
@@ -18,7 +20,7 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description }) => {
                 <p className='mb-5'>{description}</p>
             </div>
             <div>
-                <button className='px-4 py-2 bg-[#3d8bff] text-white rounded-md hover:bg-[#0055c8] transition-colors duration-300'>Learn More</button>
+                <Link href={`/blog${anchorLink}`} className='px-4 py-2 bg-[#3d8bff] text-white rounded-md hover:bg-[#0055c8] transition-colors duration-300'>Learn More</Link>
             </div>
         </div>
     );
@@ -29,17 +31,20 @@ const ImprovedAccuracySection: React.FC = () => {
         {
             title: "Intelligent Queries, Accurate Results",
             svg: "/svgs/features/icon(1).drawio.svg",
-            description: "Elevate query accuracy with our hybrid search and knowledge graph technology. Seamlessly blend semantic understanding and relational data to deliver precise results for even the most complex inquiries."
+            description: "Elevate query accuracy with our hybrid search and knowledge graph technology. Seamlessly blend semantic understanding and relational data to deliver precise results for even the most complex inquiries.",
+            anchorLink: "#intelligent-queries"
         },
         {
             title: "Lightning-Fast Search at Scale",
             svg: "/svgs/features/icon(2).drawio.svg",
-            description: "Experience unparalleled speed with our optimized vectorization and smart quantization techniques. Enjoy rapid indexing and querying that scales effortlessly, regardless of your dataset size or query complexity."
+            description: "Experience unparalleled speed with our optimized vectorization and smart quantization techniques. Enjoy rapid indexing and querying that scales effortlessly, regardless of your dataset size or query complexity.",
+            anchorLink: "#lightning-fast-search"
         },
         {
             title: "Streamlined Setup, Reduced Costs",
             svg: "/svgs/features/icon(3).drawio.svg",
-            description: "Streamline your workflow with intuitive APIs and intelligent auto-configuration. Focus on deriving insights rather than managing setup, while our efficient tools simplify tasks and optimize resource utilization."
+            description: "Streamline your workflow with intuitive APIs and intelligent auto-configuration. Focus on deriving insights rather than managing setup, while our efficient tools simplify tasks and optimize resource utilization.",
+            anchorLink: "#streamlined-setup"
         }
     ];
 
@@ -52,6 +57,7 @@ const ImprovedAccuracySection: React.FC = () => {
                         title={item.title}
                         svg={item.svg}
                         description={item.description}
+                        anchorLink={item.anchorLink}
                     />
                 ))}
             </div>
