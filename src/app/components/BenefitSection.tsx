@@ -166,8 +166,8 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                 }}
                             >
                                 {carouselItems.map((item, index) => (
-                                    <div key={index} className="min-w-72 p-4">
-                                        <div className="p-8 pt-16 w-full max-w-[270px] h-[350px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede]">
+                                    <div key={index} className="min-w-72 p-4 ">
+                                        <div className="p-8 pt-16 w-full max-w-[270px] h-[350px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede] rounded-lg shadow-md">
                                             <Image src={`./svgs/features/icon(${index + 1}).drawio.svg`}
                                                 alt='svg' height={50} width={50} />
                                             <h3 className="text-lg font-bold mb-6 mt-2 text-[#3d8bff]">{item.title}</h3>
@@ -182,9 +182,9 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
             </div>
 
             {/* Mobile version */}
-            <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2'>
+            <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2 '>
                 {/* Blazing-Fast Performance Section */}
-                <div className='mb-8 bg-[#f0f2f5] max-w-[400px] p-8'>
+                <div className='mb-8 bg-[#f0f2f5] max-w-[400px] p-8 rounded-lg shadow-md'>
                     <h2 className="text-3xl font-bold mb-4 text-[#f23665]">
                         Blazing-Fast Performance, Always
                     </h2>
@@ -216,14 +216,14 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                     <div className='flex justify-end w-full max-w-[400px]'>
                         <button
                             onClick={toggleShowMagic}
-                            className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
+                            className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2 rounded-lg shadow-md"
                         >
                             How do we achieve this?
                         </button>
                     </div>
                 ) : (
                     <div>
-                        <div className='bg-[#f0f2f5] max-w-[400px] p-8 mb-8'>
+                        <div className='bg-[#f0f2f5] max-w-[400px] p-8 mb-8 rounded-lg shadow-md'>
                             <h2 className="text-3xl font-bold mb-4 text-[#f23665]">
                                 Magic Under the Hood
                             </h2>
@@ -252,7 +252,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                         <div className='flex justify-end w-full max-w-[400px]'>
                             <button
                                 onClick={toggleShowMagic}
-                                className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2"
+                                className="bg-[#f0f2f5] border-[#f0f2f5] border-2 border-solid duration-100 text-[#0055c8] w-fit p-2 rounded-lg shadow-md"
                             >
                                 Hide
                             </button>

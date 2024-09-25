@@ -1,15 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface FeatureItem {
     title: string;
     svg: string;
     description: string;
+    anchorLink: string;
 }
 
-const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description }) => {
+const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLink }) => {
     return (
-        <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6  text-[#3d8bff] transition-transform duration-300 hover:-translate-y-5'>
+        <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 text-[#3d8bff] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
             <div className="flex flex-col">
                 <div className="flex items-center gap-4 mb-4">
                     <Image src={svg} alt={title} width={50} height={50} />
@@ -18,7 +20,7 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description }) => {
                 <p className='mb-5'>{description}</p>
             </div>
             <div>
-                <button className=' underline'>Learn More</button>
+                <Link href={`/blog${anchorLink}`} className='px-4 py-2 bg-[#3d8bff] text-white rounded-md hover:bg-[#0055c8] transition-colors duration-300'>Learn More</Link>
             </div>
         </div>
     );
@@ -27,19 +29,22 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description }) => {
 const ImprovedAccuracySection: React.FC = () => {
     const items: FeatureItem[] = [
         {
-            title: "Boost accuracy for smarter choices",
+            title: "Intelligent Queries, Accurate Results",
             svg: "/svgs/features/icon(1).drawio.svg",
-            description: "Hybrid search and knowledge graphs combine precision and context for accurate complex queries. Find exactly what you need, using semantic and relational data to improve outcomes."
+            description: "Elevate query accuracy with our hybrid search and knowledge graph technology. Seamlessly blend semantic understanding and relational data to deliver precise results for even the most complex inquiries.",
+            anchorLink: "#intelligent-queries"
         },
         {
-            title: "Swift, scalable performance",
+            title: "Lightning-Fast Search at Scale",
             svg: "/svgs/features/icon(2).drawio.svg",
-            description: "Optimized vectorization and smart quantization enable rapid indexing and querying as data volume grows. Experience swift responses regardless of dataset size or query complexity."
+            description: "Experience unparalleled speed with our optimized vectorization and smart quantization techniques. Enjoy rapid indexing and querying that scales effortlessly, regardless of your dataset size or query complexity.",
+            anchorLink: "#lightning-fast-search"
         },
         {
-            title: "Streamline: save time and money",
+            title: "Streamlined Setup, Reduced Costs",
             svg: "/svgs/features/icon(3).drawio.svg",
-            description: "Intuitive APIs and auto-configuration streamline data management. Focus on insights, not setup. Simplify tasks and cut costs with efficient tools."
+            description: "Streamline your workflow with intuitive APIs and intelligent auto-configuration. Focus on deriving insights rather than managing setup, while our efficient tools simplify tasks and optimize resource utilization.",
+            anchorLink: "#streamlined-setup"
         }
     ];
 
@@ -52,6 +57,7 @@ const ImprovedAccuracySection: React.FC = () => {
                         title={item.title}
                         svg={item.svg}
                         description={item.description}
+                        anchorLink={item.anchorLink}
                     />
                 ))}
             </div>
