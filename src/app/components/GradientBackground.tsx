@@ -47,7 +47,7 @@ const GradientBackground: React.FC = () => {
     };
 
     const createShapes = () => {
-      const numTriangles = 6; // Set the number of triangles you want
+      const numTriangles = window.innerWidth < 768 ? 3 : 6; // 3 triangles for mobile view, 6 for larger screens
 
       shapes.length = 0; // Clear existing shapes
 
