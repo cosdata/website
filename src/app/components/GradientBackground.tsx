@@ -28,13 +28,13 @@ const GradientBackground: React.FC = () => {
 
     const colors: ColorArray[] = [
       [255, 182, 193], // Lighter Pink #FFB6C1
-      [173, 216, 230], // Light Blue #ADE8E6 (new, lighter blue)
-      [135, 206, 235], // Sky Blue #87CEEB (new)
-      [240, 248, 255], // Alice Blue #F0F8FF (new, very light blue)
+      [77, 169, 255],  // Light blue #4DA9FF
+      [0, 102, 204],   // Dark blue #0066CC
+      [255, 255, 255], // White #FFFFFF
     ];
 
     let colorIndices = [0, 1, 2, 3];
-    let gradientSpeed = 0.0015; // Slowed down for smoother transitions
+    let gradientSpeed = 0.002;
     let step = 0;
 
     const shapes: Shape[] = [];
@@ -47,7 +47,7 @@ const GradientBackground: React.FC = () => {
     };
 
     const createShapes = () => {
-      const numTriangles = 6; // Set the number of triangles you want
+      const numTriangles = window.innerWidth < 768 ? 3 : 6; // 3 triangles for mobile view, 6 for larger screens
 
       shapes.length = 0; // Clear existing shapes
 
