@@ -11,7 +11,7 @@ interface FeatureItem {
 
 const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLink }) => {
     return (
-        <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 text-[#3d8bff] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
+        <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 text-gray-700 transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
             <div className="flex flex-col">
                 <div className="flex items-center gap-4 mb-4">
                     <Image src={svg} alt={title} width={50} height={50} />
@@ -20,7 +20,7 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
                 <p className='mb-5'>{description}</p>
             </div>
             <div>
-                <Link href={`/blog${anchorLink}`} className='px-4 py-2 bg-[#3d8bff] text-white rounded-md hover:bg-[#0055c8] transition-colors duration-300'>Learn More</Link>
+                <Link href={`/blog${anchorLink}`} className='px-4 py-2 bg-transparent text-[#3d8bff] border-2 border-[#3d8bff] rounded-md hover:bg-[#3d8bff] hover:text-white transition-colors duration-300 font-semibold'>Learn More</Link>
             </div>
         </div>
     );
