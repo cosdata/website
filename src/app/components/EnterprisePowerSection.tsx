@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function EnterprisePowerSection() {
     const items = [
         {
-            title: "Ready to Grow with You",
+            title: "Unbounded Scalability",
             points: [
                 "Near-linear scalability for predictable, efficient query performance.",
                 "Unbounded scalability for consistent high-speed results with massive datasets.",
@@ -13,7 +13,7 @@ export default function EnterprisePowerSection() {
             ]
         },
         {
-            title: "Built for Serious Business",
+            title: "Secure Data Management",
             points: [
                 "Reliable data security against unauthorized access and threats.",
                 "Enterprise-grade privacy with robust data isolation.",
@@ -21,7 +21,7 @@ export default function EnterprisePowerSection() {
             ]
         },
         {
-            title: "Data Time Machine",
+            title: "Advanced Version Control Features",
             points: [
                 "Git-style versioning for your datasets.",
                 "Audit changes and track data lineage.",
@@ -37,7 +37,7 @@ export default function EnterprisePowerSection() {
         <div className="max-w-6xl md:mx-auto mt-20">
             <div className="bg-white">
                 <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16">
-                    Enterprise Power: Infinite Scale, Ironclad Security, Instant Rewind
+                    Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-6">
