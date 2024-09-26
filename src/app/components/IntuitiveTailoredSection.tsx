@@ -4,35 +4,35 @@ export default function IntuitiveTailoredSection() {
         {
             title: "Effortless Management",
             points: [
-                "RESTful APIs: Manage all database functions effortlessly with intuitive HTTP interfaces.",
-                "Client SDKs: Access the database easily with SDKs available in multiple programming languages."
+                "RESTful APIs: Easily manage all database functions through intuitive HTTP interfaces for seamless interaction.",
+                "Client SDKs: Quickly integrate with your preferred programming language using SDKs available across multiple platforms."
             ]
         },
         {
             title: "Optimized Indexing",
             points: [
-                "Dense Vector Index: Efficient and precise indexing with optimized HNSW algorithm.",
-                "Sparse Vector Index: Expertly designed for SPLADE-generated sparse vectors, outperforming BM25 indices."
+                "Dense Vector Index: Achieve high-efficiency indexing using our optimized HNSW algorithm for precise search results.",
+                "Sparse Vector Index: Designed for SPLADE-generated sparse vectors, our system outperforms traditional BM25 indices for more accurate indexing."
             ]
         },
         {
             title: "Flexible Hyperparameter Control",
             points: [
-                "Auto-configuration: Insights-driven setup automatically fine-tunes the system for best results.",
-                "Manual Precision: Precisely control indexing and querying parameters for custom setups."
+                "Auto-configuration: Automatically fine-tune system parameters with insights-driven setup for optimal performance without manual effort.",
+                "Manual Precision: Gain full control by customizing indexing and querying parameters for specialized use cases and performance needs."
             ]
         }
     ]
     return (
         <div className="bg-[#f2f6fc] p-6">
             <div className="flex flex-col max-w-6xl mx-auto">
-                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center mb-6">
-                    Intuitive and Tailored to Your Needs
+                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center my-6">
+                    Precision Performance, Effortless Integration
                 </div>
                 <div className="flex flex-col">
                     {items.map((item, index) => (
                         <div>
-                            <div className="flex flex-col lg:flex-row gap-2 items-center justify-between space-y-4 my-6 mb-8" key={index}>
+                            <div className="flex flex-col lg:flex-row gap-8 items-center justify-between space-y-4 my-6 mb-8" key={index}>
                                 <div className="flex items-center gap-4">
                                     <Image
                                         src={`/svgs/features/icon(${index + 1}).drawio.svg`}
@@ -42,23 +42,24 @@ export default function IntuitiveTailoredSection() {
                                     <h1 className="text-3xl font-semibold text-[#f23665] w-fit">
                                         {item.title}
                                     </h1>
-
                                 </div>
                                 <div className="lg:w-[600px] w-full">
-                                    {item.points.map((point, index) => (
-                                        <div className="text-[#3d8bff] my-1 flex gap-2" key={index}>
-                                            <span className=''>{'\u2022'}</span>{point}
-                                        </div>
-                                    ))}
+                                    {item.points.map((point, index) => {
+                                        const [boldText, ...rest] = point.split(':');
+                                        return (
+                                            <div className="text-black my-2" key={index}>
+                                                <span className="font-bold">{boldText}:</span>
+                                                <span>{rest.join(':')}</span>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
                             <div className={`w-full h-[2px] bg-[#ffffff] mt-4 ${index === items.length - 1 ? 'hidden' : ''}`}>
-
                             </div>
                         </div>
                     ))}
                 </div>
-
             </div>
         </div>
     )
