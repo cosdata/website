@@ -26,7 +26,7 @@ export default function IntuitiveTailoredSection() {
     return (
         <div className="bg-[#f2f6fc] p-6">
             <div className="flex flex-col max-w-6xl mx-auto">
-                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center my-6">
+                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center my-6 text-center">
                     Precision Performance, Effortless Integration
                 </div>
                 <div className="flex flex-col">

@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-
+import Biz from "./svgs/Biz";
 export default function EnterprisePowerSection() {
     const items = [
         {
             title: "Unbounded Scalability",
+            svg: "/svgs/grow.svg",
             points: [
                 "Near-linear scalability for predictable, efficient query performance.",
                 "Unbounded scalability for consistent high-speed results with massive datasets.",
@@ -14,6 +15,7 @@ export default function EnterprisePowerSection() {
         },
         {
             title: "Secure Data Management",
+            svg: "/svgs/biz.svg",
             points: [
                 "Reliable data security against unauthorized access and threats.",
                 "Enterprise-grade privacy with robust data isolation.",
@@ -22,6 +24,7 @@ export default function EnterprisePowerSection() {
         },
         {
             title: "Advanced Version Control Features",
+            svg: "/svgs/grow.svg",
             points: [
                 "Git-style versioning for your datasets.",
                 "Audit changes and track data lineage.",
@@ -32,11 +35,20 @@ export default function EnterprisePowerSection() {
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
+    const [animate, setAnimate] = useState(false); // Track if the animation should trigger
+
+    // Effect to trigger animation when activeIndex changes
+    useEffect(() => {
+        setAnimate(true); // Trigger animation when activeIndex changes
+        const timeout = setTimeout(() => setAnimate(false), 500); // Reset animation after 500ms (duration of transition)
+
+        return () => clearTimeout(timeout); // Cleanup timeout on unmount
+    }, [activeIndex]);
 
     return (
         <div className="max-w-6xl md:mx-auto mt-20">
-            <div className="bg-white">
-                <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16">
+            <div className="bg-white p-4"> {/* Added padding for the container */}
+                <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16 text-center">
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
@@ -64,17 +76,8 @@ export default function EnterprisePowerSection() {
                                 </div>
 
                                 <div
-                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
                                 >
-                                    {item.points.map((point, idx) => (
-                                        <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
-                                            <span>{'\u2022'}</span>{point}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Right column content now included in the expandable section */}
-                                <div className={`block lg:hidden mt-4 transition-[max-height] duration-300 ease-in-out overflow-hidden ${index === activeIndex ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
                                     {item.points.map((point, idx) => (
                                         <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
                                             <span>{'\u2022'}</span>{point}
@@ -85,14 +88,23 @@ export default function EnterprisePowerSection() {
                         ))}
                     </div>
 
-                    <div className="hidden lg:block lg:w-[400px] w-full p-6">
+                    {/* Right column with SVG animation */}
+                    <div className="hidden lg:block lg:w-[400px] w-full p-6 relative">
                         <div className="w-full">
-                            {items[activeIndex].points.map((point, idx) => (
-                                <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
-                                    <span>{'\u2022'}</span>{point}
-                                </div>
-                            ))}
+                            {/* Animated SVG */}
+                            <div className={`absolute flex justify-center items-center transform transition-all duration-[2s] ease-in-out
+                                ${animate ? "translate-x-[50px] scale-150" : "translate-x-0 scale-100"}`}
+                            >
+                                <Biz />
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                {/* Mobile view SVG */}
+                <div className="lg:hidden flex justify-center p-6">
+                    <div className={`transition-transform duration-500 ease-in-out ${animate ? "translate-y-0 scale-150" : "translate-y-8 scale-100"}`}>
+                        <Biz />
                     </div>
                 </div>
             </div>

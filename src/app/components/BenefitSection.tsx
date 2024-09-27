@@ -74,8 +74,9 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
             <h1 className="text-4xl font-bold text-center mb-8 text-[#0055c8] bg-white w-fit mx-auto">Blazing-Fast Performance, Always</h1>
 
             {/* Subheading */}
-            <h2 className="text-2xl font-semibold text-center mb-4 text-black mx-auto max-w-screen-md">
+            <h2 className="text-xl font-semibold text-center mb-4 text-[#374151] mx-auto max-w-screen-md">
                 Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale
+                <span><a href="#" className='underline ml-1'>Learn More</a></span>
             </h2>
 
             {/* Main Container */}
@@ -93,7 +94,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                                 alt='svg' height={50} width={50} className="h-12 w-12" />
                                         </div>
                                         <h3 className="text-lg font-bold mb-6 mt-2 text-[#3d8bff]">{item.title}</h3>
-                                        <p className="text-black">{item.description}</p>
+                                        <p className="text-[#374151]">{item.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -105,10 +106,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
             {/* Mobile version */}
             <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2 '>
                 {/* Blazing-Fast Performance Section */}
-                <div className='mb-8 bg-[#f0f2f5] max-w-[400px] p-8 rounded-lg shadow-md'>
-                    <h2 className="text-3xl font-bold mb-4 text-[#f23665]">
-                        Blazing-Fast Performance, Always
-                    </h2>
+                <div className='mb-8 bg-[#f0f2f5] p-8 rounded-lg shadow-md'>
                     <div className='flex flex-wrap justify-center gap-4'>
                         {carouselItems.map((item, index) => (
                             <div
@@ -120,7 +118,7 @@ export default function BenefitSection({ claimsData }: BenefitSectionProps) {
                                         alt='svg' width={50} height={50} className="h-12 w-12" />
                                 </div>
                                 {item.title && (
-                                    <h3 className="text-xl font-bold my-2 text-[#3d8bff]">
+                                    <h3 className="text-xl font-bold my-2 text-[#3d8bff] text-center">
                                         {item.title}
                                     </h3>
                                 )}

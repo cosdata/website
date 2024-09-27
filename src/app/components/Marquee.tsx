@@ -7,9 +7,9 @@ const Marquee: React.FC = () => {
         <div className="relative overflow-hidden bg-white max-w-6xl mx-auto mt-8">
             {/* <div className='w-full h-[1px] bg-[#f0f2f5]'></div> */}
             <div className="flex animate-marquee items-center my-5 py-4">
-                <img src="./svgs/combined.svg" alt="logos" className=" h-[20px] w-[1134px]  min-w-[1134px] ml-[20px] filter grayscale" />
-                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] w-[1134px] min-w-[1134px] ml-[20px] filter grayscale" />
-                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] w-[1134px] min-w-[1134px] ml-[20px] filter grayscale" />
+                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] w-[1134px]  min-w-[1134px] ml-[20px] filter grayscale opacity-70" />
+                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] w-[1134px] min-w-[1134px] ml-[20px] filter grayscale opacity-70" />
+                <img src="./svgs/combined.svg" alt="logos" className="h-[20px] w-[1134px] min-w-[1134px] ml-[20px] filter grayscale opacity-70" />
             </div>
             {/* <div className='w-full h-[1px] bg-[#f0f2f5]'></div> */}
             {/* Blur effect at the start */}
