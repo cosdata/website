@@ -8,45 +8,32 @@ import Grow from "./svgs/Grow";
 interface Item {
     title: string;
     svg: string;
-    points: string[];
+    summary: string; // Changed from points to summary
     description: string;
 }
 
-const EnterprisePowerSection: React.FC = () => {
+const EnterprisePowerSectionAlt: React.FC = () => {
     const items: Item[] = [
         {
             title: "Unbounded Scalability",
             svg: "/svgs/grow.svg",
-            points: [
-                "Near-linear scalability for predictable, efficient query performance.",
-                "Unbounded scalability for consistent high-speed results with massive datasets.",
-                "Engineered to maintain fast performance as your data expands."
-            ],
+            summary: "Our near-linear scalability ensures consistent high-speed performance with massive datasets, maintaining efficiency as your data expands.",
             description:
                 "Cosdata leverages the separation of storage and compute for superior scalability and performance. Our high-performance storage engine, combined with efficient data handling, advanced caching, and lazy loading techniques, maximizes resource utilization and processing capabilities in cloud environments."
         },
         {
             title: "Secure Data Management",
             svg: "/svgs/biz.svg",
-            points: [
-                "Reliable data security against unauthorized access and threats.",
-                "Enterprise-grade privacy with robust data isolation.",
-                "Fault-tolerant design with backup and recovery for consistent performance."
-            ],
+            summary: "We provide enterprise-grade security, privacy, and fault-tolerance, ensuring reliable data protection and consistent performance even in challenging conditions.",
             description:
                 "Cosdata ensures enterprise-grade data management with rigorous security protocols. Our privacy-focused architecture offers data isolation and fault-tolerance for resilient performance, even during challenging conditions."
         },
         {
             title: "Advanced Version Control Features",
             svg: "/svgs/grow.svg",
-            points: [
-                "Git-style versioning for your datasets.",
-                "Audit changes and track data lineage.",
-                "Time-travel to any previous state.",
-                "Easily revert or branch your data."
-            ],
+            summary: "Manage your data with Git-style version control, allowing for easy auditing, time-travel, branching, and reliable data recovery.",
             description:
-                "Manage your data with Git-style version control. Audit changes, track data lineage, and revert to any previous state. Cosdata’s version control allows for easy branching and reliable data recovery."
+                "Manage your data with Git-style version control. Audit changes, track data lineage, and revert to any previous state. Cosdata's version control allows for easy branching and reliable data recovery."
         }
     ];
 
@@ -85,19 +72,13 @@ const EnterprisePowerSection: React.FC = () => {
                                     <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
                                         {item.title}
                                     </h2>
-                                    <span className={`text-3xl transition-transform ${index === activeIndex ? "rotate-90" : "rotate-0"}`}>
-                                        <Image src="/svgs/arrow.svg" height={30} width={30} alt="arrow" />
+                                    <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-[0deg]" : "text-gray-400 rotate-[90deg]"}`}>
+                                        <Image src="/svgs/arrow.svg" height={24} width={24} alt="arrow" />
                                     </span>
                                 </div>
 
-                                <div
-                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}`}
-                                >
-                                    {item.points.map((point, idx) => (
-                                        <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
-                                            <span>{'\u2022'}</span>{point}
-                                        </div>
-                                    ))}
+                                <div className="mt-4 text-[#374151]">
+                                    {item.summary}
                                 </div>
                             </div>
                         ))}
@@ -145,4 +126,4 @@ const EnterprisePowerSection: React.FC = () => {
     );
 };
 
-export default EnterprisePowerSection;
+export default EnterprisePowerSectionAlt;
