@@ -36,8 +36,8 @@ export default function Header() {
   };
 
   // Calculate dynamic padding
-  const maxPadding = 24; // 6 * 4 = 24 (py-6 in Tailwind is 1.5rem, which is 24px)
-  const minPadding = 8; // Reduced minimum padding for a stronger effect
+  const maxPadding = 20; // 6 * 4 = 24 (py-6 in Tailwind is 1.5rem, which is 24px)
+  const minPadding = 6; // Reduced minimum padding for a stronger effect
   const dynamicPadding = maxPadding - (scrollProgress * (maxPadding - minPadding));
 
   const toggleDrawer = () => {
