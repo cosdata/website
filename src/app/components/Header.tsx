@@ -6,16 +6,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
-  const [opacity, setOpacity] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
-    const maxScroll = 100; // Reduced from 200 to make the transition faster
-    const newOpacity = Math.min(scrollPosition / maxScroll, 1);
-    setOpacity(newOpacity);
+    const maxScroll = 80;
+    const progress = Math.min(scrollPosition / maxScroll, 1);
+    setScrollProgress(progress);
   }, []);
 
   useEffect(() => {
@@ -25,6 +25,20 @@ export default function Header() {
   }, [handleScroll]);
 
   const isLandingPage = pathname === '/';
+
+  // Calculate dynamic styles
+  const headerStyle = {
+    backgroundColor: isLandingPage ? `rgba(255, 255, 255, ${scrollProgress})` : 'white',
+    boxShadow: scrollProgress > 0 
+      ? `0 2px 4px rgba(0, 0, 0, ${0.1 + scrollProgress * 0.1})`
+      : 'none',
+    transition: 'box-shadow 0.3s ease',
+  };
+
+  // Calculate dynamic padding
+  const maxPadding = 24; // 6 * 4 = 24 (py-6 in Tailwind is 1.5rem, which is 24px)
+  const minPadding = 8; // Reduced minimum padding for a stronger effect
+  const dynamicPadding = maxPadding - (scrollProgress * (maxPadding - minPadding));
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -44,12 +58,12 @@ export default function Header() {
         className={`fixed top-0 left-0 right-0 z-50 ${
           isLandingPage ? '' : 'bg-white shadow-md'
         }`}
-        style={{
-          backgroundColor: isLandingPage ? `rgba(255, 255, 255, ${opacity})` : undefined,
-          boxShadow: isLandingPage && opacity > 0 ? `0 1px 3px rgba(0, 0, 0, ${opacity * 0.1})` : undefined,
-        }}
+        style={headerStyle}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+        <div 
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center transition-all duration-300"
+          style={{ paddingTop: `${dynamicPadding}px`, paddingBottom: `${dynamicPadding}px` }}
+        >
           <div className="text-2xl font-bold text-gray-800">
             <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
           </div>
@@ -80,7 +94,8 @@ export default function Header() {
       </header>
 
       {isOpen && (
-        <div className="fixed top-[88px] left-0 right-0 bg-white shadow-md md:hidden z-40">
+        <div className="fixed left-0 right-0 bg-white shadow-md md:hidden z-40"
+             style={{ top: `${dynamicPadding * 2 + 20}px` }}> {/* Adjust top based on header height */}
           <div className="px-4 py-6 space-y-4">
             <Link href="/blog#intelligent-queries" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
             <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
@@ -94,7 +109,7 @@ export default function Header() {
           </div>
         </div>
       )}
-      <div className="h-[88px]"></div> {/* Spacer */}
+      <div style={{ height: `${dynamicPadding * 2 + 20}px` }}></div> {/* Dynamic spacer */}
     </>
   );
 }
