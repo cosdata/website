@@ -39,11 +39,11 @@ export default function IntuitiveTailoredSection() {
                                         alt="svg"
                                         width={50}
                                         height={50} />
-                                    <h1 className="text-3xl font-semibold text-[#f23665] w-fit">
+                                    <h1 className="text-2xl sm:text-3xl font-semibold text-[#f23665] w-fit">
                                         {item.title}
                                     </h1>
                                 </div>
-                                <div className="lg:w-[600px] w-full">
+                                <div className="lg:w-[600px] lg:min-w-[600px] w-full">
                                     {item.points.map((point, index) => {
                                         const [boldText, ...rest] = point.split(':');
                                         return (

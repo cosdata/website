@@ -53,15 +53,21 @@ const EnterprisePowerSection: React.FC = () => {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [animate, setAnimate] = useState(false);
+    const [mobileView, setMobileView] = useState(false);
 
-    // Trigger animation whenever the active index changes
     useEffect(() => {
         setAnimate(true);
         const timeout = setTimeout(() => setAnimate(false), 3000);
 
         return () => clearTimeout(timeout);
     }, [activeIndex]);
-
+    useEffect(() => {
+        if (window.innerWidth < 768) {
+            setMobileView(true)
+        } else {
+            setMobileView(false)
+        }
+    }, [])
     return (
         <div className="max-w-6xl md:mx-auto mt-20">
             <div className="bg-white p-4">
@@ -69,8 +75,8 @@ const EnterprisePowerSection: React.FC = () => {
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="lg:w-[600px] w-full">
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="md:w-[600px] w-full">
                         {items.map((item, index) => (
                             <div
                                 key={index}
@@ -93,7 +99,7 @@ const EnterprisePowerSection: React.FC = () => {
                                 </div>
 
                                 <div
-                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? "max-h-[1080] opacity-100" : "max-h-0 opacity-0"}`}
+                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}
                                 >
                                     {item.points.map((point, idx) => (
                                         <div className="text-[#374151] my-2 flex gap-2" key={idx}>
@@ -101,31 +107,34 @@ const EnterprisePowerSection: React.FC = () => {
                                         </div>
                                     ))}
                                     {/* Mobile view SVG and description */}
-                                    <div className="lg:hidden flex flex-col items-center p-6">
-                                        <div>
-                                            {activeIndex === 0 ? (
-                                                <Grow active={animate} width={400} height={300} />
-                                            ) : activeIndex === 1 ? (
-                                                <Biz active={animate} width={400} height={300} />
-                                            ) : (
-                                                <Lock active={animate} width={400} height={300} />
-                                            )}
-                                        </div>
+                                    {mobileView && (
+                                        <div className="md:hidden flex flex-col items-center p-6">
+                                            <div>
+                                                {activeIndex === 0 ? (
+                                                    <Grow active={animate} width={400} height={300} />
+                                                ) : activeIndex === 1 ? (
 
-                                        {/* Description in mobile view */}
-                                        <div className="mt-6 text-lg text-[#374151]">
-                                            {items[activeIndex].description}
+                                                    <Biz active={animate} width={400} height={300} />
+                                                ) : (
+                                                    <Lock active={animate} width={400} height={300} />
+                                                )}
+                                            </div>
+
+                                            {/* Description in mobile view */}
+                                            <div className="mt-6  text-[#374151]">
+                                                {items[activeIndex].description}
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Right column with SVG animation and description for desktop */}
-                    <div className="hidden lg:block lg:w-1/2 w-full pl-6">
+                    {/* Right column with SVG animation and description */}
+                    {!mobileView && (<div className="hidden md:block md:w-1/2 w-full pl-6">
                         <div className="w-full h-[220px] flex justify-center items-center">
-                            <div className="absolute flex justify-center items-center">
+                            <div className={`absolute flex justify-center items-center`}>
                                 {activeIndex === 0 ? (
                                     <Grow active={animate} width={400} height={300} />
                                 ) : activeIndex === 1 ? (
@@ -137,11 +146,14 @@ const EnterprisePowerSection: React.FC = () => {
                         </div>
 
                         {/* Description below the SVG */}
-                        <div className="mt-6 text-lg text-[#374151]">
+                        <div className="mt-6 text-[#374151]">
                             {items[activeIndex].description}
                         </div>
                     </div>
+                    )}
                 </div>
+
+
             </div>
         </div>
     );
