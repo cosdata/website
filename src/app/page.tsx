@@ -13,6 +13,7 @@ import EnterpisePowerSection from "./components/EnterprisePowerSection"
 import AdvancedSearchSection from "./components/AdvancedSearchSection"
 import IntelligentQueriesSection from "./components/IntelligentQueriesSection"
 import Marquee from "./components/Marquee";
+import UseCases from './components/UseCases';
 
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
@@ -30,6 +31,10 @@ export default async function Home() {
       <Marquee />
       <AdvancedSearchSection />
       <BlazingFastSection claimsData={claim} />
+      <div className="max-w-6xl mx-auto my-8">
+        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+      </div>
+      <UseCases />
       <IntuitiveTailoredSection />
       <EnterpisePowerSection />
       {/* <ScopioX100 />
