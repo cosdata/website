@@ -31,12 +31,12 @@ export default async function Home() {
       <Marquee />
       <AdvancedSearchSection />
       <BlazingFastSection claimsData={claim} />
+      <IntuitiveTailoredSection />
+      <EnterpisePowerSection />
       <div className="max-w-6xl mx-auto my-8">
         <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
       </div>
       <UseCases />
-      <IntuitiveTailoredSection />
-      <EnterpisePowerSection />
       {/* <ScopioX100 />
       <VideoSection />
       <Footer /> */}
