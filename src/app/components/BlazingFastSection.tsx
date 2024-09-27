@@ -76,7 +76,7 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
             {/* Subheading */}
             <h2 className="text-xl font-semibold text-center mb-4 text-[#374151] mx-auto max-w-screen-md">
                 Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale
-                <span><a href="#" className='underline ml-1'>Learn More</a></span>
+                <span><a href="#" className='underline ml-1 text-[#0055c8]'>Learn More</a></span>
             </h2>
 
             {/* Main Container */}

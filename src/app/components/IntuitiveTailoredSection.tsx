@@ -47,7 +47,7 @@ export default function IntuitiveTailoredSection() {
                                     {item.points.map((point, index) => {
                                         const [boldText, ...rest] = point.split(':');
                                         return (
-                                            <div className="text-black my-2" key={index}>
+                                            <div className=" text-[#374151] my-2" key={index}>
                                                 <span className="font-bold">{boldText}:</span>
                                                 <span>{rest.join(':')}</span>
                                             </div>

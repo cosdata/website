@@ -1,14 +1,45 @@
-export default function Biz() {
+"use client"
+import styles from "./Biz.module.css";
+
+import { FC, useEffect } from "react";
+
+interface BizProps {
+  active: boolean;
+  width: number;
+  height: number;
+}
+
+const Biz: FC<BizProps> = ({ active, width, height }) => {
+  useEffect(() => {
+    console.log("Runned", active);
+
+    const svgElement = document.getElementById("svg1");
+
+    if (svgElement) {
+      if (active) {
+        svgElement.classList.add(styles.active);
+      } else {
+        svgElement.classList.remove(styles.active);
+      }
+    }
+
+    // Optionally, return a cleanup function if needed:
+    return () => {
+      svgElement?.classList.remove(styles.active);
+    };
+  }, [active]);
   return (
     <svg
-      width="100%"
-      height="100%"
+      width={`${width}px`}
+      height={`${height}px`}
       viewBox="0 0 160 108"
       version="1.1"
       id="svg1"
       xmlns="http://www.w3.org/2000/svg"
+      // className={active ? "active" : ""}
+      className="active"
     >
-      <defs id="defs1">
+      <defs>
         {/* Remove inkscape-specific elements */}
       </defs>
       <g id="layer1">
@@ -20,7 +51,7 @@ export default function Biz() {
           rx="14.016179"
           ry="14.344008"
           transform="scale(-1)"
-          className="svg-elem-1"
+          className={styles["svg-elem-1"]}
         />
         <ellipse
           style={{ opacity: 0.5, fill: "rgb(241, 42, 141)", stroke: "none", strokeWidth: 0.403248 }}
@@ -30,45 +61,48 @@ export default function Biz() {
           rx="7.4749618"
           ry="7.626832"
           transform="scale(-1)"
-          className="svg-elem-2"
+          className={styles["svg-elem-2"]}
         />
         <g
           id="g27"
           style={{ opacity: 0.5, fill: "#f12a8d", stroke: "#98bff1", strokeWidth: 3.64724 }}
-          className="svg-elem-3"
+          className={styles["svg-elem-3"]}
         >
           <path
             d="M 86.159863,79.63502 V 41.886766 l 21.171317,-1.047739 v 40.103054 z"
             style={{ fill: "rgb(215, 215, 255)", fillRule: "evenodd", stroke: "none" }}
-            className="svg-elem-4"
+            className={styles["svg-elem-4"]}
           />
           <path
             d="M 29.833049,68.41067 86.159863,41.886766 107.33118,40.839027 20.522731,68.090687 Z"
-            style={{ fill: "rgb(175, 175, 222)", fillRule: "evenodd", stroke: "none" }}
-            className="svg-elem-5"
+            style={{ fill: "rgb(77, 77, 159)", fillRule: "evenodd", stroke: "none" }}
+            className={styles["svg-elem-5"]}
           />
           <path
             d="m 20.522731,46.945501 86.808449,33.99658 V 40.839027 l -86.808449,27.25166 z"
-            style={{ fill: "rgb(233, 233, 255)", fillRule: "evenodd", stroke: "none" }}
-            className="svg-elem-6"
+            style={{ fill: "rgb(233, 233, 255)", fillRule: "evenodd", stroke: "none", zIndex: 2 }}
+            className={styles["svg-elem-6"]}
           />
           <path
             d="M 29.833049,46.546321 86.159863,79.63502 107.33118,80.942081 20.522731,46.945501 Z"
             style={{ fill: "rgb(77, 77, 159)", fillRule: "evenodd", stroke: "none" }}
-            className="svg-elem-7"
+            className={styles["svg-elem-7"]}
           />
           <path
             d="M 29.833049,46.546321 V 68.41067 L 20.522731,68.090687 V 46.945501 Z"
             style={{ fill: "rgb(53, 53, 100)", fillRule: "evenodd", stroke: "none" }}
-            className="svg-elem-8"
+            className={styles["svg-elem-8"]}
           />
           <path
             d="M 29.833049,46.546321 86.159863,79.63502 V 41.886766 L 29.833049,68.41067 Z"
             style={{ fill: "rgb(134, 134, 191)", fillRule: "evenodd", stroke: "none" }}
-            className="svg-elem-9"
+            className={styles["svg-elem-9"]}
           />
         </g>
       </g>
     </svg>
   );
-}
+};
+
+export default Biz;
+
