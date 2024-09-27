@@ -30,231 +30,166 @@ const Grow: FC<GrowProps> = ({ active, width, height }) => {
 
     return (
         <svg
-        width={`${width}px`}
-        height={`${height}px`}
-        viewBox="0 0 160 108"
+        // width="100%"
+        // height="100%"
+        viewBox="0 0 100 108"
         id="svg2"
+        className="w-auto h-[280px] "
       >
-        <defs id="defs1" />
+        <defs id="defs1">
+        </defs>
         <g  id="layer1">
           <rect
             style={{
-              opacity: 0.299868,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.964999,
+              strokeWidth: 0.41809,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
-            }}
-            id="rect9"
-            width={51.645432}
-            height={5.9816022}
-            x={2.4292006}
-            y={98.356567}
-            ry={2.9908011}
-            className={styles["svg-elem-1"]}
-          />
-          <rect
-            style={{
-              opacity: 0.299868,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
-              stroke: "none",
-              strokeWidth: 0.964999,
-              strokeLinecap: "round",
-              strokeMiterlimit: 0,
-              strokeOpacity: 1,
-            }}
-            id="rect10"
-            width={41.182247}
-            height={5.3223324}
-            x={34.040493}
-            y={91.396935}
-            ry={2.6611662}
-            className={styles["svg-elem-2"]}
-          />
-          <rect
-            style={{
-              opacity: 0.37552,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
-              stroke: "none",
-              strokeWidth: 0.964999,
-              strokeLinecap: "round",
-              strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
             id="rect11"
-            width={32.125374}
-            height={5.9109893}
-            x={60.518848}
-            y={83.801811}
-            ry={2.6611662}
-            className={styles["svg-elem-3"]}
-          />
+            width={5.1103683}
+            height={23.073254}
+            x={14.103748}
+            y={71.187233}
+            className={styles["svg-elem-1"]}          />
           <rect
             style={{
-              opacity: 0.37552,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.891377,
+              strokeWidth: 0.500232,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
-            }}
-            id="rect11-6"
-            width={27.073322}
-            height={5.984611}
-            x={78.476883}
-            y={75.999512}
-            ry={2.6943114}
-            className={styles["svg-elem-4"]}
-          />
-          <rect
-            style={{
-              opacity: 0.37552,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
-              stroke: "none",
-              strokeWidth: 0.826282,
-              strokeLinecap: "round",
-              strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
             id="rect11-9"
-            width={23.013197}
-            height={6.0497065}
-            x={93.284767}
-            y={68.666237}
-            ry={2.7236176}
-            className={styles["svg-elem-5"]}
-          />
+            width={5.0282259}
+            height={33.569855}
+            x={29.035486}
+            y={60.480736}
+            className={styles["svg-elem-2"]}          />
           <rect
             style={{
-              opacity: 0.444122,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.811388,
+              strokeWidth: 0.555165,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
-            id="rect11-3"
-            width={22.136526}
-            height={6.0646005}
-            x={103.86337}
-            y={60.910744}
-            ry={2.7303228}
-            className={styles["svg-elem-6"]}
-          />
+            id="rect11-5"
+            width={4.9732933}
+            height={41.804329}
+            x={44.374958}
+            y={52.038269}
+            className={styles["svg-elem-3"]}          />
           <rect
             style={{
-              opacity: 0.444122,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.779792,
+              strokeWidth: 0.200544,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
-            id="rect11-2"
-            width={20.340118}
-            height={6.0961962}
-            x={113.94068}
-            y={53.093094}
-            ry={2.7445476}
-            className={styles["svg-elem-7"]}
-          />
+            id="rect11-00"
+            width={5.1103683}
+            height={5.3087087}
+            x={62.873665}
+            y={88.774117}
+            className={styles["svg-elem-4"]}          />
           <rect
             style={{
-              opacity: 0.444122,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.779792,
+              strokeWidth: 0.200544,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
-            id="rect11-2-7"
-            width={20.340118}
-            height={6.0961962}
-            x={119.47998}
-            y={45.661674}
-            ry={2.7445476}
-            className={styles["svg-elem-8"]}
-          />
+            id="rect11-00-5"
+            width={5.1103683}
+            height={5.3087087}
+            x={78.286896}
+            y={88.5877}
+            className={styles["svg-elem-5"]}          />
           <rect
             style={{
-              opacity: 0.461354,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.758234,
+              strokeWidth: 0.417223,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
-            id="rect11-2-2"
-            width={19.163244}
-            height={6.1177545}
-            x={124.05031}
-            y={38.184719}
-            ry={2.7542534}
-            className={styles["svg-elem-9"]}
-          />
+            id="rect11-6"
+            width={5.023025}
+            height={23.377178}
+            x={62.968712}
+            y={62.953552}
+            className={styles["svg-elem-6"]}          />
           <rect
             style={{
-              opacity: 0.5,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.743438,
+              strokeWidth: 0.42151,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
-            id="rect11-2-9"
-            width={18.378206}
-            height={6.1325502}
-            x={128.33025}
-            y={30.760023}
-            ry={2.7609146}
-            className={styles["svg-elem-10"]}
-          />
+            id="rect11-1"
+            width={5.0814581}
+            height={23.585718}
+            x={78.140846}
+            y={62.682671}
+            className={styles["svg-elem-7"]}          />
           <rect
             style={{
-              opacity: 0.5,
-              fill: "rgb(21, 50, 226)",
-              fillOpacity: 1,
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
               stroke: "none",
-              strokeWidth: 0.723339,
+              strokeWidth: 0.412555,
               strokeLinecap: "round",
               strokeMiterlimit: 0,
-              strokeOpacity: 1,
+              paintOrder: "stroke markers",
             }}
-            id="rect11-2-4"
-            width={17.341097}
-            height={6.1526489}
-            x={131.33145}
-            y={23.035734}
-            ry={2.769963}
-            className={styles["svg-elem-11"]}
-          />
+            id="rect11-0"
+            width={5.0814581}
+            height={22.594145}
+            x={62.940781}
+            y={40.389065}
+            className={styles["svg-elem-8"]}          />
+          <rect
+            style={{
+              opacity: 1,
+              fill: "rgb(253, 214, 224)",
+              stroke: "none",
+              strokeWidth: 0.408805,
+              strokeLinecap: "round",
+              strokeMiterlimit: 0,
+              paintOrder: "stroke markers",
+            }}
+            id="rect11-7"
+            width={5.0814581}
+            height={22.185347}
+            x={78.135506}
+            y={40.533939}
+            className={styles["svg-elem-9"]}          />
           <path
             style={{
               fontVariationSettings: "normal",
               opacity: 1,
               vectorEffect: "none",
-              fill: "rgb(249, 170, 213)",
+              fill: "rgb(253, 214, 224)",
               fillOpacity: 1,
               stroke: "none",
-              strokeWidth: "0.197448px",
+              strokeWidth: "0.264583px",
               strokeLinecap: "butt",
               strokeLinejoin: "miter",
               strokeMiterlimit: 4,
@@ -262,13 +197,13 @@ const Grow: FC<GrowProps> = ({ active, width, height }) => {
               stopColor: "rgb(0, 0, 0)",
               stopOpacity: 1,
             }}
-            d="m 132.04065,18.542534 7.27348,-13.4898475 c 0.86153,-1.6632061 2.28025,-1.9593974 3.54114,-0.2278852 l 6.73391,13.5051907 c 0.55329,1.674265 1.52955,2.809963 -1.66664,2.712091 l -14.12548,-0.007 c -2.58142,-0.02431 -2.44708,-1.237024 -1.75641,-2.492596 z"
-            id="path13"
-            className={styles["svg-elem-12"]}
+            d="M 62.890466,40.722839 C 61.674205,37.881703 59.94956,35.512509 55.693441,34.824058 L 73.562023,17.442874 c 0.383519,-0.194801 0.385266,-0.17798 0.617446,0.01823 L 90.81572,35.239482 c -3.127885,1.438622 -7.192658,2.023375 -7.633903,5.773888 l -5.061165,-0.11054 c 0.625654,-3.900083 3.049002,-5.904726 5.66782,-6.746295 l -9.472437,-9.720474 c -0.663103,-0.703571 -0.683973,-0.72055 -1.481171,0.07119 l -9.654523,9.552276 c 3.044529,0.756645 4.603336,4.468373 4.840913,6.686076 z"
+            id="path12"
+            className={styles["svg-elem-10"]}
           />
         </g>
       </svg>
-
+        
     );
 }
 

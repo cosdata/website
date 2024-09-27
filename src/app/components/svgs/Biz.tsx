@@ -30,14 +30,14 @@ const Biz: FC<BizProps> = ({ active, width, height }) => {
   }, [active]);
   return (
     <svg
-      width={`${width}px`}
-      height={`${height}px`}
-      viewBox="0 0 160 108"
+      // width={`${width}px`}
+      // height={`${height}px`}
+      viewBox="0 0 130 108"
       version="1.1"
       id="svg1"
       xmlns="http://www.w3.org/2000/svg"
       // className={active ? "active" : ""}
-      className="active"
+      className="h-[250px] w-auto"
     >
       <defs>
         {/* Remove inkscape-specific elements */}

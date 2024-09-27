@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Biz from "./svgs/Biz";
 import Grow from "./svgs/Grow";
+import Lock from "./svgs/Lock";
 
 interface Item {
     title: string;
@@ -38,7 +39,7 @@ const EnterprisePowerSection: React.FC = () => {
         },
         {
             title: "Advanced Version Control Features",
-            svg: "/svgs/grow.svg",
+            svg: "/svgs/lock.svg",
             points: [
                 "Git-style versioning for your datasets.",
                 "Audit changes and track data lineage.",
@@ -53,6 +54,7 @@ const EnterprisePowerSection: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animate, setAnimate] = useState(false);
 
+    // Trigger animation whenever the active index changes
     useEffect(() => {
         setAnimate(true);
         const timeout = setTimeout(() => setAnimate(false), 3000);
@@ -91,28 +93,45 @@ const EnterprisePowerSection: React.FC = () => {
                                 </div>
 
                                 <div
-                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}`}
+                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? "max-h-[1080] opacity-100" : "max-h-0 opacity-0"}`}
                                 >
                                     {item.points.map((point, idx) => (
-                                        <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
+                                        <div className="text-[#374151] my-2 flex gap-2" key={idx}>
                                             <span>{'\u2022'}</span>{point}
                                         </div>
                                     ))}
+                                    {/* Mobile view SVG and description */}
+                                    <div className="lg:hidden flex flex-col items-center p-6">
+                                        <div>
+                                            {activeIndex === 0 ? (
+                                                <Grow active={animate} width={400} height={300} />
+                                            ) : activeIndex === 1 ? (
+                                                <Biz active={animate} width={400} height={300} />
+                                            ) : (
+                                                <Lock active={animate} width={400} height={300} />
+                                            )}
+                                        </div>
+
+                                        {/* Description in mobile view */}
+                                        <div className="mt-6 text-lg text-[#374151]">
+                                            {items[activeIndex].description}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Right column with SVG animation and description */}
+                    {/* Right column with SVG animation and description for desktop */}
                     <div className="hidden lg:block lg:w-1/2 w-full pl-6">
-                        <div className="w-full h-[320px]">
-                            <div className={`absolute flex justify-center items-center transform transition-all duration-[3s] ease-in-out 
-                                ${animate ? "translate-x-[100px] translate-y-[20px] scale-[1.3]" : "translate-x-[50px] scale-100"}`}
-                            >
+                        <div className="w-full h-[220px] flex justify-center items-center">
+                            <div className="absolute flex justify-center items-center">
                                 {activeIndex === 0 ? (
                                     <Grow active={animate} width={400} height={300} />
-                                ) : (
+                                ) : activeIndex === 1 ? (
                                     <Biz active={animate} width={400} height={300} />
+                                ) : (
+                                    <Lock active={animate} width={400} height={300} />
                                 )}
                             </div>
                         </div>
@@ -121,23 +140,6 @@ const EnterprisePowerSection: React.FC = () => {
                         <div className="mt-6 text-lg text-[#374151]">
                             {items[activeIndex].description}
                         </div>
-                    </div>
-                </div>
-
-                {/* Mobile view SVG and description */}
-                <div className="lg:hidden flex flex-col items-center p-6">
-
-                    <div className={`transition-transform duration-[2s] ease-in-out ${animate ? "translate-y-0 scale-150" : "translate-y-8 scale-100"}`}>
-                        {activeIndex === 0 ? (
-                            <Grow active={animate} width={300} height={300} />
-                        ) : (
-                            <Biz active={animate} width={300} height={300} />
-                        )}
-                    </div>
-
-                    {/* Description in mobile view */}
-                    <div className="mt-6 text-lg text-[#374151] text-center">
-                        {items[activeIndex].description}
                     </div>
                 </div>
             </div>
