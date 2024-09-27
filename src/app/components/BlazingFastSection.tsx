@@ -40,14 +40,14 @@ interface Attributes {
     localizations: LocalizationData;
 }
 
-interface BenefitSectionProps {
+interface BlazingFastProps {
     claimsData: {
         id: number;
         attributes: Attributes;
     }[];
 }
 
-export default function BenefitSection({ claimsData }: BenefitSectionProps) {
+export default function BlazingFast({ claimsData }: BlazingFastProps) {
     // Data for the carousel cards
     const carouselItems = [
         {

@@ -7,11 +7,11 @@ import ScopioX100 from "./components/Scropix";
 import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
 import { fetchClaim } from "./utils/api";
-import BenefitSection from "./components/BenefitSection";
+import BlazingFastSection from "./components/BlazingFastSection";
 import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection"
 import EnterpisePowerSection from "./components/EnterprisePowerSection"
-import ElevateExperienceSection from "./components/ElevateExperienceSection"
-import ImprovedAccuracySection from "./components/ImprovedAccuracySection"
+import AdvancedSearchSection from "./components/AdvancedSearchSection"
+import IntelligentQueriesSection from "./components/IntelligentQueriesSection"
 import Marquee from "./components/Marquee";
 
 // Make the Home component async to support server-side data fetching
@@ -26,10 +26,10 @@ export default async function Home() {
       <HeroSection />
       {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
       {/* <FeaturesSection claimsData={claim} /> */}
-      <ImprovedAccuracySection />
+      <IntelligentQueriesSection />
       <Marquee />
-      <ElevateExperienceSection />
-      <BenefitSection claimsData={claim} />
+      <AdvancedSearchSection />
+      <BlazingFastSection claimsData={claim} />
       <IntuitiveTailoredSection />
       <EnterpisePowerSection />
       {/* <ScopioX100 />

@@ -26,7 +26,7 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
     );
 };
 
-const ImprovedAccuracySection: React.FC = () => {
+const IntelligentQueriesSection: React.FC = () => {
     const items: FeatureItem[] = [
         {
             title: "Intelligent Queries, Accurate Results",
@@ -65,4 +65,4 @@ const ImprovedAccuracySection: React.FC = () => {
     );
 };
 
-export default ImprovedAccuracySection;
+export default IntelligentQueriesSection;
