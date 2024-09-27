@@ -1,9 +1,19 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Biz from "./svgs/Biz";
-export default function EnterprisePowerSection() {
-    const items = [
+import Grow from "./svgs/Grow";
+
+interface Item {
+    title: string;
+    svg: string;
+    points: string[];
+    description: string;
+}
+
+const EnterprisePowerSection: React.FC = () => {
+    const items: Item[] = [
         {
             title: "Unbounded Scalability",
             svg: "/svgs/grow.svg",
@@ -11,7 +21,9 @@ export default function EnterprisePowerSection() {
                 "Near-linear scalability for predictable, efficient query performance.",
                 "Unbounded scalability for consistent high-speed results with massive datasets.",
                 "Engineered to maintain fast performance as your data expands."
-            ]
+            ],
+            description:
+                "Cosdata leverages the separation of storage and compute for superior scalability and performance. Our high-performance storage engine, combined with efficient data handling, advanced caching, and lazy loading techniques, maximizes resource utilization and processing capabilities in cloud environments."
         },
         {
             title: "Secure Data Management",
@@ -20,7 +32,9 @@ export default function EnterprisePowerSection() {
                 "Reliable data security against unauthorized access and threats.",
                 "Enterprise-grade privacy with robust data isolation.",
                 "Fault-tolerant design with backup and recovery for consistent performance."
-            ]
+            ],
+            description:
+                "Cosdata ensures enterprise-grade data management with rigorous security protocols. Our privacy-focused architecture offers data isolation and fault-tolerance for resilient performance, even during challenging conditions."
         },
         {
             title: "Advanced Version Control Features",
@@ -30,24 +44,25 @@ export default function EnterprisePowerSection() {
                 "Audit changes and track data lineage.",
                 "Time-travel to any previous state.",
                 "Easily revert or branch your data."
-            ]
+            ],
+            description:
+                "Manage your data with Git-style version control. Audit changes, track data lineage, and revert to any previous state. Cosdata’s version control allows for easy branching and reliable data recovery."
         }
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [animate, setAnimate] = useState(false); // Track if the animation should trigger
+    const [animate, setAnimate] = useState(false);
 
-    // Effect to trigger animation when activeIndex changes
     useEffect(() => {
-        setAnimate(true); // Trigger animation when activeIndex changes
-        const timeout = setTimeout(() => setAnimate(false), 500); // Reset animation after 500ms (duration of transition)
+        setAnimate(true);
+        const timeout = setTimeout(() => setAnimate(false), 3000);
 
-        return () => clearTimeout(timeout); // Cleanup timeout on unmount
+        return () => clearTimeout(timeout);
     }, [activeIndex]);
 
     return (
         <div className="max-w-6xl md:mx-auto mt-20">
-            <div className="bg-white p-4"> {/* Added padding for the container */}
+            <div className="bg-white p-4">
                 <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16 text-center">
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
@@ -67,16 +82,16 @@ export default function EnterprisePowerSection() {
                                         width={40}
                                         height={40}
                                     />
-                                    <h2 className={`text-3xl font-semibold flex-grow text-[#f23665]`}>
+                                    <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
                                         {item.title}
                                     </h2>
                                     <span className={`text-3xl transition-transform ${index === activeIndex ? "rotate-90" : "rotate-0"}`}>
-                                        <Image src={"/svgs/arrow.svg"} height={30} width={30} alt="arrow" />
+                                        <Image src="/svgs/arrow.svg" height={30} width={30} alt="arrow" />
                                     </span>
                                 </div>
 
                                 <div
-                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
+                                    className={`transition-[max-height] duration-300 ease-in-out mt-8 overflow-hidden ${index === activeIndex ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}`}
                                 >
                                     {item.points.map((point, idx) => (
                                         <div className="text-[#3d8bff] my-2 flex gap-2" key={idx}>
@@ -88,26 +103,46 @@ export default function EnterprisePowerSection() {
                         ))}
                     </div>
 
-                    {/* Right column with SVG animation */}
-                    <div className="hidden lg:block lg:w-[400px] w-full p-6 relative">
-                        <div className="w-full">
-                            {/* Animated SVG */}
-                            <div className={`absolute flex justify-center items-center transform transition-all duration-[2s] ease-in-out
-                                ${animate ? "translate-x-[50px] scale-150" : "translate-x-0 scale-100"}`}
+                    {/* Right column with SVG animation and description */}
+                    <div className="hidden lg:block lg:w-1/2 w-full pl-6">
+                        <div className="w-full h-[320px]">
+                            <div className={`absolute flex justify-center items-center transform transition-all duration-[3s] ease-in-out 
+                                ${animate ? "translate-x-[100px] translate-y-[20px] scale-[1.3]" : "translate-x-[50px] scale-100"}`}
                             >
-                                <Biz />
+                                {activeIndex === 0 ? (
+                                    <Grow active={animate} width={400} height={300} />
+                                ) : (
+                                    <Biz active={animate} width={400} height={300} />
+                                )}
                             </div>
+                        </div>
+
+                        {/* Description below the SVG */}
+                        <div className="mt-6 text-lg text-[#374151]">
+                            {items[activeIndex].description}
                         </div>
                     </div>
                 </div>
 
-                {/* Mobile view SVG */}
-                <div className="lg:hidden flex justify-center p-6">
-                    <div className={`transition-transform duration-500 ease-in-out ${animate ? "translate-y-0 scale-150" : "translate-y-8 scale-100"}`}>
-                        <Biz />
+                {/* Mobile view SVG and description */}
+                <div className="lg:hidden flex flex-col items-center p-6">
+
+                    <div className={`transition-transform duration-[2s] ease-in-out ${animate ? "translate-y-0 scale-150" : "translate-y-8 scale-100"}`}>
+                        {activeIndex === 0 ? (
+                            <Grow active={animate} width={300} height={300} />
+                        ) : (
+                            <Biz active={animate} width={300} height={300} />
+                        )}
+                    </div>
+
+                    {/* Description in mobile view */}
+                    <div className="mt-6 text-lg text-[#374151] text-center">
+                        {items[activeIndex].description}
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
+
+export default EnterprisePowerSection;
