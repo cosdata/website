@@ -1,13 +1,30 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
+  const [opacity, setOpacity] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  const handleScroll = useCallback(() => {
+    const scrollPosition = window.scrollY;
+    const maxScroll = 100; // Reduced from 200 to make the transition faster
+    const newOpacity = Math.min(scrollPosition / maxScroll, 1);
+    setOpacity(newOpacity);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check initial scroll position
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  const isLandingPage = pathname === '/';
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -22,8 +39,16 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-transparent">
-      <header className="bg-transparent">
+    <>
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 ${
+          isLandingPage ? '' : 'bg-white shadow-md'
+        }`}
+        style={{
+          backgroundColor: isLandingPage ? `rgba(255, 255, 255, ${opacity})` : undefined,
+          boxShadow: isLandingPage && opacity > 0 ? `0 1px 3px rgba(0, 0, 0, ${opacity * 0.1})` : undefined,
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
           <div className="text-2xl font-bold text-gray-800">
             <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
@@ -54,9 +79,8 @@ export default function Header() {
         </div>
       </header>
 
-
       {isOpen && (
-        <div className="md:hidden bg-transparent">
+        <div className="fixed top-[88px] left-0 right-0 bg-white shadow-md md:hidden z-40">
           <div className="px-4 py-6 space-y-4">
             <Link href="/blog#intelligent-queries" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
             <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
@@ -70,6 +94,7 @@ export default function Header() {
           </div>
         </div>
       )}
-    </div>
+      <div className="h-[88px]"></div> {/* Spacer */}
+    </>
   );
 }
