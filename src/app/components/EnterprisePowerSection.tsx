@@ -133,12 +133,14 @@ const EnterprisePowerSection: React.FC = () => {
 
                     {/* Right column with SVG animation and description */}
                     {!mobileView && (<div className="hidden md:block md:w-1/2 w-full pl-6">
-                        <div className="w-full h-[220px] flex justify-center items-center">
-                            <div className={`absolute flex justify-center items-center`}>
+                        <div className="w-full  flex justify-center items-center">
+                            <div className={`flex justify-center items-center relative w-full h-[200px] pt-6`}>
                                 {activeIndex === 0 ? (
-                                    <Grow active={animate} width={400} height={300} />
+                                    // <Grow active={animate} width={400} height={300} />
+                                    <Image src="./svgs/database-scale.svg" alt="protection" fill/>
                                 ) : activeIndex === 1 ? (
-                                    <Biz active={animate} width={400} height={300} />
+                                    // <Biz active={animate} width={400} height={300} />
+                                    <Image src="./svgs/protection.svg" alt="protection" fill/>
                                 ) : (
                                     <Lock active={animate} width={400} height={300} />
                                 )}
