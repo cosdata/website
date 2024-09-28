@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Biz from "./svgs/Biz";
-import Grow from "./svgs/Grow";
 
 interface Item {
     title: string;
     svg: string;
-    summary: string; // Changed from points to summary
+    summary: string;
     description: string;
 }
 
@@ -19,33 +17,40 @@ const EnterprisePowerSectionAlt: React.FC = () => {
             svg: "/svgs/grow.svg",
             summary: "Our near-linear scalability ensures consistent high-speed performance with massive datasets, maintaining efficiency as your data expands.",
             description:
-                "Cosdata leverages the separation of storage and compute for superior scalability and performance. Our high-performance storage engine, combined with efficient data handling, advanced caching, and lazy loading techniques, maximizes resource utilization and processing capabilities in cloud environments."
+                "Cosdata leverages the separation of storage and compute for superior scalability and performance. Our high-performance storage engine, combined with efficient data handling, advanced caching, and lazy loading techniques, maximizes resource utilization and processing capabilities in cloud environments.",
         },
         {
             title: "Secure Data Management",
             svg: "/svgs/biz.svg",
             summary: "We provide enterprise-grade security, privacy, and fault-tolerance, ensuring reliable data protection and consistent performance even in challenging conditions.",
             description:
-                "Cosdata ensures enterprise-grade data management with rigorous security protocols. Our privacy-focused architecture offers data isolation and fault-tolerance for resilient performance, even during challenging conditions."
+                "Cosdata ensures enterprise-grade data management with rigorous security protocols. Our privacy-focused architecture offers data isolation and fault-tolerance for resilient performance, even during challenging conditions.",
         },
         {
             title: "Advanced Version Control Features",
             svg: "/svgs/grow.svg",
             summary: "Manage your data with Git-style version control, allowing for easy auditing, time-travel, branching, and reliable data recovery.",
             description:
-                "Manage your data with Git-style version control. Audit changes, track data lineage, and revert to any previous state. Cosdata's version control allows for easy branching and reliable data recovery."
-        }
+                "Manage your data with Git-style version control. Audit changes, track data lineage, and revert to any previous state. Cosdata's version control allows for easy branching and reliable data recovery.",
+        },
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [animate, setAnimate] = useState(false);
+    const [mobileView, setMobileView] = useState(false);
+
 
     useEffect(() => {
-        setAnimate(true);
-        const timeout = setTimeout(() => setAnimate(false), 3000);
-
-        return () => clearTimeout(timeout);
-    }, [activeIndex]);
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setMobileView(true);
+            } else {
+                setMobileView(false);
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Call initially to set the correct state
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <div className="max-w-6xl md:mx-auto mt-20">
@@ -54,72 +59,80 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="lg:w-[600px] w-full">
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="md:w-[600px] w-full">
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className={`cursor-pointer p-4 mb-8 duration-100 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
+                                className={`cursor-pointer p-4 mb-8 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
                                 onClick={() => setActiveIndex(index)}
                             >
                                 <div className="flex items-center justify-between gap-2">
-                                    <Image
+                                    {/* <Image
                                         src={`/svgs/features/icon(${index + 1}).drawio.svg`}
                                         alt="icon"
                                         width={40}
                                         height={40}
-                                    />
+                                    /> */}
                                     <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
                                         {item.title}
                                     </h2>
-                                    <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-[0deg]" : "text-gray-400 rotate-[90deg]"}`}>
+                                    <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-90" : "text-gray-400 rotate-0"}`}>
                                         <Image src="/svgs/arrow.svg" height={24} width={24} alt="arrow" />
                                     </span>
                                 </div>
 
-                                <div className="mt-4 text-[#374151]">
+                                <div
+                                    className={`mt-4 text-[#374151] overflow-hidden transition-all duration-300 ease-in-out ${index === activeIndex ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}
+                                >
                                     {item.summary}
                                 </div>
+
+                                {/* Mobile view SVG and description, only visible for the active item */}
+                                {mobileView && index === activeIndex && (
+                                    <div className="mt-4 w-full duration-300 ease-in-out opacity-100">
+                                        <div className="w-full flex justify-center items-center">
+                                            <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
+                                                {index === 0 ? (
+                                                    <Image src="/svgs/database-scale.svg" alt="scale" fill />
+                                                ) : index === 1 ? (
+                                                    <Image src="/svgs/protection.svg" alt="protection" fill />
+                                                ) : (
+                                                    <Image src="/svgs/version-control.svg" alt="version control" fill />
+                                                )}
+                                            </div>
+                                        </div>
+                                        {/* Description in mobile view */}
+                                        <div className="mt-6 text-[#374151]">
+                                            {item.description}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
 
-                    {/* Right column with SVG animation and description */}
-                    <div className="hidden lg:block lg:w-1/2 w-full pl-6">
-                        <div className="w-full h-[320px]">
-                            <div className={`absolute flex justify-center items-center transform transition-all duration-[3s] ease-in-out 
-                                ${animate ? "translate-x-[100px] translate-y-[20px] scale-[1.3]" : "translate-x-[50px] scale-100"}`}
-                            >
-                                {activeIndex === 0 ? (
-                                    <Grow active={animate} width={400} height={300} />
-                                ) : (
-                                    <Biz active={animate} width={400} height={300} />
-                                )}
+                    {/* Right column with SVG animation and description for desktop view */}
+                    {!mobileView && (
+                        <div className="hidden md:block md:w-1/2 w-full pl-6">
+                            <div className="w-full flex justify-center items-center">
+                                <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
+                                    {activeIndex === 0 ? (
+                                        <Image src="/svgs/database-scale.svg" alt="scale" fill />
+                                    ) : activeIndex === 1 ? (
+                                        <Image src="/svgs/protection.svg" alt="protection" fill />
+                                    ) : (
+                                        <Image src="/svgs/version-control.svg" alt="version control" fill />
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Description below the SVG */}
+                            <div className="mt-6 text-[#374151]">
+                                {items[activeIndex].description}
                             </div>
                         </div>
-
-                        {/* Description below the SVG */}
-                        <div className="mt-6 text-lg text-[#374151]">
-                            {items[activeIndex].description}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Mobile view SVG and description */}
-                <div className="lg:hidden flex flex-col items-center p-6">
-
-                    <div className={`transition-transform duration-[2s] ease-in-out ${animate ? "translate-y-0 scale-150" : "translate-y-8 scale-100"}`}>
-                        {activeIndex === 0 ? (
-                            <Grow active={animate} width={300} height={300} />
-                        ) : (
-                            <Biz active={animate} width={300} height={300} />
-                        )}
-                    </div>
-
-                    {/* Description in mobile view */}
-                    <div className="mt-6 text-lg text-[#374151] text-center">
-                        {items[activeIndex].description}
-                    </div>
+                    )}
                 </div>
             </div>
         </div>
