@@ -24,7 +24,7 @@ export default function IntuitiveTailoredSection() {
         }
     ]
     return (
-        <div className="bg-[#f2f6fc] p-6">
+        <div className="bg-[#e5f4ff] p-6">
             <div className="flex flex-col max-w-6xl mx-auto">
                 <div className="text-[#0055c8] text-4xl font-semibold flex justify-center my-6 text-center">
                     Precision Performance, Effortless Integration
@@ -32,14 +32,14 @@ export default function IntuitiveTailoredSection() {
                 <div className="flex flex-col">
                     {items.map((item, index) => (
                         <div>
-                            <div className="flex flex-col lg:flex-row gap-8 items-center justify-between space-y-4 my-6 mb-8" key={index}>
-                                <div className="flex items-center gap-4">
-                                    <Image
+                            <div className="flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between space-y-4 my-6 mb-8" key={index}>
+                                <div className="flex gap-4">
+                                    {/* <Image
                                         src={`/svgs/features/icon(${index + 1}).drawio.svg`}
                                         alt="svg"
                                         width={50}
-                                        height={50} />
-                                    <h1 className="text-2xl sm:text-3xl font-semibold text-[#f23665] w-fit">
+                                        height={50} /> */}
+                                    <h1 className="text-3xl font-semibold text-[#f23665] ">
                                         {item.title}
                                     </h1>
                                 </div>

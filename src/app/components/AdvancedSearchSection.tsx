@@ -40,7 +40,7 @@ export default function AdvancedSearchSection() {
         <div className="w-full lg:w-1/2 flex items-center justify-center">
           <div className="relative w-[380px] h-[350px] lg:h-[350px]">
             <Image
-              src={"/svgs/triangles_new.svg"}
+              src={"/svgs/results.svg"}
               alt="Advanced search illustration"
               fill
               className="object-contain z-10"
