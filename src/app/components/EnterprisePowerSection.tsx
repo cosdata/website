@@ -36,15 +36,8 @@ const EnterprisePowerSectionAlt: React.FC = () => {
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [animate, setAnimate] = useState(false);
     const [mobileView, setMobileView] = useState(false);
 
-    useEffect(() => {
-        setAnimate(true);
-        const timeout = setTimeout(() => setAnimate(false), 3000);
-
-        return () => clearTimeout(timeout);
-    }, [activeIndex]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -75,12 +68,12 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                 onClick={() => setActiveIndex(index)}
                             >
                                 <div className="flex items-center justify-between gap-2">
-                                    <Image
+                                    {/* <Image
                                         src={`/svgs/features/icon(${index + 1}).drawio.svg`}
                                         alt="icon"
                                         width={40}
                                         height={40}
-                                    />
+                                    /> */}
                                     <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
                                         {item.title}
                                     </h2>

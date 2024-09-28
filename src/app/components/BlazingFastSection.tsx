@@ -69,30 +69,35 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
     ];
 
     return (
-        <div className="bg-transparent mx-auto mt-10 ">
+        <div className="bg-transparent mx-auto mt-10 max-w-6xl ">
             {/* Main Heading */}
             <h1 className="text-4xl font-bold text-center mb-8 text-[#0055c8] bg-white w-fit mx-auto">Blazing-Fast Performance, Always</h1>
 
             {/* Subheading */}
-            <h2 className="text-xl font-semibold text-center mb-4 text-[#374151] mx-auto max-w-screen-md">
-                Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale
-                <span><a href="#" className='underline ml-1 text-[#0055c8]'>Learn More</a></span>
-            </h2>
+            <div className='flex flex-col-reverse md:flex-row md:justify-between md:items-center p-2'>
+                <div className='relative w-full h-[400px] my-6'>
+                    <Image src="./svgs/performance.svg" alt="performance" fill />
+                </div>
+                <h2 className="text-xl text-center md:text-left mb-4 text-[#374151] mx-auto md:max-w-[500px]">
+                    Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale
+                    <div><a href="#" className='underline text-[#0055c8]'>Learn More</a></div>
+                </h2>
 
+            </div>
             {/* Main Container */}
-            <div className='hidden lg:flex flex-col items-center w-6xl '>
+            <div className='flex flex-col items-center w-6xl '>
                 {/* Desktop Version */}
                 <div className='w-full py-12 '>
                     <div className='max-w-6xl mx-auto bg-white'>
                         {/* Carousel Container */}
-                        <div className="flex justify-center w-full">
+                        <div className="flex flex-wrap justify-center w-full">
                             {carouselItems.map((item, index) => (
-                                <div key={index} className="min-w-72 p-4 ">
-                                    <div className="p-8 pt-8 w-full max-w-[270px] h-[350px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede] rounded-lg shadow-md">
-                                        <div className="flex justify-center items-center mb-3">
+                                <div key={index} className="max-w-[25%] min-w-72 p-4 ">
+                                    <div className="py-4 px-8 w-full  h-[240px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede] rounded-lg shadow-md">
+                                        {/* <div className="flex justify-center items-center mb-3">
                                             <Image src={`./svgs/features/icon(${index + 1}).drawio.svg`}
                                                 alt='svg' height={50} width={50} className="h-12 w-12" />
-                                        </div>
+                                        </div> */}
                                         <h3 className="text-lg font-bold mb-6 mt-2 text-[#3d8bff]">{item.title}</h3>
                                         <p className="text-[#374151]">{item.description}</p>
                                     </div>
@@ -104,8 +109,8 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
             </div>
 
             {/* Mobile version */}
-            <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2 '>
-                {/* Blazing-Fast Performance Section */}
+            {/* <div className='flex lg:hidden flex-col justify-center items-center gap-4 m-2 '>
+            
                 <div className='mb-8 bg-[#f0f2f5] p-8 rounded-lg shadow-md'>
                     <div className='flex flex-wrap justify-center gap-4'>
                         {carouselItems.map((item, index) => (
@@ -131,7 +136,7 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
