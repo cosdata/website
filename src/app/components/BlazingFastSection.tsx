@@ -74,12 +74,12 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
             <h1 className="text-4xl font-bold text-center mb-8 text-[#0055c8] bg-white w-fit mx-auto">Blazing-Fast Performance, Always</h1>
 
             {/* Subheading */}
-            <div className='flex flex-col-reverse md:flex-row md:justify-between md:items-center p-2'>
+            <div className='flex flex-col-reverse md:flex-row md:justify-between md:items-center px-2'>
                 <div className='relative w-full h-[400px] my-6'>
                     <Image src="./svgs/performance.svg" alt="performance" fill />
                 </div>
                 <h2 className="text-xl text-center md:text-left mb-4 text-[#374151] mx-auto md:max-w-[500px]">
-                    Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale
+                    Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nisi numquam doloremque ut veniam reprehenderit magnam repudiandae quos inventore non, nostrum rem similique fuga culpa aspernatur dignissimos, beatae
                     <div><a href="#" className='underline text-[#0055c8]'>Learn More</a></div>
                 </h2>
 
@@ -87,12 +87,12 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
             {/* Main Container */}
             <div className='flex flex-col items-center w-6xl '>
                 {/* Desktop Version */}
-                <div className='w-full py-12 '>
+                <div className='w-full pb-12 '>
                     <div className='max-w-6xl mx-auto bg-white'>
                         {/* Carousel Container */}
                         <div className="flex flex-wrap justify-center w-full">
                             {carouselItems.map((item, index) => (
-                                <div key={index} className="max-w-[25%] min-w-72 p-4 ">
+                                <div key={index} className="max-w-[25%] min-w-72 px-4 py-4 lg:py-0">
                                     <div className="py-4 px-8 w-full  h-[240px] duration-500 flex flex-col bg-gradient-to-b from-[#ffffff] to-[#f5dede] rounded-lg shadow-md">
                                         {/* <div className="flex justify-center items-center mb-3">
                                             <Image src={`./svgs/features/icon(${index + 1}).drawio.svg`}
@@ -105,6 +105,11 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
                             ))}
                         </div>
                     </div>
+                    {/* <div className="flex justify-center mt-10">
+                        <button className="w-full max-w-6xl mx-3 py-3 px-6 text-[#374151] bg-transparent border-2 border-[#374151] rounded-md flex items-center justify-center text-md font-bold transition-all duration-300 hover:bg-[#374151] hover:text-white">
+                            Learn More <span className="ml-2">→</span>
+                        </button>
+                    </div> */}
                 </div>
             </div>
 
