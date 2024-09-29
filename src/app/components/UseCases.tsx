@@ -27,7 +27,7 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20">
       <div className="container mx-auto px-4 max-w-6xl"> {/* Added max-w-5xl to limit width */}
         <h2 className="text-4xl font-bold text-center mb-4 text-[#0055c8]"> {/* Added text-[#0055c8] */}
           Unlock Your Data's Potential

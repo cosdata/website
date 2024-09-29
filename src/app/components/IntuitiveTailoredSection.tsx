@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 export default function IntuitiveTailoredSection() {
     const items = [
         {
@@ -23,44 +24,48 @@ export default function IntuitiveTailoredSection() {
             ]
         }
     ]
+
     return (
-        <div className="bg-[#e5f4ff] p-6">
-            <div className="flex flex-col max-w-6xl mx-auto">
-                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center my-6 text-center">
+        <section className="py-20">
+            <div className="container mx-auto px-4 max-w-6xl">
+                <h2 className="text-4xl font-bold text-center mb-4 text-[#0055c8]">
                     Precision Performance, Effortless Integration
-                </div>
-                <div className="flex flex-col">
-                    {items.map((item, index) => (
-                        <div>
-                            <div className="flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between space-y-4 my-6 mb-8" key={index}>
-                                <div className="flex gap-4">
-                                    {/* <Image
-                                        src={`/svgs/features/icon(${index + 1}).drawio.svg`}
-                                        alt="svg"
-                                        width={50}
-                                        height={50} /> */}
-                                    <h1 className="text-3xl font-semibold text-[#f23665] ">
-                                        {item.title}
-                                    </h1>
-                                </div>
-                                <div className="lg:w-[600px] lg:min-w-[600px] w-full">
-                                    {item.points.map((point, index) => {
-                                        const [boldText, ...rest] = point.split(':');
-                                        return (
-                                            <div className=" text-[#374151] my-2" key={index}>
-                                                <span className="font-bold">{boldText}:</span>
-                                                <span>{rest.join(':')}</span>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                            <div className={`w-full h-[2px] bg-[#ffffff] mt-4 ${index === items.length - 1 ? 'hidden' : ''}`}>
+                </h2>
+                <p className="text-xl text-center text-gray-600 mb-16">
+                    Discover how our intuitive and tailored solutions can enhance your data management experience.
+                </p>
+
+                {items.map((item, index) => (
+                    <div key={index} className={`flex flex-col md:flex-row items-center mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                        <div className="md:w-1/2 mb-8 md:mb-0 px-4">
+                            <h3 className="text-3xl font-semibold mb-4 text-[#0055c8]">
+                                {item.title}
+                            </h3>
+                            {item.points.map((point, pointIndex) => {
+                                const [boldText, ...rest] = point.split(':');
+                                return (
+                                    <p key={pointIndex} className="text-gray-600 mb-2">
+                                        <span className="font-bold">{boldText}:</span>
+                                        <span>{rest.join(':')}</span>
+                                    </p>
+                                );
+                            })}
+                            <a href="#" className="text-blue-600 font-semibold hover:underline mt-4 inline-block">Learn more -&gt;</a>
+                        </div>
+                        <div className="md:w-1/2 px-4 flex justify-center items-center">
+                            <div className="w-64 h-64">
+                                <Image
+                                    src="/svgs/management.svg"
+                                    alt={item.title}
+                                    width={256}
+                                    height={256}
+                                    className="w-full h-full object-contain"
+                                />
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
-        </div>
+        </section>
     )
 }
