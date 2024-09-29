@@ -6,7 +6,7 @@ export default function AdvancedSearchSection() {
       <h1 className="text-[#0055c8] text-4xl font-bold mb-12 text-center">
         Advanced Search for Superior Relevance
       </h1>
-      <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:px-6">
+      <div className="flex flex-col-reverse lg:flex-row-reverse items-center justify-between gap-8 lg:px-6">
         <div className="w-full lg:w-1/2 space-y-6">
           <p className="text-[#374151] text-lg leading-relaxed">
             Cosdata leverages hybrid search and knowledge graphs to deliver highly relevant, context-rich results for complex queries.
