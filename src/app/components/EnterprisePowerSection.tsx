@@ -79,7 +79,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
     return (
         <div className="max-w-6xl md:mx-auto mt-20">
             <div className="p-4">
-                <div className="text-[#0055c8] text-3xl font-semibold flex justify-center mb-16 text-center">
+                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center mb-16 text-center">
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
