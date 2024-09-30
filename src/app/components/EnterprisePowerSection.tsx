@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 
 interface Item {
@@ -13,31 +13,45 @@ interface Item {
 const EnterprisePowerSectionAlt: React.FC = () => {
     const items: Item[] = [
         {
-            title: "Unbounded Scalability",
-            svg: "/svgs/grow.svg",
-            summary: "Our near-linear scalability ensures consistent high-speed performance with massive datasets, maintaining efficiency as your data expands.",
-            description:
-                "Cosdata leverages the separation of storage and compute for superior scalability and performance. Our high-performance storage engine, combined with efficient data handling, advanced caching, and lazy loading techniques, maximizes resource utilization and processing capabilities in cloud environments.",
+            "title": "Unbounded Scalability",
+            "svg": "/svgs/grow.svg",
+            "summary": "Near-linear scalability ensures consistent high-speed performance with massive datasets, maintaining efficiency as your data expands.",
+            "description": "Separation of storage and compute enables rapid scaling in cloud environments, with advanced caching and lazy loading to maximize resources."
         },
         {
             title: "Secure Data Management",
             svg: "/svgs/biz.svg",
-            summary: "We provide enterprise-grade security, privacy, and fault-tolerance, ensuring reliable data protection and consistent performance even in challenging conditions.",
+            summary: "Enterprise-grade security, privacy, and reliability, with robust safeguards to ensure data integrity and uninterrupted access across multiple deployment environments.",
             description:
-                "Cosdata ensures enterprise-grade data management with rigorous security protocols. Our privacy-focused architecture offers data isolation and fault-tolerance for resilient performance, even during challenging conditions.",
+                "With features like data isolation, role-based access control, and multi-mode deployment, Cosdata provides secure, flexible solutions that adapt to your operational needs.",
         },
         {
-            title: "Advanced Version Control Features",
+            title: "Advanced Version Control",
             svg: "/svgs/grow.svg",
-            summary: "Manage your data with Git-style version control, allowing for easy auditing, time-travel, branching, and reliable data recovery.",
+            summary: "Git-style version control for seamless auditing, time travel, and branching, allowing you to track performance and revert with ease.",
             description:
-                "Manage your data with Git-style version control. Audit changes, track data lineage, and revert to any previous state. Cosdata's version control allows for easy branching and reliable data recovery.",
+                "Compare search results across versions, audit changes, and roll back effortlessly, with built-in tools for data integrity and recovery.",
         },
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [mobileView, setMobileView] = useState(false);
+    const [autoPlay, setAutoPlay] = useState(true);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+    const nextSlide = useCallback(() => {
+        if (autoPlay) {
+            setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
+        }
+    }, [items.length, autoPlay]);
+
+    const handleManualSelect = (index: number) => {
+        setActiveIndex(index);
+        setAutoPlay(false);
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -49,8 +63,18 @@ const EnterprisePowerSectionAlt: React.FC = () => {
         };
         window.addEventListener("resize", handleResize);
         handleResize(); // Call initially to set the correct state
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+
+        // Add carousel effect
+        if (autoPlay) {
+            intervalRef.current = setInterval(nextSlide, 7000);
+        }
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
+    }, [nextSlide, autoPlay]);
 
     return (
         <div className="max-w-6xl md:mx-auto mt-20">
@@ -64,8 +88,8 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className={`cursor-pointer p-4 mb-8 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
-                                onClick={() => setActiveIndex(index)}
+                                className={`cursor-pointer p-4 mb-4 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
+                                onClick={() => handleManualSelect(index)}
                             >
                                 <div className="flex items-center justify-between gap-2">
                                     {/* <Image
@@ -77,14 +101,13 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                     <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
                                         {item.title}
                                     </h2>
-                                    <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-90" : "text-gray-400 rotate-0"}`}>
+                                    <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-0" : "text-gray-400 rotate-90"}`}>
                                         <Image src="/svgs/arrow.svg" height={24} width={24} alt="arrow" />
                                     </span>
                                 </div>
 
-                                <div
-                                    className={`mt-4 text-[#374151] overflow-hidden transition-all duration-300 ease-in-out ${index === activeIndex ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}
-                                >
+                                {/* Show summary always, not just for active item */}
+                                <div className="mt-3 text-[#374151]">
                                     {item.summary}
                                 </div>
 
@@ -130,6 +153,19 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                             {/* Description below the SVG */}
                             <div className="mt-6 text-[#374151]">
                                 {items[activeIndex].description}
+                            </div>
+
+                            {/* Updated carousel buttons */}
+                            <div className="mt-6 flex justify-center space-x-2">
+                                {items.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        className={`w-3 h-3 rounded-full ${
+                                            index === activeIndex ? "bg-[#0055c8]" : "bg-gray-300"
+                                        }`}
+                                        onClick={() => handleManualSelect(index)}
+                                    />
+                                ))}
                             </div>
                         </div>
                     )}
