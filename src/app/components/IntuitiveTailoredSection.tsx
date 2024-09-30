@@ -7,21 +7,24 @@ export default function IntuitiveTailoredSection() {
             points: [
                 "RESTful APIs: Easily manage all database functions through intuitive HTTP interfaces for seamless interaction.",
                 "Client SDKs: Quickly integrate with your preferred programming language using SDKs available across multiple platforms."
-            ]
+            ],
+            image: "/svgs/management.svg"
         },
         {
             title: "Optimized Indexing",
             points: [
                 "Dense Vector Index: Achieve high-efficiency indexing using our optimized HNSW algorithm for precise search results.",
                 "Sparse Vector Index: Designed for SPLADE-generated sparse vectors, our system outperforms traditional BM25 indices for more accurate indexing."
-            ]
+            ],
+            image: "/svgs/indexing.svg"
         },
         {
             title: "Flexible Hyperparameter Control",
             points: [
                 "Auto-configuration: Automatically fine-tune system parameters with insights-driven setup for optimal performance without manual effort.",
                 "Manual Precision: Gain full control by customizing indexing and querying parameters for specialized use cases and performance needs."
-            ]
+            ],
+            image: "/svgs/configure.svg"
         }
     ]
 
@@ -55,7 +58,7 @@ export default function IntuitiveTailoredSection() {
                         <div className="md:w-1/2 px-4 flex justify-center items-center">
                             <div className="w-64 h-64">
                                 <Image
-                                    src="/svgs/management.svg"
+                                    src={item.image}
                                     alt={item.title}
                                     width={256}
                                     height={256}
