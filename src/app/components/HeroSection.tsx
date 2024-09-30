@@ -1,57 +1,33 @@
 "use client";
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 const HeroSection = () => {
+  const phrases = [
+    "Smarter, Faster Search",
+    "Knowledge Graphs",
+    "Unparalleled Scalability",
+    "Hybrid Search",
+    "Advanced Version Control"
+  ];
+  const [currentPhrase, setCurrentPhrase] = useState('');
+  const [phraseIndex, setPhraseIndex] = useState(0);
 
-  // Image Animation code
+  const typePhrase = useCallback(() => {
+    const currentFullPhrase = phrases[phraseIndex];
+    if (currentPhrase.length < currentFullPhrase.length) {
+      setCurrentPhrase(currentFullPhrase.slice(0, currentPhrase.length + 1));
+    } else {
+      setTimeout(() => {
+        setPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+        setCurrentPhrase('');
+      }, 3000);
+    }
+  }, [currentPhrase, phraseIndex, phrases]);
 
-  // const [showPoint, setShowPoint] = useState(true);
-  // const [imageStyle, setImageStyle] = useState({}); // For zoom effect
-  // const [animationEnded, setAnimationEnded] = useState(false); // Track if the animation has ended
-  // const [lastMousePosition, setLastMousePosition] = useState({ xPercent: 50, yPercent: 50 }); // Track last mouse position
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setShowPoint(false); // Hide the point after 20 seconds
-  //     setAnimationEnded(true); // Mark animation as ended
-  //   }, 20000); // 20 seconds duration
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [animationEnded]);
-
-  // const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-  //   if (!animationEnded) return; // Prevent zoom before animation ends
-  //   const imageContainer = e.currentTarget;
-  //   const rect = imageContainer.getBoundingClientRect();
-  //   const x = e.clientX - rect.left;
-  //   const y = e.clientY - rect.top;
-  //   const xPercent = (x / rect.width) * 100;
-  //   const yPercent = (y / rect.height) * 100;
-
-  //   // Save the last mouse position in state
-  //   setLastMousePosition({ xPercent, yPercent });
-
-  //   setImageStyle({
-  //     transformOrigin: `${xPercent}% ${yPercent}%`,
-  //     transform: 'scale(1.5)',
-  //     transition: 'transform 1s ease',
-  //   });
-  // };
-
-  // const handleMouseLeave = () => {
-  //   if (!animationEnded) return;
-
-  //   // Keep the last mouse position as the transform origin
-  //   const { xPercent, yPercent } = lastMousePosition;
-
-  //   setImageStyle({
-  //     transformOrigin: `${xPercent}% ${yPercent}%`, // Use last mouse position for zoom-out
-  //     transform: 'scale(1)',
-  //     transition: 'transform 1s ease',
-  //   });
-  // };
+  useEffect(() => {
+    const timer = setTimeout(typePhrase, 40);
+    return () => clearTimeout(timer);
+  }, [currentPhrase, typePhrase]);
 
   return (
     <main className="bg-transparent lg:mb-10 py-20 flex justify-center">
@@ -60,10 +36,12 @@ const HeroSection = () => {
           <div className="flex-grow flex flex-col px-2 py-6 sm:px-6">
             <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-[500] leading-[64px] text-[#0055c8] mb-6">
               <div className="text-[#f23665] text-[50px] sm:text-[56px] lg:text-[72px] font-bold">Supercharge Your AI</div>
-              <div>with Unified, Intelligent Search</div>
+              <div className="pt-3">
+                with <span className="typewriter">{currentPhrase}</span>
+              </div>
             </h1>
             <p className="text-lg md:text-xl text-[#374151] mb-8 leading-relaxed">
-              Our Next-gen Vector Database powers advanced AI search pipelines for the future of data intelligence.
+              Our Next-gen Vector Database powers advanced RAG pipelines for the future of data intelligence.
             </p>
             <div className="flex gap-4 flex-wrap ">
               <a href="#" className="inline-block bg-[#f23665] text-white px-4  py-3 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center min-w-[189px]">
@@ -80,28 +58,6 @@ const HeroSection = () => {
               </a>
             </div>
           </div>
-
-          {/* <div className="flex-grow xl:flex hidden justify-center w-full xl:w-7/12 overflow-hidden">
-            <div
-              className="w-full relative overflow-hidden image-container"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Image
-                src="/svgs/hybrid.drawio.svg"
-                alt="Image"
-                fill
-                className="object-contain image z-10"
-                id="heroImage"
-                style={imageStyle} // Apply zoom effect
-              />
-              {showPoint && (
-                <div className="absolute  text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl top-0 left-0 w-full h-full z-10 fade-in flex justify-center items-center">
-                  <div className="w-5 h-5 rounded-full bg-gradient-radial from-[#f0f2f5] to-[#f23665] throbbing"></div>
-                </div>
-              )}
-            </div>
-          </div> */}
         </div>
       </div>
     </main>

@@ -78,9 +78,10 @@ export default function BlazingFast({ claimsData }: BlazingFastProps) {
                 <div className='relative w-full h-[400px] my-6'>
                     <Image src="./svgs/performance.svg" alt="performance" fill />
                 </div>
-                <h2 className="text-xl text-center md:text-left mb-4 text-[#374151] mx-auto md:max-w-[500px]">
+                <h2 className="text-lg text-center md:text-left mb-4 text-[#374151] mx-auto md:max-w-[500px]">
                     Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nisi numquam doloremque ut veniam reprehenderit magnam repudiandae quos inventore non, nostrum rem similique fuga culpa aspernatur dignissimos, beatae
-                    <div><a href="#" className='underline text-[#0055c8]'>Learn More</a></div>
+                    <div><a href="#" className="text-blue-600 text-sm font-semibold hover:underline mt-4 inline-block">Learn more -&gt;</a>
+                    </div>
                 </h2>
 
             </div>
