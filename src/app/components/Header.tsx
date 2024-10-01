@@ -30,17 +30,17 @@ export default function Header() {
 
   // Calculate dynamic styles
   const headerStyle = {
-    backgroundColor: isLandingPage ? `rgba(255, 255, 255, ${scrollProgress})` : 'white',
-    boxShadow: scrollProgress > 0 
+    backgroundColor: isLandingPage ? `rgba(255, 255, 255, ${isOpen ? 1 : scrollProgress})` : 'white',
+    boxShadow: scrollProgress > 0 && !isOpen
       ? `0 2px 4px rgba(0, 0, 0, ${0.1 + scrollProgress * 0.1})`
       : 'none',
-    transition: 'box-shadow 0.3s ease',
+    transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
   };
 
   // Calculate dynamic padding
-  const maxPadding = 20; // 6 * 4 = 24 (py-6 in Tailwind is 1.5rem, which is 24px)
-  const minPadding = 6; // Reduced minimum padding for a stronger effect
-  const dynamicPadding = maxPadding - (scrollProgress * (maxPadding - minPadding));
+  const maxPadding = 20;
+  const minPadding = 6;
+  const dynamicPadding = isOpen ? minPadding : maxPadding - (scrollProgress * (maxPadding - minPadding));
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -59,13 +59,12 @@ export default function Header() {
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 ${
-          isLandingPage ? '' : 'bg-white shadow-md'
-        }`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 ${isLandingPage && !isOpen ? '' : 'bg-white'
+          } ${isOpen ? 'md:shadow-md' : ''}`}
         style={headerStyle}
       >
-        <div 
+        <div
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center transition-all duration-300"
           style={{ paddingTop: `${dynamicPadding}px`, paddingBottom: `${dynamicPadding}px` }}
         >
@@ -81,7 +80,7 @@ export default function Header() {
             </button>
             <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="inline-block bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition duration-300 flex items-center text-sm">
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
               </svg>
               View on Github
             </a>
@@ -99,16 +98,22 @@ export default function Header() {
       </header>
 
       {isOpen && (
-        <div className="fixed left-0 right-0 bg-white shadow-md md:hidden z-40"
-             style={{ top: `${dynamicPadding * 2 + 20}px` }}> {/* Adjust top based on header height */}
+        <div className="fixed left-0 right-0 bg-white md:hidden z-40"
+          style={{ top: `${minPadding * 2 + 20}px` }}> {/* Adjust top based on header height */}
           <div className="px-4 py-6 space-y-4">
             <Link href="/blog#intelligent-queries" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
             <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
             <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
-            <a href="#" className="block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 text-sm text-center">
+            <button onClick={openModal} className="w-full bg-[#f23665] text-white px-4 py-3 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-sm">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+              </svg>
               Get Early Access
-            </a>
-            <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="block bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition duration-300 text-sm text-center">
+            </button>
+            <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="w-full bg-black text-white px-4 py-3 rounded-lg hover:bg-gray-800 transition duration-300 flex items-center justify-center text-sm">
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+              </svg>
               View on Github
             </a>
           </div>
