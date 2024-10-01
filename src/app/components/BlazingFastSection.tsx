@@ -71,7 +71,7 @@ export default function BlazingFast(/*{ claimsData }: BlazingFastProps*/) {
     return (
         <div className="bg-transparent mx-auto mt-10 max-w-6xl">
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-[#0055c8] bg-white w-fit mx-auto px-4 md:px-6">Blazing-Fast Performance, Always</h1>
+            <h1 className="text-2xl sm:text-4xl font-bold text-center mb-8 text-[#0055c8] bg-white w-fit mx-auto px-4 md:px-6">Blazing-Fast Performance, Always</h1>
 
             {/* Subheading */}
             <div className='flex flex-col-reverse md:flex-row md:justify-between md:items-center px-2 md:px-6'>

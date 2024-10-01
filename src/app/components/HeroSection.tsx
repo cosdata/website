@@ -43,9 +43,13 @@ const HeroSection = () => {
         <div className="flex w-full justify-center sm:justify-start">
           <div className="flex-grow flex flex-col items-center sm:items-start text-center sm:text-left px-2 py-6 sm:px-6">
             <h1 className="text-[28px] sm:text-[48px] md:text-[56px] font-[500] leading-[1.2] md:leading-[64px] text-[#0055c8] mb-4 md:mb-6">
-              <div className="text-[#f23665] text-[40px] sm:text-[56px] md:text-[72px] font-bold">Supercharge Your AI</div>
-              <div className="pt-2 md:pt-3 text-[18px] sm:text-[24px] md:text-[32px] whitespace-nowrap">
+              <div className="text-[#f23665] text-[40px] sm:text-[56px] md:text-[72px] font-bold sm:block hidden">Supercharge Your AI</div>
+              <div className="text-[#f23665] text-[40px] sm:text-[56px] md:text-[72px] font-bold sm:hidden block">Supercharge Your AI with</div>
+              <div className="pt-2 md:pt-3 text-[22px] sm:text-[28px] md:text-[36px] whitespace-nowrap hidden sm:block">
                 with <span className="typewriter font-bold">{currentPhrase}</span><span className='text-[#f23665]' style={cursorStyle}>|</span>
+              </div>
+              <div className="pt-2 md:pt-3 text-[22px] sm:text-[24px] md:text-[32px] whitespace-nowrap sm:hidden">
+                <span className="typewriter font-bold">{currentPhrase}</span><span className='text-[#f23665]' style={cursorStyle}>|</span>
               </div>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-[#374151] mb-6 md:mb-8 leading-relaxed max-w-2xl">

@@ -32,11 +32,11 @@ export default async function Home() {
       <AdvancedSearchSection />
       <BlazingFastSection /*claimsData={claim}*/ />
       <PrecisionPerformanceSection />
-      <div className="max-w-6xl mx-auto my-8">
+      <div className="max-w-6xl mx-auto my-4 md:my-8">
         <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
       </div>
       <EnterpisePowerSection />
-      <div className="max-w-6xl mx-auto my-8">
+      <div className="max-w-6xl mx-auto my-4 md:my-8">
         <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
       </div>
       <UseCases />

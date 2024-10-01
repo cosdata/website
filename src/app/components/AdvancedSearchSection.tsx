@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function AdvancedSearchSection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 mb-20">
-      <h1 className="text-[#0055c8] text-3xl sm:text-4xl font-bold mb-12 text-center">
+      <h1 className="text-[#0055c8] text-2xl sm:text-4xl font-bold mb-12 text-center">
         Advanced Search for Superior Relevance
       </h1>
       <div className="flex flex-col-reverse md:flex-row-reverse items-center justify-between gap-8 lg:px-6">
