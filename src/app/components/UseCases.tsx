@@ -15,12 +15,12 @@ const UseCases: React.FC = () => {
     },
     {
       "title": "Recommendation Systems",
-      "description": "Build responsive, data-driven recommendation systems with Cosdata’s hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
+      "description": "Build responsive, data-driven recommendation systems with Cosdata's hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
       "image": "/svgs/recommendation.svg"
     },
     // {
     //     "title": "Data Analysis and Anomaly Detection",
-    //     "description": "Revolutionize your approach to data analysis and anomaly detection. Cosdata’s vector-based search quickly identifies patterns, correlations, and outliers across complex datasets, ensuring robust real-time anomaly detection.",
+    //     "description": "Revolutionize your approach to data analysis and anomaly detection. Cosdata's vector-based search quickly identifies patterns, correlations, and outliers across complex datasets, ensuring robust real-time anomaly detection.",
     //     "image": "/images/anomaly_detection.png"
     // }
     // ,
@@ -28,29 +28,28 @@ const UseCases: React.FC = () => {
 
   return (
     <section className="py-20">
-      <div className="container mx-auto px-4 max-w-6xl"> {/* Added max-w-5xl to limit width */}
-        <h2 className="text-4xl font-bold text-center mb-4 text-[#0055c8]"> {/* Added text-[#0055c8] */}
+      <div className="container mx-auto px-4 max-w-6xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8] px-4">
           Unlock Your Data's Potential
         </h2>
-        <p className="text-xl text-center text-gray-600 mb-16">Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.</p>
+        <p className="text-lg sm:text-xl text-center text-gray-600 mb-16 px-4">Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.</p>
 
         {useCases.map((useCase, index) => (
           <div key={index} className={`flex flex-col md:flex-row items-center mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-            <div className="md:w-1/2 mb-8 md:mb-0 px-4"> {/* Added horizontal padding */}
-              <h3 className="text-3xl font-semibold mb-4 text-[#0055c8]"> {/* Added text-[#0055c8] */}
+            <div className="md:w-1/2 mb-8 md:mb-0 px-4">
+              <h3 className="text-2xl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
                 {useCase.title}
               </h3>
               <p className="text-gray-600 mb-6">{useCase.description}</p>
               <a href="#" className="text-blue-600 font-semibold hover:underline">Learn more -&gt;</a>
             </div>
             <div className="md:w-1/2 px-4">
-              <div className="max-w-md mx-auto w-fit">
+              <div className="max-w-md mx-auto w-fit md:mb-0">
                 <Image
                   src={useCase.image}
                   alt={useCase.title}
                   height={400}
                   width={400}
-
                   className={`${index === 1 ? 'max-h-[350px]' : 'max-h-[400px]'}`}
                 />
               </div>
