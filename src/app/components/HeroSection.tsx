@@ -29,6 +29,10 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [currentPhrase, typePhrase]);
 
+  const cursorStyle = {
+    animation: 'blink 1s step-end infinite',
+  };
+
   return (
     <main className="bg-transparent lg:mb-10 py-20 flex justify-center">
       <div className="max-w-6xl mx-auto py-0 px-0 sm:px-6">
@@ -37,7 +41,7 @@ const HeroSection = () => {
             <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-[500] leading-[64px] text-[#0055c8] mb-6">
               <div className="text-[#f23665] text-[50px] sm:text-[56px] lg:text-[72px] font-bold">Supercharge Your AI</div>
               <div className="pt-3">
-                with <span className="typewriter">{currentPhrase}</span>
+                with <span className="typewriter font-bold">{currentPhrase}</span><span className='text-[#f23665]' style={cursorStyle}>|</span>
               </div>
             </h1>
             <p className="text-lg md:text-xl text-[#374151] mb-8 leading-relaxed">

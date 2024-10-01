@@ -6,24 +6,24 @@ const UseCases: React.FC = () => {
     {
         "title": "Retrieval Augmented Generation (RAG)",
         "description": "Enhance the quality of AI-generated content. Leverage Cosdata's powerful hybrid search capabilities, combining dense and sparse vectors with knowledge graphs, to retrieve contextually relevant data points for retrieval-augmented generation.",
-        "image": "/images/rag.png"
+        "image": "/svgs/RAG.svg"
     },
     {
         "title": "Advanced Search",
         "description": "Elevate your applications with Cosdata's advanced search technology. Seamlessly process high-dimensional data for nuanced similarity searches, and gain deeper insights with our integration of dense vectors and structured knowledge graphs.",
-        "image": "/images/advanced_search.png"
+        "image": "/svgs/advanced-search.svg"
     },
     {
         "title": "Recommendation Systems",
         "description": "Build responsive, data-driven recommendation systems with Cosdata’s hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
-        "image": "/images/recommender_system.png"
+        "image": "/svgs/recommendation.svg"
     },
-    {
-        "title": "Data Analysis and Anomaly Detection",
-        "description": "Revolutionize your approach to data analysis and anomaly detection. Cosdata’s vector-based search quickly identifies patterns, correlations, and outliers across complex datasets, ensuring robust real-time anomaly detection.",
-        "image": "/images/anomaly_detection.png"
-    }
-    ,
+    // {
+    //     "title": "Data Analysis and Anomaly Detection",
+    //     "description": "Revolutionize your approach to data analysis and anomaly detection. Cosdata’s vector-based search quickly identifies patterns, correlations, and outliers across complex datasets, ensuring robust real-time anomaly detection.",
+    //     "image": "/images/anomaly_detection.png"
+    // }
+    // ,
   ];
 
   return (
@@ -44,13 +44,13 @@ const UseCases: React.FC = () => {
               <a href="#" className="text-blue-600 font-semibold hover:underline">Learn more -&gt;</a>
             </div>
             <div className="md:w-1/2 px-4">
-              <div className="max-w-md mx-auto">
+              <div className="max-w-md mx-auto w-fit">
                 <Image
                   src={useCase.image}
                   alt={useCase.title}
-                  width={500}
-                  height={300}
-                  className="rounded-lg shadow-lg w-full h-auto"
+                  width={400}
+                  height={240}
+                  className=""
                 />
               </div>
             </div>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function IntuitiveTailoredSection() {
+export default function PrecisionPerformanceSection() {
     const items = [
         {
             title: "Effortless Management",

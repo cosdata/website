@@ -8,7 +8,7 @@ import VideoSection from "./components/VideoSection";
 import Footer from "./components/Footer";
 import { fetchClaim } from "./utils/api";
 import BlazingFastSection from "./components/BlazingFastSection";
-import IntuitiveTailoredSection from "./components/IntuitiveTailoredSection"
+import PrecisionPerformanceSection from "./components/PrecisionPerformanceSection"
 import EnterpisePowerSection from "./components/EnterprisePowerSection"
 import AdvancedSearchSection from "./components/AdvancedSearchSection"
 import IntelligentQueriesSection from "./components/IntelligentQueriesSection"
@@ -31,7 +31,7 @@ export default async function Home() {
       <Marquee />
       <AdvancedSearchSection />
       <BlazingFastSection claimsData={claim} />
-      <IntuitiveTailoredSection />
+      <PrecisionPerformanceSection />
       <div className="max-w-6xl mx-auto my-8">
         <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
       </div>
