@@ -20,16 +20,23 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
     setIsSubmitting(true);
     setSubmitStatus('idle');
     
+    const formData = { email, companyName, jobTitle };
+    console.log('Submitting form data:', formData);  // Add this line
+
     try {
       const response = await fetch('/api/submit-early-access', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, companyName, jobTitle }),
+        body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);  // Add this line
+
       if (response.ok) {
+        const responseData = await response.json();
+        console.log('Response data:', responseData);  // Add this line
         setSubmitStatus('success');
         // Reset form fields
         setEmail('');

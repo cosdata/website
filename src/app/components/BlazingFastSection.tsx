@@ -47,7 +47,7 @@ interface BlazingFastProps {
     }[];
 }
 
-export default function BlazingFast({ claimsData }: BlazingFastProps) {
+export default function BlazingFast(/*{ claimsData }: BlazingFastProps*/) {
     // Data for the carousel cards
     const carouselItems = [
         {

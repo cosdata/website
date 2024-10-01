@@ -1,14 +1,25 @@
 import { NextResponse } from 'next/server';
+import { sql } from '@vercel/postgres';
 
 export async function POST(request: Request) {
-  const body = await request.json();
-  
-  // Here you would typically save the data to a database
-  // For this example, we'll just log it
-  console.log('Early Access Submission:', body);
+  try {
+    // Parse the request body
+    const body = await request.json();
+    console.log('Received form data:', body);
 
-  // You can integrate with a database or external service here
-  // For example, you might use Vercel KV or another database solution
+    // Insert the data into the Postgres database
+    const { email, companyName, jobTitle } = body;
+    const result = await sql`
+      INSERT INTO early_access_submissions (email, company_name, job_title)
+      VALUES (${email}, ${companyName}, ${jobTitle})
+      RETURNING id;
+    `;
 
-  return NextResponse.json({ message: 'Submission received' }, { status: 200 });
+    console.log('Inserted data with ID:', result.rows[0].id);
+
+    return NextResponse.json({ message: 'Submission received', id: result.rows[0].id }, { status: 200 });
+  } catch (error) {
+    console.error('Error:', error);
+    return NextResponse.json({ message: 'Error processing submission' }, { status: 500 });
+  }
 }

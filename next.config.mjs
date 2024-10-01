@@ -1,25 +1,16 @@
+import { createPool } from '@vercel/postgres';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverComponentsExternalPackages: ['@vercel/postgres'],
+  },
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL
+    KV_URL: process.env.KV_URL,
+    KV_REST_API_URL: process.env.KV_REST_API_URL,
+    KV_REST_API_TOKEN: process.env.KV_REST_API_TOKEN,
+    KV_REST_API_READ_ONLY_TOKEN: process.env.KV_REST_API_READ_ONLY_TOKEN,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'scopiolabs.com',
-        pathname: '/wp-content/uploads/**',
-      },
-    ],
-  },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"]
-    });
+}
 
-    return config;
-  }
-};
-
-export default nextConfig;
+export default nextConfig
