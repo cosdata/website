@@ -88,7 +88,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className={`cursor-pointer p-4 mb-4 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
+                                className={`cursor-pointer p-4 mb-10 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
                                 onClick={() => handleManualSelect(index)}
                             >
                                 <div className="flex items-center justify-between gap-2">

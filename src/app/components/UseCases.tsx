@@ -4,19 +4,19 @@ import Image from 'next/image';
 const UseCases: React.FC = () => {
   const useCases = [
     {
-        "title": "Retrieval Augmented Generation (RAG)",
-        "description": "Enhance the quality of AI-generated content. Leverage Cosdata's powerful hybrid search capabilities, combining dense and sparse vectors with knowledge graphs, to retrieve contextually relevant data points for retrieval-augmented generation.",
-        "image": "/svgs/RAG.svg"
+      "title": "Retrieval Augmented Generation (RAG)",
+      "description": "Enhance the quality of AI-generated content. Leverage Cosdata's powerful hybrid search capabilities, combining dense and sparse vectors with knowledge graphs, to retrieve contextually relevant data points for retrieval-augmented generation.",
+      "image": "/svgs/RAG.svg"
     },
     {
-        "title": "Advanced Search",
-        "description": "Elevate your applications with Cosdata's advanced search technology. Seamlessly process high-dimensional data for nuanced similarity searches, and gain deeper insights with our integration of dense vectors and structured knowledge graphs.",
-        "image": "/svgs/advanced-search.svg"
+      "title": "Advanced Search",
+      "description": "Elevate your applications with Cosdata's advanced search technology. Seamlessly process high-dimensional data for nuanced similarity searches, and gain deeper insights with our integration of dense vectors and structured knowledge graphs.",
+      "image": "/svgs/advanced-search.svg"
     },
     {
-        "title": "Recommendation Systems",
-        "description": "Build responsive, data-driven recommendation systems with Cosdata’s hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
-        "image": "/svgs/recommendation.svg"
+      "title": "Recommendation Systems",
+      "description": "Build responsive, data-driven recommendation systems with Cosdata’s hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
+      "image": "/svgs/recommendation.svg"
     },
     // {
     //     "title": "Data Analysis and Anomaly Detection",
@@ -48,9 +48,10 @@ const UseCases: React.FC = () => {
                 <Image
                   src={useCase.image}
                   alt={useCase.title}
+                  height={400}
                   width={400}
-                  height={240}
-                  className=""
+
+                  className={`${index === 1 ? 'max-h-[350px]' : 'max-h-[400px]'}`}
                 />
               </div>
             </div>

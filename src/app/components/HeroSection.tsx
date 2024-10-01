@@ -5,7 +5,7 @@ const HeroSection = () => {
   const phrases = [
     "Smarter, Faster Search",
     "Knowledge Graphs",
-    "Unparalleled Scalability",
+    // "Unparalleled Scalability",
     "Hybrid Search",
     "Advanced Version Control"
   ];
