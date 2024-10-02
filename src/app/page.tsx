@@ -31,18 +31,17 @@ export default async function Home() {
       <Marquee />
       <AdvancedSearchSection />
       <BlazingFastSection /*claimsData={claim}*/ />
-      <div className="max-w-6xl mx-auto my-4 md:my-8">
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+      <div className=" mx-auto py-4 md:py-8  relative overflow-hidden h-[95px] sm:h-[140px] md:h-[165px] lg:h-[213px] xl:h-[275px] 2xl:h-[330px] mb-[-2px]">
+        
       </div>
       <PrecisionPerformanceSection />
-      <div className="max-w-6xl mx-auto my-4 md:my-8">
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-      </div>
+
       <EnterpisePowerSection />
-      <div className="max-w-6xl mx-auto my-4 md:my-8">
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-      </div>
+      <div className=" mx-auto py-4 md:py-8  relative overflow-hidden h-[95px] sm:h-[140px] md:h-[165px] lg:h-[213px] xl:h-[275px] 2xl:h-[330px] mb-[-2px]">
+        
+        </div>
       <UseCases />
+      
       <Footer />
       {/* <ScopioX100 />
       <VideoSection />

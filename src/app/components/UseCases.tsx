@@ -27,7 +27,8 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className="pt-8">
+    <section className="pb-[180px] relative bg-gray-200 transform -skew-y-12 origin-top-left mt-0 -z-10">
+      <div className='relative bg-transparent transform skew-y-12 origin-top-left mt-0 md:pb-[120px] '>
       <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8] px-4">
           Unlock Your Data's Potential
@@ -35,7 +36,7 @@ const UseCases: React.FC = () => {
         <p className="text-lg sm:text-xl text-center text-gray-600 mb-8 md:mb-16 px-4">Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.</p>
 
         {useCases.map((useCase, index) => (
-          <div key={index} className={`flex flex-col md:flex-row items-center mb-8 md:mb-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+          <div key={index} className={`flex flex-col md:flex-row items-center pb-8 md:pb-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
             <div className="md:w-1/2 mb-8 md:mb-0 px-4">
               <h3 className="text-xxl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
                 {useCase.title}
@@ -56,6 +57,7 @@ const UseCases: React.FC = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
