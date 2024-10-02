@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function AdvancedSearchSection() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 mb-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 md:py-12">
       <h1 className="text-[#0055c8] text-2xl sm:text-4xl font-bold mb-12 text-center">
         Advanced Search for Superior Relevance
       </h1>

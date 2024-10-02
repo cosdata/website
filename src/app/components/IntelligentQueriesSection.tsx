@@ -14,7 +14,7 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
         <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-4 sm:p-6 text-[#374151] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
             <div className="flex flex-col">
                 <div className="flex items-center gap-4 mb-3 sm:mb-4">
-                    <Image src={svg} alt={title} width={50} height={50} className="hidden sm:block" />
+                    <Image src={svg} alt={title} width={45} height={45} className=" max-h-[45px] max-w-[45px] hidden sm:block" />
                     <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8]">{title}</h3>
                 </div>
                 <p className='mb-4 sm:mb-5 text-sm sm:text-base'>{description}</p>
@@ -36,7 +36,7 @@ const IntelligentQueriesSection: React.FC = () => {
         },
         {
             title: "Lightning-Fast Search at Scale",
-            svg: "/svgs/features/icon(2).drawio.svg",
+            svg: "/svgs/features/icon(0).drawio.svg",
             description: "Experience unparalleled speed with our optimized vectorization and smart quantization techniques. Enjoy rapid indexing and querying that scales effortlessly, regardless of your dataset size or query complexity.",
             anchorLink: "#lightning-fast-search"
         },

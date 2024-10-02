@@ -29,7 +29,7 @@ export default function PrecisionPerformanceSection() {
     ]
 
     return (
-        <section className="py-12 md:py-20">
+        <section className="pt-8">
             <div className="container mx-auto px-4 max-w-6xl">
                 <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8]">
                     Precision Performance, Effortless Integration

@@ -77,8 +77,8 @@ const EnterprisePowerSectionAlt: React.FC = () => {
     }, [nextSlide, autoPlay]);
 
     return (
-        <div className="max-w-6xl md:mx-auto mt-20">
-            <div className="p-4">
+        <div className="max-w-6xl md:mx-auto pt-8 pb-8">
+            <div className="px-4">
                 <div className="text-[#0055c8] text-4xl font-semibold flex justify-center mb-16 text-center">
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
