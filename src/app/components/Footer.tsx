@@ -6,7 +6,7 @@ function Footer() {
     <footer className="relative">
       <div className=" absolute bg-[#0055c8] -z-[11] w-full h-[1000px] bottom-0 "></div>
       {/* <div className='relative '> */}
-        <div className="bg-[#0055c8] h-[200px] transform -skew-y-12 origin-top-left mt-0 -z-20 absolute w-full"></div>
+        {/* <div className="bg-[#0055c8] h-[200px] transform -skew-y-6 origin-top-left mt-0 -z-20 absolute w-full"></div> */}
 
         <div className="bg-[#0055c8] text-white py-12 relative z-10">
           <div className="container mx-auto px-4">

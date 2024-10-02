@@ -31,15 +31,10 @@ export default async function Home() {
       <Marquee />
       <AdvancedSearchSection />
       <BlazingFastSection /*claimsData={claim}*/ />
-      <div className=" mx-auto py-4 md:py-8  relative overflow-hidden h-[95px] sm:h-[140px] md:h-[165px] lg:h-[213px] xl:h-[275px] 2xl:h-[330px] mb-[-2px]">
-        
-      </div>
       <PrecisionPerformanceSection />
 
       <EnterpisePowerSection />
-      <div className=" mx-auto py-4 md:py-8  relative overflow-hidden h-[95px] sm:h-[140px] md:h-[165px] lg:h-[213px] xl:h-[275px] 2xl:h-[330px] mb-[-2px]">
-        
-        </div>
+
       <UseCases />
       
       <Footer />
