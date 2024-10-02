@@ -1,25 +1,57 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { sql } from '@vercel/postgres';
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    // Parse the request body
-    const body = await request.json();
-    console.log('Received form data:', body);
-
-    // Insert the data into the Postgres database
+    const body = await req.json();
     const { email, companyName, jobTitle } = body;
-    const result = await sql`
+
+    // Store in Postgres
+    await sql`
       INSERT INTO early_access_submissions (email, company_name, job_title)
       VALUES (${email}, ${companyName}, ${jobTitle})
-      RETURNING id;
     `;
 
-    console.log('Inserted data with ID:', result.rows[0].id);
+    // Create subscriber in MailerLite
+    const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle);
 
-    return NextResponse.json({ message: 'Submission received', id: result.rows[0].id }, { status: 200 });
+    if (!mailerLiteResponse.ok) {
+      const errorData = await mailerLiteResponse.json();
+      console.error('MailerLite API error:', errorData);
+      throw new Error('Failed to create MailerLite subscriber');
+    }
+
+    return NextResponse.json({ message: 'Submission successful' }, { status: 200 });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error processing submission:', error);
     return NextResponse.json({ message: 'Error processing submission' }, { status: 500 });
   }
+}
+
+async function createMailerLiteSubscriber(email: string, companyName: string, jobTitle: string) {
+  const apiKey = process.env.MAILERLITE_API_KEY;
+  if (!apiKey) {
+    throw new Error('MAILERLITE_API_KEY is not set');
+  }
+
+  const url = 'https://connect.mailerlite.com/api/subscribers';
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      email: email,
+      fields: {
+        company: companyName,
+        job_title: jobTitle
+      },
+      groups: ["134010769999136177"] // Replace with your actual group ID or name
+    })
+  });
+
+  return response;
 }
