@@ -149,7 +149,7 @@ const GradientBackground: React.FC = () => {
     <div className="absolute inset-0 -z-10 max-h-[800px]">
       <canvas
         ref={canvasRef}
-        className="w-full h-full transform -skew-y-12 origin-top-left"
+        className="w-full h-full transform -skew-y-6 origin-top-left"
       />
       <img
         ref={svgImageRef}

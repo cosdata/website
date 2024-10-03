@@ -27,9 +27,9 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className="mt-[60px] sm:mt-[100px] md:mt-[130px] xl:mt-[180px] 2xl:mt-[230px] pb-[0px] lg:pb-[100px] relative bg-[#fceef1] transform -skew-y-6 origin-top-left -z-10">
+    <section className="mt-[30px]  sm:mt-[60px] md:mt-[80px] xl:mt-[140px]  pb-[0px] lg:pb-[100px]   relative bg-[#fcf6f7] transform -skew-y-6 origin-top-left -z-10">
       <div className='relative bg-transparent transform skew-y-6 origin-top-left mt-0'>
-        <div className="container mx-auto px-4 max-w-6xl 2xl:py-[80px] sm:py-[80px] py-[60px]">
+        <div className="container mx-auto px-4 max-w-6xl py-[40px] 2xl:py-[0px]">
           <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8] px-4">
             Unlock Your Data's Potential
           </h2>

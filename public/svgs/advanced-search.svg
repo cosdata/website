@@ -19,17 +19,24 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="1.6691475"
-     inkscape:cx="343.28901"
-     inkscape:cy="852.83054"
+     inkscape:zoom="1.1802655"
+     inkscape:cx="332.97592"
+     inkscape:cy="314.75968"
      inkscape:window-width="1876"
-     inkscape:window-height="1136"
+     inkscape:window-height="1138"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg103" />
   <defs
      id="defs35">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="108.08232 : 798.66196 : 1"
+       inkscape:vp_y="954.49539 : 298.22565 : 0"
+       inkscape:vp_z="346.60916 : 35.237461 : 1"
+       inkscape:persp3d-origin="76.634097 : 369.86088 : 1"
+       id="perspective51" />
     <linearGradient
        id="linearGradient50"
        inkscape:collect="always">
@@ -1815,26 +1822,21 @@
          style="fill:url(#linear-gradient-69)" />
     </g>
   </g>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.9209px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#f23665;fill-opacity:1;stroke:#ee4e76;stroke-width:0.783;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-     x="320.64853"
-     y="545.90448"
-     id="text105"
-     transform="matrix(1.0462889,-0.63490526,-0.07543779,1.0015359,0,0)"><tspan
-       sodipodi:role="line"
-       id="tspan105"
-       x="320.64853"
-       y="545.90448"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.9209px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#f23665;fill-opacity:1;stroke:#ee4e76;stroke-width:0.783;stroke-dasharray:none;stroke-opacity:1">Heart friendly </tspan><tspan
-       sodipodi:role="line"
-       x="320.64853"
-       y="588.3056"
-       id="tspan106"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.9209px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#f23665;fill-opacity:1;stroke:#ee4e76;stroke-width:0.783;stroke-dasharray:none;stroke-opacity:1">Mediterranean </tspan><tspan
-       sodipodi:role="line"
-       x="320.64853"
-       y="630.70673"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.9209px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#f23665;fill-opacity:1;stroke:#ee4e76;stroke-width:0.783;stroke-dasharray:none;stroke-opacity:1"
-       id="tspan107"> breakfast?</tspan></text>
+  <rect
+     style="fill:#e8e1e2;fill-opacity:1;stroke:#af4560;stroke-width:0.836302;stroke-linecap:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke markers fill"
+     id="rect63"
+     width="262.00372"
+     height="53.580715"
+     x="168.84082"
+     y="510.23148"
+     ry="22.029024"
+     transform="matrix(0.84497332,-0.53480846,0.06217457,0.99806529,0,0)" />
+  <ellipse
+     style="fill:#e6406a;fill-opacity:1;stroke:none;stroke-width:0.744614;stroke-linecap:round;stroke-miterlimit:0;stroke-opacity:1;paint-order:stroke markers fill"
+     id="path70"
+     cx="-359.37836"
+     cy="432.38901"
+     rx="13.083469"
+     ry="17.440859"
+     transform="matrix(-0.9443831,0.32884731,0.09468338,0.99550744,0,0)" />
 </svg>

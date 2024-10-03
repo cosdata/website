@@ -29,10 +29,10 @@ export default function PrecisionPerformanceSection() {
     ]
 
     return (
-        <section className=" mt-[60px] sm:mt-[100px] md:mt-[130px] xl:mt-[180px] 2xl:mt-[250px] pb-[0px] lg:pb-[100px] relative bg-[#e5f4ff] transform -skew-y-6 origin-top-left -z-10">
+        <section className=" mt-[50px]  sm:mt-[80px] md:mt-[90px] lg:mt-[100px] xl:mt-[140px] 2xl:mt-[180px]  pb-[0px] lg:pb-[100px] relative bg-[#e5f4ff] transform -skew-y-6 origin-top-left -z-10">
             {/* <div className="absolute inset-0 bg-gradient-to-bl from-gray-200 to-white" style={{ clipPath: 'polygon(100% 0, 0% 30%,0% 100%, 100% 100%)' }}></div> */}
             <div className='relative bg-transparent transform skew-y-6 origin-top-left mt-0'>
-                <div className="container mx-auto px-4 max-w-6xl relative z-10  py-[50px]">
+                <div className="container mx-auto px-4 max-w-6xl relative z-10  py-[40px] 2xl:py-[10px]">
                     <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8]">
                         Precision Performance, Effortless Integration
                     </h2>
