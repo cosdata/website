@@ -1,7 +1,50 @@
+'use client'
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 function Footer() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // 'idle', 'loading', 'success', 'error'
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const validateEmail = (email: string) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateEmail(email)) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/submit-early-access', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, companyName: '', jobTitle: '' }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('An error occurred. Please try again.');
+    }
+  };
+
   return (
     <footer className="relative ">
       <div className="bg-[#0055c8] absolute -z-[11] w-full h-[1500px] bottom-0"></div>
@@ -40,21 +83,31 @@ function Footer() {
 
                 </div>
                 <div className="flex flex-col items-start mt-4">
-                  <p className="text-sm text-[white] mb-4  ">Subscribe to our newsletter.</p>
-                  <form className="flex flex-col justify-center lg:items-center gap-2">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full max-w-64 px-2 py-[0.36rem] rounded-md outline-none border-2 focus:border-[#3083fe] border-[white] bg-white text-gray-800 mb-2 sm:mb-0"
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="w-full max-w-64 px-4 py-2 bg-[white] text-[#0055c8] rounded-md hover:bg-[#3083fe] hover:text-white transition-colors duration-300"
-                    >
-                      Subscribe
-                    </button>
-                  </form>
+                  <p className="text-sm text-[white] mb-4">Subscribe to our newsletter.</p>
+                  {status !== 'success' ? (
+                    <form onSubmit={handleSubmit} className="flex flex-col justify-center lg:items-center gap-2">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="w-full max-w-64 px-2 py-[0.36rem] rounded-md outline-none border-2 focus:border-[#3083fe] border-[white] bg-white text-gray-800 mb-2 sm:mb-0"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <button
+                        type="submit"
+                        className="w-full max-w-64 px-4 py-2 bg-[white] text-[#0055c8] rounded-md hover:bg-[#3083fe] hover:text-white transition-colors duration-300"
+                        disabled={status === 'loading'}
+                      >
+                        {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                      </button>
+                    </form>
+                  ) : (
+                    <p className="text-white font-semibold">Success! Thank you for subscribing.</p>
+                  )}
+                  {status === 'error' && (
+                    <p className="text-red-300 text-sm mt-2">{errorMessage}</p>
+                  )}
                 </div>
               </div>
             </div>
