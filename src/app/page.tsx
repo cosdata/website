@@ -40,7 +40,6 @@ export default async function Home() {
         <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
       </div>
       <UseCases />
-      <Footer />
       {/* <ScopioX100 />
       <VideoSection />
       <Footer /> */}

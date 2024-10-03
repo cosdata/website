@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/icons-material": "^6.1.2",
+    "@strapi/blocks-react-renderer": "^1.0.1",
     "@vercel/kv": "^3.0.0",
     "@vercel/postgres": "^0.10.0",
     "axios": "^1.7.5",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^11.9.0",
+    "lucide-react": "^0.447.0",
     "next": "14.2.7",
     "react": "^18",
     "react-dom": "^18"
