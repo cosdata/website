@@ -18,7 +18,7 @@ const FeaturedPost = ({ post, className }: { post: any; className?: string }) =>
       )}
       <div className="p-4 sm:p-6">
         <h2 className="text-2xl sm:text-3xl font-bold mb-2 break-words">{post.attributes.title}</h2>
-        <p className="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p className="text-gray-600 mb-4">{post.attributes.preview}...</p>
 
         <div className="flex items-center mb-4">
           {post.attributes.author_headshot && (
@@ -42,7 +42,7 @@ const FeaturedPost = ({ post, className }: { post: any; className?: string }) =>
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">5 min read</span>
+          <span className="text-sm text-gray-500">{post.attributes.read_time} min read</span>
           <Link 
             href={`/blog/${post.attributes.slug}`}
             className="text-blue-600 hover:text-blue-800 transition-colors duration-300"
