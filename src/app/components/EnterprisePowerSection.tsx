@@ -34,8 +34,8 @@ const EnterprisePowerSectionAlt: React.FC = () => {
         },
     ];
 
-    const [activeIndex, setActiveIndex] = useState(0);
     const [mobileView, setMobileView] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [autoPlay, setAutoPlay] = useState(true);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -55,17 +55,12 @@ const EnterprisePowerSectionAlt: React.FC = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 768) {
-                setMobileView(true);
-            } else {
-                setMobileView(false);
-            }
+            setMobileView(window.innerWidth < 768);
         };
         window.addEventListener("resize", handleResize);
-        handleResize(); // Call initially to set the correct state
+        handleResize();
 
-        // Add carousel effect
-        if (autoPlay) {
+        if (!mobileView && autoPlay) {
             intervalRef.current = setInterval(nextSlide, 7000);
         }
         return () => {
@@ -74,102 +69,129 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                 clearInterval(intervalRef.current);
             }
         };
-    }, [nextSlide, autoPlay]);
+    }, [nextSlide, autoPlay, mobileView]);
 
     return (
         <div className="max-w-6xl md:mx-auto pt-8 pb-8">
             <div className="px-4">
-                <div className="text-[#0055c8] text-4xl font-semibold flex justify-center mb-16 text-center">
+                <div className="text-[#0055c8] text-2xl sm:text-4xl font-bold text-center mb-8 md:mb-4">
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-6">
-                    <div className="md:w-[600px] w-full">
+                {mobileView ? (
+                    // Mobile view
+                    <div className="flex flex-col gap-12">
                         {items.map((item, index) => (
-                            <div
-                                key={index}
-                                className={`cursor-pointer p-4 mb-10 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
-                                onClick={() => handleManualSelect(index)}
-                            >
-                                <div className="flex items-center justify-between gap-2">
-                                    {/* <Image
-                                        src={`/svgs/features/icon(${index + 1}).drawio.svg`}
-                                        alt="icon"
-                                        width={40}
-                                        height={40}
-                                    /> */}
-                                    <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
-                                        {item.title}
-                                    </h2>
-                                    <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-0" : "text-gray-400 rotate-90"}`}>
-                                        <Image src="/svgs/arrow.svg" height={24} width={24} alt="arrow" />
-                                    </span>
+                            <div key={index} className="flex flex-col gap-4">
+                                <h2 className="text-xl sm:text-3xl font-semibold text-[#0055c8]">
+                                    {item.title}
+                                </h2>
+                                <p className="text-gray-600">{item.summary}</p>
+                                <div className="relative w-full h-[250px]">
+                                    <Image 
+                                        src={index === 0 ? "/svgs/database-scale.svg" : 
+                                             index === 1 ? "/svgs/protection.svg" : 
+                                             "/svgs/version-control.svg"}
+                                        alt={item.title}
+                                        fill
+                                        className="object-contain"
+                                    />
                                 </div>
-
-                                {/* Show summary always, not just for active item */}
-                                <div className="mt-3 text-[#374151]">
-                                    {item.summary}
-                                </div>
-
-                                {/* Mobile view SVG and description, only visible for the active item */}
-                                {mobileView && index === activeIndex && (
-                                    <div className="mt-4 w-full duration-300 ease-in-out opacity-100">
-                                        <div className="w-full flex justify-center items-center">
-                                            <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
-                                                {index === 0 ? (
-                                                    <Image src="/svgs/database-scale.svg" alt="scale" fill />
-                                                ) : index === 1 ? (
-                                                    <Image src="/svgs/protection.svg" alt="protection" fill />
-                                                ) : (
-                                                    <Image src="/svgs/version-control.svg" alt="version control" fill />
-                                                )}
-                                            </div>
-                                        </div>
-                                        {/* Description in mobile view */}
-                                        <div className="mt-6 text-[#374151]">
-                                            {item.description}
-                                        </div>
-                                    </div>
-                                )}
+                                <p className="text-gray-600">{item.description}</p>
+                                {/* Removed the "Learn more" link */}
                             </div>
                         ))}
                     </div>
+                ) : (
+                    // Desktop view (unchanged)
+                    <div className="flex flex-col md:flex-row gap-6">
+                        <div className="md:w-[600px] w-full">
+                            {items.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className={`cursor-pointer p-4 mb-10 duration-300 ${index === activeIndex ? "bg-[#e5f4ff]" : "bg-transparent"}`}
+                                    onClick={() => handleManualSelect(index)}
+                                >
+                                    <div className="flex items-center justify-between gap-2">
+                                        {/* <Image
+                                            src={`/svgs/features/icon(${index + 1}).drawio.svg`}
+                                            alt="icon"
+                                            width={40}
+                                            height={40}
+                                        /> */}
+                                        <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
+                                            {item.title}
+                                        </h2>
+                                        <span className={`transition-transform ${index === activeIndex ? "text-[#0055c8] rotate-0" : "text-gray-400 rotate-90"}`}>
+                                            <Image src="/svgs/arrow.svg" height={24} width={24} alt="arrow" />
+                                        </span>
+                                    </div>
 
-                    {/* Right column with SVG animation and description for desktop view */}
-                    {!mobileView && (
-                        <div className="hidden md:block md:w-1/2 w-full pl-6">
-                            <div className="w-full flex justify-center items-center">
-                                <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
-                                    {activeIndex === 0 ? (
-                                        <Image src="/svgs/database-scale.svg" alt="scale" fill />
-                                    ) : activeIndex === 1 ? (
-                                        <Image src="/svgs/protection.svg" alt="protection" fill />
-                                    ) : (
-                                        <Image src="/svgs/version-control.svg" alt="version control" fill />
+                                    {/* Show summary always, not just for active item */}
+                                    <div className="mt-3 text-[#374151]">
+                                        {item.summary}
+                                    </div>
+
+                                    {/* Mobile view SVG and description, only visible for the active item */}
+                                    {mobileView && index === activeIndex && (
+                                        <div className="mt-4 w-full duration-300 ease-in-out opacity-100">
+                                            <div className="w-full flex justify-center items-center">
+                                                <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
+                                                    {index === 0 ? (
+                                                        <Image src="/svgs/database-scale.svg" alt="scale" fill />
+                                                    ) : index === 1 ? (
+                                                        <Image src="/svgs/protection.svg" alt="protection" fill />
+                                                    ) : (
+                                                        <Image src="/svgs/version-control.svg" alt="version control" fill />
+                                                    )}
+                                                </div>
+                                            </div>
+                                            {/* Description in mobile view */}
+                                            <div className="mt-6 text-[#374151]">
+                                                {item.description}
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
-                            </div>
-
-                            {/* Description below the SVG */}
-                            <div className="mt-6 text-[#374151]">
-                                {items[activeIndex].description}
-                            </div>
-
-                            {/* Updated carousel buttons */}
-                            <div className="mt-6 flex justify-center space-x-2">
-                                {items.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        className={`w-3 h-3 rounded-full ${
-                                            index === activeIndex ? "bg-[#0055c8]" : "bg-gray-300"
-                                        }`}
-                                        onClick={() => handleManualSelect(index)}
-                                    />
-                                ))}
-                            </div>
+                            ))}
                         </div>
-                    )}
-                </div>
+
+                        {/* Right column with SVG animation and description for desktop view */}
+                        {!mobileView && (
+                            <div className="hidden md:block md:w-1/2 w-full pl-6">
+                                <div className="w-full flex justify-center items-center">
+                                    <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
+                                        {activeIndex === 0 ? (
+                                            <Image src="/svgs/database-scale.svg" alt="scale" fill />
+                                        ) : activeIndex === 1 ? (
+                                            <Image src="/svgs/protection.svg" alt="protection" fill />
+                                        ) : (
+                                            <Image src="/svgs/version-control.svg" alt="version control" fill />
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Description below the SVG */}
+                                <div className="mt-6 text-[#374151]">
+                                    {items[activeIndex].description}
+                                </div>
+
+                                {/* Updated carousel buttons */}
+                                <div className="mt-6 flex justify-center space-x-2">
+                                    {items.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            className={`w-3 h-3 rounded-full ${
+                                                index === activeIndex ? "bg-[#0055c8]" : "bg-gray-300"
+                                            }`}
+                                            onClick={() => handleManualSelect(index)}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
