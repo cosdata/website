@@ -58,7 +58,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       ? format(new Date(post.attributes.publishedAt), 'MMMM d, yyyy')
       : 'Date unavailable';
 
-    const readingTime = post.attributes.reading_time || 5; // Default to 5 minutes if not set
+    const readingTime = post.attributes.read_time || 5; // Default to 5 minutes if not set
 
     const getFullImageUrl = (url: string) => {
       if (url.startsWith('http')) return url;
