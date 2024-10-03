@@ -18,7 +18,7 @@ import UseCases from './components/UseCases';
 // Make the Home component async to support server-side data fetching
 export default async function Home() {
   // Fetch the data directly in the component
- // const claim = await fetchClaim();
+  // const claim = await fetchClaim();
 
 
   return (
@@ -32,13 +32,9 @@ export default async function Home() {
       <AdvancedSearchSection />
       <BlazingFastSection /*claimsData={claim}*/ />
       <PrecisionPerformanceSection />
-      <div className="max-w-6xl mx-auto my-8">
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-      </div>
+
       <EnterpisePowerSection />
-      <div className="max-w-6xl mx-auto my-8">
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-      </div>
+
       <UseCases />
       {/* <ScopioX100 />
       <VideoSection />

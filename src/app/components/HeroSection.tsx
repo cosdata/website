@@ -7,7 +7,7 @@ const HeroSection = () => {
     "Smarter, Faster Search",
     "Knowledge Graphs",
     "Hybrid Search",
-    "Advanced Version Control"
+    "Smart Data Versioning"
   ];
   const [currentPhrase, setCurrentPhrase] = useState('');
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -43,9 +43,12 @@ const HeroSection = () => {
         <div className="flex w-full justify-center sm:justify-start">
           <div className="flex-grow flex flex-col items-center sm:items-start text-center sm:text-left px-2 py-6 sm:px-6">
             <h1 className="text-[28px] sm:text-[48px] md:text-[56px] font-[500] leading-[1.2] md:leading-[64px] text-[#0055c8] mb-4 md:mb-6">
-              <div className="text-[#f23665] text-[40px] sm:text-[56px] md:text-[72px] font-bold">Supercharge Your AI</div>
-              <div className="pt-2 md:pt-3 text-[18px] sm:text-[24px] md:text-[32px] whitespace-nowrap">
-                with <span className="typewriter font-bold">{currentPhrase}</span><span className='text-[#f23665]' style={cursorStyle}>|</span>
+              <div className="text-[#f23665] text-[42px] sm:text-[56px] md:text-[72px] font-bold ">Supercharge Your AI <span className='sm:hidden '>with</span></div>
+              <div className="pt-2 md:pt-3 text-[25px] sm:text-[42px] md:text-[48px] whitespace-nowrap">
+              <span className='sm:inline-block hidden'>with </span> <span className="typewriter font-bold">
+                {currentPhrase}
+                </span><span className='text-[#f23665]' style={cursorStyle}>|</span>
+                
               </div>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-[#374151] mb-6 md:mb-8 leading-relaxed max-w-2xl">
