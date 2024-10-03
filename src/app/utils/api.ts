@@ -1,25 +1,40 @@
-// api.tsx
+import axios from 'axios';
+console.log('NODE_ENV:', process.env);
 
-export const fetchClaim = async () => {
-  const baseUrl:any = process.env.NEXT_PUBLIC_API_URL;
-  console.log("Fetching promotional claim from:", baseUrl);
-  
+const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+const strapiToken = process.env.STRAPI_ARTICLES_READ_TOKEN;
+
+console.log('STRAPI_URL:', strapiUrl);
+console.log('STRAPI_TOKEN:', strapiToken);
+console.log('NODE_ENV:', process.env);
+
+export const getPosts = async () => {
+  console.log('STRAPI_URL:', strapiUrl);
+console.log('STRAPI_TOKEN:', strapiToken);
+console.log('NODE_ENV:', process.env);
   try {
-    const response = await fetch(baseUrl,{
+    const response = await axios.get(`${strapiUrl}/api/articles?populate=*`, {
       headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',  // Prevents caching
-        'Pragma': 'no-cache',  // For HTTP/1.0 backward compatibility
-        'Expires': '0',  // Forces expiration
-      }
+        Authorization: `Bearer ${strapiToken}`,
+      },
     });
-    if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.statusText}`);
-    }
-    const data = await response.json();
-    // console.log("Promotional claim data:", data);
-    return data?.data || 'Default Claim Text';
+    return response.data.data;
   } catch (error) {
-    console.error('Error fetching promotional claim:', error);
-    return 'Default Claim Text'; 
+    console.error('Error fetching posts: ', error);
+    return [];
+  }
+};
+
+export const getPostBySlug = async (slug: string) => {
+  try {
+    const response = await axios.get(`${strapiUrl}/api/articles?filters[slug][$eq]=${slug}&populate=*`, {
+      headers: {
+        Authorization: `Bearer ${strapiToken}`,
+      },
+    });
+    return response.data.data[0];
+  } catch (error) {
+    console.error('Error fetching post: ', error);
+    return null;
   }
 };

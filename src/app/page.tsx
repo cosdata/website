@@ -36,8 +36,6 @@ export default async function Home() {
       <EnterpisePowerSection />
 
       <UseCases />
-      
-      <Footer />
       {/* <ScopioX100 />
       <VideoSection />
       <Footer /> */}
