@@ -30,12 +30,19 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  console.log('Base URL:', baseUrl);
+  console.log('Slug:', params.slug);
   const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  console.log('Strapi URL:', strapiUrl);
 
   try {
-    const response = await fetch(`${baseUrl}/api/posts/${params.slug}`, {
+    const apiUrl = `${baseUrl}/api/posts/${params.slug}`;
+    console.log('API URL:', apiUrl);
+    const response = await fetch(apiUrl, {
       next: { revalidate: 3600 },
     });
+
+    console.log('Response status:', response.status);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
