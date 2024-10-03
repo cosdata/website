@@ -99,13 +99,16 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </header>
 
           {post.attributes.cover_image && (
-            <Image
-              src={getFullImageUrl(post.attributes.cover_image.data.attributes.url)}
-              alt={post.attributes.title}
-              width={1200}
-              height={600}
-              className="w-full aspect-video object-cover rounded-lg mb-8"
-            />
+            <>
+              {console.log('Cover image URL:', getFullImageUrl(post.attributes.cover_image.data.attributes.url))}
+              <Image
+                src={getFullImageUrl(post.attributes.cover_image.data.attributes.url)}
+                alt={post.attributes.title}
+                width={1200}
+                height={600}
+                className="w-full aspect-video object-cover rounded-lg mb-8"
+              />
+            </>
           )}
 
           <div className="prose prose-lg max-w-none">
