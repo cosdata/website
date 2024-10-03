@@ -63,9 +63,9 @@ function Footer() {
               <div>
                 <h3 className="text-lg font-semibold mb-4">Product</h3>
                 <ul className="space-y-2 ">
-                  <li><Link href="/blog#intelligent-queries" className="">Technology</Link></li>
-                  <li><Link href="#" className="">Features</Link></li>
-                  <li><Link href="#" className="">Use Cases</Link></li>
+                  <li><Link href="/blog/introducing-cosdata" className="">Technology</Link></li>
+                  <li><Link href="/blog/introducing-cosdata" className="">Features</Link></li>
+                  <li><Link href="/blog/introducing-cosdata" className="">Use Cases</Link></li>
                   <li><Link href="#" className="">Pricing</Link></li>
                 </ul>
               </div>

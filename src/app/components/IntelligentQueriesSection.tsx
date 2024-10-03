@@ -20,7 +20,7 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
                 <p className='mb-4 sm:mb-5 text-sm sm:text-base'>{description}</p>
             </div>
             <div>
-                <Link href={`/blog${anchorLink}`} className='px-3 py-1 sm:px-4 sm:py-2 bg-transparent text-[#3d8bff] border-2 border-[#3d8bff] rounded-md font-semibold text-sm sm:text-base'>Learn More</Link>
+                <Link href={`/blog/introducing-cosdata`} className='px-3 py-1 sm:px-4 sm:py-2 bg-transparent text-[#3d8bff] border-2 border-[#3d8bff] rounded-md font-semibold text-sm sm:text-base'>Learn More</Link>
             </div>
         </div>
     );

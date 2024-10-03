@@ -79,8 +79,8 @@ export default function BlazingFast(/*{ claimsData }: BlazingFastProps*/) {
                     <Image src="./svgs/performance.svg" alt="performance" fill className="object-contain" />
                 </div>
                 <h2 className="text-lg md:text-base text-left mb-4 text-[#374151] mx-auto md:max-w-[500px] px-4 md:px-0">
-                    Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nisi numquam doloremque ut veniam reprehenderit magnam repudiandae quos inventore non, nostrum rem similique fuga culpa aspernatur dignissimos, beatae
-                    <div><a href="#" className="text-blue-600 text-sm font-semibold hover:underline mt-4 inline-block">Learn more -&gt;</a>
+                    Cosdata Leverages Advanced Quantization, Vectorization, and Optimized Algorithms to Give Peak Performance at Scale. Experience unparalleled speed and efficiency in data processing and retrieval, enabling real-time analytics and instant insights for your most demanding applications. Our cutting-edge technology ensures that performance scales seamlessly with your data growth.
+                    <div><a href="/blog/introducing-cosdata" className="text-blue-600 text-sm font-semibold hover:underline mt-4 inline-block">Learn more -&gt;</a>
                     </div>
                 </h2>
             </div>

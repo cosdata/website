@@ -72,8 +72,8 @@ export default function Header() {
             <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/blog#intelligent-queries" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
-            <Link href="/blog" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About Us</Link>
+            <Link href="/blog/introducing-cosdata" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
+            <Link href="/blog/introducing-cosdata" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About Us</Link>
             <Link href="/blog" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <button onClick={openModal} className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-sm">
               Get Early Access
@@ -101,8 +101,8 @@ export default function Header() {
         <div className="fixed left-0 right-0 bg-white md:hidden z-40"
           style={{ top: `${minPadding * 2 + 20}px` }}> {/* Adjust top based on header height */}
           <div className="px-12 py-6 space-y-4">
-            <Link href="/blog#intelligent-queries" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
-            <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
+            <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
+            <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
             <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <button onClick={openModal} className="w-full bg-[#f23665] text-white px-4 py-3 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-sm">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

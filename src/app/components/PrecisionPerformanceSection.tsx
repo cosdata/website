@@ -29,7 +29,7 @@ export default function PrecisionPerformanceSection() {
     ]
 
     return (
-        <section className=" mt-[50px]  sm:mt-[80px] md:mt-[90px] lg:mt-[100px] xl:mt-[140px] 2xl:mt-[180px]  pb-[0px] lg:pb-[100px] relative bg-[#e5f4ff] transform -skew-y-6 origin-top-left -z-10">
+        <section className=" mt-[50px]  sm:mt-[80px] md:mt-[90px] lg:mt-[100px] xl:mt-[140px] 2xl:mt-[180px]  pb-[0px] lg:pb-[100px] relative bg-[#e5f4ff] transform -skew-y-6 origin-top-left">
             {/* <div className="absolute inset-0 bg-gradient-to-bl from-gray-200 to-white" style={{ clipPath: 'polygon(100% 0, 0% 30%,0% 100%, 100% 100%)' }}></div> */}
             <div className='relative bg-transparent transform skew-y-6 origin-top-left mt-0'>
                 <div className="container mx-auto px-4 max-w-6xl relative z-10  py-[40px] 2xl:py-[10px]">
@@ -55,7 +55,7 @@ export default function PrecisionPerformanceSection() {
                                         </p>
                                     );
                                 })}
-                                <a href="#" className="text-blue-600 font-semibold hover:underline mt-4 inline-block">Learn more -&gt;</a>
+                                <a href="/blog/introducing-cosdata" className="text-blue-600 font-semibold hover:underline mt-4 inline-block">Learn more -&gt;</a>
                             </div>
                             <div className="md:w-1/2 px-4 flex justify-center items-center">
                                 <div className="w-64 h-64">
