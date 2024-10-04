@@ -65,7 +65,7 @@ export default function Blog() {
       <div className="w-full py-8 px-4 sm:px-6 bg-gray-100 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
-            <h1 className="text-5xl mb-4 sm:mb-0">Featured Post</h1>
+            <h1 className="text-5xl mb-4 sm:mb-0 text-gray-600">Featured Post</h1>
             <div className="w-full sm:w-1/2">
               <SearchBar placeholder="What are you looking for?" onSearch={handleSearch} />
             </div>
