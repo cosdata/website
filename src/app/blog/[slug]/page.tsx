@@ -128,7 +128,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
               )}
               <div>
                 {post.attributes.author && (
-                  <p className="font-semibold text-lg">{post.attributes.author}</p>
+                  <p className="font-semibold text-lg text-gray-600">{post.attributes.author}</p>
                 )}
                 {post.attributes.author_role && (
                   <p className="text-gray-600">{post.attributes.author_role}</p>
