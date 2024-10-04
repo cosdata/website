@@ -111,7 +111,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </>
           )}
 
-          <div className="prose prose-lg max-w-none text-gray-700">
+          <div className="prose prose-lg max-w-none text-gray-600">
             <BlogContent content={post.attributes.content} />
           </div>
 
