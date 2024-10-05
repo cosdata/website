@@ -60,7 +60,7 @@ export default function Blog() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen text-gray-600">
       <CoverImage />
       <div className="w-full py-8 px-4 sm:px-6 bg-gray-100 lg:px-8">
         <div className="max-w-5xl mx-auto">
