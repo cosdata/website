@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Cosdata",
   description: "Next-gen Vector Database Solution",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
 };
 
