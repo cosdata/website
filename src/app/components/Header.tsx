@@ -13,6 +13,8 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
 
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     const maxScroll = 80;
@@ -46,22 +48,29 @@ export default function Header() {
     setIsOpen(!isOpen);
   };
 
-  const handleLoginClick = () => {
-    router.push('/signin');
-  };
-
-  const handleSignupClick = () => {
-    router.push('/signup');
-  };
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleSubMenuLinkClick = useCallback(() => {
+    setIsSubMenuOpen(false);
+    setIsOpen(false); // Close mobile menu if open
+  }, []);
+
+  useEffect(() => {
+    const closeSubMenu = (e: MouseEvent) => {
+      if (isSubMenuOpen && !(e.target as Element).closest('.submenu-container')) {
+        setIsSubMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', closeSubMenu);
+    return () => document.removeEventListener('click', closeSubMenu);
+  }, [isSubMenuOpen]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 ${isLandingPage && !isOpen ? '' : 'bg-white'
-          } ${isOpen ? 'md:shadow-md' : ''}`}
+        className={`fixed top-0 left-0 right-0 z-50 ${isLandingPage && !isOpen ? '' : 'bg-white'} ${isOpen ? 'md:shadow-md' : ''}`}
         style={headerStyle}
       >
         <div
@@ -69,10 +78,26 @@ export default function Header() {
           style={{ paddingTop: `${dynamicPadding}px`, paddingBottom: `${dynamicPadding}px` }}
         >
           <div className="text-2xl font-bold text-gray-800">
-            <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div> </Link>
+            <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div></Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/blog/introducing-cosdata" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
+            <div className="relative group submenu-container">
+              <button
+                className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500 flex items-center"
+                onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
+              >
+                Technology
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ${isSubMenuOpen || 'opacity-0 invisible'} group-hover:opacity-100 group-hover:visible`}>
+                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                  <Link href="/blog/introducing-cosdata" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Overview</Link>
+                  <Link href="/tech/roadmap" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Roadmap</Link>
+                </div>
+              </div>
+            </div>
             <Link href="/blog/introducing-cosdata" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About Us</Link>
             <Link href="/blog" className="text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <button onClick={openModal} className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-sm">
@@ -98,10 +123,25 @@ export default function Header() {
       </header>
 
       {isOpen && (
-        <div className="fixed left-0 right-0 bg-white md:hidden z-40"
-          style={{ top: `${minPadding * 2 + 20}px` }}> {/* Adjust top based on header height */}
+        <div className="fixed left-0 right-0 bg-white md:hidden z-40" style={{ top: `${minPadding * 2 + 20}px` }}>
           <div className="px-12 py-6 space-y-4">
-            <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Technology</Link>
+            <div>
+              <button
+                onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
+                className="w-full text-left text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500 flex items-center justify-between"
+              >
+                Technology
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              {isSubMenuOpen && (
+                <div className="ml-4 mt-2 space-y-2">
+                  <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Overview</Link>
+                  <Link href="/tech/roadmap" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Roadmap</Link>
+                </div>
+              )}
+            </div>
             <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">About us</Link>
             <Link href="/blog" className="block text-black font-open-sans text-[14px] font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <button onClick={openModal} className="w-full bg-[#f23665] text-white px-4 py-3 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-sm">
