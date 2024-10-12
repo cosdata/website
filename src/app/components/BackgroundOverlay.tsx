@@ -36,6 +36,7 @@ const BackgroundOverlay = () => {
                     transform: `translateX(50%) translateY(${scrollY * 0.005}px) rotate(${scrollY * 0.003}deg)` // Adjust movement and rotation factor as needed
                 }}
             />
+            
 
             {/* Bottom Middle Triangle */}
             {/* Uncomment this if needed */}
