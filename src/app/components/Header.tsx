@@ -74,10 +74,10 @@ export default function Header() {
         style={headerStyle}
       >
         <div
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center transition-all duration-300"
+          className="max-w-[1400px] mx-auto px-4 sm:px-4 lg:px-4 flex justify-between items-center transition-all duration-300"
           style={{ paddingTop: `${dynamicPadding}px`, paddingBottom: `${dynamicPadding}px` }}
         >
-          <div className="text-2xl font-bold text-gray-800">
+          <div className="text-2xl font-bold text-gray-800 -ml-2 sm:-ml-3 lg:-ml-4">
             <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div></Link>
           </div>
           <nav className="hidden md:flex items-center space-x-6">

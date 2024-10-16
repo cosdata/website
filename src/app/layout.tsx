@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import GradientBackground from "./components/GradientBackground";
 import BackgroundOverlay from './components/BackgroundOverlay';
 import Script from 'next/script';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Cosdata",
@@ -38,11 +35,13 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={inter.className}>
+      <body>
         <BackgroundOverlay />
         <GradientBackground />
         <Header />
-        {children}
+        <div className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-4">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

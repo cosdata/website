@@ -1,6 +1,28 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Afacad } from 'next/font/google';
+import { Noto_Sans_Mono } from 'next/font/google';
+import { Roboto } from 'next/font/google';
+
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const noto_sans_mono = Noto_Sans_Mono({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const lato = Roboto({ 
+  weight: ['400', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 interface FeatureItem {
     title: string;
@@ -14,13 +36,13 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
         <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-4 sm:p-6 text-[#374151] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
             <div className="flex flex-col">
                 <div className="flex items-center gap-4 mb-3 sm:mb-4">
-                    <Image src={svg} alt={title} width={45} height={45} className=" max-h-[45px] max-w-[45px] hidden sm:block" />
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8]">{title}</h3>
+                    <Image src={svg} alt={title} width={45} height={45} className="max-h-[45px] max-w-[45px] hidden sm:block" />
+                    <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] ${noto_sans_mono.className}`}>{title}</h3>
                 </div>
-                <p className='mb-4 sm:mb-5 text-sm sm:text-base'>{description}</p>
+                <p className={`mt-4 mb-10 text-base sm:text-lg md:text-xl ${afacad.className}`}>{description}</p>
             </div>
             <div>
-                <Link href={`/blog/introducing-cosdata`} className='px-3 py-1 sm:px-4 sm:py-2 bg-transparent text-[#3d8bff] border-2 border-[#3d8bff] rounded-md font-semibold text-sm sm:text-base'>Learn More</Link>
+                <Link href={`/blog/introducing-cosdata`} className={`px-3 py-1 sm:px-4 sm:py-2 bg-transparent text-[#3d8bff] border-2 border-[#3d8bff] rounded-md font-semibold sm:text-lg md:text-xl sm:text-base ${afacad.className}`}>Learn More</Link>
             </div>
         </div>
     );
@@ -49,7 +71,7 @@ const IntelligentQueriesSection: React.FC = () => {
     ];
 
     return (
-        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-6xl">
+        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-[1400px]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 {items.map((item, index) => (
                     <FeatureCard
