@@ -1,5 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
+import { Afacad } from 'next/font/google';
+import { Noto_Sans_Mono } from 'next/font/google';
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const noto_sans_mono = Noto_Sans_Mono({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 const UseCases: React.FC = () => {
   const useCases = [
@@ -27,31 +41,41 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className="mt-[30px]  sm:mt-[60px] md:mt-[80px] xl:mt-[140px]  pb-[0px] lg:pb-[100px]   relative bg-[#fcf6f7] transform -skew-y-6 origin-top-left">
-      <div className='relative bg-transparent transform skew-y-6 origin-top-left mt-0'>
-        <div className="container mx-auto px-4 max-w-6xl py-[40px] 2xl:py-[0px]">
-          <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8] px-4">
+    <section className={`mt-[50px] sm:mt-[80px] md:mt-[90px] lg:mt-[100px] xl:mt-[140px] 2xl:mt-[180px] pb-[0px] lg:pb-[60px] relative bg-[#fcf6f7] transform -skew-y-6 origin-top-left ${noto_sans_mono.className}`}>
+      <div className='relative bg-transparent transform skew-y-6 origin-top-left mb-0'>
+        <div className="container mx-auto px-4 max-w-[1440px] relative z-10 py-[40px] 2xl:py-[80px]">
+          <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8]">
             Unlock Your Data's Potential
           </h2>
-          <p className="text-lg sm:text-xl text-center text-gray-600 mb-8 md:mb-16 px-4">Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.</p>
+           <p className={`sm:text-xl md:text-2xl text-center text-[#374151] mb-20 ${afacad.className}`}>
+            Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
+          </p>
 
           {useCases.map((useCase, index) => (
-            <div key={index} className={`flex flex-col md:flex-row items-center pb-8 md:pb-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
               <div className="md:w-1/2 mb-8 md:mb-0 px-4">
-                <h3 className="text-xxl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
+                <h3 className="text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
                   {useCase.title}
                 </h3>
-                <p className="text-gray-600 mb-6">{useCase.description}</p>
-                <a href="/blog/introducing-cosdata" className="text-blue-600 font-semibold hover:underline">Learn more -&gt;</a>
+                <p className={`text-lg sm:text-xl md:text-xl text-[#374151] mb-6 ${afacad.className}`}>
+                  {useCase.description}
+                </p>
+                <a
+                  href="/blog/introducing-cosdata"
+                  className={`text-lg sm:text-xl md:text-xl text-blue-600 text-sm font-semibold hover:underline mt-2 inline-flex items-center ${afacad.className}`}
+                >
+                  Learn more
+                  <span className="ml-2">→</span>
+                </a>
               </div>
-              <div className="md:w-1/2 px-4">
-                <div className="max-w-md mx-auto w-fit md:mb-0">
+              <div className="md:w-1/2 px-4 flex justify-center items-center">
+                <div className="w-64 h-64">
                   <Image
                     src={useCase.image}
                     alt={useCase.title}
-                    height={400}
-                    width={400}
-                    className={`${index === 1 ? 'max-h-[350px]' : 'max-h-[400px]'}`}
+                    width={256}
+                    height={256}
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>

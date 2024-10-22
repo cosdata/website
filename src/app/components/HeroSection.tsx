@@ -4,6 +4,7 @@ import EarlyAccessModal from './EarlyAccessModal';
 import { Afacad } from 'next/font/google';
 import { Noto_Sans_Mono } from 'next/font/google';
 import { Lato } from 'next/font/google';
+import { Geologica } from 'next/font/google';
 
 
 const afacad = Afacad({ 
@@ -20,6 +21,12 @@ const noto_sans_mono = Noto_Sans_Mono({
 
 const lato = Lato({ 
   weight: ['400', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const geologica = Geologica({ 
+  weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
   display: 'swap',
 });
@@ -64,7 +71,7 @@ const HeroSection = () => {
       <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <h1 className="font-family:Ubuntu text-[28px] sm:text-[48px] md:text-[56px] font-[500] leading-[1.2] md:leading-[64px] text-[#0055c8] mb-4 md:mb-6">
-            <div className="text-[#f23665] text-[42px] sm:text-[56px] md:text-[72px] font-bold">Supercharge Your AI With</div>
+            <div className="text-[#f23665] text-[42px] sm:text-[56px] md:text-[72px] font-bold">Supercharge Your AI</div>
             <div className="pt-2 md:pt-3 text-[25px] sm:text-[42px] md:text-[48px] whitespace-nowrap">
               <span className="typewriter font-bold">
                 {currentPhrase}

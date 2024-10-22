@@ -2,6 +2,20 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
+import { Afacad } from 'next/font/google';
+import { Noto_Sans_Mono } from 'next/font/google';
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const noto_sans_mono = Noto_Sans_Mono({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 interface Item {
     title: string;
@@ -72,9 +86,9 @@ const EnterprisePowerSectionAlt: React.FC = () => {
     }, [nextSlide, autoPlay, mobileView]);
 
     return (
-        <div className="max-w-6xl md:mx-auto pt-8 pb-8">
+        <div className={`max-w-[1440px] md:mx-auto pt-20 pb-8 ${noto_sans_mono.className}`}>
             <div className="px-4">
-                <div className="text-[#0055c8] text-2xl sm:text-4xl font-bold text-center mb-8 md:mb-4">
+                <div className="text-[#0055c8] text-2xl sm:text-4xl font-bold text-center mb-8 md:mb-20">
                     Enterprise-Grade Scalability, Security, and Data Management
                 </div>
 
@@ -128,7 +142,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                     </div>
 
                                     {/* Show summary always, not just for active item */}
-                                    <div className="mt-3 text-[#374151]">
+                                    <div className={`mt-5 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>
                                         {item.summary}
                                     </div>
 
@@ -147,7 +161,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                                 </div>
                                             </div>
                                             {/* Description in mobile view */}
-                                            <div className="mt-6 text-[#374151]">
+                                    <div className={`mt-5 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>
                                                 {item.description}
                                             </div>
                                         </div>
@@ -172,8 +186,8 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                 </div>
 
                                 {/* Description below the SVG */}
-                                <div className="mt-6 text-[#374151]">
-                                    {items[activeIndex].description}
+                                <div className={`mt-8 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>
+                                {items[activeIndex].description}
                                 </div>
 
                                 {/* Updated carousel buttons */}

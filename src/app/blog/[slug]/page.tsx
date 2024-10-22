@@ -3,6 +3,20 @@ import { notFound } from 'next/navigation';
 import BlogContent from './BlogContent';
 import { format } from 'date-fns';
 import axios from 'axios';
+import { Afacad } from 'next/font/google';
+import { Noto_Sans_Mono } from 'next/font/google';
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const noto_sans_mono = Noto_Sans_Mono({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -66,11 +80,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     };
 
     return (
-      <div className="bg-white min-h-screen">
-        <article className="max-w-4xl mx-auto px-4 py-12">
+      <div className={`bg-white min-h-screen ${noto_sans_mono.className}`}>
+        <article className="max-w-[1440px] mx-auto px-4 py-12">
           <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-2">{post.attributes.title}</h1>
-            <div className="flex items-center justify-between text-gray-500">
+            <h1 className="text-4xl font-bold mb-2 text-[#374151]">{post.attributes.title}</h1>
+            <div className={`flex items-center justify-between text-[#374151] ${afacad.className} text-lg sm:text-xl`}>
               <div className="flex items-center space-x-4">
                 {post.attributes.author_headshot && (
                   <Image
@@ -83,7 +97,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 )}
                 <div>
                   {post.attributes.author && (
-                    <p className="font-medium text-gray-700">{post.attributes.author}</p>
+                    <p className="font-medium">{post.attributes.author}</p>
                   )}
                   {post.attributes.author_role && (
                     <p className="text-sm">{post.attributes.author_role}</p>
@@ -99,23 +113,20 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </header>
 
           {post.attributes.cover_image && (
-            <>
-              {console.log('Cover image URL:', getFullImageUrl(post.attributes.cover_image.data.attributes.url))}
-              <Image
-                src={getFullImageUrl(post.attributes.cover_image.data.attributes.url)}
-                alt={post.attributes.title}
-                width={1200}
-                height={600}
-                className="w-full aspect-video object-cover rounded-lg mb-8"
-              />
-            </>
+            <Image
+              src={getFullImageUrl(post.attributes.cover_image.data.attributes.url)}
+              alt={post.attributes.title}
+              width={1200}
+              height={600}
+              className="w-full aspect-video object-cover rounded-lg mb-8"
+            />
           )}
 
-          <div className="prose prose-lg max-w-none text-gray-600">
+          <div className={`prose prose-lg max-w-none text-[#374151] ${afacad.className} text-lg sm:text-xl`}>
             <BlogContent content={post.attributes.content} />
           </div>
 
-          <footer className="mt-12 pt-8 border-t border-gray-200">
+          <footer className={`mt-12 pt-8 border-t border-gray-200 ${afacad.className} text-lg sm:text-xl`}>
             <div className="flex items-center space-x-4">
               {post.attributes.author_headshot && (
                 <Image
@@ -128,10 +139,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
               )}
               <div>
                 {post.attributes.author && (
-                  <p className="font-semibold text-lg text-gray-600">{post.attributes.author}</p>
+                  <p className="font-semibold text-lg text-[#374151]">{post.attributes.author}</p>
                 )}
                 {post.attributes.author_role && (
-                  <p className="text-gray-600">{post.attributes.author_role}</p>
+                  <p className="text-[#374151]">{post.attributes.author_role}</p>
                 )}
               </div>
             </div>

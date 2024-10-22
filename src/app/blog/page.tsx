@@ -8,6 +8,20 @@ import SearchBar from './SearchBar';
 import FeaturedPost from './FeaturedPost';
 import Pagination from './Pagination';
 import NewsletterSignup from './NewsletterSignup';
+import { Afacad } from 'next/font/google';
+import { Noto_Sans_Mono } from 'next/font/google';
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const noto_sans_mono = Noto_Sans_Mono({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 export default function Blog() {
   const [featuredPost, setFeaturedPost] = useState(null);
@@ -60,12 +74,12 @@ export default function Blog() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen ${noto_sans_mono.className}`}>
       <CoverImage />
       <div className="w-full py-8 px-4 sm:px-6 bg-gray-100 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-[1440px] mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
-            <h1 className="text-5xl mb-4 sm:mb-0 text-gray-600">Featured Post</h1>
+            <h1 className="text-5xl mb-4 sm:mb-0 text-[#374151]">Featured Post</h1>
             <div className="w-full sm:w-1/2">
               <SearchBar placeholder="What are you looking for?" onSearch={handleSearch} />
             </div>
@@ -73,15 +87,15 @@ export default function Blog() {
           
           {featuredPost && (
             <div className="mb-12">
-              <FeaturedPost post={featuredPost} className="flex flex-col md:flex-row" />
+              <FeaturedPost post={featuredPost} className={`flex flex-col md:flex-row ${afacad.className} text-lg sm:text-xl`} />
             </div>
           )}
           
           {loading ? (
-            <div>Loading...</div>
+            <div className={`${afacad.className} text-[#374151] text-lg sm:text-xl`}>Loading...</div>
           ) : (
             <div className="mb-12">
-              <BlogPosts posts={filteredPosts} />
+              <BlogPosts posts={filteredPosts} className={`${afacad.className} text-lg sm:text-xl`} />
             </div>
           )}
           
@@ -89,9 +103,10 @@ export default function Blog() {
             currentPage={currentPage} 
             totalPages={totalPages} 
             onPageChange={handlePageChange} 
+            className={`${afacad.className} text-lg sm:text-xl`}
           />
           
-          <div className="mt-16">
+          <div className={`mt-16 ${afacad.className} text-lg sm:text-xl`}>
             <NewsletterSignup />
           </div>
         </div>

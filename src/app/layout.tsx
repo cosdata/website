@@ -39,7 +39,7 @@ export default function RootLayout({
         <BackgroundOverlay />
         <GradientBackground />
         <Header />
-        <div className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-4">
+        <div className="max-w-8xl mx-auto px-0 sm:px-0 lg:px-0">
           {children}
         </div>
         <Footer />

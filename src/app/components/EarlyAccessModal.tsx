@@ -1,6 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
+import { Afacad } from 'next/font/google';
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 interface EarlyAccessModalProps {
   isOpen: boolean;
@@ -77,7 +84,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 ${afacad.className}`}>
       <div ref={modalRef} className="bg-white p-10 rounded-lg shadow-xl max-w-2xl w-full mx-4">
         <h2 className="text-3xl font-bold text-[#0055c8] mb-8">Get Early Access</h2>
         {submitStatus === 'success' ? (

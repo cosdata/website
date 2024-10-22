@@ -3,6 +3,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Afacad } from 'next/font/google';
+import { Noto_Sans_Mono } from 'next/font/google';
+
+const afacad = Afacad({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const noto_sans_mono = Noto_Sans_Mono({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 function Footer() {
   const [email, setEmail] = useState('');
@@ -46,11 +60,11 @@ function Footer() {
   };
 
   return (
-    <footer className="relative ">
+    <footer className={`relative ${afacad.className}`}>
       <div className="bg-[#0055c8] absolute -z-[11] w-full h-[1500px] bottom-0"></div>
 
       <div className="bg-[#0055c8] text-[white] pb-8 pt-4 relative z-10">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-0 max-w-[1400px]">
           <div className="grid grid-cols-1 sm:grid-cols-3  lg:grid-cols-3 gap-8">
             <div className="flex flex-col sm:items-center ">
               <div>
@@ -89,14 +103,14 @@ function Footer() {
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        className="w-full max-w-64 px-2 py-[0.36rem] rounded-md outline-none border-2 focus:border-[#3083fe] border-[white] bg-white text-gray-800 mb-2 sm:mb-0"
+                        className={`w-full max-w-64 px-2 py-[0.36rem] rounded-md outline-none border-2 focus:border-[#3083fe] border-[white] bg-white text-gray-800 mb-2 sm:mb-0 ${afacad.className}`}
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
                       <button
                         type="submit"
-                        className="w-full max-w-64 px-4 py-2 bg-[white] text-[#0055c8] rounded-md hover:bg-[#3083fe] hover:text-white transition-colors duration-300"
+                        className={`w-full max-w-64 px-4 py-2 bg-[white] text-[#0055c8] rounded-md hover:bg-[#3083fe] hover:text-white transition-colors duration-300 ${afacad.className}`}
                         disabled={status === 'loading'}
                       >
                         {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
@@ -114,7 +128,7 @@ function Footer() {
 
             <div className='flex flex-col md:items-center'>
               <div>
-                <h3 className="text-lg font-semibold mb-4">Product</h3>
+                <h3 className={`text-lg font-semibold mb-4 ${noto_sans_mono.className}`}>Product</h3>
                 <ul className="space-y-2 ">
                   <li><Link href="/blog/introducing-cosdata" className="">Technology</Link></li>
                   <li><Link href="/blog/introducing-cosdata" className="">Features</Link></li>
@@ -126,7 +140,7 @@ function Footer() {
 
             <div className='flex flex-col md:items-center'>
               <div>
-                <h3 className="text-lg font-semibold mb-4 ">Resources</h3>
+                <h3 className={`text-lg font-semibold mb-4 ${noto_sans_mono.className}`}>Resources</h3>
                 <ul className="space-y-2 ">
                   <li><Link href="/blog" className="">Blog</Link></li>
                   <li><Link href="#" className="">Documentation</Link></li>

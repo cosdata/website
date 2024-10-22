@@ -3,9 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-function BlogPosts({ posts }: { posts: any[] }) {
+interface BlogPostsProps {
+  posts: any[];
+  className?: string;
+}
+
+function BlogPosts({ posts, className }: BlogPostsProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${className || ''}`}>
       {posts.length > 0 ? (
         posts.map((post: any) => (
           <div 
@@ -24,8 +29,8 @@ function BlogPosts({ posts }: { posts: any[] }) {
               <div className="w-full h-48 bg-gray-200 flex items-center justify-center">No image available</div>
             )}
             <div className="p-4">
-              <h2 className="text-xl font-bold mb-2">{post.attributes.title}</h2>
-              <p className="text-gray-600 mb-4">{post.attributes.preview}...</p>
+              <h2 className="text-xl font-bold mb-2 text-[#374151]">{post.attributes.title}</h2>
+              <p className="text-[#374151] mb-4 text-lg sm:text-xl">{post.attributes.preview}...</p>
               <div className="flex items-center mb-4">
                 {post.attributes.author_headshot && (
                   <Image
@@ -37,8 +42,8 @@ function BlogPosts({ posts }: { posts: any[] }) {
                   />
                 )}
                 <div>
-                  <p className="text-sm font-medium">{post.attributes.author}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-lg sm:text-xl font-medium text-[#374151]">{post.attributes.author}</p>
+                  <p className="text-base sm:text-lg text-[#374151]">
                     {new Date(post.attributes.publishedAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -48,10 +53,10 @@ function BlogPosts({ posts }: { posts: any[] }) {
                 </div>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-500">{post.attributes.read_time} min read</span>
+                <span className="text-lg sm:text-xl text-[#374151]">{post.attributes.read_time} min read</span>
                 <Link 
                   href={`/blog/${post.attributes.slug}`}
-                  className="text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                  className="text-lg sm:text-xl text-blue-600 hover:text-blue-800 transition-colors duration-300"
                 >
                   Read more
                 </Link>
@@ -60,7 +65,7 @@ function BlogPosts({ posts }: { posts: any[] }) {
           </div>
         ))
       ) : (
-        <p>No posts available</p>
+        <p className="text-[#374151] text-lg sm:text-xl">No posts available</p>
       )}
     </div>
   )
