@@ -1,19 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Afacad } from 'next/font/google';
-import { Noto_Sans_Mono } from 'next/font/google';
-
-const afacad = Afacad({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const noto_sans_mono = Noto_Sans_Mono({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
+import { commonStyles } from '../styles/common';
 
 const UseCases: React.FC = () => {
   const useCases = [
@@ -32,22 +19,16 @@ const UseCases: React.FC = () => {
       "description": "Build responsive, data-driven recommendation systems with Cosdata's hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
       "image": "/svgs/recommendation.svg"
     },
-    // {
-    //     "title": "Data Analysis and Anomaly Detection",
-    //     "description": "Revolutionize your approach to data analysis and anomaly detection. Cosdata's vector-based search quickly identifies patterns, correlations, and outliers across complex datasets, ensuring robust real-time anomaly detection.",
-    //     "image": "/images/anomaly_detection.png"
-    // }
-    // ,
   ];
 
   return (
-    <section className={`mt-[50px] sm:mt-[80px] md:mt-[90px] lg:mt-[100px] xl:mt-[140px] 2xl:mt-[180px] pb-[0px] lg:pb-[60px] relative bg-[#fcf6f7] transform -skew-y-6 origin-top-left ${noto_sans_mono.className}`}>
-      <div className='relative bg-transparent transform skew-y-6 origin-top-left mb-0'>
-        <div className="container mx-auto px-4 max-w-[1440px] relative z-10 py-[40px] 2xl:py-[80px]">
-          <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8]">
+    <section className={`${commonStyles.skewedSection} bg-[#fcf6f7]`}>
+      <div className={commonStyles.skewedContent}>
+        <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
+          <h2 className={commonStyles.sectionTitle}>
             Unlock Your Data's Potential
           </h2>
-           <p className={`sm:text-xl md:text-2xl text-center text-[#374151] mb-20 ${afacad.className}`}>
+           <p className={commonStyles.sectionSubtitle}>
             Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
           </p>
 
@@ -57,13 +38,10 @@ const UseCases: React.FC = () => {
                 <h3 className="text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
                   {useCase.title}
                 </h3>
-                <p className={`text-lg sm:text-xl md:text-xl text-[#374151] mb-6 ${afacad.className}`}>
+                <p className={`${commonStyles.paragraph} mb-6`}>
                   {useCase.description}
                 </p>
-                <a
-                  href="/blog/introducing-cosdata"
-                  className={`text-lg sm:text-xl md:text-xl text-blue-600 text-sm font-semibold hover:underline mt-2 inline-flex items-center ${afacad.className}`}
-                >
+                <a href="/blog/introducing-cosdata" className={commonStyles.link}>
                   Learn more
                   <span className="ml-2">→</span>
                 </a>

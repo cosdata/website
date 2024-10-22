@@ -2,20 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import { Afacad } from 'next/font/google';
-import { Noto_Sans_Mono } from 'next/font/google';
-
-const afacad = Afacad({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const noto_sans_mono = Noto_Sans_Mono({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
+import { commonStyles } from '../styles/common';
 
 interface Item {
     title: string;
@@ -86,10 +73,10 @@ const EnterprisePowerSectionAlt: React.FC = () => {
     }, [nextSlide, autoPlay, mobileView]);
 
     return (
-        <div className={`max-w-[1440px] md:mx-auto pt-20 pb-8 ${noto_sans_mono.className}`}>
+        <div className={`${commonStyles.mainContainer} pt-20 pb-8`}>
             <div className="px-4">
-                <div className="text-[#0055c8] text-2xl sm:text-4xl font-bold text-center mb-8 md:mb-20">
-                    Enterprise-Grade Scalability, Security, and Data Management
+                <div className={commonStyles.sectionTitle}>
+                    Enterprise-Grade Scalability and Security
                 </div>
 
                 {mobileView ? (
@@ -100,7 +87,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                 <h2 className="text-xl sm:text-3xl font-semibold text-[#0055c8]">
                                     {item.title}
                                 </h2>
-                                <p className="text-gray-600">{item.summary}</p>
+                                <p className={commonStyles.paragraph}>{item.summary}</p>
                                 <div className="relative w-full h-[250px]">
                                     <Image 
                                         src={index === 0 ? "/svgs/database-scale.svg" : 
@@ -111,13 +98,12 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                         className="object-contain"
                                     />
                                 </div>
-                                <p className="text-gray-600">{item.description}</p>
-                                {/* Removed the "Learn more" link */}
+                                <p className={commonStyles.paragraph}>{item.description}</p>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    // Desktop view (unchanged)
+                    // Desktop view
                     <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-[600px] w-full">
                             {items.map((item, index) => (
@@ -127,12 +113,6 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                     onClick={() => handleManualSelect(index)}
                                 >
                                     <div className="flex items-center justify-between gap-2">
-                                        {/* <Image
-                                            src={`/svgs/features/icon(${index + 1}).drawio.svg`}
-                                            alt="icon"
-                                            width={40}
-                                            height={40}
-                                        /> */}
                                         <h2 className="text-3xl font-semibold flex-grow text-[#f23665]">
                                             {item.title}
                                         </h2>
@@ -141,56 +121,25 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                         </span>
                                     </div>
 
-                                    {/* Show summary always, not just for active item */}
-                                    <div className={`mt-5 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>
+                                    <div className={`${commonStyles.paragraph} mt-5`}>
                                         {item.summary}
                                     </div>
-
-                                    {/* Mobile view SVG and description, only visible for the active item */}
-                                    {mobileView && index === activeIndex && (
-                                        <div className="mt-4 w-full duration-300 ease-in-out opacity-100">
-                                            <div className="w-full flex justify-center items-center">
-                                                <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
-                                                    {index === 0 ? (
-                                                        <Image src="/svgs/database-scale.svg" alt="scale" fill />
-                                                    ) : index === 1 ? (
-                                                        <Image src="/svgs/protection.svg" alt="protection" fill />
-                                                    ) : (
-                                                        <Image src="/svgs/version-control.svg" alt="version control" fill />
-                                                    )}
-                                                </div>
-                                            </div>
-                                            {/* Description in mobile view */}
-                                    <div className={`mt-5 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>
-                                                {item.description}
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
                             ))}
                         </div>
 
-                        {/* Right column with SVG animation and description for desktop view */}
                         {!mobileView && (
                             <div className="hidden md:block md:w-1/2 w-full pl-6">
                                 <div className="w-full flex justify-center items-center">
                                     <div className="flex justify-center items-center relative w-full h-[400px] pt-6">
-                                        {activeIndex === 0 ? (
-                                            <Image src="/svgs/database-scale.svg" alt="scale" fill />
-                                        ) : activeIndex === 1 ? (
-                                            <Image src="/svgs/protection.svg" alt="protection" fill />
-                                        ) : (
-                                            <Image src="/svgs/version-control.svg" alt="version control" fill />
-                                        )}
+                                        <Image src={`/svgs/${activeIndex === 0 ? "database-scale" : activeIndex === 1 ? "protection" : "version-control"}.svg`} alt="feature" fill />
                                     </div>
                                 </div>
 
-                                {/* Description below the SVG */}
-                                <div className={`mt-8 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>
-                                {items[activeIndex].description}
+                                <div className={`${commonStyles.paragraph} mt-8`}>
+                                    {items[activeIndex].description}
                                 </div>
 
-                                {/* Updated carousel buttons */}
                                 <div className="mt-6 flex justify-center space-x-2">
                                     {items.map((_, index) => (
                                         <button

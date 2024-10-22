@@ -1,28 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Afacad } from 'next/font/google';
-import { Noto_Sans_Mono } from 'next/font/google';
-import { Roboto } from 'next/font/google';
-
-
-const afacad = Afacad({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const noto_sans_mono = Noto_Sans_Mono({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const lato = Roboto({ 
-  weight: ['400', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
+import { commonStyles } from '../styles/common';
 
 interface FeatureItem {
     title: string;
@@ -33,7 +12,7 @@ interface FeatureItem {
 
 const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLink }) => {
     return (
-        <div className='flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 sm:p-8 text-[#374151] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md'>
+        <div className={commonStyles.featureCard}>
             <div className="flex flex-col items-left">
             <div className="w-14 h-14 mb-4 relative">
                     <Image 
@@ -43,11 +22,11 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
                         className="object-contain"
                     />
                 </div>                
-                <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] ${noto_sans_mono.className} mb-4 text-left`}>{title}</h3>
-                <p className={`mb-8 text-lg sm:text-xl md:text-xl ${afacad.className} text-left`}>{description}</p>
+                <h3 className={commonStyles.featureTitle}>{title}</h3>
+                <p className={commonStyles.featureDescription}>{description}</p>
             </div>
             <div className="text-left">
-                <Link href={`/blog/introducing-cosdata`} className={`px-4 py-2 bg-transparent text-[#3d8bff] border-2 border-[#3d8bff] rounded-md font-semibold text-base sm:text-lg ${afacad.className}`}>
+                <Link href={`/blog/introducing-cosdata`} className={commonStyles.featureLink}>
                     Learn More
                     <span className="ml-2">→</span>
                 </Link>
@@ -79,7 +58,7 @@ const IntelligentQueriesSection: React.FC = () => {
     ];
 
     return (
-        <div className="container mx-auto px-4 py-6 sm:py-8 max-w-[1400px]">
+        <div className={commonStyles.mainContainer}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-12">
                 {items.map((item, index) => (
                     <FeatureCard

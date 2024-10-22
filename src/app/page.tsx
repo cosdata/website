@@ -1,44 +1,26 @@
 import Image from "next/image";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import ImageSection from "./components/ImageSection";
-import FeaturesSection from "./components/FeatureSection";
-import ScopioX100 from "./components/Scropix";
-import VideoSection from "./components/VideoSection";
-import Footer from "./components/Footer";
-//import { fetchClaim } from "./utils/api";
-import BlazingFastSection from "./components/BlazingFastSection";
-import PrecisionPerformanceSection from "./components/PrecisionPerformanceSection"
-import EnterpisePowerSection from "./components/EnterprisePowerSection"
-import AdvancedSearchSection from "./components/AdvancedSearchSection"
-import IntelligentQueriesSection from "./components/IntelligentQueriesSection"
+import IntelligentQueriesSection from "./components/IntelligentQueriesSection";
 import Marquee from "./components/Marquee";
+import AdvancedSearchSection from "./components/AdvancedSearchSection";
+import BlazingFastSection from "./components/BlazingFastSection";
+import PrecisionPerformanceSection from "./components/PrecisionPerformanceSection";
+import EnterpisePowerSection from "./components/EnterprisePowerSection";
 import UseCases from './components/UseCases';
+import { noto_sans_mono } from './styles/common';
 
-// Make the Home component async to support server-side data fetching
-export default async function Home() {
-  // Fetch the data directly in the component
-  // const claim = await fetchClaim();
-
-
+export default function Home() {
   return (
-    <main className="bg-transparent">
-
+    <main className={`bg-transparent ${noto_sans_mono.className}`}>
       <HeroSection />
-      {/* <ImageSection promotionalClaim={claim[0]?.attributes.PromotionalClaim} /> */}
-      {/* <FeaturesSection claimsData={claim} /> */}
       <IntelligentQueriesSection />
       <Marquee />
       <AdvancedSearchSection />
-      <BlazingFastSection /*claimsData={claim}*/ />
+      <BlazingFastSection />
       <PrecisionPerformanceSection />
-
       <EnterpisePowerSection />
-
       <UseCases />
-      {/* <ScopioX100 />
-      <VideoSection />
-      <Footer /> */}
     </main>
   );
 }
