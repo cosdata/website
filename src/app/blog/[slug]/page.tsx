@@ -3,20 +3,7 @@ import { notFound } from 'next/navigation';
 import BlogContent from './BlogContent';
 import { format } from 'date-fns';
 import axios from 'axios';
-import { Afacad } from 'next/font/google';
-import { Noto_Sans_Mono } from 'next/font/google';
-
-const afacad = Afacad({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const noto_sans_mono = Noto_Sans_Mono({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
+import { commonStyles, afacad, geologica } from '../../styles/common';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -80,10 +67,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     };
 
     return (
-      <div className={`bg-white min-h-screen ${noto_sans_mono.className}`}>
-        <article className="max-w-[1440px] mx-auto px-4 py-12">
+      <div className={`bg-white min-h-screen ${geologica.className}`}>
+        <article className={commonStyles.mainContainer}>
           <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-2 text-[#374151]">{post.attributes.title}</h1>
+            <h1 className={`${commonStyles.sectionTitle} !text-left mb-2`}>{post.attributes.title}</h1>
             <div className={`flex items-center justify-between text-[#374151] ${afacad.className} text-lg sm:text-xl`}>
               <div className="flex items-center space-x-4">
                 {post.attributes.author_headshot && (

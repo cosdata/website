@@ -3,20 +3,7 @@
 import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Afacad } from 'next/font/google';
-import { Noto_Sans_Mono } from 'next/font/google';
-
-const afacad = Afacad({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const noto_sans_mono = Noto_Sans_Mono({ 
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  display: 'swap',
-});
+import { commonStyles, afacad, geologica } from '../../styles/common';
 
 type BlogContentProps = {
   content: BlocksContent;
@@ -38,7 +25,7 @@ export default function BlogContent({ content }: BlogContentProps) {
             5: 'text-lg',
             6: 'text-base',
           };
-          return <Tag className={`font-bold mb-6 ${sizes[level as keyof typeof sizes]} text-[#374151] ${noto_sans_mono.className}`}>{children}</Tag>;
+          return <Tag className={`font-bold mb-6 ${sizes[level as keyof typeof sizes]} text-[#374151] ${geologica.className}`}>{children}</Tag>;
         },
         list: ({ children, format }) => {
           const ListTag = format === 'ordered' ? 'ol' : 'ul';
@@ -46,7 +33,7 @@ export default function BlogContent({ content }: BlogContentProps) {
         },
         'list-item': ({ children }) => <li className="mb-2">{children}</li>,
         quote: ({ children }) => <blockquote className={`border-l-4 border-gray-300 pl-4 italic mb-6 text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`}>{children}</blockquote>,
-        code: ({ children }) => <pre className={`bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-base sm:text-lg md:text-lg text-[#374151] ${noto_sans_mono.className}`}><code>{children}</code></pre>,
+        code: ({ children }) => <pre className={`bg-gray-100 p-4 rounded mb-6 overflow-x-auto text-base sm:text-lg md:text-lg text-[#374151] ${afacad.className}`}><code>{children}</code></pre>,
         image: ({ image }) => (
           <div className="mb-6">
             <Image 
@@ -58,14 +45,14 @@ export default function BlogContent({ content }: BlogContentProps) {
             />
           </div>
         ),
-        link: ({ children, url }) => <Link href={url} className="text-blue-600 hover:underline">{children}</Link>,
+        link: ({ children, url }) => <Link href={url} className={commonStyles.link}>{children}</Link>,
       }}
       modifiers={{
         bold: ({ children }) => <strong className="font-semibold">{children}</strong>,
         italic: ({ children }) => <em className="italic">{children}</em>,
         underline: ({ children }) => <u className="underline">{children}</u>,
         strikethrough: ({ children }) => <span className="line-through">{children}</span>,
-        code: ({ children }) => <code className={`bg-gray-100 p-1 rounded text-base sm:text-lg md:text-lg ${noto_sans_mono.className}`}>{children}</code>,
+        code: ({ children }) => <code className={`bg-gray-100 p-1 rounded text-base sm:text-lg md:text-lg ${afacad.className}`}>{children}</code>,
       }}
     />
   );

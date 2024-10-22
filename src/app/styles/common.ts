@@ -25,7 +25,7 @@ export const commonStyles = {
   paragraph: `text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`,
   link: `text-lg sm:text-xl md:text-xl text-blue-600 font-semibold hover:underline inline-flex items-center ${afacad.className}`,
   heroTitle: `text-[28px] sm:text-[48px] md:text-[56px] font-[500] leading-[1.2] md:leading-[64px] text-[#0055c8] mb-4 md:mb-6 ${noto_sans_mono.className}`,
-  heroSubtitle: `text-base sm:text-lg md:text-xl text-[#374151] mb-6 md:mb-8 leading-relaxed max-w-3xl ${noto_sans_mono.className}`,
+  heroSubtitle: `text-base sm:text-lg md:text-xl text-[#374151] mb-6 md:mb-8 leading-relaxed max-w-3xl ${geologica.className}`,
   button: `inline-block px-4 py-3 rounded-lg shadow-md transition duration-300 flex items-center min-w-[189px] justify-center ${afacad.className}`,
   featureCard: `flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 sm:p-8 text-[#374151] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md`,
   featureTitle: `text-xl sm:text-2xl font-bold text-[#0055c8] mb-4 text-left ${geologica.className}`,
