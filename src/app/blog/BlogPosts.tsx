@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { commonStyles, afacad } from '../styles/common';
 
 interface BlogPostsProps {
   posts: any[];
@@ -29,9 +30,9 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
               <div className="w-full h-48 bg-gray-200 flex items-center justify-center">No image available</div>
             )}
             <div className="p-4">
-              <h2 className="text-xl font-bold mb-2 text-[#374151]">{post.attributes.title}</h2>
-              <p className="text-[#374151] mb-4 text-lg sm:text-xl">{post.attributes.preview}...</p>
-              <div className="flex items-center mb-4">
+              <h2 className={`${commonStyles.featureTitle} mb-2`}>{post.attributes.title}</h2>
+              <p className={`${commonStyles.paragraph} mb-4`}>{post.attributes.preview}...</p>
+              <div className={`flex items-center mb-4 ${afacad.className}`}>
                 {post.attributes.author_headshot && (
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.attributes.author_headshot.data.attributes.url}`}
@@ -53,10 +54,10 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
                 </div>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-lg sm:text-xl text-[#374151]">{post.attributes.read_time} min read</span>
+                <span className={commonStyles.paragraph}>{post.attributes.read_time} min read</span>
                 <Link 
                   href={`/blog/${post.attributes.slug}`}
-                  className="text-lg sm:text-xl text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                  className={commonStyles.link}
                 >
                   Read more
                 </Link>
@@ -65,7 +66,7 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
           </div>
         ))
       ) : (
-        <p className="text-[#374151] text-lg sm:text-xl">No posts available</p>
+        <p className={commonStyles.paragraph}>No posts available</p>
       )}
     </div>
   )

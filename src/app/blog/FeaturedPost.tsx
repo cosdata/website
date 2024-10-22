@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { commonStyles, afacad } from '../styles/common';
 
 interface FeaturedPostProps {
   post: any;
@@ -22,10 +23,10 @@ const FeaturedPost = ({ post, className }: FeaturedPostProps) => {
         </div>
       )}
       <div className="p-4 sm:p-6">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2 break-words text-[#374151]">{post.attributes.title}</h2>
-        <p className="text-[#374151] mb-4 text-lg sm:text-xl">{post.attributes.preview}...</p>
+        <h2 className={`${commonStyles.sectionTitle} !text-left !mb-5 break-words`}>{post.attributes.title}</h2>
+        <p className={`${commonStyles.paragraph} mb-4`}>{post.attributes.preview}...</p>
 
-        <div className="flex items-center mb-4">
+        <div className={`flex items-center mb-4 ${afacad.className}`}>
           {post.attributes.author_headshot && (
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.attributes.author_headshot.data.attributes.url}`}
@@ -47,10 +48,10 @@ const FeaturedPost = ({ post, className }: FeaturedPostProps) => {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-lg sm:text-xl text-[#374151]">{post.attributes.read_time} min read</span>
+          <span className={commonStyles.paragraph}>{post.attributes.read_time} min read</span>
           <Link 
             href={`/blog/${post.attributes.slug}`}
-            className="text-lg sm:text-xl text-blue-600 hover:text-blue-800 transition-colors duration-300"
+            className={commonStyles.link}
           >
             Read more
           </Link>

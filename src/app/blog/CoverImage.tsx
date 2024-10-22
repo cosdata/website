@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { commonStyles } from '../styles/common';
 
 const Particle = ({ index }: { index: number }) => {
   const randomX = Math.random() * 100
@@ -29,7 +30,9 @@ const CoverImage = () => {
   return (
     <div className="relative h-80 overflow-hidden mb-12">
       <div className="absolute inset-0 flex items-center justify-center">
-      <div className="text-[#f23665] text-[40px] sm:text-[56px] md:text-[72px] font-bold">Cosdata Blog</div>
+      <h1 className={commonStyles.heroTitle}>
+            <div className="text-[#f23665] text-[42px] sm:text-[56px] md:text-[72px] font-bold">Cosdata Blog</div>
+            </h1>
       </div>
     </div>
   )

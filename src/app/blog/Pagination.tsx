@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import { commonStyles } from '../styles/common';
 
 interface PaginationProps {
   currentPage: number;
@@ -15,10 +16,10 @@ export default function Pagination({ currentPage, totalPages, onPageChange, clas
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`px-3 py-2 rounded-md text-lg sm:text-xl ${
+          className={`px-3 py-2 rounded-md ${commonStyles.paragraph} ${
             currentPage === page
               ? 'bg-blue-500 text-white'
-              : 'bg-white shadow hover:bg-gray-100 text-[#374151]'
+              : 'bg-white shadow hover:bg-gray-100'
           }`}
         >
           {page}
