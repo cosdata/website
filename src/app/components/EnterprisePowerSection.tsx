@@ -81,7 +81,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
 
                 {mobileView ? (
                     // Mobile view
-                    <div className="flex flex-col gap-12">
+                    <div className="pt-2 flex flex-col gap-12">
                         {items.map((item, index) => (
                             <div key={index} className="flex flex-col gap-4">
                                 <h2 className="text-xl sm:text-3xl font-semibold text-[#0055c8]">
@@ -104,7 +104,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                     </div>
                 ) : (
                     // Desktop view
-                    <div className="flex flex-col md:flex-row gap-6">
+                    <div className="pt-6 flex flex-col md:flex-row gap-6">
                         <div className="md:w-[600px] w-full">
                             {items.map((item, index) => (
                                 <div

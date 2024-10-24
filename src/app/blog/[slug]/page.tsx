@@ -91,7 +91,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                   )}
                 </div>
               </div>
-              <div className="text-sm">
+              <div className="text-md">
                 <time dateTime={post.attributes.publishedAt}>{formattedDate}</time>
                 <span className="mx-2">·</span>
                 <span>{readingTime} min read</span>

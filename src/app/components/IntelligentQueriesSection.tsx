@@ -59,7 +59,7 @@ const IntelligentQueriesSection: React.FC = () => {
 
     return (
         <div className={commonStyles.mainContainer}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
                 {items.map((item, index) => (
                     <FeatureCard
                         key={index}
