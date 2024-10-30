@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import { afacad } from '../styles/common';
 
 export default function NewsletterSignup() {
     const [email, setEmail] = useState('');
@@ -44,7 +45,7 @@ export default function NewsletterSignup() {
     };
 
     return (
-      <div className="bg-white shadow-md rounded-lg p-8">
+      <div className={`bg-white shadow-md rounded-lg p-8 ${afacad.className}`}>
         <h2 className="text-2xl font-bold mb-4">Sign up for Cosdata updates</h2>
         <p className="text-gray-600 mb-6">
           We'll occasionally send you best practices for using vector data and similarity search, as well as product news.

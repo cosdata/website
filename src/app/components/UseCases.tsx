@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { commonStyles } from '../styles/common';
 
 const UseCases: React.FC = () => {
   const useCases = [
@@ -18,40 +19,41 @@ const UseCases: React.FC = () => {
       "description": "Build responsive, data-driven recommendation systems with Cosdata's hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
       "image": "/svgs/recommendation.svg"
     },
-    // {
-    //     "title": "Data Analysis and Anomaly Detection",
-    //     "description": "Revolutionize your approach to data analysis and anomaly detection. Cosdata's vector-based search quickly identifies patterns, correlations, and outliers across complex datasets, ensuring robust real-time anomaly detection.",
-    //     "image": "/images/anomaly_detection.png"
-    // }
-    // ,
   ];
 
   return (
-    <section className="mt-[30px]  sm:mt-[60px] md:mt-[80px] xl:mt-[140px]  pb-[0px] lg:pb-[100px]   relative bg-[#fcf6f7] transform -skew-y-6 origin-top-left">
-      <div className='relative bg-transparent transform skew-y-6 origin-top-left mt-0'>
-        <div className="container mx-auto px-4 max-w-6xl py-[40px] 2xl:py-[0px]">
-          <h2 className="text-2xl sm:text-4xl font-bold text-center mb-4 text-[#0055c8] px-4">
+    <section className={`${commonStyles.skewedSection} bg-[#fcf6f7]`}>
+      <div className={commonStyles.skewedContent}>
+        <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
+          <h2 className={commonStyles.sectionTitle}>
             Unlock Your Data's Potential
           </h2>
-          <p className="text-lg sm:text-xl text-center text-gray-600 mb-8 md:mb-16 px-4">Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.</p>
+           <p className={commonStyles.sectionSubtitle}>
+            Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
+          </p>
 
           {useCases.map((useCase, index) => (
-            <div key={index} className={`flex flex-col md:flex-row items-center pb-8 md:pb-16 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
               <div className="md:w-1/2 mb-8 md:mb-0 px-4">
-                <h3 className="text-xxl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
+                <h3 className="text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
                   {useCase.title}
                 </h3>
-                <p className="text-gray-600 mb-6">{useCase.description}</p>
-                <a href="/blog/introducing-cosdata" className="text-blue-600 font-semibold hover:underline">Learn more -&gt;</a>
+                <p className={`${commonStyles.paragraph} mb-6`}>
+                  {useCase.description}
+                </p>
+                <a href="/blog/introducing-cosdata" className={commonStyles.link}>
+                  Learn more
+                  <span className="ml-2">→</span>
+                </a>
               </div>
-              <div className="md:w-1/2 px-4">
-                <div className="max-w-md mx-auto w-fit md:mb-0">
+              <div className="md:w-1/2 px-4 flex justify-center items-center">
+                <div className="w-64 h-64">
                   <Image
                     src={useCase.image}
                     alt={useCase.title}
-                    height={400}
-                    width={400}
-                    className={`${index === 1 ? 'max-h-[350px]' : 'max-h-[400px]'}`}
+                    width={256}
+                    height={256}
+                    className="w-full h-full object-contain"
                   />
                 </div>
               </div>

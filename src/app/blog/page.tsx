@@ -8,6 +8,7 @@ import SearchBar from './SearchBar';
 import FeaturedPost from './FeaturedPost';
 import Pagination from './Pagination';
 import NewsletterSignup from './NewsletterSignup';
+import { commonStyles, noto_sans_mono } from '../styles/common';
 
 export default function Blog() {
   const [featuredPost, setFeaturedPost] = useState(null);
@@ -60,12 +61,16 @@ export default function Blog() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen text-gray-600">
+=======
+    <div className={`min-h-screen ${noto_sans_mono.className}`}>
+>>>>>>> daa96beb2384c96e25302702c352294e7526857c
       <CoverImage />
       <div className="w-full py-8 px-4 sm:px-6 bg-gray-100 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-[1440px] mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
-            <h1 className="text-5xl mb-4 sm:mb-0 text-gray-600">Featured Post</h1>
+            <h1 className={`${commonStyles.sectionTitle} text-[#374151]text-left mb-4 sm:mb-0`}>Featured Post</h1>
             <div className="w-full sm:w-1/2">
               <SearchBar placeholder="What are you looking for?" onSearch={handleSearch} />
             </div>
@@ -73,12 +78,12 @@ export default function Blog() {
           
           {featuredPost && (
             <div className="mb-12">
-              <FeaturedPost post={featuredPost} className="flex flex-col md:flex-row" />
+              <FeaturedPost post={featuredPost} className={`flex flex-col md:flex-row`} />
             </div>
           )}
           
           {loading ? (
-            <div>Loading...</div>
+            <div className={commonStyles.paragraph}>Loading...</div>
           ) : (
             <div className="mb-12">
               <BlogPosts posts={filteredPosts} />
