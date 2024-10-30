@@ -119,3 +119,21 @@ body {
   50%{opacity: 1;}
   100%{opacity: 0;}
 }
+
+.desktop-header{
+  display: none;
+}
+
+.mobile-header{
+  display:block;
+}
+
+@media screen and (min-width: 900px) {
+  .desktop-header{
+    display: flex;
+  }
+
+  .mobile-header{
+    display: none;
+  }
+}

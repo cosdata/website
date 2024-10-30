@@ -7,6 +7,7 @@ import Link from 'next/link';
 import EarlyAccessModal from './EarlyAccessModal';
 import { commonStyles, afacad, geologica } from '../styles/common';
 import { Akatab } from 'next/font/google';
+import "../globals.css"
 
 export default function Header() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -82,7 +83,7 @@ export default function Header() {
           <div className="text-2xl font-bold text-gray-800 -ml-3 sm:-ml-4 lg:-ml-4">
             <Link href="/" ><div className='w-[15rem] h-[3rem] relative'><Image src="/svgs/logo.svg" alt='logo' fill /></div></Link>
           </div>
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="desktop-header items-center space-x-6">
             <div className="relative group submenu-container">
               <button
                 className="text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 flex items-center"
@@ -117,7 +118,7 @@ export default function Header() {
           </nav>
 
           {/* Hamburger Icon */}
-          <div className="md:hidden flex items-center">
+          <div className="mobile-header items-center">
             <button onClick={toggleDrawer} className="text-gray-800 focus:outline-none">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -128,8 +129,8 @@ export default function Header() {
       </header>
 
       {isOpen && (
-        <div className={`fixed left-0 right-0 bg-white md:hidden z-40 ${afacad.className}`} style={{ top: `${minPadding * 2 + 20}px` }}>
-          <div className="px-12 py-6 space-y-4">
+        <div className={`fixed left-0 right-0 bg-white mobile-header z-40 ${afacad.className}`} style={{ top: `${minPadding * 2 + 20}px` }}>
+          <div className="px-10 py-8 space-y-4">
             <div>
               <button
                 onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}

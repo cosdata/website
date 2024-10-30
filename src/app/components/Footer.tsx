@@ -17,7 +17,7 @@ function Footer() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateEmail(email)) {
       setStatus('error');
       setErrorMessage('Please enter a valid email address.');
@@ -53,7 +53,7 @@ function Footer() {
       <div className="bg-[#0055c8] text-[white] pb-8 pt-4 relative z-10">
         <div className={commonStyles.mainContainer}>
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
-            <div className="flex flex-col sm:items-center ">
+            <div className="flex flex-col sm:items-center order-last sm:order-first">
               <div>
                 <Link href="/">
                   <div className='w-48 h-12 relative mb-4'>
@@ -85,18 +85,18 @@ function Footer() {
                 <div className="flex flex-col items-start mt-4">
                   <p className={`${commonStyles.paragraph} text-white mb-4`}>Subscribe to our newsletter.</p>
                   {status !== 'success' ? (
-                    <form onSubmit={handleSubmit} className="flex flex-col justify-center lg:items-center gap-2">
+                    <form onSubmit={handleSubmit} className="flex flex-col justify-center lg:items-center gap-2 w-full">
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        className={`w-full max-w-64 px-2 py-[0.36rem] rounded-md outline-none border-2 focus:border-[#3083fe] border-[white] bg-white text-gray-800 mb-2 sm:mb-0 ${afacad.className}`}
+                        className={`w-full px-2 py-[0.36rem] rounded-md outline-none border-2 focus:border-[#3083fe] border-[white] bg-white text-gray-800 mb-2 sm:mb-0 ${afacad.className}`}
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
                       <button
                         type="submit"
-                        className={`${commonStyles.button} w-full max-w-64 bg-[white] text-[#0055c8] hover:bg-[#3083fe] hover:text-white`}
+                        className={`${commonStyles.button} w-full bg-[white] text-[#0055c8] hover:bg-[#3083fe] hover:text-white`}
                         disabled={status === 'loading'}
                       >
                         {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
