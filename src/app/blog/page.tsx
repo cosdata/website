@@ -61,11 +61,7 @@ export default function Blog() {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="min-h-screen text-gray-600">
-=======
     <div className={`min-h-screen ${noto_sans_mono.className}`}>
->>>>>>> daa96beb2384c96e25302702c352294e7526857c
       <CoverImage />
       <div className="w-full py-8 px-4 sm:px-6 bg-gray-100 lg:px-8">
         <div className="max-w-[1440px] mx-auto">

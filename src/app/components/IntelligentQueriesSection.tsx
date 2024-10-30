@@ -14,14 +14,14 @@ const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLin
     return (
         <div className={commonStyles.featureCard}>
             <div className="flex flex-col items-left">
-            <div className="w-14 h-14 mb-4 relative">
-                    <Image 
-                        src={svg} 
-                        alt={title} 
-                        fill 
+                <div className="w-14 h-14 mb-4 relative">
+                    <Image
+                        src={svg}
+                        alt={title}
+                        fill
                         className="object-contain"
                     />
-                </div>                
+                </div>
                 <h3 className={commonStyles.featureTitle}>{title}</h3>
                 <p className={commonStyles.featureDescription}>{description}</p>
             </div>
@@ -59,8 +59,8 @@ const IntelligentQueriesSection: React.FC = () => {
 
     return (
         <div className={commonStyles.mainContainer}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-                {items.map((item, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+                {items.slice(0, 2).map((item, index) => (
                     <FeatureCard
                         key={index}
                         title={item.title}
@@ -69,6 +69,15 @@ const IntelligentQueriesSection: React.FC = () => {
                         anchorLink={item.anchorLink}
                     />
                 ))}
+                {/* Move the third element to the next row on medium screens */}
+                <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+                    <FeatureCard
+                        title={items[2].title}
+                        svg={items[2].svg}
+                        description={items[2].description}
+                        anchorLink={items[2].anchorLink}
+                    />
+                </div>
             </div>
         </div>
     );
