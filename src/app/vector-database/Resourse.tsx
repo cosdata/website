@@ -28,7 +28,9 @@ export default function Resourse(Prop: ResourceProp) {
             <Image src={Resourse.svg} alt={Resourse.title} width={40} height={40} className="my-5" />
             <div className={`${commonStyles.featureTitle}`}>{Resourse.title}</div>
             <div className={`${commonStyles.featureDescription}`}>{Resourse.description}</div>
-            <a href={Resourse.link} className={`${commonStyles.featureLink} cursor-pointer`}>{Resourse.link_text}</a>
+            <div>
+              <a href={Resourse.link} className={`${commonStyles.featureLink} cursor-pointer`}>{Resourse.link_text}</a>
+            </div>
           </div>
         ))}
       </div>
