@@ -70,7 +70,7 @@ const IntelligentQueriesSection: React.FC = () => {
                     />
                 ))}
                 {/* Move the third element to the next row on medium screens */}
-                <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+                <div className="col-span-1 sm:col-span-2 lg:col-span-1 justify-self-center">
                     <FeatureCard
                         title={items[2].title}
                         svg={items[2].svg}
