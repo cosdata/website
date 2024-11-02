@@ -2,32 +2,30 @@ import { afacad, commonStyles } from "../styles/common"
 import React from 'react'
 import Image from 'next/image';
 
-export default function Benefits() {
-    const Benefits = [
-        {
-          "title": "Retrieval Augmented Generation (RAG)",
-          "description": "Enhance the quality of AI-generated content. Leverage Cosdata's powerful hybrid search capabilities, combining dense and sparse vectors with knowledge graphs, to retrieve contextually relevant data points for retrieval-augmented generation.",
-          "image": "/svgs/RAG.svg"
-        },
-        {
-          "title": "Advanced Search",
-          "description": "Elevate your applications with Cosdata's advanced search technology. Seamlessly process high-dimensional data for nuanced similarity searches, and gain deeper insights with our integration of dense vectors and structured knowledge graphs.",
-          "image": "/svgs/advanced-search.svg"
-        },
-        {
-          "title": "Recommendation Systems",
-          "description": "Build responsive, data-driven recommendation systems with Cosdata's hybrid search. Utilize multiple vectors and relationships in a single query to generate highly personalized, relevant recommendations at scale.",
-          "image": "/svgs/recommendation.svg"
-        },
-      ];
+interface Benefit{
+    title:string;
+    description:string;
+    image:string;
+    link:string;
+}
+
+interface BenefitsProps{
+    heading:string;
+    subHeading:string;
+    Benefits:Benefit[];
+}
+
+export default function Benefits(Props:BenefitsProps) {
+
+    const Benefits = Props.Benefits
 
     return (
         <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
             <h2 className={commonStyles.sectionTitle}>
-                Unlock Your Data's Potential
+                {Props.heading}
             </h2>
             <p className={commonStyles.sectionSubtitle}>
-                Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
+                {Props.subHeading}
             </p>
 
             {Benefits.map((benefit, index) => (
@@ -39,7 +37,7 @@ export default function Benefits() {
                         <p className={`${commonStyles.paragraph} mb-6`}>
                             {benefit.description}
                         </p>
-                        <a href="/blog/introducing-cosdata" className={commonStyles.link}>
+                        <a href={benefit.link} className={commonStyles.link}>
                             Learn more
                             <span className="ml-2">→</span>
                         </a>

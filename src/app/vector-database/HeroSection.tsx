@@ -1,18 +1,48 @@
-import { afacad, commonStyles } from '@/app/styles/common'
-export default function VectorDatabase() {
-    return (
-        <div className={` py-24 ${commonStyles.mainContainer} flex flex-col items-center text-`}>
-            {/* Heading */}
-            <div className={`${afacad.className} ${commonStyles.heroTitle} font-bold`}>Vector Database</div>
-            {/* Sub Heading */}
-            <div className={`${afacad.className} ${commonStyles.heroSubtitle} text-center`}>Cosdata is the most advanced vector database with highest RPS, minimal latency, fast indexing, high control with accuracy, and so much more.</div>
+import { afacad, commonStyles } from '@/app/styles/common';
 
-            {/* Button Section */}
-            <div className='flex gap-4 flex-wrap justify-center'>
-                <div className={`${commonStyles.button} bg-[#f23665] text-white hover:bg-[#d92d5c] cursor-pointer`}> Get Started</div>
-                <a href='#' className={`${commonStyles.button} bg-black text-white hover:bg-gray-800 cursor-pointer`}> Talk to Sales</a>
+interface HeroSectionProps {
+    heading: string;
+    subHeading: string;
+    buttonText1: string;
+    buttonLink1: string;
+    buttonText2: string;
+    buttonLink2: string;
+}
+
+export default function HeroSection({
+    heading,
+    subHeading,
+    buttonText1,
+    buttonLink1,
+    buttonText2,
+    buttonLink2
+}: HeroSectionProps) {
+    return (
+        <div className={`py-24 ${commonStyles.mainContainer} flex flex-col items-center`}>
+            {/* Heading */}
+            <div className={`${afacad.className} ${commonStyles.heroTitle} font-bold`}>
+                {heading}
+            </div>
+            {/* Subheading */}
+            <div className={`${afacad.className} ${commonStyles.heroSubtitle} text-center`}>
+                {subHeading}
             </div>
 
+            {/* Button Section */}
+            <div className='flex gap-4 flex-wrap justify-center mt-4'>
+                <a
+                    href={buttonLink1}
+                    className={`${commonStyles.button} bg-[#f23665] text-white hover:bg-[#d92d5c] cursor-pointer`}
+                >
+                    {buttonText1}
+                </a>
+                <a
+                    href={buttonLink2}
+                    className={`${commonStyles.button} bg-black text-white hover:bg-gray-800 cursor-pointer`}
+                >
+                    {buttonText2}
+                </a>
+            </div>
         </div>
-    )
+    );
 }
