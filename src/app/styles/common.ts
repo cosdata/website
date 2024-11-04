@@ -24,7 +24,7 @@ export const commonStyles = {
   sectionSubtitle: `text-lg md:text-2xl text-center text-[#374151] mb-12 ${afacad.className}`,
   paragraph: `text-lg sm:text-xl md:text-xl text-[#374151] ${afacad.className}`,
   link: `text-lg sm:text-xl md:text-xl text-blue-600 font-semibold hover:underline inline-flex items-center ${afacad.className}`,
-  heroTitle: `text-[28px] sm:text-[48px] md:text-[56px] font-[500] leading-[1.2] md:leading-[64px] text-[#0055c8] mb-4 md:mb-6 ${noto_sans_mono.className}`,
+  heroTitle: ` text-[42px] sm:text-[56px] md:text-[72px] font-[500] leading-[1.2] md:leading-[64px] text-[#0055c8] mb-4 md:mb-6 ${noto_sans_mono.className}`,
   heroSubtitle: `text-xl md:text-2xl text-[#374151] mb-6 md:mb-8 leading-relaxed max-w-3xl ${afacad.className}`,
   button: `inline-block px-2 lg:px-4 py-3 rounded-lg shadow-md transition duration-300 flex items-center min-w-[125px] lg:min-w-[200px] justify-center ${afacad.className}`,
   featureCard: `flex flex-col justify-between bg-gradient-to-b from-white to-[#f5dede] p-6 sm:p-8 text-[#374151] transition-transform duration-300 hover:-translate-y-5 rounded-lg shadow-md`,

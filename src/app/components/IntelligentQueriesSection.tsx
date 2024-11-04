@@ -12,7 +12,7 @@ interface FeatureItem {
 
 const FeatureCard: React.FC<FeatureItem> = ({ title, svg, description, anchorLink }) => {
     return (
-        <div className={commonStyles.featureCard}>
+        <div className={`${commonStyles.featureCard} h-[100%]`}>
             <div className="flex flex-col items-left">
                 <div className="w-14 h-14 mb-4 relative">
                     <Image

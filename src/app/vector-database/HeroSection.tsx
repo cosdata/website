@@ -20,7 +20,7 @@ export default function HeroSection({
     return (
         <div className={`py-24 ${commonStyles.mainContainer} flex flex-col items-center`}>
             {/* Heading */}
-            <div className={`${afacad.className} ${commonStyles.heroTitle} font-bold`}>
+            <div className={`${afacad.className} ${commonStyles.heroTitle} font-bold text-center`}>
                 {heading}
             </div>
             {/* Subheading */}
