@@ -1,76 +1,68 @@
-import {commonStyles} from "@/app/styles/common"
+import { commonStyles } from "@/app/styles/common"
 import PriceGrid from "./PriceGrid"
+import PricingCalulator from "./PricingCalculator"
+import Cta from "./Cta"
 import React from 'react'
 
 export default function Page() {
-    const priceGridProp={
-        heading:"Cosdata Pricing",
-        subHeading:"Cloud & Enterprise solutions",
-        description:"Choose the deployment option for your application and explore our transparent pricing plans.",
-        prices:[
+    const priceGridProp = {
+        heading: "Cosdata Pricing",
+        subHeading: "Cloud & Enterprise solutions",
+        description: "Choose the deployment option for your application and explore our transparent pricing plans.",
+        prices: [
             {
-                title: "Managed Cloud",
-                pricing: {
-                    starting_price: "$0",
-                    description: "Starts with 1GB free cluster, no credit card required."
-                },
-                cta: {
-                    text: "Start Free",
-                    subtext: "Scale your production solutions without deployment and upkeep. Calculate your usage."
-                },
+                title: "Cosdata OSS",
+                description: "Cosdata OSS is fully featured and architected with open standards. Available in Rust, Python, and JavaScript SDKs.",
+                note: "",
                 details: [
-                    "1GB free forever cluster. No credit card required.",
-                    "Fully managed with central cluster management",
-                    "Multiple cloud providers and regions (AWS, GCP, Azure)",
-                    "Horizontal & vertical scaling",
-                    "Central monitoring, log management and alerting",
-                    "High availability, auto-healing",
-                    "Backup & disaster recovery",
-                    "Zero-downtime upgrades",
-                    "Unlimited users",
-                    "Standard support and uptime SLAs, can be upgraded to Premium"
-                ]
+                    "Open source and free forever",
+                    "Fully featured and easy to install",
+                    "Scalable and runs everywhere",
+                    "Native Javascript/TypeScript, Python, and Rust support"
+                ],
+                button: {
+                    active: false,
+                    text: "View Docs",
+                    link: "link-to-docs"
+                }
             },
             {
-                title: "Hybrid Cloud",
-                pricing: {
-                    starting_price: "$0.014",
-                    description: "Starting price per hour."
-                },
-                "cta": {
+                title: "Cosdata Cloud",
+                description: "Cosdata Cloud is a hosted serverless solution for vector search. We take care of tasks like reindexing, compaction, cleanup, and more so you don't have to.",
+                note: "",
+                details: [
+                    "Serverless vector database",
+                    "Automatic compaction, indexing, and data cleanup",
+                    "Seamless transition from local to cloud using the same SDK"
+                ],
+                button: {
+                    active: true,
                     text: "Get Started",
-                    subtext: "Bring your own cluster from any cloud provider, on-premise infrastructure, or edge locations and connect them to the managed cloud."
-                },
-                details: [
-                    "All the benefits of Qdrant Cloud",
-                    "Security, data isolation, optimal latency",
-                    "Use the Managed Cloud Central Cluster Management",
-                    "Standard support and uptime SLAs, can be upgraded to Premium"
-                ]
+                    link: "link-to-cloud-get-started"
+                }
             },
             {
-                title: "Private Cloud",
-                pricing: {
-                    starting_price: "Custom",
-                    description: "Price on request."
-                },
-                cta: {
-                    text: "Contact Sales",
-                    subtext: "Deploy Qdrant fully on premise for maximum control and data sovereignty."
-                },
+                title: "Cosdata Enterprise",
+                description: "Cosdata Enterprise is for teams with large datasets, want dedicated infrastructure and support, and enterprise security features.",
+                note: "This plan offers all Cloud Plan features, with self-managed database service deployed in your VPC.",
                 details: [
-                    "All the benefits of Hybrid Cloud",
-                    "Security, data isolation, optimal latency",
-                    "Manage Qdrant database clusters on your infrastructure, in the cloud, on-premise at the edge, even fully air-gapped without a connection to Qdrant Cloud",
-                    "Premium Support Plan"
-                ]
+                    "Flexible deployment: Choose your infrastructure and cloud platforms",
+                    "Enterprise Security: Benefit from advanced security features",
+                    "Dedicated premium support with 24/7 Monitoring"
+                ],
+                button: {
+                    active: false,
+                    text: "Contact Sales",
+                    link: "link-to-contact-sales"
+                }
             }
-    
         ]
     }
-  return (
-    <div className="min-h-[100vh] bg-white flex flex-col">
-      <PriceGrid {...priceGridProp}/>
-    </div>
-  )
+    return (
+        <div className="min-h-[100vh] bg-white flex flex-col">
+            <PriceGrid {...priceGridProp} />
+            <PricingCalulator />
+            <Cta />
+        </div>
+    )
 }

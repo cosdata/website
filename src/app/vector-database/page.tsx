@@ -3,6 +3,8 @@ import HeroSection from "./HeroSection"
 import Benefits from "./Benefits"
 import FeatureGrid from "./FeatureGrid"
 import Resourse from "./Resourse";
+import Benchmark from "./Benchmark-viz";
+import Cta from "./Cta";
 
 export default function VectorDatabase() {
 
@@ -147,6 +149,8 @@ export default function VectorDatabase() {
             <div className="w-full bg-white">
                 <Benefits {...BenefitProp} />
                 <FeatureGrid {...FeatureProp} />
+                <Benchmark />
+                <Cta/>
                 <Resourse {...ResourceProp} />
             </div>
         </div>

@@ -37,7 +37,7 @@ export default function FeatureGrid(Prop: FeatureProp) {
                             <div className={`${commonStyles.featureTitle}`}>{feature.title}</div>
                             <div className={`${commonStyles.featureDescription}`}>{feature.description}</div>
                             <div>
-                                <a href={feature.link} className={` ${commonStyles.featureLink}`}>{feature.link_text}</a></div>
+                                <a href={feature.link} className={` ${commonStyles.featureLink}`}>{feature.link_text}<span className="ml-2">→</span></a></div>
                         </div>
                     ))}
                 </div>

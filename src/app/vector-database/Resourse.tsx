@@ -29,7 +29,7 @@ export default function Resourse(Prop: ResourceProp) {
             <div className={`${commonStyles.featureTitle}`}>{Resourse.title}</div>
             <div className={`${commonStyles.featureDescription}`}>{Resourse.description}</div>
             <div>
-              <a href={Resourse.link} className={`${commonStyles.featureLink} cursor-pointer`}>{Resourse.link_text}</a>
+              <a href={Resourse.link} className={`${commonStyles.featureLink} cursor-pointer`}>{Resourse.link_text}<span className="ml-2">→</span></a>
             </div>
           </div>
         ))}
