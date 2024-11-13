@@ -8,7 +8,7 @@ export default function TechPage() {
     const HeroSectionProp = {
         heading: "Vector Search Reimagined",
         subHeading: "Powered by CHANNI, a ground-breaking multi-level vector search index that combines hierarchical graph navigation with intelligent clustering, Cosdata's vector database delivers unmatched performance by combining blazing-fast in-memory search capabilities with disk-based scalability.",
-        buttonText1: "Read CHANNI Paper",
+        buttonText1: "Read The CHANNI Paper",
         buttonLink1: "/tech/channi-paper"
     }
 
@@ -23,7 +23,7 @@ export default function TechPage() {
                         href="/tech/channi-paper"
                         className={`${commonStyles.button} ${afacad.className} bg-[#f23665] hover:bg-[#d92d5c] text-white text-xl px-8 py-4`}
                     >
-                        Read the Full Paper
+                        Read the CHANNI Paper
                     </Link>
                 </div>
                 
@@ -39,6 +39,16 @@ export default function TechPage() {
                         className="w-full h-auto"
                     />
                 </div>
+
+                <div className="flex justify-center my-10">
+                    <Link 
+                        href="/tech/channi-paper"
+                        className={`${commonStyles.button} ${afacad.className} bg-[#f23665] hover:bg-[#d92d5c] text-white text-xl px-8 py-4`}
+                    >
+                        Read the CHANNI Paper
+                    </Link>
+                </div>
+                
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import { afacad, commonStyles } from "@/app/styles/common";
+/*import { afacad, commonStyles } from "@/app/styles/common";
 import HeroSection from "./HeroSection"
 import Benefits from "./Benefits"
 import FeatureGrid from "./FeatureGrid"
@@ -155,4 +155,4 @@ export default function VectorDatabase() {
             </div>
         </div>
     )
-}
+}*/

@@ -1,4 +1,4 @@
-import { commonStyles } from "@/app/styles/common"
+/*import { commonStyles } from "@/app/styles/common"
 import PriceGrid from "./PriceGrid"
 import PricingCalulator from "./PricingCalculator"
 import Cta from "./Cta"
@@ -65,4 +65,4 @@ export default function Page() {
             <Cta />
         </div>
     )
-}
+}*/
