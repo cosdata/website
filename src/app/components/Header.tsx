@@ -96,8 +96,9 @@ export default function Header() {
               </button>
               <div className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ${isSubMenuOpen || 'opacity-0 invisible'} group-hover:opacity-100 group-hover:visible`}>
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  <Link href="/blog/introducing-cosdata" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Overview</Link>
+                  <Link href="/tech" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Overview</Link>
                   <Link href="/tech/roadmap" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Roadmap</Link>
+                  <Link href="/tech/channi-paper" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
                 </div>
               </div>
             </div>
@@ -143,8 +144,9 @@ export default function Header() {
               </button>
               {isSubMenuOpen && (
                 <div className="ml-4 mt-2 space-y-2">
-                  <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Overview</Link>
+                  <Link href="/tech" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Overview</Link>
                   <Link href="/tech/roadmap" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Roadmap</Link>
+                  <Link href="/tech/channi-paper" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
                 </div>
               )}
             </div>

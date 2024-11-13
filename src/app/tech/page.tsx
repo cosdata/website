@@ -19,7 +19,7 @@ export default function TechPage() {
             {
                 title: "Revolutionary Multi-Level Architecture",
                 description: "CHANNI's dual-level navigation system combines a hierarchical graph for cluster routing with flat navigable graphs within clusters. This unique architecture delivers microsecond query times while efficiently managing massive vector datasets on disk, bridging the gap between memory-efficient clustering and high-performance graph navigation.",
-                image: "/svgs/RAG.svg",
+                image: "/svgs/database-scale.svg",
                 link: "/tech/channi-paper"
             },
             {
@@ -31,7 +31,7 @@ export default function TechPage() {
             {
                 title: "Advanced Cluster Operations",
                 description: "CHANNI features sophisticated split and merge operations with built-in Out-of-Distribution (OOD) detection. Our unique dual-primary routing approach maintains multiple valid paths to merged clusters, ensuring reliable vector retrieval even for outlier data while supporting concurrent operations at scale.",
-                image: "/svgs/RAG.svg",
+                image: "/svgs/configure.svg",
                 link: "/tech/channi-paper"
             }
         ]

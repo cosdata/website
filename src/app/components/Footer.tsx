@@ -116,7 +116,7 @@ function Footer() {
               <div>
                 <h3 className={`text-lg font-semibold mb-4 ${geologica.className}`}>Product</h3>
                 <ul className={`space-y-2 ${commonStyles.paragraph} text-white`}>
-                  <li><Link href="/blog/introducing-cosdata" className="">Technology</Link></li>
+                  <li><Link href="/tech" className="">Technology</Link></li>
                   <li><Link href="/blog/introducing-cosdata" className="">Features</Link></li>
                   <li><Link href="/blog/introducing-cosdata" className="">Use Cases</Link></li>
                   <li><Link href="#" className="">Pricing</Link></li>
