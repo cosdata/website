@@ -48,7 +48,7 @@ export default function NewsletterSignup() {
       <div className={`bg-white shadow-md rounded-lg p-8 ${afacad.className}`}>
         <h2 className="text-2xl font-bold mb-4">Sign up for Cosdata updates</h2>
         <p className="text-gray-600 mb-6">
-          We'll occasionally send you best practices for using vector data and similarity search, as well as product news.
+          We&apos;ll occasionally send you best practices for using vector data and similarity search, as well as product news.
         </p>
         {status !== 'success' ? (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -75,7 +75,7 @@ export default function NewsletterSignup() {
           <p className="text-green-600 font-semibold">Success! Thank you for subscribing.</p>
         )}
         <p className="text-xs text-gray-500 mt-4">
-          By submitting, you agree to subscribe to Cosdata's updates. You can withdraw your consent anytime. More details are in the Privacy Policy.
+          By submitting, you agree to subscribe to Cosdata&apos;s updates. You can withdraw your consent anytime. More details are in the Privacy Policy.
         </p>
       </div>
     )

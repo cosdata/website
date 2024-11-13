@@ -1,3 +1,7 @@
+export default function Page() {
+    return null; // or return <div>Coming soon</div>
+}
+
 /*import { afacad, commonStyles } from "@/app/styles/common";
 import HeroSection from "./HeroSection"
 import Benefits from "./Benefits"

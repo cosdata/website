@@ -79,7 +79,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
   if (!isOpen) return null;
 
@@ -89,7 +89,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
         <h2 className="text-3xl font-bold text-[#0055c8] mb-8">Get Early Access</h2>
         {submitStatus === 'success' ? (
           <div>
-            <p className="text-[#374151] text-xl mb-6">Thank you for your interest! We'll be in touch soon.</p>
+            <p className="text-[#374151] text-xl mb-6">Thank you for your interest! We&apos;ll be in touch soon.</p>
             <button
               onClick={handleClose}
               className="bg-[#f23665] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#d92d5c] transition duration-300"

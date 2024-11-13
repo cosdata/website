@@ -32,7 +32,7 @@ export default function SignInForm() {
             </button>
           </div>
           <p className="text-center text-gray-600">
-            Don't have an account? <Link href="/signup" className="text-blue-500 hover:underline">Sign Up</Link>
+            Don&apos;t have an account? <Link href="/signup" className="text-blue-500 hover:underline">Sign Up</Link>
           </p>
         </form>
       </div>

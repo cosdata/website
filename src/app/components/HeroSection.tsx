@@ -1,15 +1,15 @@
 "use client";
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import EarlyAccessModal from './EarlyAccessModal';
 import { commonStyles } from '../styles/common';
 
 const HeroSection = () => {
-  const phrases = [
+  const phrases = useMemo(() => [
     "Smarter, Faster Search",
     "Knowledge Graphs",
     "Hybrid Search",
     "Smart Data Versioning"
-  ];
+  ], []);
   const [currentPhrase, setCurrentPhrase] = useState('');
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);

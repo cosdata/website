@@ -65,7 +65,7 @@ const RoadmapPage = () => {
             <li>Optimized HNSW (dense) and Inverted index (sparse) implementations</li>
             <li>RESTful API for core operations</li>
             <li>SIMD optimized major distance metrics and quantization</li>
-            <li>Versioning & "Transaction-as-a-resource"</li>
+            <li>Versioning & &quot;Transaction-as-a-resource&quot;</li>
             <li>Run basic comparison benchmarks for HNSW & Inverted index (SPLADE)</li>
           </ol>
 

@@ -26,7 +26,7 @@ const UseCases: React.FC = () => {
       <div className={commonStyles.skewedContent}>
         <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
           <h2 className={commonStyles.sectionTitle}>
-            Unlock Your Data's Potential
+            Unlock Your Data&apos;s Potential
           </h2>
            <p className={commonStyles.sectionSubtitle}>
             Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.

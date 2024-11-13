@@ -1,3 +1,7 @@
+export default function Page() {
+    return null; // or return <div>Coming soon</div>
+}
+
 /*import { commonStyles } from "@/app/styles/common"
 import PriceGrid from "./PriceGrid"
 import PricingCalulator from "./PricingCalculator"
