@@ -25,7 +25,7 @@ export default function TechHeroSection({
             <div className='mt-8'>
                 <a
                     href={buttonLink1}
-                    className={`${commonStyles.button} bg-[#f23665] text-white hover:bg-[#d92d5c] cursor-pointer`}
+                    className={`${commonStyles.button} bg-[#f23665] text-white hover:bg-[#d92d5c] cursor-pointer text-[18px]`}
                 >
                     {buttonText1}
                 </a>

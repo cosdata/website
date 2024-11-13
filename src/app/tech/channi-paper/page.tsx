@@ -35,55 +35,6 @@ export default function ChanniPaper() {
         </header>
 
         <div className={`prose prose-lg max-w-none text-[#374151] ${afacad.className}`}>
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4">Preface: The Need for CHANNI</h2>
-            
-            <h3 className="text-xl font-semibold mt-6 mb-3">The Vector Search Challenge</h3>
-            <p>
-              Vector search systems today face a critical dilemma: choose between the blazing speed of in-memory solutions like HNSW or the cost-effective scalability of disk-based approaches like DiskANN. This trade-off has forced organizations to either bear excessive infrastructure costs or accept compromised performance.
-            </p>
-
-            <h3 className="text-xl font-semibold mt-6 mb-3">Current Approaches and Their Limitations</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <h4 className="font-semibold mb-2">HNSW (In-Memory)</h4>
-                <ul className="list-disc pl-4 space-y-2">
-                  <li>Exceptional query performance</li>
-                  <li>High recall rates</li>
-                  <li>Ideal for real-time applications</li>
-                  <li className="text-red-600">Requires entire index in RAM</li>
-                  <li className="text-red-600">Costly at scale</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Disk-Based ANN</h4>
-                <ul className="list-disc pl-4 space-y-2">
-                  <li>Excellent scalability</li>
-                  <li>Cost-effective storage</li>
-                  <li>Efficient memory usage</li>
-                  <li className="text-red-600">Higher query latency</li>
-                  <li className="text-red-600">Complex maintenance</li>
-                </ul>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-semibold mt-6 mb-3">The CHANNI Solution</h3>
-            <p>
-              CHANNI bridges this gap with a novel multi-level architecture that combines the best aspects of both approaches. By intelligently managing data between memory and disk through its unique cluster-primary representation and nested navigation structure, CHANNI achieves:
-            </p>
-            <ul className="list-disc pl-4 mt-3 space-y-2">
-              <li>Near-HNSW query performance while keeping most data on disk</li>
-              <li>Dramatic reduction in infrastructure costs (up to 90% less RAM required)</li>
-              <li>Ability to scale to billions of vectors without performance degradation</li>
-              <li>Simplified maintenance through intelligent cluster operations</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold mt-6 mb-3">Key Innovation</h3>
-            <p>
-              CHANNI's breakthrough lies in its dual-level navigation approach and primary-based cluster representation. This architecture eliminates the traditional trade-offs between memory usage and query performance, enabling organizations to scale their vector search capabilities without the exponential infrastructure costs typically associated with in-memory solutions.
-            </p>
-          </div>
-
           <div dangerouslySetInnerHTML={{
             __html: `
                 <?xml version="1.0" encoding="utf-8"?>
@@ -300,7 +251,7 @@ pre span.org-sh-quoted-exec              {color:#FF1493;}
 <h2 id="org69c0500"><span class="section-number-2">1.</span> Abstract</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-CHANNI (Clustered Hierarchical Approximate Nested Navigable Index) introduces a novel vector indexing architecture that bridges the gap between memory-efficient clustering and high-performance graph navigation. By combining a hierarchical navigable small world graph at the cluster level with flat navigable graphs within clusters, CHANNI achieves superior performance while maintaining efficient resource utilization for large-scale vector search applications.
+CHANNI (Clustered Hierarchical Approximate Nested Navigable Index) introduces a novel vector indexing architecture that bridges the gap between memory-efficient clustering and high-performance graph navigation. By combining a hierarchical navigable small world graph at the cluster level with heirarchical navigable graphs within clusters, CHANNI achieves superior performance while maintaining efficient resource utilization for large-scale vector search applications.
 </p>
 </div>
 </div>
@@ -322,7 +273,7 @@ Vector similarity search at scale presents significant challenges in balancing m
 <h3 id="org4d40ac5"><span class="section-number-3">3.1.</span> Multi-Level Navigation Architecture</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-The fundamental innovation in CHANNI lies in its dual-level navigation approach. At the top level, a hierarchical navigable small world graph connects cluster primaries, enabling rapid identification of relevant clusters. Within each cluster, a flat navigable graph structure facilitates efficient local search with high precision. This separation allows for independent parameter tuning at each level, optimizing both coarse and fine-grained search operations while maintaining an optimal balance between disk usage and memory consumption.
+The fundamental innovation in CHANNI lies in its dual-level navigation approach. At the top level, a hierarchical navigable small world graph connects cluster primaries, enabling rapid identification of relevant clusters. Within each cluster, a heirarchical navigable graph structure facilitates efficient local search with high precision. This separation allows for independent parameter tuning at each level, optimizing both coarse and fine-grained search operations while maintaining an optimal balance between disk usage and memory consumption.
 </p>
 </div>
 </div>
@@ -500,7 +451,7 @@ The construction of CHANNI index follows a distinct phased approach:
 <div class="outline-text-4" id="text-5-1-3">
 <ul class="org-ul">
 <li>Building top-level HNSW graph connecting cluster primaries</li>
-<li>Construction of flat navigable graphs within each cluster</li>
+<li>Construction of heirarchical navigable graphs within each cluster</li>
 <li>Independent parameter tuning for each level</li>
 <li>Time complexity: O(k log k) for cluster primaries' HNSW, O(m log m) for each cluster of size m</li>
 </ul>
@@ -556,7 +507,7 @@ The index construction process directly influences search efficiency:
 <h3 id="org7d126e1"><span class="section-number-3">6.1.</span> Search Process</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
-The search process in CHANNI occurs in multiple phases, each optimized for its specific role. Initially, the system navigates the HNSW graph to identify relevant clusters. Once target clusters are identified, the system accesses their flat navigable graphs to perform precise local searches. This multi-phase approach ensures both broad coverage and detailed local exploration while maintaining efficient resource utilization.
+The search process in CHANNI occurs in multiple phases, each optimized for its specific role. Initially, the system navigates the HNSW graph to identify relevant clusters. Once target clusters are identified, the system accesses their heirarchical navigable graphs to perform precise local searches. This multi-phase approach ensures both broad coverage and detailed local exploration while maintaining efficient resource utilization.
 </p>
 </div>
 </div>
@@ -801,7 +752,7 @@ The implementation focuses on efficient resource utilization through careful mem
 <h3 id="org5f96a66"><span class="section-number-3">9.1.</span> Search Efficiency</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
-The multi-level structure of CHANNI enables highly efficient search operations. The top-level HNSW graph of cluster primaries provides rapid cluster identification in logarithmic time complexity relative to the number of clusters. Within each cluster, the flat navigable graph structure enables precise local search, maintaining high recall while minimizing distance computations.
+The multi-level structure of CHANNI enables highly efficient search operations. The top-level HNSW graph of cluster primaries provides rapid cluster identification in logarithmic time complexity relative to the number of clusters. Within each cluster, the heirarchical navigable graph structure enables precise local search, maintaining high recall while minimizing distance computations.
 </p>
 
 <p>
@@ -842,7 +793,7 @@ CHANNI's cluster-based design inherently supports efficient parallel search oper
 </p>
 
 <p>
-Once target clusters are identified, CHANNI distributes search operations across multiple workers for parallel execution. Each worker independently processes the search within its assigned clusters, leveraging the local flat navigable graphs for precise vector retrieval. This parallel execution phase significantly reduces overall search latency, especially for high-recall scenarios requiring exploration of multiple clusters.
+Once target clusters are identified, CHANNI distributes search operations across multiple workers for parallel execution. Each worker independently processes the search within its assigned clusters, leveraging the local heirarchical navigable graphs for precise vector retrieval. This parallel execution phase significantly reduces overall search latency, especially for high-recall scenarios requiring exploration of multiple clusters.
 </p>
 
 <p>
