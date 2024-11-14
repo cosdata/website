@@ -369,7 +369,7 @@ export default function ChanniPaper() {
                   <li>Building top-level HNSW graph connecting cluster primaries</li>
                   <li>Construction of hierarchical navigable graphs within each cluster</li>
                   <li>Independent parameter tuning for each level</li>
-                  <li>Time complexity: O(k log k) for cluster primaries' HNSW, O(m log m) for each cluster of size m</li>
+                  <li>Time complexity: O(k log k) for cluster primaries&apos; HNSW, O(m log m) for each cluster of size m</li>
                 </ul>
               </section>
             </section>
@@ -389,7 +389,7 @@ export default function ChanniPaper() {
               <p className="text-lg mb-4">The index construction process directly influences search efficiency:</p>
               <ul className="list-disc list-inside mb-6 text-lg">
                 <li>Quality of initial primary selection affects cluster balance</li>
-                <li>Cluster primaries' HNSW structure determines routing efficiency</li>
+                <li>Cluster primaries&apos; HNSW structure determines routing efficiency</li>
                 <li>Within-cluster graph connectivity impacts local search speed</li>
                 <li>Build-time parameter choices influence search-time performance trade-offs</li>
               </ul>
@@ -426,7 +426,7 @@ export default function ChanniPaper() {
             <section id="parameter-configuration" className="mb-8">
               <h3 className="text-2xl font-semibold mt-8 mb-4">7.2. Parameter Configuration</h3>
               <p className="text-lg mb-6">
-                CHANNI's architecture enables fine-grained control over search and 
+                CHANNI&apos;s architecture enables fine-grained control over search and 
                 construction parameters at each level. The top-level HNSW graph can be 
                 optimized for quick cluster identification, while cluster-level graphs 
                 can be tuned for precision. This flexibility allows for sophisticated 
@@ -481,10 +481,10 @@ export default function ChanniPaper() {
                   <p className="text-lg mb-4">
                     CHANNI employs an innovative strategy to optimize cluster splits 
                     while maintaining routing efficiency. During a split operation, the 
-                    system reuses the original cluster's primary-hash based file name 
+                    system reuses the original cluster&apos;s primary-hash based file name 
                     for one of the new centroids, specifically selecting the centroid 
                     closest to the original primary. This approach requires only 
-                    updating the cluster's internal root to point to the new centroid 
+                    updating the cluster&apos;s internal root to point to the new centroid 
                     vector, while creating a new cluster file only for the additional 
                     centroid.
                   </p>
@@ -532,7 +532,7 @@ export default function ChanniPaper() {
                     approach that maintains multiple valid paths to merged clusters. 
                     Instead of deleting redundant primaries, the system updates 
                     primary-hash to cluster mappings for both original primaries to 
-                    reference a single consolidated cluster file. The cluster's root 
+                    reference a single consolidated cluster file. The cluster&apos;s root 
                     is updated to reflect the new primary while maintaining both 
                     original routing paths in the HNSW graph.
                   </p>
@@ -592,7 +592,7 @@ export default function ChanniPaper() {
               <section id="concurrent-operations" className="ml-4 mb-6">
                 <h4 className="text-xl font-semibold mt-6 mb-3">8.2.1. Concurrent Cluster Operations</h4>
                 <p className="text-lg mb-4">
-                  CHANNI's architecture enables parallel execution of both split and 
+                  CHANNI&apos;s architecture enables parallel execution of both split and 
                   merge operations, maximizing throughput during index maintenance. 
                   Multiple large clusters can undergo split operations simultaneously, 
                   while independent merge operations can process smaller clusters in 
@@ -652,7 +652,7 @@ export default function ChanniPaper() {
                   roll back changes while keeping other parallel operations unaffected.
                 </p>
                 <p className="text-lg mb-4">
-                  The parallel maintenance capability significantly improves CHANNI's 
+                  The parallel maintenance capability significantly improves CHANNI&apos;s 
                   ability to handle dynamic workloads, ensuring the index remains 
                   optimized without impacting search availability. By carefully 
                   balancing resources and maintaining consistency, the system provides 
@@ -702,7 +702,7 @@ export default function ChanniPaper() {
 
             <section id="io-patterns" className="mb-8">
               <h3 className="text-2xl font-semibold mt-8 mb-4">10.2. I/O Patterns</h3>
-              <p className="text-lg mb-4">CHANNI's architecture is specifically designed for efficient disk I/O patterns:</p>
+              <p className="text-lg mb-4">CHANNI&apos;s architecture is specifically designed for efficient disk I/O patterns:</p>
               <ul className="list-disc list-inside mb-6 text-lg">
                 <li>Sequential cluster reads minimize disk seek operations</li>
                 <li>Single-file cluster serialization enables efficient disk access</li>
@@ -719,10 +719,10 @@ export default function ChanniPaper() {
             <section id="distributed-search" className="mb-8">
               <h3 className="text-2xl font-semibold mt-8 mb-4">11.1. Distributed Search Architecture</h3>
               <p className="text-lg mb-6">
-                CHANNI's cluster-based design inherently supports efficient parallel 
+                CHANNI&apos;s cluster-based design inherently supports efficient parallel 
                 search operations through a map-reduce style architecture. The search 
                 process begins with a mapping phase where the query is routed through 
-                the cluster primaries' HNSW graph to identify relevant clusters. This 
+                the cluster primaries&apos; HNSW graph to identify relevant clusters. This 
                 initial routing process, while sequential, quickly narrows down the 
                 search space to a subset of promising clusters.
               </p>
@@ -776,7 +776,7 @@ export default function ChanniPaper() {
             <section id="scaling-behavior" className="mb-8">
               <h3 className="text-2xl font-semibold mt-8 mb-4">11.3. Scaling Behavior</h3>
               <p className="text-lg mb-6">
-                CHANNI's parallel search capability demonstrates near-linear scaling 
+                CHANNI&apos;s parallel search capability demonstrates near-linear scaling 
                 with additional search workers, particularly for large-scale 
                 deployments. The cluster-based architecture minimizes cross-worker 
                 communication overhead, allowing efficient resource utilization even 
@@ -922,7 +922,7 @@ export default function ChanniPaper() {
               search technology. Its innovative approach combining efficient 
               sampling-based clustering with multi-level navigation provides a 
               practical solution to the challenges of scale, performance, and 
-              resource utilization. The system's flexibility and scalability make it 
+              resource utilization. The system&apos;s flexibility and scalability make it 
               particularly valuable for real-world applications requiring 
               high-performance vector similarity search.
             </p>
