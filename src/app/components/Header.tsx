@@ -10,6 +10,7 @@ import { Akatab } from 'next/font/google';
 import "../globals.css"
 
 export default function Header() {
+  const [isIframeOpen, setIsIframeOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -103,6 +104,9 @@ export default function Header() {
               </div>
             </div>
             <Link href="/blog/introducing-cosdata" className="text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">About Us</Link>
+            <Link href="/docs/api-doc" className="text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" >
+              Docs
+            </Link>
             <Link href="/blog" className="text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <button onClick={openModal} className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -151,6 +155,9 @@ export default function Header() {
               )}
             </div>
             <Link href="/blog/introducing-cosdata" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">About us</Link>
+            <Link href="/docs/api-doc" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" >
+              Docs
+            </Link>
             <Link href="/blog" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">Blog</Link>
             <button onClick={openModal} className="w-full bg-[#f23665] text-white px-4 py-3 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -169,6 +176,7 @@ export default function Header() {
       )}
       <div style={{ height: `${dynamicPadding * 2 + 20}px` }}></div> {/* Dynamic spacer */}
       <EarlyAccessModal isOpen={isModalOpen} onClose={closeModal} />
+
     </>
   );
 }

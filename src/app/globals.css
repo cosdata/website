@@ -201,3 +201,145 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+pre                                      {background-color:#FFFFFF;}
+pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
+pre span.org-string                      {color:#008000;}
+pre span.org-keyword                     {color:#0000FF;}
+pre span.org-variable-name               {color:#BA36A5;}
+pre span.org-function-name               {color:#006699;}
+pre span.org-type                        {color:#6434A3;}
+pre span.org-preprocessor                {color:#808080;font-weight:bold;}
+pre span.org-constant                    {color:#D0372D;}
+pre span.org-comment-delimiter           {color:#8D8D84;}
+pre span.org-comment                     {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
+pre span.org-rainbow-delimiters-depth-1  {color:#707183;}
+pre span.org-rainbow-delimiters-depth-2  {color:#7388d6;}
+pre span.org-rainbow-delimiters-depth-3  {color:#909183;}
+pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
+pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
+pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
+pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
+pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
+pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
+pre span.org-sh-quoted-exec              {color:#FF1493;}
+
+#content { max-width: 60em; margin: auto; }
+.title  { text-align: center;
+           margin-bottom: .2em; }
+.subtitle { text-align: center;
+            font-size: medium;
+            font-weight: bold;
+            margin-top:0; }
+.todo   { font-family: monospace; color: red; }
+.done   { font-family: monospace; color: green; }
+.priority { font-family: monospace; color: orange; }
+.tag    { background-color: #eee; font-family: monospace;
+          padding: 2px; font-size: 80%; font-weight: normal; }
+.timestamp { color: #bebebe; }
+.timestamp-kwd { color: #5f9ea0; }
+.org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+.org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+.org-center { margin-left: auto; margin-right: auto; text-align: center; }
+.org-ul { list-style-type: disc; list-style-position: inside;}
+.org-ol { list-style-type: decimal; list-style-position: inside;}
+.underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+    
+  }
+  pre.src {
+    /* position: relative; */
+    font-size: 16px;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+
+  table {
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    border-collapse: collapse; /* Ensures borders collapse for a cleaner look */
+    width: 100%; /* Optional: Make table responsive */
+}
+
+th, td {
+    border-top: 1px solid #000; /* Top border */
+    border-bottom: 1px solid #000; /* Bottom border */
+    padding: 8px; /* Space inside the cells */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #f4f4f4; /* Optional: Header background color */
+    font-weight: bold; /* Optional: Bold header text */
+}
+
+td:last-child, th:last-child {
+    border-right: 1px solid #000; /* Prevent unintended vertical lines */
+}
+
+td:first-child, th:first-child {
+    border-left: 1px solid #000; /* Prevent unintended vertical lines */
+}
+
+
+li{
+  overflow: auto;
+  padding-left: 20px;
+}
+  
+  h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 34px;
+  }
+  h2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size:30px;
+  }
+  h3{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 24px;
+  }
+  h4{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+  }
+  h5{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+  }
+  h6{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+  }
