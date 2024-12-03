@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function SideBar() {
     const docs = [
         { title: "API Reference", slug: "api-doc" },
-        { title: "Graph Datalog", slug: "graph-datalog" },
+        { title: "Cos Graph Query Language", slug: "cos-graph-query-language" },
     ];
     const pathname = usePathname();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
