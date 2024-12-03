@@ -202,7 +202,7 @@ body {
   }
 }
 
-pre                                      {background-color:#FFFFFF;}
+pre                                      {background-color:#FFFFFF; font-size: 16px;}
 pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
 pre span.org-string                      {color:#008000;}
 pre span.org-keyword                     {color:#0000FF;}
@@ -268,7 +268,7 @@ pre span.org-sh-quoted-exec              {color:#FF1493;}
   }
   pre.src {
     /* position: relative; */
-    font-size: 16px;
+    
     overflow: auto;
   }
   pre.src:before {
