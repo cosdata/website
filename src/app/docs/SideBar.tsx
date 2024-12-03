@@ -5,10 +5,8 @@ import { usePathname } from "next/navigation";
 
 export default function SideBar() {
     const docs = [
-        { title: "Introduction", slug: "introduction" },
-        { title: "Getting Started", slug: "getting-started" },
         { title: "API Reference", slug: "api-doc" },
-        { title: "Examples", slug: "examples" },
+        { title: "Graph Datalog", slug: "graph-datalog" },
     ];
     const pathname = usePathname();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -20,9 +18,9 @@ export default function SideBar() {
     return (
         <div className="relative">
             {/* Mobile Toggle Button */}
-            <div className=" h-full w-10 lg:hidden">
+            <div className=" h-full relative w-10 md:hidden">
                 <button
-                    className={`lg:hidden absolute top-0 left-0 w-10 h-10 bg-white cursor-pointer ${isSidebarOpen ? "w-64" : ""}`}
+                    className={`md:hidden absolute top-0 left-0 w-10 h-10 bg-white cursor-pointer ${isSidebarOpen ? "w-64" : ""}`}
                     onClick={toggleSidebar}
                 >
                     ☰ {/* Hamburger Icon */}
@@ -30,11 +28,11 @@ export default function SideBar() {
             </div>
             {/* Sidebar */}
             <aside
-                className={`fixed top-0 left-0 py-24 lg:py-0 w-64 h-screen bg-white transform transition-all duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-                    } lg:translate-x-0 lg:w-64 lg:h-auto lg:static`}
+                className={`fixed top-0 left-0 md:relative py-[5.5rem] z-[1] md:py-0 w-64 h-screen bg-white transform transition-all duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+                    } md:translate-x-0 md:w-64 md:h-auto `}
             >
                 {/* Close Button (only for mobile view) */}
-                <div className="flex justify-end lg:hidden">
+                <div className="flex justify-end md:hidden">
                     <button
                         className={`w-10 h-10 bg-white cursor-pointer border-black border-2 border-solid`}
                         onClick={toggleSidebar}
