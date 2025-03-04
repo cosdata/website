@@ -30,7 +30,11 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  // Use window.location.origin for client-side or environment variable for server-side
+  const baseUrl = process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3000' 
+    : (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.cosdata.io');
+  
   console.log('Base URL:', baseUrl);
   console.log('Slug:', params.slug);
   const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
@@ -39,20 +43,84 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   try {
     const apiUrl = `${baseUrl}/api/posts/${params.slug}`;
     console.log('API URL:', apiUrl);
-    const response = await fetch(apiUrl, {
-      next: { revalidate: 3600 },
-    });
+    
+    // Add a direct fetch from Strapi as a fallback
+    let post;
+    try {
+      const response = await fetch(apiUrl, {
+        next: { revalidate: 3600 },
+      });
 
-    console.log('Response status:', response.status);
+      console.log('Response status:', response.status);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      post = await response.json();
+    } catch (apiError) {
+      console.log("API route failed, trying direct Strapi fetch");
+      // Try direct fetch from Strapi
+      const directResponse = await fetch(`${strapiUrl}/api/articles?filters[slug][$eq]=${params.slug}&populate=*`, {
+        headers: {
+          Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+        },
+        next: { revalidate: 3600 },
+      });
+      
+      if (!directResponse.ok) {
+        throw new Error(`Direct Strapi fetch failed: ${directResponse.status}`);
+      }
+      
+      const data = await directResponse.json();
+      if (!data.data || data.data.length === 0) {
+        throw new Error("No article found with this slug");
+      }
+      
+      post = data.data[0];
     }
-
-    const post = await response.json();
 
     if (!post) {
       notFound();
+    }
+
+    // Log the post structure to debug
+    console.log('Post structure:', JSON.stringify(post, null, 2));
+
+    // Check if post has the expected structure
+    if (!post.attributes) {
+      console.error('Post is missing attributes property:', post);
+      // If post is the direct data from Strapi without the expected structure,
+      // we need to transform it
+      post = {
+        id: post.id,
+        attributes: {
+          title: post.title,
+          slug: post.slug,
+          content: post.content,
+          preview: post.preview,
+          read_time: post.read_time,
+          author: post.author,
+          author_role: post.author_role,
+          publishedAt: post.publishedAt,
+          createdAt: post.createdAt,
+          updatedAt: post.updatedAt,
+          cover_image: post.cover_image ? {
+            data: {
+              attributes: {
+                url: post.cover_image.url
+              }
+            }
+          } : null,
+          author_headshot: post.author_headshot ? {
+            data: {
+              attributes: {
+                url: post.author_headshot.url
+              }
+            }
+          } : null
+        }
+      };
     }
 
     const formattedDate = post.attributes.publishedAt
