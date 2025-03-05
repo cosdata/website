@@ -100,6 +100,7 @@ export default function Header() {
                   <Link href="/tech" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Overview</Link>
                   <Link href="/tech/roadmap" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <Link href="/tech/channi-paper" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
+                  <Link href="/tech/mavann-metadata-filtering" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
                 </div>
               </div>
             </div>
@@ -151,6 +152,7 @@ export default function Header() {
                   <Link href="/tech" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Overview</Link>
                   <Link href="/tech/roadmap" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <Link href="/tech/channi-paper" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
+                  <Link href="/tech/mavann-metadata-filtering" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
                 </div>
               )}
             </div>
