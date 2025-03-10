@@ -4,5 +4,12 @@
       "source": "/install.sh",
       "destination": "/api/install"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/hackathon",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfsaGbdQJKIv3AKlO10LZSIaxIkfxTmoqIHUUdobj_khMG4FQ/viewform",
+      "permanent": false
+    }
   ]
 } 
