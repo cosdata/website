@@ -766,7 +766,7 @@ const WeaviateCost: React.FC<DatabaseCostProps> = ({
             <div className="bg-gray-50 p-4 rounded-lg">
               <p className="text-sm text-gray-500">Scale Not Supported</p>
               <p className="text-xs text-gray-500 mt-1">
-                Weaviate doesn't advertise pricing for more than 50M vectors.
+                Weaviate doesn&apos;t advertise pricing for more than 50M vectors.
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 Contact Weaviate for custom pricing at this scale.
