@@ -44,7 +44,7 @@ export default function BenchmarksPage() {
           Vector Database Benchmarks
         </h1>
 
-        <div className="max-w-5xl mx-auto text-center mb-10">
+        <div className="max-w-7xl mx-auto text-center mb-10">
           <p className="text-lg text-gray-700 mb-8">
             Cosdata&apos;s open-source HNSW vector database outperforms industry leaders across multiple key metrics.
             These results are from indexing DbPedia&apos;s 1M record, 1536-dimension dataset, using the same methodology as 
@@ -52,7 +52,7 @@ export default function BenchmarksPage() {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto overflow-hidden shadow-lg mb-12 border border-gray-200">
+        <div className="max-w-7xl mx-auto overflow-hidden shadow-lg mb-12 border border-gray-200">
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead>
@@ -88,7 +88,7 @@ export default function BenchmarksPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-12">
           <div className="bg-white p-6 shadow-md border border-gray-200">
             <h2 className="text-[32px] font-bold mb-6 text-[#0055c8]">Benchmark Methodology</h2>
             <p className="text-gray-700 mb-4">
@@ -148,7 +148,7 @@ export default function BenchmarksPage() {
         </div>
 
         <h2 className="text-[32px] font-bold mb-6 text-[#0055c8] text-center">Cosdata Configuration Benchmarks</h2>
-        <div className="max-w-6xl mx-auto mb-12">
+        <div className="max-w-7xl mx-auto mb-12">
           <div className="bg-white p-6 shadow-md border border-gray-200 mb-6">
             <p className="text-gray-700 mb-4">
               We&apos;ve conducted additional benchmarks with different Cosdata HNSW configurations to demonstrate the flexibility and performance characteristics of our implementation:
@@ -202,7 +202,7 @@ export default function BenchmarksPage() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center bg-white shadow-md overflow-hidden border border-gray-200 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center bg-white shadow-md overflow-hidden border border-gray-200 max-w-7xl mx-auto">
           <div className="md:w-3/4 p-8">
             <h3 className="text-2xl font-bold mb-4 text-[#0055c8]">Try Cosdata HNSW Today</h3>
             <p className="text-gray-700 mb-4">
