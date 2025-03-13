@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import EarlyAccessModal from './EarlyAccessModal';
-import { commonStyles } from '../styles/common';
+import EarlyAccessModal from '../../components/EarlyAccessModal';
+import { commonStyles } from '../../styles/common';
 
 const HeroSection = () => {
   const phrases = useMemo(() => [

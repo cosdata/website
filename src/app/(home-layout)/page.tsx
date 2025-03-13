@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import IntelligentQueriesSection from "./components/IntelligentQueriesSection";
 import Marquee from "./components/Marquee";
@@ -8,7 +7,7 @@ import BlazingFastSection from "./components/BlazingFastSection";
 import PrecisionPerformanceSection from "./components/PrecisionPerformanceSection";
 import EnterpisePowerSection from "./components/EnterprisePowerSection";
 import UseCases from './components/UseCases';
-import { noto_sans_mono } from './styles/common';
+import { noto_sans_mono } from '../styles/common';
 
 export default function Home() {
   return (
@@ -23,4 +22,4 @@ export default function Home() {
       <UseCases />
     </main>
   );
-}
+} 

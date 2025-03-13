@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import { commonStyles } from '../styles/common';
+import { commonStyles } from '../../styles/common';
 
 interface Item {
     title: string;
