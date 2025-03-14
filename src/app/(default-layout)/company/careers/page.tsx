@@ -3,59 +3,46 @@ import { commonStyles } from '../../../styles/common';
 
 export const metadata: Metadata = {
   title: 'Careers at Cosdata - Join Our Team',
-  description: 'Explore career opportunities at Cosdata. Join our team and help build the future of vector search and knowledge graph technology.',
+  description: 'Join our team at Cosdata and help build the future of vector search technology.',
 };
 
 export default function CareersPage() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-green-800 to-emerald-900 text-white">
-        <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center`}>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Careers at Cosdata</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-            Join our team and help build the future of vector search and knowledge graph technology
-          </p>
+      <section className="pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-20 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden text-white">
+        {/* Abstract background elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute top-1/2 -left-24 w-80 h-80 bg-pink-500 rounded-full opacity-10 blur-3xl"></div>
+          <div className="absolute -bottom-24 right-1/4 w-64 h-64 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
         </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Work With Us</h2>
-            
-            <div className="prose prose-lg">
-              <p>
-                At Cosdata, we&apos;re building cutting-edge vector search and knowledge graph technology to power the next generation of AI applications. We&apos;re a team of passionate engineers, researchers, and product builders who are excited about pushing the boundaries of what&apos;s possible.
+        <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10`}>
+          <div className="flex flex-col items-center text-center">
+            <h1 className="text-[42px] sm:text-[56px] md:text-[72px] font-bold text-[#f23665] leading-tight mb-6">
+              Join Our Team
+            </h1>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-200 mb-12">
+                Help us build the future of vector search and knowledge graph technology
               </p>
               
-              <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Our Values</h3>
-              
-              <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Innovation:</strong> We&apos;re constantly exploring new ideas and approaches to solve complex problems.</li>
-                <li><strong>Excellence:</strong> We strive for excellence in everything we do, from code quality to user experience.</li>
-                <li><strong>Collaboration:</strong> We believe in the power of teamwork and open communication.</li>
-                <li><strong>Impact:</strong> We&apos;re focused on building technology that makes a real difference for our users.</li>
-              </ul>
-              
-              <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Open Positions</h3>
-              
-              <p className="italic">
-                We&apos;re currently building our team page. Please check back soon for open positions, or contact us directly at <a href="mailto:careers@cosdata.io" className="text-blue-600 hover:text-blue-800">careers@cosdata.io</a> to express interest.
-              </p>
-              
-              <div className="bg-gray-50 p-6 rounded-lg mt-10">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Don&apos;t see a role that fits?</h4>
-                <p>
-                  We&apos;re always looking for talented individuals to join our team. If you&apos;re passionate about vector search, knowledge graphs, or AI, we&apos;d love to hear from you!
+              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white border-opacity-20">
+                <p className="text-lg md:text-xl text-gray-200 mb-8">
+                  We're always looking for talented individuals who are passionate about pushing the boundaries of what's possible in vector search and AI technology.
                 </p>
-                <a 
-                  href="mailto:careers@cosdata.io" 
-                  className="inline-block mt-4 px-6 py-3 bg-[#f23665] text-white rounded-md hover:bg-[#d92d5c] transition-colors"
-                >
-                  Contact Us
-                </a>
+                <div className="flex flex-col items-center">
+                  <p className="text-2xl font-semibold text-white mb-4">
+                    Get in touch with us at
+                  </p>
+                  <a 
+                    href="mailto:careers@cosdata.io"
+                    className="text-2xl md:text-3xl font-bold text-[#f23665] hover:text-[#ff4675] transition-colors duration-300"
+                  >
+                    careers@cosdata.io
+                  </a>
+                </div>
               </div>
             </div>
           </div>
