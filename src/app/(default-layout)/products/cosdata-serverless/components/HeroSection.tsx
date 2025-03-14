@@ -22,7 +22,7 @@ const HeroSection = () => {
               Infinitely Scalable Vector Database
             </h2>
             <p className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
-              Built on our market-leading HNSW implementation and powered by our CHANNI technology, Cosdata Serverless delivers unlimited scale with zero operational overhead. Enjoy industry-leading performance, hybrid search capabilities, and pay only for what you use.
+            Cosdata Serverless delivers unmatched scalability with zero operational overhead. Our CHANNI technology enables lightning-fast hybrid search through efficient memory clustering and optimized graph navigation. Experience superior performance with adaptive scaling and pay only for what you use.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
               <button

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   style="background-color: rgb(255, 255, 255);"
+   version="1.1"
+   width="900px"
+   height="500px"
+   viewBox="0 0 900 500"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- Three layers stacked vertically -->
+  <g id="layers">
+    <!-- Top layer -->
+    <path d="M 165 60 L 185 30 L 610 30 L 630 60 Z"
+       fill-opacity="0.5"
+       fill="#fff2cc"
+       stroke="#d6b656"
+       stroke-opacity="0.5"
+       stroke-miterlimit="10" />
+    
+    <!-- Middle layer -->
+    <path d="M 135 120 L 155 80 L 660 80 L 680 120 Z"
+       fill-opacity="0.5"
+       fill="#dae8fc"
+       stroke="#6c8ebf"
+       stroke-opacity="0.5"
+       stroke-miterlimit="10" />
+    
+    <!-- Bottom layer -->
+    <path d="M 75 180 L 95 140 L 730 140 L 750 180 Z"
+       fill="#d5e8d4"
+       stroke="#82b366"
+       stroke-miterlimit="10" />
+  </g>
+  
+  <!-- Clusters in a row -->
+  <g id="clusters">
+    <!-- Cluster 1 -->
+    <ellipse cx="140" cy="250" rx="40" ry="30" fill="#ffe6cc" stroke="#d79b00" />
+    
+    <!-- Cluster 2 -->
+    <ellipse cx="250" cy="250" rx="40" ry="30" fill="#fff2cc" stroke="#d6b656" />
+    
+    <!-- Cluster 3 -->
+    <ellipse cx="360" cy="250" rx="40" ry="30" fill="#f8cecc" stroke="#b85450" />
+    
+    <!-- Cluster 4 -->
+    <ellipse cx="470" cy="250" rx="40" ry="30" fill="#dae8fc" stroke="#6c8ebf" />
+    
+    <!-- Cluster 5 -->
+    <ellipse cx="580" cy="250" rx="40" ry="30" fill="#d5e8d4" stroke="#82b366" />
+    
+    <!-- Ellipsis between clusters -->
+    <text x="520" y="250" font-size="24" font-weight="bold" text-anchor="middle">...</text>
+  </g>
+  
+  <!-- Arrow pointing from Cluster 5 to expanded view -->
+  <g id="arrow">
+    <path d="M 580 280 L 580 310 L 650 310 L 650 290 L 680 320 L 650 350 L 650 330 L 580 330 Z"
+         fill-opacity="0.6"
+         fill="#dae8fc"
+         stroke="#6c8ebf"
+         stroke-width="2" />
+  </g>
+  
+  <!-- Expanded cluster view on the right -->
+  <g id="expanded-cluster" transform="translate(700, 250)">
+    <!-- Main cluster circle -->
+    <circle cx="0" cy="0" r="30" fill="#d5e8d4" stroke="#82b366" stroke-width="2" />
+    
+    <!-- Inner nodes -->
+    <circle cx="-15" cy="-10" r="5" fill="#60a917" stroke="#2d7600" />
+    <circle cx="10" cy="-15" r="5" fill="#60a917" stroke="#2d7600" />
+    <circle cx="15" cy="10" r="5" fill="#60a917" stroke="#2d7600" />
+    <circle cx="-5" cy="15" r="5" fill="#60a917" stroke="#2d7600" />
+    
+    <!-- Connections between nodes -->
+    <line x1="-15" y1="-10" x2="10" y2="-15" stroke="#2d7600" stroke-width="1" />
+    <line x1="10" y1="-15" x2="15" y2="10" stroke="#2d7600" stroke-width="1" />
+    <line x1="15" y1="10" x2="-5" y2="15" stroke="#2d7600" stroke-width="1" />
+    <line x1="-5" y1="15" x2="-15" y2="-10" stroke="#2d7600" stroke-width="1" />
+    <line x1="-15" y1="-10" x2="15" y2="10" stroke="#2d7600" stroke-width="1" />
+  </g>
+  
+  <!-- Connections between layers and clusters -->
+  <g id="connections">
+    <!-- From top layer to middle layer -->
+    <path d="M 400 60 L 400 80" stroke="#707070" stroke-dasharray="3,3" />
+    
+    <!-- From middle layer to bottom layer -->
+    <path d="M 400 120 L 400 140" stroke="#707070" stroke-dasharray="3,3" />
+    
+    <!-- From bottom layer to clusters -->
+    <path d="M 140 180 L 140 220" stroke="#707070" stroke-dasharray="3,3" />
+    <path d="M 250 180 L 250 220" stroke="#707070" stroke-dasharray="3,3" />
+    <path d="M 360 180 L 360 220" stroke="#707070" stroke-dasharray="3,3" />
+    <path d="M 470 180 L 470 220" stroke="#707070" stroke-dasharray="3,3" />
+    <path d="M 580 180 L 580 220" stroke="#707070" stroke-dasharray="3,3" />
+  </g>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(750, 400)">
+    <rect x="0" y="0" width="120" height="70" fill="white" fill-opacity="0.8" rx="5" ry="5" stroke="#cccccc" />
+    
+    <circle cx="15" cy="15" r="8" fill="#d5e8d4" stroke="#82b366" />
+    <text x="30" y="20" font-size="12">Cluster</text>
+    
+    <line x1="7" y1="40" x2="23" y2="40" stroke="#707070" stroke-dasharray="3,3" />
+    <text x="30" y="45" font-size="12">Connection</text>
+    
+    <circle cx="15" cy="60" r="4" fill="#60a917" stroke="#2d7600" />
+    <text x="30" y="65" font-size="12">Vector</text>
+  </g>
+</svg> 

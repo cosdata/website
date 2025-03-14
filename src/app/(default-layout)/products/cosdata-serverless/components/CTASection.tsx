@@ -3,7 +3,7 @@ import { commonStyles } from '../../../../styles/common';
 
 export default function CTASection() {
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+    <section className="pb-16 pt-8 bg-gradient-to-b from-white to-gray-50">
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
         <div className="bg-gradient-to-r from-[#6b46c1] to-[#4f46e5] rounded-xl shadow-xl overflow-hidden">
           <div className="px-6 py-12 md:p-12 text-center">
