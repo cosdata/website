@@ -144,12 +144,12 @@ export default function Header() {
               </button>
               <div className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ${isResourcesMenuOpen || 'opacity-0 invisible'} group-hover:opacity-100 group-hover:visible`}>
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="resources-menu">
+                <Link href="/blog" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Blog</Link>
                   <Link href="/resources/benchmarks" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Benchmarks</Link>
                   <Link href="/tech/roadmap" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <div className="px-4 py-2 text-xl md:text-lg text-gray-700 font-semibold">Research</div>
                   <Link href="/tech/channi-paper" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
                   <Link href="/tech/mavann-metadata-filtering" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
-                  <Link href="/blog" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Blog</Link>
                   <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -248,12 +248,12 @@ export default function Header() {
               </button>
               {isResourcesMenuOpen && (
                 <div className="ml-4 mt-2 space-y-2">
+                  <Link href="/blog" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Blog</Link>
                   <Link href="/resources/benchmarks" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Benchmarks</Link>
                   <Link href="/tech/roadmap" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <div className="text-black font-open-sans text-xl md:text-lg font-semibold leading-[30px] mt-2">Research</div>
                   <Link href="/tech/channi-paper" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 ml-2" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
                   <Link href="/tech/mavann-metadata-filtering" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 ml-2" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
-                  <Link href="/blog" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Blog</Link>
                   <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
