@@ -30,7 +30,7 @@ export default function CareersPage() {
               
               <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white border-opacity-20">
                 <p className="text-lg md:text-xl text-gray-200 mb-8">
-                  We're always looking for talented individuals who are passionate about pushing the boundaries of what's possible in vector search and AI technology.
+                  We&apos;re always looking for talented individuals who are passionate about pushing the boundaries of what&apos;s possible in vector search and AI technology.
                 </p>
                 <div className="flex flex-col items-center">
                   <p className="text-2xl font-semibold text-white mb-4">

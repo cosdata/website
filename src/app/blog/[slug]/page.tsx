@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import BlogContent from './BlogContent';
+import TableOfContents from './TableOfContents';
+import SocialShare from './SocialShare';
 import { format } from 'date-fns';
 import axios from 'axios';
 import { commonStyles, afacad, geologica } from '../../styles/common';
@@ -172,73 +174,101 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       'Contributor';
 
     return (
-      <div className={`bg-white min-h-screen ${geologica.className}`}>
-        <article className={commonStyles.mainContainer}>
-          <header className="mb-8">
-            <h1 className={`${commonStyles.sectionTitle} !text-left mb-2`}>{post.attributes.title}</h1>
-            <div className={`flex items-center justify-between text-[#374151] ${afacad.className} text-lg sm:text-xl`}>
-              <div className="flex items-center space-x-4">
-                {post.attributes.author_headshot && post.attributes.author_headshot.data && (
-                  <Image
-                    src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
-                    alt={authorName}
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
-                )}
-                <div>
-                  {authorName && (
-                    <p className="font-medium">{authorName}</p>
+      <div className="min-h-screen bg-[#f0f7ff]">
+        <article className={`max-w-7xl mx-auto px-4 md:px-8 ${geologica.className}`}>
+          {/* Hero Section */}
+          <header className="mt-12 mb-12">
+            {/* Title and Author Info */}
+            <div className="mb-12">
+              <h1 className={`${commonStyles.sectionTitle} !text-left mb-6 text-4xl md:text-5xl lg:text-6xl text-[#0055c8]`}>
+                {post.attributes.title}
+              </h1>
+              <div className={`flex flex-col sm:flex-row sm:items-center sm:justify-between text-[#374151] ${afacad.className} text-lg gap-4`}>
+                <div className="flex items-center space-x-4">
+                  {post.attributes.author_headshot && post.attributes.author_headshot.data && (
+                    <Image
+                      src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
+                      alt={authorName}
+                      width={48}
+                      height={48}
+                      className="rounded-full ring-2 ring-white shadow-md"
+                    />
                   )}
-                  {authorRole && (
-                    <p className="text-sm">{authorRole}</p>
-                  )}
+                  <div>
+                    {authorName && (
+                      <p className="font-medium">{authorName}</p>
+                    )}
+                    {authorRole && (
+                      <p className="text-sm text-gray-600">{authorRole}</p>
+                    )}
+                  </div>
+                </div>
+                <div className="text-md text-gray-600">
+                  <time dateTime={post.attributes.publishedAt}>{formattedDate}</time>
+                  <span className="mx-2">·</span>
+                  <span>{readingTime} min read</span>
                 </div>
               </div>
-              <div className="text-md">
-                <time dateTime={post.attributes.publishedAt}>{formattedDate}</time>
-                <span className="mx-2">·</span>
-                <span>{readingTime} min read</span>
-              </div>
             </div>
+
+            {/* Cover Image */}
+            {post.attributes.cover_image && post.attributes.cover_image.data && (
+              <div className="relative aspect-[2.5/1] w-full mb-12">
+                <Image
+                  src={getFullImageUrl(getImageUrl(post.attributes.cover_image))}
+                  alt={post.attributes.title}
+                  fill
+                  className="object-cover rounded-xl shadow-xl"
+                  priority
+                />
+              </div>
+            )}
           </header>
 
-          {post.attributes.cover_image && post.attributes.cover_image.data && (
-            <Image
-              src={getFullImageUrl(getImageUrl(post.attributes.cover_image))}
-              alt={post.attributes.title}
-              width={1200}
-              height={600}
-              className="w-full aspect-video object-cover rounded-lg mb-8"
-            />
-          )}
-
-          <div className={`prose prose-lg max-w-none text-[#374151] ${afacad.className} text-lg sm:text-xl`}>
-            <BlogContent content={post.attributes.content} />
-          </div>
-
-          <footer className={`mt-12 pt-8 border-t border-gray-200 ${afacad.className} text-lg sm:text-xl`}>
-            <div className="flex items-center space-x-4">
-              {post.attributes.author_headshot && post.attributes.author_headshot.data && (
-                <Image
-                  src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
-                  alt={authorName}
-                  width={64}
-                  height={64}
-                  className="rounded-full"
-                />
-              )}
-              <div>
-                {authorName && (
-                  <p className="font-semibold text-lg text-[#374151]">{authorName}</p>
-                )}
-                {authorRole && (
-                  <p className="text-[#374151]">{authorRole}</p>
-                )}
+          {/* Main Content with Table of Contents */}
+          <div className="flex justify-between items-start relative gap-12">
+            {/* Article Content */}
+            <div className="w-full lg:w-[calc(100%-20rem)]">
+              <div className={`prose prose-lg max-w-none text-[#374151] ${afacad.className} text-lg sm:text-xl
+                prose-headings:text-[#0055c8] prose-headings:font-semibold
+                prose-a:text-[#0055c8] prose-a:no-underline prose-a:font-medium hover:prose-a:text-[#003d8f]
+                prose-blockquote:border-l-[#0055c8] prose-blockquote:bg-white/50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
+                prose-code:text-[#0055c8] prose-code:bg-white/50
+                prose-pre:bg-gray-900 prose-pre:text-gray-100
+                [&>*]:bg-transparent
+              `}>
+                <BlogContent content={post.attributes.content} />
               </div>
+
+              {/* Social Share Section */}
+              <SocialShare title={post.attributes.title} />
+
+              {/* Author Bio Section */}
+              <footer className={`mb-12 p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-blue-100 shadow-sm ${afacad.className} text-lg`}>
+                <div className="flex items-center space-x-6">
+                  {post.attributes.author_headshot && post.attributes.author_headshot.data && (
+                    <Image
+                      src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
+                      alt={authorName}
+                      width={80}
+                      height={80}
+                      className="rounded-full ring-2 ring-white shadow-md"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-xl text-[#0055c8] mb-2">{authorName}</p>
+                    <p className="text-gray-600 mb-4">{authorRole}</p>
+                    <p className="text-gray-600">
+                      Technical writer and developer advocate at Cosdata. Passionate about vector databases and similarity search.
+                    </p>
+                  </div>
+                </div>
+              </footer>
             </div>
-          </footer>
+
+            {/* Table of Contents */}
+            <TableOfContents />
+          </div>
         </article>
       </div>
     );

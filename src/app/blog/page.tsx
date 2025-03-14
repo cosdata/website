@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BlogPosts from './BlogPosts';
 import CoverImage from './CoverImage';
-import SearchBar from './SearchBar';
 import FeaturedPost from './FeaturedPost';
 import Pagination from './Pagination';
 import NewsletterSignup from './NewsletterSignup';
@@ -38,7 +37,6 @@ export default function Blog() {
     try {
       const response = await axios.get(`/api/posts?page=${page}&pageSize=9`);
       const { data, pagination } = response.data;
-      console.log('Fetched posts:', data);
       setPosts(data);
       setFilteredPosts(data);
       setTotalPages(pagination.pageCount);
@@ -49,13 +47,6 @@ export default function Blog() {
     }
   };
 
-  const handleSearch = (query: string) => {
-    const filtered = posts.filter((post) => 
-      (post as any).attributes.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredPosts(filtered);
-  };
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -63,40 +54,44 @@ export default function Blog() {
   return (
     <div className={`min-h-screen ${noto_sans_mono.className}`}>
       <CoverImage />
-      <div className="w-full py-8 px-4 sm:px-6 bg-gray-100 lg:px-8">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
-            <h1 className={`${commonStyles.sectionTitle} text-[#374151]text-left mb-4 sm:mb-0`}>Featured Post</h1>
-            <div className="w-full sm:w-1/2">
-              <SearchBar placeholder="What are you looking for?" onSearch={handleSearch} />
+      
+      {/* Main Content Section */}
+      <section className="bg-gradient-to-b from-white to-gray-50">
+        <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
+          {/* Featured Post Section */}
+          {featuredPost && (
+            <div className="mb-16">
+              <FeaturedPost post={featuredPost} className="bg-white shadow-lg rounded-xl overflow-hidden" isFeatured={true} />
             </div>
+          )}
+          
+          {/* Latest Posts Section */}
+          <div className="mb-16">
+            <h2 className={`${commonStyles.sectionTitle} !mb-8`}>Latest Articles</h2>
+            {loading ? (
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#f23665]"></div>
+              </div>
+            ) : (
+              <BlogPosts posts={filteredPosts} />
+            )}
           </div>
           
-          {featuredPost && (
-            <div className="mb-12">
-              <FeaturedPost post={featuredPost} className={`flex flex-col md:flex-row`} />
-            </div>
-          )}
-          
-          {loading ? (
-            <div className={commonStyles.paragraph}>Loading...</div>
-          ) : (
-            <div className="mb-12">
-              <BlogPosts posts={filteredPosts} />
-            </div>
-          )}
-          
-          <Pagination 
-            currentPage={currentPage} 
-            totalPages={totalPages} 
-            onPageChange={handlePageChange} 
-          />
-          
-          <div className="mt-16">
+          {/* Pagination */}
+          <div className="mb-16">
+            <Pagination 
+              currentPage={currentPage} 
+              totalPages={totalPages} 
+              onPageChange={handlePageChange} 
+            />
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="mb-16">
             <NewsletterSignup />
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  )
+  );
 }

@@ -28,14 +28,26 @@ const Particle = ({ index }: { index: number }) => {
 
 const CoverImage = () => {
   return (
-    <div className="relative h-80 overflow-hidden mb-12">
-      <div className="absolute inset-0 flex items-center justify-center">
-      <h1 className={commonStyles.heroTitle}>
-            <div className="text-[#f23665] text-[42px] sm:text-[56px] md:text-[72px] font-bold">Cosdata Blog</div>
-            </h1>
+    <section className="pt-8 sm:pt-10 md:pt-12 lg:pt-16 pb-12 sm:pb-16 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden text-white mb-8">
+      {/* Abstract background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-1/2 -left-24 w-80 h-80 bg-pink-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -bottom-24 right-1/4 w-64 h-64 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
       </div>
-    </div>
-  )
+
+      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10`}>
+        <div className="flex flex-col items-center text-center">
+          <h1 className="text-[36px] sm:text-[48px] md:text-[56px] font-bold text-[#f23665] leading-tight mb-4">
+            Cosdata Blog
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+            Insights and updates from the Cosdata team
+          </p>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default CoverImage;
