@@ -13,7 +13,23 @@ const nextConfig = {
     NEXT_PUBLIC_STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337',
   },
   images: {
-    domains: ['38.45.67.216','http://38.45.67.216:1337'], 
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+    ],
+    domains: [
+      '38.45.67.216',
+      'http://38.45.67.216:1337',
+      'heroic-song-72b61c9d01.media.strapiapp.com',
+      'localhost',
+      '127.0.0.1',
+    ], 
   },
   async redirects() {
     return [

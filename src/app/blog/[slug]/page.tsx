@@ -100,7 +100,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           content: post.content,
           preview: post.preview,
           read_time: post.read_time,
-          author: post.author,
+          author: post.author && typeof post.author === 'object' ? post.author.name || 'Unknown Author' : post.author,
           author_role: post.author_role,
           publishedAt: post.publishedAt,
           createdAt: post.createdAt,
@@ -108,19 +108,38 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           cover_image: post.cover_image ? {
             data: {
               attributes: {
-                url: post.cover_image.url
+                url: post.cover_image.url || post.cover_image
+              }
+            }
+          } : post.cover ? {
+            data: {
+              attributes: {
+                url: post.cover.url || post.cover
               }
             }
           } : null,
           author_headshot: post.author_headshot ? {
             data: {
               attributes: {
-                url: post.author_headshot.url
+                url: post.author_headshot.url || post.author_headshot
               }
             }
           } : null
         }
       };
+    } else {
+      // Ensure the post has the expected structure even if it already has attributes
+      const attributes = post.attributes;
+      
+      // Handle cover_image
+      if (!attributes.cover_image && attributes.cover && attributes.cover.data) {
+        attributes.cover_image = attributes.cover;
+      }
+      
+      // Handle author data if it's not in the expected format
+      if (attributes.author && typeof attributes.author === 'object' && !attributes.author.data) {
+        attributes.author = attributes.author.name || 'Unknown Author';
+      }
     }
 
     const formattedDate = post.attributes.publishedAt
@@ -130,9 +149,27 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const readingTime = post.attributes.read_time || 5; // Default to 5 minutes if not set
 
     const getFullImageUrl = (url: string) => {
+      if (!url) return '/placeholder-image.jpg';
       if (url.startsWith('http')) return url;
       return `${strapiUrl}${url}`;
     };
+
+    // Helper function to safely access nested properties
+    const getImageUrl = (imageField: any) => {
+      if (!imageField) return null;
+      if (!imageField.data) return null;
+      if (!imageField.data.attributes) return null;
+      return imageField.data.attributes.url;
+    };
+
+    // Get author information safely
+    const authorName = typeof post.attributes.author === 'string' 
+      ? post.attributes.author 
+      : post.attributes.author?.name || 'Unknown Author';
+
+    const authorRole = post.attributes.author_role || 
+      (typeof post.attributes.author !== 'string' ? post.attributes.author?.role : null) || 
+      'Contributor';
 
     return (
       <div className={`bg-white min-h-screen ${geologica.className}`}>
@@ -141,21 +178,21 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             <h1 className={`${commonStyles.sectionTitle} !text-left mb-2`}>{post.attributes.title}</h1>
             <div className={`flex items-center justify-between text-[#374151] ${afacad.className} text-lg sm:text-xl`}>
               <div className="flex items-center space-x-4">
-                {post.attributes.author_headshot && (
+                {post.attributes.author_headshot && post.attributes.author_headshot.data && (
                   <Image
-                    src={getFullImageUrl(post.attributes.author_headshot.data.attributes.url)}
-                    alt={post.attributes.author || ''}
+                    src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
+                    alt={authorName}
                     width={40}
                     height={40}
                     className="rounded-full"
                   />
                 )}
                 <div>
-                  {post.attributes.author && (
-                    <p className="font-medium">{post.attributes.author}</p>
+                  {authorName && (
+                    <p className="font-medium">{authorName}</p>
                   )}
-                  {post.attributes.author_role && (
-                    <p className="text-sm">{post.attributes.author_role}</p>
+                  {authorRole && (
+                    <p className="text-sm">{authorRole}</p>
                   )}
                 </div>
               </div>
@@ -167,9 +204,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </div>
           </header>
 
-          {post.attributes.cover_image && (
+          {post.attributes.cover_image && post.attributes.cover_image.data && (
             <Image
-              src={getFullImageUrl(post.attributes.cover_image.data.attributes.url)}
+              src={getFullImageUrl(getImageUrl(post.attributes.cover_image))}
               alt={post.attributes.title}
               width={1200}
               height={600}
@@ -183,21 +220,21 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
           <footer className={`mt-12 pt-8 border-t border-gray-200 ${afacad.className} text-lg sm:text-xl`}>
             <div className="flex items-center space-x-4">
-              {post.attributes.author_headshot && (
+              {post.attributes.author_headshot && post.attributes.author_headshot.data && (
                 <Image
-                  src={getFullImageUrl(post.attributes.author_headshot.data.attributes.url)}
-                  alt={post.attributes.author || ''}
+                  src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
+                  alt={authorName}
                   width={64}
                   height={64}
                   className="rounded-full"
                 />
               )}
               <div>
-                {post.attributes.author && (
-                  <p className="font-semibold text-lg text-[#374151]">{post.attributes.author}</p>
+                {authorName && (
+                  <p className="font-semibold text-lg text-[#374151]">{authorName}</p>
                 )}
-                {post.attributes.author_role && (
-                  <p className="text-[#374151]">{post.attributes.author_role}</p>
+                {authorRole && (
+                  <p className="text-[#374151]">{authorRole}</p>
                 )}
               </div>
             </div>

@@ -19,27 +19,47 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
           console.log('Processing post:', post.attributes.title);
           console.log('Cover image data:', post.attributes.cover_image);
           
-          // Get image URL safely
-          const getImageUrl = () => {
-            if (
-              post.attributes.cover_image && 
-              post.attributes.cover_image.data && 
-              post.attributes.cover_image.data.attributes && 
-              post.attributes.cover_image.data.attributes.url
-            ) {
-              return `${process.env.NEXT_PUBLIC_STRAPI_URL}${post.attributes.cover_image.data.attributes.url}`;
-            }
+          // Helper function to safely access nested properties
+          const getImageUrl = (imageField: any) => {
+            if (!imageField) return null;
+            if (!imageField.data) return null;
+            if (!imageField.data.attributes) return null;
+            if (!imageField.data.attributes.url) return null;
+            
+            const url = imageField.data.attributes.url;
+            if (url.startsWith('http')) return url;
+            return `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
+          };
+          
+          // Get cover image URL safely
+          const getCoverImageUrl = () => {
+            const coverUrl = getImageUrl(post.attributes.cover_image);
+            if (coverUrl) return coverUrl;
+            
+            // Try the cover field if cover_image is not available
+            const url = getImageUrl(post.attributes.cover);
+            if (url) return url;
+            
             return '/placeholder-image.jpg'; // Provide a default placeholder image
           };
+          
+          // Get author information safely
+          const authorName = typeof post.attributes.author === 'string' 
+            ? post.attributes.author 
+            : post.attributes.author?.name || 'Unknown Author';
+
+          const authorRole = post.attributes.author_role || 
+            (typeof post.attributes.author !== 'string' ? post.attributes.author?.role : null) || 
+            'Contributor';
           
           return (
             <div
               key={post.id}
               className="bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 ease-in-out hover:shadow-lg"
             >
-              {post.attributes.cover_image && post.attributes.cover_image.data ? (
+              {(post.attributes.cover_image?.data || post.attributes.cover?.data) ? (
                 <Image
-                  src={getImageUrl()}
+                  src={getCoverImageUrl()}
                   alt={post.attributes.title}
                   width={600}
                   height={400}
@@ -56,10 +76,10 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
                   {post.attributes.preview ? `${post.attributes.preview}...` : 'No preview available'}
                 </p>
                 <div className={`flex items-center mb-4 ${afacad.className}`}>
-                  {post.attributes.author_headshot && post.attributes.author_headshot.data ? (
+                  {post.attributes.author_headshot?.data ? (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.attributes.author_headshot.data.attributes.url}`}
-                      alt={post.attributes.author || ''}
+                      src={getImageUrl(post.attributes.author_headshot) || '/placeholder-avatar.jpg'}
+                      alt={authorName}
                       width={32}
                       height={32}
                       className="rounded-full mr-2"
@@ -69,7 +89,7 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
                   )}
                   <div>
                     <p className="text-lg sm:text-xl font-medium text-[#374151]">
-                      {post.attributes.author || 'Unknown Author'}
+                      {authorName}
                     </p>
                     <p className="text-base sm:text-lg text-[#374151]">
                       {post.attributes.publishedAt ? 

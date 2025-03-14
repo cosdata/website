@@ -7,7 +7,29 @@ const strapiToken = process.env.STRAPI_ARTICLES_READ_TOKEN;
 // Function to transform the data structure
 function transformArticleData(articles: any[]) {
   return articles.map(article => {
-    // Create the expected structure
+    // Check if the article already has the expected structure with attributes
+    if (article.attributes) {
+      const attributes = article.attributes;
+      
+      // Handle cover_image
+      if (!attributes.cover_image && attributes.cover && attributes.cover.data) {
+        attributes.cover_image = attributes.cover;
+      }
+      
+      // Handle author data if it's not in the expected format
+      if (attributes.author && typeof attributes.author !== 'string' && !attributes.author.data) {
+        const authorName = attributes.author.name || attributes.author;
+        attributes.author = authorName;
+      }
+      
+      // Return the article with its existing structure
+      return {
+        id: article.id,
+        attributes: attributes
+      };
+    }
+    
+    // If the article doesn't have the expected structure, transform it
     return {
       id: article.id,
       attributes: {
@@ -16,7 +38,7 @@ function transformArticleData(articles: any[]) {
         content: article.content,
         preview: article.preview,
         read_time: article.read_time,
-        author: article.author,
+        author: article.author && typeof article.author === 'object' ? article.author.name || 'Unknown Author' : article.author,
         author_role: article.author_role,
         publishedAt: article.publishedAt,
         createdAt: article.createdAt,
@@ -24,14 +46,20 @@ function transformArticleData(articles: any[]) {
         cover_image: article.cover_image ? {
           data: {
             attributes: {
-              url: article.cover_image.url
+              url: article.cover_image.url || article.cover_image
+            }
+          }
+        } : article.cover ? {
+          data: {
+            attributes: {
+              url: article.cover.url || article.cover
             }
           }
         } : null,
         author_headshot: article.author_headshot ? {
           data: {
             attributes: {
-              url: article.author_headshot.url
+              url: article.author_headshot.url || article.author_headshot
             }
           }
         } : null
