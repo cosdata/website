@@ -31,10 +31,10 @@ export default function BenchmarksSection() {
             <table className="min-w-full">
               <thead>
                 <tr>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Vector DB</th>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Indexing Time (m)</th>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">RPS</th>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Precision</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Vector DB</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Indexing Time (m)</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">RPS</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Precision</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -74,59 +74,62 @@ export default function BenchmarksSection() {
           </Link>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center bg-white shadow-md overflow-hidden border border-gray-200">
-          <div className="md:w-1/2 p-8">
-            <div className="relative w-full h-[300px]">
-              <Image 
-                src="/svgs/results.svg" 
-                alt="Performance Comparison Chart" 
-                fill 
-                className="object-contain" 
-              />
+        <div className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
+              <div className="relative w-full h-[300px]">
+                <Image 
+                  src="/svgs/results.svg" 
+                  alt="Performance Comparison Chart" 
+                  fill 
+                  className="object-contain" 
+                />
+              </div>
             </div>
-          </div>
-          <div className="md:w-1/2 p-8">
-            <h3 className="text-2xl font-bold mb-4 text-[#0055c8]">Why We&apos;re Faster</h3>
-            <p className="text-gray-700 mb-4">
-              Our implementation achieves superior performance through:
-            </p>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-[#f23665] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Optimized HNSW graph construction
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-[#f23665] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Efficient memory management
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-[#f23665] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                SIMD-accelerated distance calculations
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-[#f23665] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Parallel processing for multi-core utilization
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-[#f23665] mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Optimized data structures for minimal overhead
-              </li>
-            </ul>
-            <div className="mt-6">
-              <p className="text-sm text-gray-600 italic">
-                Benchmarks conducted using the same methodology as <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c]">Qdrant&apos;s benchmarks</a>, 
-                on identical hardware with 8 vCPUs and 32GB RAM.
+            
+            <div className="order-1 md:order-2">
+              <h3 className="text-2xl font-bold mb-6 text-[#0055c8]">Why We&apos;re Faster</h3>
+              <p className="text-gray-700 mb-6">
+                Our implementation achieves superior performance through:
               </p>
+              <ul className="space-y-4 text-gray-700">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-500 mr-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-base">Optimized HNSW graph construction</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-500 mr-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-base">Efficient memory management</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-500 mr-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-base">SIMD-accelerated distance calculations</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-500 mr-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-base">Parallel processing for multi-core utilization</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-500 mr-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-base">Optimized data structures for minimal overhead</span>
+                </li>
+              </ul>
+              <div className="mt-8 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 italic">
+                  Benchmarks conducted using the same methodology as <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c]">Qdrant&apos;s benchmarks</a>, 
+                  on identical hardware with 8 vCPUs and 32GB RAM.
+                </p>
+              </div>
             </div>
           </div>
         </div>

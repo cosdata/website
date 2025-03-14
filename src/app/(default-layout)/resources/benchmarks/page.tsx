@@ -57,10 +57,10 @@ export default function BenchmarksPage() {
             <table className="min-w-full">
               <thead>
                 <tr>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Vector DB</th>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Indexing Time (m)</th>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">RPS</th>
-                  <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Precision</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Vector DB</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Indexing Time (m)</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">RPS</th>
+                  <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Precision</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -149,16 +149,14 @@ export default function BenchmarksPage() {
 
         <h2 className="text-[32px] font-bold mb-6 text-[#0055c8] text-center">Cosdata Configuration Benchmarks</h2>
         <div className="max-w-7xl mx-auto mb-12">
-          <div className="bg-white p-6 shadow-md border border-gray-200 mb-6">
             <p className="text-gray-700 mb-4">
               We&apos;ve conducted additional benchmarks with different Cosdata HNSW configurations to demonstrate the flexibility and performance characteristics of our implementation:
             </p>
-            <ul className="list-disc pl-5 space-y-2 mb-6 text-gray-700">
+            <ul className="list-disc pl-5 space-y-2 mb-12 text-gray-700">
               <li><strong>Dataset:</strong> 1 million text embeddings (768 dimensions) from <a href="https://huggingface.co/datasets/Sreenath/million-text-embeddings" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium">Hugging Face</a></li>
               <li><strong>Hardware:</strong> x86 machine, 4C/8T, 32 GB RAM</li>
               <li><strong>Metrics:</strong> Total insertion time, Average Recall@5, Requests Per Second (RPS)</li>
             </ul>
-          </div>
 
           <div className="overflow-hidden shadow-lg mb-12 border border-gray-200">
             <div className="overflow-x-auto">
@@ -188,8 +186,7 @@ export default function BenchmarksPage() {
               </table>
             </div>
           </div>
-          
-          <div className="bg-white p-6 shadow-md border border-gray-200 mb-12">
+          <div className="mb-12">
             <p className="text-gray-700 mb-4">
               <strong>Key Observations:</strong>
             </p>
