@@ -7,123 +7,98 @@ import { format } from 'date-fns';
 import axios from 'axios';
 import { commonStyles, afacad, geologica } from '../../styles/common';
 
-export const revalidate = 3600; // Revalidate every hour
+// Enable revalidation every hour with ISR
+export const revalidate = 3600;
 
-export async function generateStaticParams() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  try {
-    const response = await fetch(`${baseUrl}/api/posts`, { 
-      next: { revalidate: 3600 },
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const { data: posts } = await response.json();
-    return posts.map((post: any) => ({
-      slug: post.attributes.slug,
-    }));
-  } catch (error) {
-    console.error('Error fetching posts for static params:', error);
-    return []; // Return an empty array if there's an error
-  }
+// Enable dynamic routes - don't require static generation
+export const dynamicParams = true;
+
+// Helper function to log timing
+function logTiming(label: string, startTime: number) {
+  const duration = Date.now() - startTime;
+  console.log(`[BlogPost][${label}] Duration: ${duration}ms`);
+  return Date.now();
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
-  // Use window.location.origin for client-side or environment variable for server-side
+  const startTime = Date.now();
+  console.log(`[BlogPost][page] Starting to render post with slug: ${params.slug}`);
+  
+  // Use environment variable for server-side
   const baseUrl = process.env.NODE_ENV === 'development' 
     ? 'http://localhost:3000' 
     : (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.cosdata.io');
   
-  console.log('Base URL:', baseUrl);
-  console.log('Slug:', params.slug);
   const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-  console.log('Strapi URL:', strapiUrl);
+  console.log('[BlogPost][page] Base URL:', baseUrl);
+  console.log('[BlogPost][page] Slug:', params.slug);
 
   try {
-    const apiUrl = `${baseUrl}/api/posts/${params.slug}`;
-    console.log('API URL:', apiUrl);
+    // Try fetching directly from Strapi first to avoid unnecessary API routes
+    const time = startTime;
+    console.log(`[BlogPost][page] Starting direct Strapi fetch for slug: ${params.slug}`);
+    const fetchStart = Date.now();
     
-    // Add a direct fetch from Strapi as a fallback
-    let post;
-    try {
-      const response = await fetch(apiUrl, {
-        next: { revalidate: 3600 },
-      });
-
-      console.log('Response status:', response.status);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      post = await response.json();
-    } catch (apiError) {
-      console.log("API route failed, trying direct Strapi fetch");
-      // Try direct fetch from Strapi
-      const directResponse = await fetch(`${strapiUrl}/api/articles?filters[slug][$eq]=${params.slug}&populate=*`, {
-        headers: {
-          Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
-        },
-        next: { revalidate: 3600 },
-      });
-      
-      if (!directResponse.ok) {
-        throw new Error(`Direct Strapi fetch failed: ${directResponse.status}`);
-      }
-      
-      const data = await directResponse.json();
-      if (!data.data || data.data.length === 0) {
-        throw new Error("No article found with this slug");
-      }
-      
-      post = data.data[0];
+    const strapiFetchUrl = `${strapiUrl}/api/articles?filters[slug][$eq]=${params.slug}&populate=*`;
+    const response = await fetch(strapiFetchUrl, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+      },
+      next: { revalidate: 3600 },
+    });
+    
+    console.log(`[BlogPost][page] Strapi fetch took ${Date.now() - fetchStart}ms, status: ${response.status}`);
+    
+    if (!response.ok) {
+      throw new Error(`Strapi fetch failed: ${response.status}`);
     }
-
-    if (!post) {
-      notFound();
+    
+    const jsonStart = Date.now();
+    const data = await response.json();
+    console.log(`[BlogPost][page] JSON parsing took ${Date.now() - jsonStart}ms`);
+    
+    if (!data.data || data.data.length === 0) {
+      console.log(`[BlogPost][page] No article found with slug: ${params.slug}`);
+      return notFound();
     }
-
-    // Log the post structure to debug
-    console.log('Post structure:', JSON.stringify(post, null, 2));
-
+    
+    // Extract and transform the article data
+    let article = data.data[0];
+    
     // Check if post has the expected structure
-    if (!post.attributes) {
-      console.error('Post is missing attributes property:', post);
+    if (!article.attributes) {
       // If post is the direct data from Strapi without the expected structure,
       // we need to transform it
-      post = {
-        id: post.id,
+      article = {
+        id: article.id,
         attributes: {
-          title: post.title,
-          slug: post.slug,
-          content: post.content,
-          preview: post.preview,
-          read_time: post.read_time,
-          author: post.author && typeof post.author === 'object' ? post.author.name || 'Unknown Author' : post.author,
-          author_role: post.author_role,
-          publishedAt: post.publishedAt,
-          createdAt: post.createdAt,
-          updatedAt: post.updatedAt,
-          cover_image: post.cover_image ? {
+          title: article.title,
+          slug: article.slug,
+          content: article.content,
+          preview: article.preview,
+          read_time: article.read_time,
+          author: article.author && typeof article.author === 'object' ? article.author.name || 'Unknown Author' : article.author,
+          author_role: article.author_role,
+          publishedAt: article.publishedAt,
+          createdAt: article.createdAt,
+          updatedAt: article.updatedAt,
+          cover_image: article.cover_image ? {
             data: {
               attributes: {
-                url: post.cover_image.url || post.cover_image
+                url: article.cover_image.url || article.cover_image
               }
             }
-          } : post.cover ? {
+          } : article.cover ? {
             data: {
               attributes: {
-                url: post.cover.url || post.cover
+                url: article.cover.url || article.cover
               }
             }
           } : null,
-          author_headshot: post.author_headshot ? {
+          author_headshot: article.author_headshot ? {
             data: {
               attributes: {
-                url: post.author_headshot.url || post.author_headshot
+                url: article.author_headshot.url || article.author_headshot
               }
             }
           } : null
@@ -131,7 +106,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       };
     } else {
       // Ensure the post has the expected structure even if it already has attributes
-      const attributes = post.attributes;
+      const attributes = article.attributes;
       
       // Handle cover_image
       if (!attributes.cover_image && attributes.cover && attributes.cover.data) {
@@ -144,11 +119,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       }
     }
 
-    const formattedDate = post.attributes.publishedAt
-      ? format(new Date(post.attributes.publishedAt), 'MMMM d, yyyy')
+    const formattedDate = article.attributes.publishedAt
+      ? format(new Date(article.attributes.publishedAt), 'MMMM d, yyyy')
       : 'Date unavailable';
 
-    const readingTime = post.attributes.read_time || 5; // Default to 5 minutes if not set
+    const readingTime = article.attributes.read_time || 5; // Default to 5 minutes if not set
 
     const getFullImageUrl = (url: string) => {
       if (!url) return '/placeholder-image.jpg';
@@ -165,12 +140,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     };
 
     // Get author information safely
-    const authorName = typeof post.attributes.author === 'string' 
-      ? post.attributes.author 
-      : post.attributes.author?.name || 'Unknown Author';
+    const authorName = typeof article.attributes.author === 'string' 
+      ? article.attributes.author 
+      : article.attributes.author?.name || 'Unknown Author';
 
-    const authorRole = post.attributes.author_role || 
-      (typeof post.attributes.author !== 'string' ? post.attributes.author?.role : null) || 
+    const authorRole = article.attributes.author_role || 
+      (typeof article.attributes.author !== 'string' ? article.attributes.author?.role : null) || 
       'Contributor';
 
     return (
@@ -181,13 +156,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             {/* Title and Author Info */}
             <div className="mb-12">
               <h1 className={`${commonStyles.sectionTitle} !text-left mb-6 text-4xl md:text-5xl lg:text-6xl text-[#0055c8]`}>
-                {post.attributes.title}
+                {article.attributes.title}
               </h1>
               <div className={`flex flex-col sm:flex-row sm:items-center sm:justify-between text-[#374151] ${afacad.className} text-lg gap-4`}>
                 <div className="flex items-center space-x-4">
-                  {post.attributes.author_headshot && post.attributes.author_headshot.data && (
+                  {article.attributes.author_headshot && article.attributes.author_headshot.data && (
                     <Image
-                      src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
+                      src={getFullImageUrl(getImageUrl(article.attributes.author_headshot))}
                       alt={authorName}
                       width={48}
                       height={48}
@@ -204,7 +179,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                   </div>
                 </div>
                 <div className="text-md text-gray-600">
-                  <time dateTime={post.attributes.publishedAt}>{formattedDate}</time>
+                  <time dateTime={article.attributes.publishedAt}>{formattedDate}</time>
                   <span className="mx-2">·</span>
                   <span>{readingTime} min read</span>
                 </div>
@@ -212,12 +187,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </div>
 
             {/* Cover Image */}
-            {post.attributes.cover_image && post.attributes.cover_image.data && (
+            {article.attributes.cover_image && article.attributes.cover_image.data && (
               <div className="w-full mb-12">
                 <div className="relative w-full bg-white rounded-xl shadow-xl overflow-hidden">
                   <Image
-                    src={getFullImageUrl(getImageUrl(post.attributes.cover_image))}
-                    alt={post.attributes.title}
+                    src={getFullImageUrl(getImageUrl(article.attributes.cover_image))}
+                    alt={article.attributes.title}
                     width={1200}
                     height={630}
                     className="w-full h-auto"
@@ -241,18 +216,18 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 prose-pre:bg-gray-900 prose-pre:text-gray-100
                 [&>*]:bg-transparent
               `}>
-                <BlogContent content={post.attributes.content} />
+                <BlogContent content={article.attributes.content} />
               </div>
 
               {/* Social Share Section */}
-              <SocialShare title={post.attributes.title} />
+              <SocialShare title={article.attributes.title} />
 
               {/* Author Bio Section */}
               <footer className={`mb-12 p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-blue-100 shadow-sm ${afacad.className} text-lg`}>
                 <div className="flex items-center space-x-6">
-                  {post.attributes.author_headshot && post.attributes.author_headshot.data && (
+                  {article.attributes.author_headshot && article.attributes.author_headshot.data && (
                     <Image
-                      src={getFullImageUrl(getImageUrl(post.attributes.author_headshot))}
+                      src={getFullImageUrl(getImageUrl(article.attributes.author_headshot))}
                       alt={authorName}
                       width={80}
                       height={80}
