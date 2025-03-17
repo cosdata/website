@@ -13,7 +13,7 @@ export default function FeaturesSection() {
       )
     },
     {
-      title: "GraphRAG Optimized",
+      title: "Graph RAG Optimized",
       description: "Purpose-built for Graph Retrieval Augmented Generation, enabling more contextual, accurate, and comprehensive responses for complex queries.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 text-[#f23665]" fill="none" viewBox="0 0 24 24" stroke="currentColor">

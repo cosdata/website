@@ -51,7 +51,7 @@ const HeroSection = () => {
             </div>
           </h1>
           <p className={`${commonStyles.heroSubtitle} text-xl md:text-2xl lg:text-3xl max-w-5xl mx-auto px-4 py-3 mb-10 md:mb-12`}>
-            Cosdata's next-generation vector database delivers lightning-fast performance at billion-vector scale, powering the AI applications of tomorrow
+            Cosdata&apos;s next-generation vector database delivers lightning-fast performance at billion-vector scale, powering the AI applications of tomorrow
           </p>
           <div className="flex gap-4 flex-wrap justify-center">
             <button onClick={openModal} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-md text-white bg-[#f23665] hover:bg-[#d92d5c] transition-colors duration-300">

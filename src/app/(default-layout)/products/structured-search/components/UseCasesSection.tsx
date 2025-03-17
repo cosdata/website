@@ -53,13 +53,13 @@ export default function UseCasesSection() {
         <div className="flex flex-col md:flex-row items-start gap-12 mb-16">
           <div className="md:w-1/2">
             <h3 className="text-2xl font-bold text-[#0055c8] mb-4">
-              What is GraphRAG?
+              What is Graph-based RAG?
             </h3>
             <p className="text-gray-700 text-lg mb-6">
-              Graph Retrieval Augmented Generation (GraphRAG) is an advanced approach that enhances traditional RAG systems by incorporating structured relationships between data points. This enables AI systems to understand context, follow complex reasoning paths, and provide more accurate and comprehensive responses.
+              Graph-based RAG is an advanced approach that enhances traditional RAG systems by incorporating structured relationships between data points. This enables AI systems to understand context, follow complex reasoning paths, and provide more accurate and comprehensive responses.
             </p>
             <p className="text-gray-700 text-lg mb-6">
-              Unlike traditional RAG which treats documents as independent entities, GraphRAG understands the connections between information, allowing for more nuanced and contextually aware retrieval.
+              Unlike traditional RAG which treats documents as independent entities, Graph-based RAG understands the connections between information, allowing for more nuanced and contextually aware retrieval.
             </p>
             <a 
               href="https://www.microsoft.com/en-us/research/publication/from-local-to-global-a-graph-rag-approach-to-query-focused-summarization/" 
@@ -67,7 +67,7 @@ export default function UseCasesSection() {
               rel="noopener noreferrer" 
               className="inline-flex items-center text-[#f23665] font-medium hover:text-[#d92d5c] transition-colors"
             >
-              Read Microsoft&apos;s research on GraphRAG
+              Read Microsoft&apos;s research on Graph-based RAG
               <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>

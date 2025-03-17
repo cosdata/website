@@ -27,7 +27,7 @@ export default function HeroSection() {
               Next-Gen Knowledge Graph
             </h2>
             <p className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
-              Innovative knowledge graph purpose-built for structured search and vector search integration, optimized for GraphRAG applications with unprecedented scalability and ease of use.
+              Innovative knowledge graph purpose-built for structured search and vector search integration, optimized for Graph-Based RAG applications with unprecedented scalability and ease of use.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
               <button
