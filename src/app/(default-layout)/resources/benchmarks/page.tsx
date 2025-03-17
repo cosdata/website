@@ -163,10 +163,10 @@ export default function BenchmarksPage() {
               <table className="min-w-full">
                 <thead>
                   <tr>
-                    <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Configuration</th>
-                    <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Indexing Time</th>
-                    <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">Recall@5</th>
-                    <th className="py-4 px-6 text-left text-base font-semibold bg-black text-white">RPS</th>
+                    <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Configuration</th>
+                    <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Indexing Time</th>
+                    <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">Recall@5</th>
+                    <th className="py-4 px-6 text-left text-base font-semibold bg-[#0055c8] text-white">RPS</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">

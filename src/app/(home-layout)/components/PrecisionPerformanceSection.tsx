@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { commonStyles } from '../../styles/common';
+import Link from "next/link";
+import { commonStyles, afacad, geologica } from '../../styles/common';
 
 export default function PrecisionPerformanceSection() {
   const items = [
@@ -30,50 +31,53 @@ export default function PrecisionPerformanceSection() {
   ];
 
   return (
-    <section className={`${commonStyles.skewedSection} bg-[#e5f4ff]`}>
-      <div className={commonStyles.skewedContent}>
-        <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
-          <h2 className={commonStyles.sectionTitle}>
-            Precision Performance, Effortless Integration
-          </h2>
-          <p className={commonStyles.sectionSubtitle}>
-            Discover how our intuitive and tailored solutions can enhance your data management experience.
-          </p>
+    <section className="bg-[#e5f4ff] py-16 mt-8">
+      <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
+        <h2 className={commonStyles.sectionTitle}>
+          Precision Performance, Effortless Integration
+        </h2>
+        <p className={commonStyles.sectionSubtitle}>
+          Discover how our intuitive and tailored solutions can enhance your data management experience.
+        </p>
 
-          {items.map((item, index) => (
-            <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div className="md:w-1/2 mb-8 md:mb-0 px-4">
-                <h3 className="text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
-                  {item.title}
-                </h3>
-                {item.points.map((point, pointIndex) => {
-                  const [boldText, ...rest] = point.split(":");
-                  return (
-                    <p key={pointIndex} className={`${commonStyles.paragraph} mb-2`}>
-                      <span className="font-bold">{boldText}:</span>
-                      <span>{rest.join(":")}</span>
-                    </p>
-                  );
-                })}
-                <a href="/blog/introducing-cosdata" className={commonStyles.link}>
-                  Learn more
-                  <span className="ml-2">→</span>
-                </a>
-              </div>
-              <div className="md:w-1/2 px-4 flex justify-center items-center">
-                <div className="w-64 h-64">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={256}
-                    height={256}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+        {items.map((item, index) => (
+          <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div className="md:w-1/2 mb-8 md:mb-0 px-4">
+              <h3 className={`text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>
+                {item.title}
+              </h3>
+              {item.points.map((point, pointIndex) => {
+                const [boldText, ...rest] = point.split(":");
+                return (
+                  <p key={pointIndex} className={`${commonStyles.paragraph} mb-4`}>
+                    <span className="font-bold">{boldText}:</span>
+                    <span>{rest.join(":")}</span>
+                  </p>
+                );
+              })}
+              <Link 
+                href="https://docs.cosdata.io/getting-started/introduction/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={commonStyles.link}
+              >
+                View Documentation
+                <span className="ml-2">→</span>
+              </Link>
+            </div>
+            <div className="md:w-1/2 px-4 flex justify-center items-center">
+              <div className="w-64 h-64 bg-blue-100 rounded-full p-8 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

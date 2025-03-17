@@ -213,14 +213,18 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
             {/* Cover Image */}
             {post.attributes.cover_image && post.attributes.cover_image.data && (
-              <div className="relative aspect-[2.5/1] w-full mb-12">
-                <Image
-                  src={getFullImageUrl(getImageUrl(post.attributes.cover_image))}
-                  alt={post.attributes.title}
-                  fill
-                  className="object-cover rounded-xl shadow-xl"
-                  priority
-                />
+              <div className="w-full mb-12">
+                <div className="relative w-full bg-white rounded-xl shadow-xl overflow-hidden">
+                  <Image
+                    src={getFullImageUrl(getImageUrl(post.attributes.cover_image))}
+                    alt={post.attributes.title}
+                    width={1200}
+                    height={630}
+                    className="w-full h-auto"
+                    priority
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
               </div>
             )}
           </header>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { commonStyles } from '../../styles/common';
+import Link from 'next/link';
+import { commonStyles, geologica } from '../../styles/common';
 
 const UseCases: React.FC = () => {
   const useCases = [
@@ -22,44 +23,45 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className={`${commonStyles.skewedSection} bg-[#fcf6f7]`}>
-      <div className={commonStyles.skewedContent}>
-        <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
-          <h2 className={commonStyles.sectionTitle}>
-            Unlock Your Data&apos;s Potential
-          </h2>
-           <p className={commonStyles.sectionSubtitle}>
-            Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
-          </p>
+    <section className="py-16 mt-8">
+      <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
+        <h2 className={commonStyles.sectionTitle}>
+          Unlock Your Data&apos;s Potential
+        </h2>
+         <p className={commonStyles.sectionSubtitle}>
+          Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
+        </p>
 
-          {useCases.map((useCase, index) => (
-            <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div className="md:w-1/2 mb-8 md:mb-0 px-4">
-                <h3 className="text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8]">
-                  {useCase.title}
-                </h3>
-                <p className={`${commonStyles.paragraph} mb-6`}>
-                  {useCase.description}
-                </p>
-                <a href="/blog/introducing-cosdata" className={commonStyles.link}>
-                  Learn more
-                  <span className="ml-2">→</span>
-                </a>
-              </div>
-              <div className="md:w-1/2 px-4 flex justify-center items-center">
-                <div className="w-64 h-64">
-                  <Image
-                    src={useCase.image}
-                    alt={useCase.title}
-                    width={256}
-                    height={256}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+        {useCases.map((useCase, index) => (
+          <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div className="md:w-1/2 mb-8 md:mb-0 px-4">
+              <h3 className={`text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>
+                {useCase.title}
+              </h3>
+              <p className={`${commonStyles.paragraph} mb-6`}>
+                {useCase.description}
+              </p>
+              <Link 
+                href="/products/cosdata-serverless" 
+                className={commonStyles.link}
+              >
+                Learn more
+                <span className="ml-2">→</span>
+              </Link>
+            </div>
+            <div className="md:w-1/2 px-4 flex justify-center items-center">
+              <div className="w-64 h-64 bg-blue-50 rounded-full p-8 transition-transform duration-300 hover:scale-105">
+                <Image
+                  src={useCase.image}
+                  alt={useCase.title}
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

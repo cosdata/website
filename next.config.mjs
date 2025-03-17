@@ -38,6 +38,16 @@ const nextConfig = {
         destination: '/tech/mavann-metadata-filtering',
         permanent: true,
       },
+      {
+        source: '/tech/channi-paper',
+        destination: '/blog/channi-paper',
+        permanent: true,
+      },
+      {
+        source: '/tech/mavann-metadata-filtering',
+        destination: '/blog/mavann-metadata-filtering',
+        permanent: true,
+      },
     ];
   },
 }
