@@ -254,8 +254,8 @@ const RoadmapPage = () => {
                           <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                           Development Timeline
                         </a>
-                      </li>
-                    </ul>
+            </li>
+          </ul>
                   </div>
                   
                   <div>
@@ -273,7 +273,7 @@ const RoadmapPage = () => {
                           </a>
                         </li>
                       ))}
-                    </ul>
+          </ul>
                   </div>
                   
                   <div className="mt-8 pt-6 border-t border-gray-200">
@@ -313,7 +313,7 @@ const RoadmapPage = () => {
                         {item.content.map((point: string, pointIndex: number) => (
                           <li key={pointIndex}>{point}</li>
                         ))}
-                      </ul>
+          </ul>
                     </TimelineItem>
                   ))}
                 </div>
