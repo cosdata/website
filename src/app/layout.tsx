@@ -5,10 +5,46 @@ import Footer from "./components/Footer";
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: "Cosdata",
-  description: "Next-gen Vector Database Solution",
+  title: "Cosdata - Next-gen Vector Database and Knowledge Graph Solution",
+  description: "Powerful, scalable vector database and knowledge graph solutions for enterprise AI applications.",
+  metadataBase: new URL('https://cosdata.io'),
   icons: {
     icon: '/favicon.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://cosdata.io/',
+    siteName: 'Cosdata',
+    title: 'Cosdata - Next-gen Vector Database and Knowledge Graph Solution',
+    description: 'Powerful, scalable vector database and knowledge graph solutions for enterprise AI applications.',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Cosdata',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cosdata - Next-gen Vector Database and Knowledge Graph Solution',
+    description: 'Powerful, scalable vector database and knowledge graph solutions for enterprise AI applications.',
+    images: ['/images/og-image.jpg'],
+    creator: '@cosdata',
+    site: '@cosdata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+      'max-snippet': -1,
+    },
   },
 };
 
