@@ -16,19 +16,19 @@ const ProductsHighlight = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Cosdata HNSW */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-            <div className="h-3 bg-blue-600"></div>
+            <div className="h-3 bg-[#0055C8]"></div>
             <div className="p-6">
               <div className="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-4 mx-auto">
-                <svg className="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="h-8 w-8 text-[#0055C8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               <h3 className={`text-2xl font-bold text-center mb-3 text-[#0055c8] ${geologica.className}`}>Cosdata HNSW</h3>
-              <p className={`text-gray-600 mb-6 text-center ${afacad.className}`}>
+              <p className={`${commonStyles.paragraph} mb-6 text-center`}>
                 High-performance vector database with industry-leading query speeds and hybrid search capabilities.
               </p>
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <ul className={`text-gray-600 space-y-2 ${afacad.className}`}>
+                <ul className={`text-[#374151] space-y-3 text-lg ${afacad.className}`}>
                   <li className="flex items-center">
                     <svg className="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -51,7 +51,7 @@ const ProductsHighlight = () => {
               </div>
               <Link 
                 href="/products/cosdata-hnsw" 
-                className="block w-full text-center py-3 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+                className="block w-full text-center py-3 px-4 bg-[#0055C8] text-white rounded-md hover:bg-blue-800 transition-colors duration-300 text-lg font-medium"
               >
                 Learn More
               </Link>
@@ -68,11 +68,11 @@ const ProductsHighlight = () => {
                 </svg>
               </div>
               <h3 className={`text-2xl font-bold text-center mb-3 text-[#0055c8] ${geologica.className}`}>Cosdata Serverless</h3>
-              <p className={`text-gray-600 mb-6 text-center ${afacad.className}`}>
+              <p className={`${commonStyles.paragraph} mb-6 text-center`}>
                 Infinitely scalable vector database with zero operational overhead, powered by our innovative CHANNI technology.
               </p>
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <ul className={`text-gray-600 space-y-2 ${afacad.className}`}>
+                <ul className={`text-[#374151] space-y-3 text-lg ${afacad.className}`}>
                   <li className="flex items-center">
                     <svg className="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -95,7 +95,7 @@ const ProductsHighlight = () => {
               </div>
               <Link 
                 href="/products/cosdata-serverless" 
-                className="block w-full text-center py-3 px-4 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-300"
+                className="block w-full text-center py-3 px-4 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-300 text-lg font-medium"
               >
                 Learn More
               </Link>
@@ -104,19 +104,19 @@ const ProductsHighlight = () => {
 
           {/* Structured Search */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-            <div className="h-3 bg-green-600"></div>
+            <div className="h-3 bg-[#F23665]"></div>
             <div className="p-6">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4 mx-auto">
-                <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-4 mx-auto">
+                <svg className="h-8 w-8 text-[#F23665]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                 </svg>
               </div>
               <h3 className={`text-2xl font-bold text-center mb-3 text-[#0055c8] ${geologica.className}`}>Structured Search</h3>
-              <p className={`text-gray-600 mb-6 text-center ${afacad.className}`}>
+              <p className={`${commonStyles.paragraph} mb-6 text-center`}>
                 Next-generation knowledge graph technology optimized for structured search and GraphRAG applications.
               </p>
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <ul className={`text-gray-600 space-y-2 ${afacad.className}`}>
+                <ul className={`text-[#374151] space-y-3 text-lg ${afacad.className}`}>
                   <li className="flex items-center">
                     <svg className="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -139,7 +139,7 @@ const ProductsHighlight = () => {
               </div>
               <Link 
                 href="/products/structured-search" 
-                className="block w-full text-center py-3 px-4 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-300"
+                className="block w-full text-center py-3 px-4 bg-[#F23665] text-white rounded-md hover:bg-[#d92d59] transition-colors duration-300 text-lg font-medium"
               >
                 Learn More
               </Link>

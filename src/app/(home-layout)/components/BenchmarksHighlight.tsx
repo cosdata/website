@@ -72,7 +72,7 @@ const BenchmarksHighlight = () => {
               </svg>
             </div>
             <h3 className={`text-xl font-bold mb-2 text-center text-[#0055c8] ${geologica.className}`}>1,773+ QPS</h3>
-            <p className={`text-gray-600 text-center ${afacad.className}`}>
+            <p className={`text-gray-600 text-center text-lg ${afacad.className}`}>
               Industry-leading query performance with over 1,770 queries per second on a single node
             </p>
           </div>
@@ -84,7 +84,7 @@ const BenchmarksHighlight = () => {
               </svg>
             </div>
             <h3 className={`text-xl font-bold mb-2 text-center text-[#0055c8] ${geologica.className}`}>98% Precision</h3>
-            <p className={`text-gray-600 text-center ${afacad.className}`}>
+            <p className={`text-gray-600 text-center text-lg ${afacad.className}`}>
               High-quality results with improved recall and exceptional accuracy for complex queries
             </p>
           </div>
@@ -96,7 +96,7 @@ const BenchmarksHighlight = () => {
               </svg>
             </div>
             <h3 className={`text-xl font-bold mb-2 text-center text-[#0055c8] ${geologica.className}`}>30-50% Faster</h3>
-            <p className={`text-gray-600 text-center ${afacad.className}`}>
+            <p className={`text-gray-600 text-center text-lg ${afacad.className}`}>
               Significantly faster than competing vector databases across both indexing and query operations
             </p>
           </div>
