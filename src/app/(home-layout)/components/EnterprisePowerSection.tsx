@@ -71,28 +71,28 @@ const EnterprisePowerSectionAlt: React.FC = () => {
     }, [nextSlide, autoPlay, mobileView]);
 
     return (
-        <div className="py-20">
+        <div className="py-12 sm:py-16 md:py-20 px-4 sm:px-6">
             <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
-                <div className="px-4">
-                    <h2 className={`${commonStyles.sectionTitle} mb-12`}>
+                <div className="px-0 sm:px-4">
+                    <h2 className={`${commonStyles.sectionTitle} mb-8 sm:mb-12`}>
                         Enterprise-Grade Scalability and Security
                     </h2>
 
                     {mobileView ? (
                         // Mobile view
-                        <div className="pt-2 flex flex-col gap-16">
+                        <div className="pt-2 flex flex-col gap-8 sm:gap-12">
                             {items.map((item, index) => (
-                                <div key={index} className="flex flex-col gap-6 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                <div key={index} className="flex flex-col gap-4 sm:gap-6 bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-100">
+                                    <div className="flex items-center gap-2 sm:gap-3">
+                                        <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
                                             {index + 1}
                                         </div>
-                                        <h2 className={`text-xl sm:text-2xl font-semibold text-[#0055c8] ${geologica.className}`}>
+                                        <h2 className={`text-lg sm:text-xl md:text-2xl font-semibold text-[#0055c8] ${geologica.className}`}>
                                             {item.title}
                                         </h2>
                                     </div>
                                     <p className={`${commonStyles.paragraph} text-gray-700`}>{item.summary}</p>
-                                    <div className="relative w-full h-[250px] my-2">
+                                    <div className="relative w-full h-[200px] sm:h-[250px] my-2">
                                         <Image 
                                             src={index === 0 ? "/svgs/database-scale.svg" : 
                                                  index === 1 ? "/svgs/protection.svg" : 
@@ -108,25 +108,25 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                         </div>
                     ) : (
                         // Desktop view
-                        <div className="pt-6 flex flex-col md:flex-row gap-10 items-start">
+                        <div className="pt-4 sm:pt-6 flex flex-col md:flex-row gap-6 sm:gap-10 items-start">
                             <div className="md:w-[45%] w-full">
                                 {items.map((item, index) => (
                                     <div
                                         key={index}
-                                        className={`cursor-pointer p-6 mb-6 rounded-xl transition-all duration-300 border ${
+                                        className={`cursor-pointer p-4 sm:p-6 mb-4 sm:mb-6 rounded-xl transition-all duration-300 border ${
                                             index === activeIndex 
                                                 ? "bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200 shadow-md transform translate-x-2" 
                                                 : "bg-white border-gray-100 hover:border-blue-100"
                                         }`}
                                         onClick={() => handleManualSelect(index)}
                                     >
-                                        <div className="flex items-center gap-3 mb-3">
-                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white flex-shrink-0 transition-colors ${
+                                        <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                                            <div className={`w-6 sm:w-8 h-6 sm:h-8 rounded-full flex items-center justify-center text-white flex-shrink-0 transition-colors ${
                                                 index === activeIndex ? "bg-[#0055c8]" : "bg-gray-300"
                                             }`}>
                                                 {index + 1}
                                             </div>
-                                            <h2 className={`text-2xl font-semibold flex-grow ${
+                                            <h2 className={`text-xl sm:text-2xl font-semibold flex-grow ${
                                                 index === activeIndex ? "text-[#0055c8]" : "text-gray-700"
                                             } ${geologica.className}`}>
                                                 {item.title}
@@ -140,7 +140,7 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                             </span>
                                         </div>
 
-                                        <div className={`${commonStyles.paragraph} mt-3 ${index === activeIndex ? "text-gray-800" : "text-gray-600"}`}>
+                                        <div className={`${commonStyles.paragraph} mt-2 sm:mt-3 ${index === activeIndex ? "text-gray-800" : "text-gray-600"}`}>
                                             {item.summary}
                                         </div>
                                     </div>
@@ -149,9 +149,9 @@ const EnterprisePowerSectionAlt: React.FC = () => {
 
                             {!mobileView && (
                                 <div className="md:w-[55%] w-full">
-                                    <div className="p-8 rounded-xl  transition-all duration-500">
+                                    <div className="p-4 sm:p-8 rounded-xl transition-all duration-500">
                                         <div className="w-full flex justify-center items-center">
-                                            <div className="flex justify-center items-center relative w-full h-[450px] mb-8">
+                                            <div className="flex justify-center items-center relative w-full h-[350px] sm:h-[400px] md:h-[450px] mb-6 sm:mb-8">
                                                 <Image 
                                                     src={`/svgs/${activeIndex === 0 ? "database-scale" : activeIndex === 1 ? "protection" : "version-control"}.svg`} 
                                                     alt="feature" 
@@ -165,13 +165,13 @@ const EnterprisePowerSectionAlt: React.FC = () => {
                                             {items[activeIndex].description}
                                         </div>
 
-                                        <div className="mt-8 flex justify-center space-x-3">
+                                        <div className="mt-6 sm:mt-8 flex justify-center space-x-2 sm:space-x-3">
                                             {items.map((_, index) => (
                                                 <button
                                                     key={index}
-                                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                                    className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all duration-300 ${
                                                         index === activeIndex 
-                                                            ? "bg-[#0055c8] w-6" 
+                                                            ? "bg-[#0055c8] w-5 sm:w-6" 
                                                             : "bg-gray-300 hover:bg-gray-400"
                                                     }`}
                                                     onClick={() => handleManualSelect(index)}

@@ -23,34 +23,34 @@ const UseCases: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 mt-8">
-      <div className={`${commonStyles.mainContainer} py-[40px] 2xl:py-[80px]`}>
-        <h2 className={commonStyles.sectionTitle}>
+    <section className="py-12 sm:py-16 mt-4 sm:mt-8 px-4 sm:px-6">
+      <div className={`${commonStyles.mainContainer} py-6 sm:py-[40px] md:py-[60px] 2xl:py-[80px]`}>
+        <h2 className={`${commonStyles.sectionTitle} mb-4 sm:mb-6`}>
           Unlock Your Data&apos;s Potential
         </h2>
-         <p className={commonStyles.sectionSubtitle}>
+        <p className={`${commonStyles.sectionSubtitle} mb-8 sm:mb-12`}>
           Leverage embeddings, hybrid search, and knowledge graphs to power applications in search, recommendations, anomaly detection, and more.
         </p>
 
         {useCases.map((useCase, index) => (
-          <div key={index} className={`flex flex-col md:flex-row items-center mb-10 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-            <div className="md:w-1/2 mb-8 md:mb-0 px-4">
-              <h3 className={`text-xl sm:text-3xl font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>
+          <div key={index} className={`flex flex-col md:flex-row items-center mb-12 sm:mb-16 md:mb-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div className="md:w-1/2 mb-8 md:mb-0 px-2 sm:px-4">
+              <h3 className={`text-xl sm:text-2xl md:text-3xl font-semibold mb-3 sm:mb-4 text-[#0055c8] ${geologica.className}`}>
                 {useCase.title}
               </h3>
-              <p className={`${commonStyles.paragraph} mb-6`}>
+              <p className={`${commonStyles.paragraph} mb-4 sm:mb-6`}>
                 {useCase.description}
               </p>
               <Link 
                 href="/products/cosdata-serverless" 
-                className={commonStyles.link}
+                className={`${commonStyles.link} inline-flex items-center text-base sm:text-lg text-blue-600 font-medium hover:underline`}
               >
                 Learn more
-                <span className="ml-2">→</span>
+                <span className="ml-1 sm:ml-2">→</span>
               </Link>
             </div>
-            <div className="md:w-1/2 px-4 flex justify-center items-center">
-              <div className="w-64 h-64 bg-blue-50 rounded-full p-8 transition-transform duration-300 hover:scale-105">
+            <div className="md:w-1/2 px-2 sm:px-4 flex justify-center items-center">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-blue-50 rounded-full p-6 sm:p-8 transition-transform duration-300 hover:scale-105">
                 <Image
                   src={useCase.image}
                   alt={useCase.title}
