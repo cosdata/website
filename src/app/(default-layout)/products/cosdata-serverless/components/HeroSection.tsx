@@ -4,50 +4,50 @@ import { commonStyles } from '../../../../styles/common';
 
 const HeroSection = () => {
   return (
-    <main className="pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-20 bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 relative overflow-hidden text-white">
+    <main className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 relative overflow-hidden text-white px-4 sm:px-6">
       {/* Abstract background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-24 w-80 h-80 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-24 right-1/4 w-64 h-64 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-1/2 -left-24 w-64 sm:w-80 h-64 sm:h-80 bg-purple-500 rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -bottom-24 right-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-indigo-500 rounded-full opacity-10 blur-3xl"></div>
       </div>
       
-      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10`}>
+      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto relative z-10`}>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-3/5 text-center md:text-left mb-10 md:mb-0">
-            <h1 className="text-[42px] sm:text-[56px] md:text-[72px] font-bold text-[#f23665] leading-tight">
+          <div className="md:w-3/5 text-center md:text-left mb-8 md:mb-0">
+            <h1 className="text-[36px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-[#f23665] leading-tight">
               Cosdata Serverless
             </h1>
-            <h2 className="text-[25px] sm:text-[42px] md:text-[48px] font-bold text-white mt-2">
+            <h2 className="text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2">
               Infinitely Scalable Vector Database
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
             Cosdata Serverless delivers unmatched scalability with zero operational overhead. Our CHANNI technology enables lightning-fast hybrid search through efficient memory clustering and optimized graph navigation. Experience superior performance with adaptive scaling and pay only for what you use.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
               <button
                 onClick={() => {
                   const event = new CustomEvent('openEarlyAccessModal');
                   window.dispatchEvent(event);
                 }}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-md text-white bg-[#f23665] hover:bg-[#d92d5c] transition-colors duration-300"
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-[#f23665] hover:bg-[#d92d5c] transition-colors duration-300"
               >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
                 </svg>
                 Get Early Access
               </button>
               <Link href="/tech/channi-paper" 
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-md text-gray-900 bg-white hover:bg-gray-100 transition-colors duration-300">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-gray-900 bg-white hover:bg-gray-100 transition-colors duration-300">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 Read CHANNI Paper
               </Link>
             </div>
           </div>
-          <div className="md:w-2/5 relative">
-            <div className="relative w-full h-[350px] md:h-[450px] p-4 bg-white bg-opacity-10 rounded-lg shadow-lg backdrop-blur-sm border border-gray-700">
+          <div className="w-full md:w-2/5 relative mt-6 md:mt-0">
+            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[450px] bg-white bg-opacity-10 rounded-lg shadow-lg backdrop-blur-sm border border-gray-700">
               {/* Simplified CHANNI architecture visualization */}
               <div className="absolute inset-0">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">

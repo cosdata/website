@@ -9,33 +9,33 @@ export default function HeroSection() {
   };
 
   return (
-    <main className="pt-12 sm:pt-12 md:pt-16 lg:pt-20 pb-20 bg-gradient-to-br from-gray-900 via-[#9a1f3d] to-[#6d162c] relative overflow-hidden text-white">
+    <main className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-900 via-[#9a1f3d] to-[#6d162c] relative overflow-hidden text-white px-4 sm:px-6">
       {/* Abstract background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#F23665] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-24 w-80 h-80 bg-[#d92d59] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-24 right-1/4 w-64 h-64 bg-[#ff7096] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -top-24 -right-24 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-[#F23665] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-1/2 -left-24 w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 bg-[#d92d59] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -bottom-24 right-1/4 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-[#ff7096] rounded-full opacity-10 blur-3xl"></div>
       </div>
       
-      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10`}>
+      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto relative z-10`}>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-3/5 text-center md:text-left mb-10 md:mb-0">
-            <h1 className="text-[42px] sm:text-[56px] md:text-[72px] font-bold text-white leading-tight">
+          <div className="md:w-3/5 text-center md:text-left mb-8 md:mb-0">
+            <h1 className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-white leading-tight">
               Cosdata Structured Search
             </h1>
-            <h2 className="text-[25px] sm:text-[42px] md:text-[48px] font-bold text-white mt-2">
+            <h2 className="text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2">
               Next-Gen Knowledge Graph
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
               Innovative knowledge graph purpose-built for structured search and vector search integration, optimized for Graph-Based RAG applications with unprecedented scalability and ease of use.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
               <button
                 onClick={handleEarlyAccessClick}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-md text-white bg-gradient-to-r from-[#0055c8] to-[#0077ff] hover:from-[#0044a8] hover:to-[#0066e6] transition-all duration-300"
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-gradient-to-r from-[#0055c8] to-[#0077ff] hover:from-[#0044a8] hover:to-[#0066e6] transition-all duration-300"
               >
                 Get Early Access
-                <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="ml-1.5 sm:ml-2 -mr-1 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
@@ -43,17 +43,17 @@ export default function HeroSection() {
                 href="https://github.com/cosdata/cosdata"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-md text-white bg-transparent hover:bg-white/10 transition-colors duration-300"
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-gray-300 text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-transparent hover:bg-white/10 transition-colors duration-300"
               >
                 Explore GitHub
-                <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="ml-1.5 sm:ml-2 -mr-1 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
             </div>
           </div>
           <div className="md:w-2/5 relative">
-            <div className="relative w-full h-[350px] md:h-[400px] p-4 bg-white bg-opacity-10 rounded-lg shadow-lg backdrop-blur-sm border border-gray-700">
+            <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] p-3 sm:p-4 bg-white bg-opacity-10 rounded-lg shadow-lg backdrop-blur-sm border border-gray-700">
               {/* Knowledge Graph SVG Visualization */}
               <svg className="w-full h-full" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
                 {/* Main central node */}

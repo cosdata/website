@@ -78,7 +78,7 @@ function Footer() {
               <div className="flex flex-col items-start mt-1 sm:mt-3">
                 <p className={`${commonStyles.paragraph} text-gray-700 mb-2 sm:mb-3 text-sm sm:text-base`}>Subscribe to our newsletter.</p>
                 {status !== 'success' ? (
-                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center sm:space-x-2 gap-2 w-full">
+                  <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-2 w-full">
                     <input
                       type="email"
                       placeholder="Enter your email"
@@ -104,14 +104,36 @@ function Footer() {
               </div>
             </div>
 
-            {/* Products */}
-            <div className='flex flex-col'>
-              <h3 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-4 text-gray-900 ${geologica.className}`}>Products</h3>
-              <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
-                <li><Link href="/products/cosdata-hnsw" className="hover:text-[#0055c8]">Cosdata HNSW</Link></li>
-                <li><Link href="/products/cosdata-serverless" className="hover:text-[#0055c8]">Cosdata Serverless</Link></li>
-                <li><Link href="/products/structured-search" className="hover:text-[#0055c8]">Structured Search</Link></li>
-              </ul>
+            {/* Products and Company in one column on mobile, separate on larger screens */}
+            <div className='flex flex-col col-span-1 md:col-span-1'>
+              {/* Products */}
+              <div className='mb-6 md:mb-0'>
+                <h3 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-4 text-gray-900 ${geologica.className}`}>Products</h3>
+                <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
+                  <li><Link href="/products/cosdata-hnsw" className="hover:text-[#0055c8]">Cosdata HNSW</Link></li>
+                  <li><Link href="/products/cosdata-serverless" className="hover:text-[#0055c8]">Cosdata Serverless</Link></li>
+                  <li><Link href="/products/structured-search" className="hover:text-[#0055c8]">Structured Search</Link></li>
+                </ul>
+              </div>
+              
+              {/* Company - Only visible on mobile */}
+              <div className='mt-6 md:hidden'>
+                <h3 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-4 text-gray-900 ${geologica.className}`}>Company</h3>
+                <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
+                  <li><Link href="/blog/introducing-cosdata" className="hover:text-[#0055c8]">About Us</Link></li>
+                  <li><Link href="/company/careers" className="hover:text-[#0055c8]">Careers</Link></li>
+                  <li><Link href="/company/contact" className="hover:text-[#0055c8]">Contact Us</Link></li>
+                  <li><Link href="/privacy" className="hover:text-[#0055c8]">Privacy Policy</Link></li>
+                  <li><Link href="https://docs.cosdata.io" target="_blank" rel="noopener noreferrer" className="hover:text-[#0055c8] flex items-center">
+                    Documentation
+                  </Link></li>
+                  <li>
+                    <a href="https://discord.gg/qvm8FJJHPm" target="_blank" rel="noopener noreferrer" className="hover:text-[#0055c8] flex items-center">
+                      Discord
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Resources */}
@@ -131,8 +153,8 @@ function Footer() {
               </ul>
             </div>
 
-            {/* Company */}
-            <div className='flex flex-col'>
+            {/* Company - Only visible on md screens and up */}
+            <div className='hidden md:flex md:flex-col'>
               <h3 className={`text-base sm:text-lg font-semibold mb-2 sm:mb-4 text-gray-900 ${geologica.className}`}>Company</h3>
               <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
                 <li><Link href="/blog/introducing-cosdata" className="hover:text-[#0055c8]">About Us</Link></li>

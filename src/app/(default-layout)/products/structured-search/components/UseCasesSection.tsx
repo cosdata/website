@@ -8,13 +8,8 @@ export default function UseCasesSection() {
       title: "Agentic Memory",
       description: "Enable AI agents to build and maintain structured memory of interactions, entities, and relationships for more coherent and contextual responses over time.",
       icon: (
-        <svg className="w-12 h-12 text-[#0055c8]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" strokeWidth="2"/>
-          <path d="M12 8V12L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M9 16L7.5 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M15 16L16.5 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M7.5 5L9 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M16.5 5L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 sm:w-12 sm:h-12 text-[#0055c8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       )
     },
@@ -22,11 +17,8 @@ export default function UseCasesSection() {
       title: "Enterprise Knowledge Bases",
       description: "Create comprehensive knowledge graphs from enterprise data, enabling more accurate information retrieval and contextual understanding for corporate AI assistants.",
       icon: (
-        <svg className="w-12 h-12 text-[#0055c8]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12L20 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12L4 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 sm:w-12 sm:h-12 text-[#0055c8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       )
     },
@@ -34,46 +26,44 @@ export default function UseCasesSection() {
       title: "Complex Reasoning",
       description: "Support multi-hop reasoning and inference by traversing relationship paths in the knowledge graph, enabling AI systems to answer complex questions requiring multiple steps of logic.",
       icon: (
-        <svg className="w-12 h-12 text-[#0055c8]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 12H4C8.42 12 12 15.58 12 20V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12H14C18.42 12 22 8.42 22 4V2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 sm:w-12 sm:h-12 text-[#0055c8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       )
     }
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-12">
+    <section className="py-10 sm:py-12 md:py-16 bg-gray-50 px-4 sm:px-6">
+      <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-8 sm:mb-12">
           GraphRAG: The Future of Contextual Retrieval
         </h2>
 
-        <div className="flex flex-col md:flex-row items-start gap-12 mb-16">
+        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 mb-10 sm:mb-16">
           <div className="md:w-1/2">
-            <h3 className="text-2xl font-bold text-[#0055c8] mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4">
               What is Graph-based RAG?
             </h3>
-            <p className="text-gray-700 text-lg mb-6">
+            <p className="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
               Graph-based RAG is an advanced approach that enhances traditional RAG systems by incorporating structured relationships between data points. This enables AI systems to understand context, follow complex reasoning paths, and provide more accurate and comprehensive responses.
             </p>
-            <p className="text-gray-700 text-lg mb-6">
+            <p className="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
               Unlike traditional RAG which treats documents as independent entities, Graph-based RAG understands the connections between information, allowing for more nuanced and contextually aware retrieval.
             </p>
             <a 
               href="https://www.microsoft.com/en-us/research/publication/from-local-to-global-a-graph-rag-approach-to-query-focused-summarization/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center text-[#f23665] font-medium hover:text-[#d92d5c] transition-colors"
+              className="inline-flex items-center text-[#f23665] font-medium hover:text-[#d92d5c] transition-colors text-sm sm:text-base"
             >
               Read Microsoft&apos;s research on Graph-based RAG
-              <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
           </div>
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 mt-6 md:mt-0">
             <svg className="w-full h-auto text-[#0055c8]" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Traditional RAG */}
               <g opacity="0.5">
@@ -115,18 +105,18 @@ export default function UseCasesSection() {
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-[#0055c8] mb-8 text-center">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8] mb-6 sm:mb-8 text-center">
           Key Applications
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10">
           {applications.map((app, index) => (
             <div key={index} className="flex flex-col items-center text-center">
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                 {app.icon}
               </div>
-              <h4 className="text-xl font-bold mb-3 text-[#0055c8]">{app.title}</h4>
-              <p className="text-gray-700">{app.description}</p>
+              <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0055c8]">{app.title}</h4>
+              <p className="text-gray-700 text-sm sm:text-base">{app.description}</p>
             </div>
           ))}
         </div>
