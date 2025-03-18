@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { commonStyles } from '../styles/common';
+import { commonStyles } from '../../styles/common';
 
 interface FeatureItem {
     title: string;

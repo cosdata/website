@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { commonStyles } from '../styles/common';
+import { commonStyles } from '../../styles/common';
 
 export default function AdvancedSearchSection() {
   return (

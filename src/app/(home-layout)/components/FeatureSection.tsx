@@ -178,36 +178,39 @@ export default function FeaturesSection({ claimsData }: FeatureSectionProps) {
   // };
 
   return (
-    <div className="bg-transparnet text-[#59606c] py-16 max-w-7xl mx-auto">
+    <div className="bg-transparnet text-[#59606c] py-8 sm:py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6">
       {/* Heading */}
-      <h1 className="text-4xl font-bold text-center mb-8">The Fast and Effortless Way to Data</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">The Fast and Effortless Way to Data</h1>
 
 
 
       {/* Mobile version*/}
-      <div className='flex flex-wrap justify-center gap-4 m-2'>
+      <div className='flex flex-wrap justify-center gap-3 sm:gap-4'>
         {groupedItems.map((section, index) => (
           <div
             key={index}
-            className={`p-4 pt-8 bg-[#f0f2f5] ${index % 3 === 2 ? 'w-96 md:w-full' : 'w-96 md:w-[49%]'}`}
+            className={`p-3 sm:p-4 pt-6 sm:pt-8 bg-[#f0f2f5] rounded-lg ${index % 3 === 2 ? 'w-full sm:w-96 md:w-full' : 'w-full sm:w-96 md:w-[49%]'}`}
           >
-            <h2 className="text-2xl font-bold mb-2 text-[#0055c8]">{section.attributeMainCasual}</h2>
-            <div className={`flex justify-start gap-0  ${index % 3 === 2 ? 'flex-wrap' : 'flex-col'}`}>
+            <h2 className="text-xl sm:text-2xl font-bold mb-2 text-[#0055c8]">{section.attributeMainCasual}</h2>
+            <div className={`flex justify-start gap-0 ${index % 3 === 2 ? 'flex-wrap' : 'flex-col'}`}>
               {section.claims.map((claim: any) => (
-                <div key={claim.id} className={`p-2  ${index % 3 === 2 ? 'w-full md:w-[49%]' : 'w-full'}`}>
+                <div key={claim.id} className={`p-2 ${index % 3 === 2 ? 'w-full md:w-[49%]' : 'w-full'}`}>
                   {/* Render AttributePart as the headline */}
-                  <Image
-                    src={`/svgs/features/icon(${claim.id % 12 + 1}).drawio.svg`}
-                    alt='icon'
-                    width={50}
-                    height={50}
-                  />
+                  <div className="flex items-center">
+                    <Image
+                      src={`/svgs/features/icon(${claim.id % 12 + 1}).drawio.svg`}
+                      alt='icon'
+                      width={40}
+                      height={40}
+                      className="sm:w-[50px] sm:h-[50px]"
+                    />
+                  </div>
                   {claim.attributes.Attribute.AttributePart && (
-                    <div className="text-xl font-bold mt-3 text-[#686c6e]">
+                    <div className="text-lg sm:text-xl font-bold mt-2 sm:mt-3 text-[#686c6e]">
                       {claim.attributes.Attribute.AttributePart}
                     </div>
                   )}
-                  <p className="text-sm my-4 text-[#59606c]">
+                  <p className="text-sm sm:text-base my-2 sm:my-4 text-[#59606c]">
                     {claim.attributes.ChannelVariants.Website.length < 150
                       ? claim.attributes.ChannelVariants.Website
                       : claim.attributes.ChannelVariants.WebsiteShort.length < 150

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Image from 'next/image';
-import { commonStyles } from '../styles/common';
+import { commonStyles } from '../../styles/common';
 
 export default function BlazingFast() {
     const carouselItems = [

@@ -4,21 +4,23 @@ import { sql } from '@vercel/postgres';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, companyName, jobTitle } = body;
+    const { email, companyName, jobTitle, message } = body;
 
     // Store in Postgres
     await sql`
-      INSERT INTO early_access_submissions (email, company_name, job_title)
-      VALUES (${email}, ${companyName}, ${jobTitle})
+      INSERT INTO early_access_submissions (email, company_name, job_title, message)
+      VALUES (${email}, ${companyName}, ${jobTitle}, ${message})
     `;
 
-    // Create subscriber in MailerLite
-    const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle);
+    // Only create MailerLite subscriber for early access requests (no message field)
+    if (!message) {
+      const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle);
 
-    if (!mailerLiteResponse.ok) {
-      const errorData = await mailerLiteResponse.json();
-      console.error('MailerLite API error:', errorData);
-      throw new Error('Failed to create MailerLite subscriber');
+      if (!mailerLiteResponse.ok) {
+        const errorData = await mailerLiteResponse.json();
+        console.error('MailerLite API error:', errorData);
+        throw new Error('Failed to create MailerLite subscriber');
+      }
     }
 
     return NextResponse.json({ message: 'Submission successful' }, { status: 200 });
@@ -49,7 +51,7 @@ async function createMailerLiteSubscriber(email: string, companyName: string, jo
         company: companyName,
         job_title: jobTitle
       },
-      groups: ["134010769999136177"] // Replace with your actual group ID or name
+      groups: ["134010769999136177"] // Early access group
     })
   });
 

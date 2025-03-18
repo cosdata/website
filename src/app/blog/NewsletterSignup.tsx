@@ -45,38 +45,71 @@ export default function NewsletterSignup() {
     };
 
     return (
-      <div className={`bg-white shadow-md rounded-lg p-8 ${afacad.className}`}>
-        <h2 className="text-2xl font-bold mb-4">Sign up for Cosdata updates</h2>
-        <p className="text-gray-600 mb-6">
-          We&apos;ll occasionally send you best practices for using vector data and similarity search, as well as product news.
-        </p>
-        {status !== 'success' ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-              disabled={status === 'loading'}
-            >
-              {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-            </button>
-            {status === 'error' && (
-              <p className="text-red-500 text-sm">{errorMessage}</p>
-            )}
-          </form>
-        ) : (
-          <p className="text-green-600 font-semibold">Success! Thank you for subscribing.</p>
-        )}
-        <p className="text-xs text-gray-500 mt-4">
-          By submitting, you agree to subscribe to Cosdata&apos;s updates. You can withdraw your consent anytime. More details are in the Privacy Policy.
-        </p>
-      </div>
-    )
-  }
+        <div className="bg-gradient-to-r from-[#0055c8] to-[#3d8bff] rounded-xl shadow-xl overflow-hidden">
+            <div className="px-6 py-12 md:p-12">
+                <div className="max-w-3xl mx-auto text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                        Stay Updated with Cosdata
+                    </h2>
+                    <p className="text-xl text-white opacity-90 mb-10">
+                        Get the latest insights on vector search, similarity algorithms, and product updates delivered to your inbox.
+                    </p>
+                    
+                    {status !== 'success' ? (
+                        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    className="flex-1 px-6 py-4 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-white/20 bg-white/10 text-white placeholder-white/60 border border-white/20"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                                <button
+                                    type="submit"
+                                    className="inline-flex items-center px-8 py-4 bg-white text-[#0055c8] rounded-lg shadow-md hover:bg-gray-100 transition-colors duration-300 font-bold text-base disabled:opacity-70 disabled:cursor-not-allowed"
+                                    disabled={status === 'loading'}
+                                >
+                                    {status === 'loading' ? (
+                                        <>
+                                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Subscribing...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Subscribe
+                                            <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </>
+                                    )}
+                                </button>
+                            </div>
+                            {status === 'error' && (
+                                <p className="mt-4 text-red-200 text-sm">{errorMessage}</p>
+                            )}
+                        </form>
+                    ) : (
+                        <div className="bg-white/10 rounded-lg p-6 max-w-md mx-auto">
+                            <p className="text-white font-semibold flex items-center justify-center">
+                                <svg className="w-6 h-6 mr-2 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                Thank you for subscribing!
+                            </p>
+                        </div>
+                    )}
+                    
+                    <p className="text-sm text-white/70 mt-6">
+                        By subscribing, you agree to receive Cosdata&apos;s updates. You can unsubscribe at any time.
+                        <br />View our <a href="/privacy" className="underline hover:text-white">Privacy Policy</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+}
