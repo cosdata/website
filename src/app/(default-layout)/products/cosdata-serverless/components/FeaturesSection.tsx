@@ -91,9 +91,9 @@ export default function FeaturesSection() {
             </button>
           </div>
           <div className="md:w-1/2 mt-6 md:mt-0">
-            <div className="w-full h-[220px] sm:h-[250px] md:h-[300px] bg-gradient-to-br from-purple-50 to-indigo-100 rounded-lg flex items-center justify-center p-4 sm:p-6">
+            <div className="w-full h-[220px] sm:h-[250px] md:h-[300px] bg-gradient-to-br from-[#847CFC]/10 to-indigo-100 rounded-lg flex items-center justify-center p-4 sm:p-6">
               <div className="text-center">
-                <svg className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-[#6b46c1] mb-3 sm:mb-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-[#847CFC] mb-3 sm:mb-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
                 </svg>
                 <h4 className="text-lg sm:text-xl font-bold text-[#0055c8] mb-2">Serverless Architecture</h4>

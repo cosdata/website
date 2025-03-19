@@ -60,10 +60,10 @@ const ProductsHighlight = () => {
 
           {/* Cosdata Serverless */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-            <div className="h-3 bg-purple-600"></div>
+            <div className="h-3 bg-[#847CFC]"></div>
             <div className="p-4 sm:p-6">
-              <div className="flex items-center justify-center h-14 sm:h-16 w-14 sm:w-16 rounded-full bg-purple-100 mb-3 sm:mb-4 mx-auto">
-                <svg className="h-7 sm:h-8 w-7 sm:w-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div className="flex items-center justify-center h-14 sm:h-16 w-14 sm:w-16 rounded-full bg-[#847CFC]/10 mb-3 sm:mb-4 mx-auto">
+                <svg className="h-7 sm:h-8 w-7 sm:w-8 text-[#847CFC]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
@@ -95,7 +95,7 @@ const ProductsHighlight = () => {
               </div>
               <Link 
                 href="/products/cosdata-serverless" 
-                className="block w-full text-center py-2.5 sm:py-3 px-4 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-300 text-lg font-medium"
+                className="block w-full text-center py-2.5 sm:py-3 px-4 bg-[#847CFC] text-white rounded-md hover:bg-[#706BD7] transition-colors duration-300 text-lg font-medium"
               >
                 Learn More
               </Link>

@@ -96,7 +96,8 @@ export default function ComparisonSection() {
                 CHANNI (Clustered Heirarchical Approximate Nested Navigable Index) eliminates the traditional trade-off between speed and scale with a novel multi-level architecture that intelligently manages data between memory and disk, combining the advantages of both in-memory and disk-based approaches.
               </p>
               
-              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-4 sm:p-6">
+              <div className="bg-gradient-to-r from-[#847CFC]/5 to-[#9E97FD]/5 rounded-lg p-4 sm:p-6">
+                <h3 className="text-xl font-bold mb-4 text-[#847CFC]">Enter CHANNI: The Best of Both Worlds</h3>
                 <ul className="space-y-3 sm:space-y-4">
                   <li className="flex items-start">
                     <svg className="w-5 h-5 text-green-500 mr-2 sm:mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

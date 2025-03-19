@@ -5,7 +5,11 @@ export default function CTASection() {
   return (
     <section className="py-10 sm:py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6">
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
-        <div className="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-xl shadow-xl overflow-hidden">
+        <div className="bg-gradient-to-r from-indigo-900/80 to-[#847CFC]/90 rounded-xl shadow-xl overflow-hidden relative">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
+          </div>
           <div className="px-4 sm:px-6 py-8 sm:py-10 md:p-12 text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
               Ready to Try Cosdata Serverless?
@@ -21,7 +25,7 @@ export default function CTASection() {
                   const event = new CustomEvent('openEarlyAccessModal');
                   window.dispatchEvent(event);
                 }}
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#6b46c1] rounded-lg shadow-md hover:bg-gray-100 transition-colors duration-300 font-bold text-base sm:text-lg w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#847CFC] rounded-lg shadow-md hover:bg-gray-100 transition-colors duration-300 font-bold text-base sm:text-lg w-full sm:w-auto"
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
