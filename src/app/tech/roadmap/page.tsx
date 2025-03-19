@@ -44,7 +44,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
   }
   
   return (
-    <span className={`px-3 py-1 rounded-full text-sm font-medium ${colorClass}`}>
+    <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-sm font-medium ${colorClass}`}>
       {text}
     </span>
   );
@@ -68,7 +68,7 @@ const PhaseBadge: React.FC<PhaseBadgeProps> = ({ phase }) => {
   }
   
   return (
-    <span className={`px-3 py-1 rounded-full text-sm font-medium ${colorClass}`}>
+    <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-sm font-medium ${colorClass}`}>
       {text}
     </span>
   );
@@ -83,22 +83,22 @@ interface TimelineItemProps {
 
 // Timeline component
 const TimelineItem: React.FC<TimelineItemProps> = ({ date, title, children, isLeft = true }) => (
-  <div className="relative mb-12">
+  <div className="relative mb-8 sm:mb-12">
     {/* The vertical timeline bar */}
-    <div className="absolute left-6 top-0 bottom-0 w-1 bg-blue-200"></div>
+    <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-1 bg-blue-200"></div>
     
     {/* The circle marker */}
-    <div className="absolute left-6 top-0 w-3 h-3 -ml-1 rounded-full bg-[#0055c8] z-10"></div>
+    <div className="absolute left-4 sm:left-6 top-0 w-3 h-3 -ml-1 rounded-full bg-[#0055c8] z-10"></div>
     
     {/* Date and content */}
-    <div className="ml-16">
-      <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
-        <div className="px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-medium inline-block">
+    <div className="ml-10 sm:ml-16">
+      <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2 sm:mb-3">
+        <div className="px-2 sm:px-3 py-1 rounded-lg bg-blue-50 text-blue-700 font-medium inline-block text-xs sm:text-sm">
           {date}
         </div>
-        <h3 className={`text-xl font-semibold ${geologica.className}`}>{title}</h3>
+        <h3 className={`text-base sm:text-xl font-semibold ${geologica.className}`}>{title}</h3>
       </div>
-      <div className="bg-white p-6 rounded-xl border border-blue-200 shadow-sm">
+      <div className="bg-white p-3 sm:p-6 rounded-xl border border-blue-200">
         {children}
       </div>
     </div>
@@ -113,16 +113,16 @@ interface FeatureTableProps {
 const FeatureTable: React.FC<FeatureTableProps> = ({ features }) => (
   <div className="bg-white shadow-sm border border-gray-100 overflow-hidden">
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full divide-y divide-gray-200 table-fixed">
         <thead className="bg-gray-50">
           <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="px-2 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider w-1/2">
               Feature
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="px-1 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
               Status
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="px-1 sm:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
               Phase
             </th>
           </tr>
@@ -130,13 +130,13 @@ const FeatureTable: React.FC<FeatureTableProps> = ({ features }) => (
         <tbody className="bg-white divide-y divide-gray-200">
           {features.map((feature, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-              <td className={`px-6 py-4 text-sm text-gray-700 ${afacad.className}`}>
+              <td className={`px-2 sm:px-6 py-2 sm:py-4 text-[11px] sm:text-sm text-gray-700 ${afacad.className}`}>
                 {feature.text}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-1 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
                 <StatusBadge status={feature.status} />
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-1 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
                 <PhaseBadge phase={feature.phase} />
               </td>
             </tr>
@@ -155,8 +155,8 @@ interface FeatureSectionProps {
 
 // Feature section component
 const FeatureSection: React.FC<FeatureSectionProps> = ({ title, features, id }) => (
-  <div className="mb-16">
-    <h3 id={id} className={`text-2xl font-semibold mb-6 pl-4 ${geologica.className}`}>
+  <div className="mb-8 sm:mb-16">
+    <h3 id={id} className={`text-xl sm:text-2xl font-semibold mb-3 sm:mb-6 pl-2 sm:pl-4 ${geologica.className}`}>
       {title}
     </h3>
     <FeatureTable features={features} />
@@ -222,26 +222,26 @@ const RoadmapPage = () => {
   
   return (
     <div className={`bg-gradient-to-b from-white to-gray-50 min-h-screen pb-16 ${noto_sans_mono.className}`}>
-      <article className="max-w-7xl mx-auto px-4 py-12">
-        <header className="mb-16 text-center">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 text-[#0055c8] animate-fadeIn ${geologica.className}`}>
+      <article className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
+        <header className="mb-8 sm:mb-16 text-center">
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#0055c8] animate-fadeIn ${geologica.className}`}>
             Cosdata Roadmap
           </h1>
-          <p className={`text-gray-600 text-lg md:text-xl max-w-3xl mx-auto animate-fadeIn ${afacad.className}`}>
+          <p className={`text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto animate-fadeIn ${afacad.className}`}>
             Detailed timeline and feature status for our journey from MVP to production-ready enterprise solution
           </p>
         </header>
         
-        <div className="flex flex-col lg:flex-row gap-10">
-          {/* Left sidebar - sticky navigation */}
-          <div className="lg:w-1/4">
-            <div className="sticky top-24">
-              <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 animate-fadeIn">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-10">
+          {/* Navigation - no longer sticky on mobile */}
+          <div className="lg:w-1/4 order-1 lg:order-1">
+            <div className="lg:sticky lg:top-24">
+              <div className="bg-white rounded-xl shadow-md border border-gray-100 p-4 sm:p-6 animate-fadeIn mb-8 lg:mb-0">
                 <h2 className={`text-xl font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>
                   Navigation
                 </h2>
                 
-                <div className={`${afacad.className} max-h-[calc(100vh-180px)] overflow-y-auto pr-2 custom-scrollbar`}>
+                <div className={`${afacad.className}`}>
                   <div className="mb-6">
                     <h3 className="font-semibold text-gray-800 mb-2">Timeline</h3>
                     <ul className="space-y-2">
@@ -249,13 +249,12 @@ const RoadmapPage = () => {
                         <a 
                           href="#timeline" 
                           className="text-blue-600 hover:underline flex items-center"
-                          onClick={(e) => scrollToSection(e, "timeline")}
                         >
                           <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                           Development Timeline
                         </a>
-            </li>
-          </ul>
+                      </li>
+                    </ul>
                   </div>
                   
                   <div>
@@ -266,29 +265,28 @@ const RoadmapPage = () => {
                           <a 
                             href={`#${section.id}`} 
                             className="text-blue-600 hover:underline flex items-center"
-                            onClick={(e) => scrollToSection(e, section.id)}
                           >
                             <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
                             {section.title}
                           </a>
                         </li>
                       ))}
-          </ul>
+                    </ul>
                   </div>
                   
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-center gap-2">
+                  <div className="mt-6 pt-6 border-t border-gray-200">
+                    <div className="flex flex-col gap-2 sm:gap-3">
+                      <div className="flex items-center gap-1 sm:gap-2">
                         <StatusBadge status="COMPLETED" />
-                        <span className="text-sm text-gray-600">Features we&apos;ve finished</span>
+                        <span className="text-xs sm:text-sm text-gray-600">Features we&apos;ve finished</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 sm:gap-2">
                         <StatusBadge status="IN PROGRESS" />
-                        <span className="text-sm text-gray-600">Currently working on</span>
+                        <span className="text-xs sm:text-sm text-gray-600">Currently working on</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 sm:gap-2">
                         <StatusBadge status="TODO" />
-                        <span className="text-sm text-gray-600">Coming next</span>
+                        <span className="text-xs sm:text-sm text-gray-600">Coming next</span>
                       </div>
                     </div>
                   </div>
@@ -297,23 +295,23 @@ const RoadmapPage = () => {
             </div>
           </div>
           
-          {/* Main content area */}
-          <div className="lg:w-3/4">
-            <div ref={contentScrollRef} className="max-h-[calc(100vh)] overflow-y-auto pr-4 custom-scrollbar">
+          {/* Main content area - no longer scrollable independently on mobile */}
+          <div className="lg:w-3/4 order-2 lg:order-2">
+            <div>
               {/* Development Timeline section */}
-              <div id="timeline" className="mb-20 animate-fadeIn">
-                <h2 className={`text-3xl font-semibold mb-6 pl-6 ${geologica.className}`}>
+              <div id="timeline" className="mb-12 sm:mb-20 animate-fadeIn">
+                <h2 className={`text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 pl-2 sm:pl-6 ${geologica.className}`}>
                   Development Timeline
                 </h2>
                 
-                <div className="relative bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <div className="relative bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6">
                   {timelineItems.map((item: TimelineItemType, index: number) => (
                     <TimelineItem key={index} date={item.date} title={item.title}>
-                      <ul className={`list-disc list-inside space-y-2 text-gray-700 ${afacad.className}`}>
+                      <ul className={`list-disc list-inside space-y-2 text-gray-700 ${afacad.className} text-sm sm:text-base`}>
                         {item.content.map((point: string, pointIndex: number) => (
                           <li key={pointIndex}>{point}</li>
                         ))}
-          </ul>
+                      </ul>
                     </TimelineItem>
                   ))}
                 </div>
@@ -321,7 +319,7 @@ const RoadmapPage = () => {
               
               {/* Feature Status section */}
               <div className="animate-fadeIn" style={{ animationDelay: "200ms" }}>
-                <h2 id="feature-status" className={`text-3xl font-semibold mb-6 pl-6 ${geologica.className}`}>
+                <h2 id="feature-status" className={`text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 pl-2 sm:pl-6 ${geologica.className}`}>
                   Feature Status
                 </h2>
                 

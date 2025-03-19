@@ -39,7 +39,7 @@ const HeroSection = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <main className={`bg-transparent pt-16 sm:pt-20 md:pt-28 lg:pt-36 pb-12 sm:pb-16 md:pb-20 flex justify-center ${commonStyles.mainContainer} max-w-5xl`}>
+    <main className={`bg-transparent pt-16 sm:pt-20 md:pt-28 lg:pt-36 pb-32 sm:pb-36 md:pb-48 lg:pb-56 flex justify-center ${commonStyles.mainContainer} max-w-5xl`}>
       <div className="w-full">
         <div className="flex flex-col items-center text-center">
           <h1 className={commonStyles.heroTitle}>

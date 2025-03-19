@@ -4,8 +4,8 @@ import { commonStyles, geologica, afacad } from '../../styles/common';
 
 const ProductsHighlight = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20">
-      <div className={`${commonStyles.mainContainer}`}>
+    <section className="pt-12 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 bg-white relative z-10">
+      <div className={`${commonStyles.mainContainer} px-5 sm:px-6 md:px-8 lg:px-10`}>
         <h2 className={`${commonStyles.sectionTitle} mb-8 sm:mb-12`}>
           Our Products
         </h2>

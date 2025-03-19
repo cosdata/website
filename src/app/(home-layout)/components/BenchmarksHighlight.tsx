@@ -23,24 +23,24 @@ const BenchmarksHighlight = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-xl overflow-hidden p-3 sm:p-6 mb-8 sm:mb-12 shadow-sm">
+        <div className="bg-white rounded-xl overflow-hidden p-1 sm:p-2 mb-8 sm:mb-12">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px]">
+            <table className="min-w-full">
               <thead>
                 <tr className={`text-left border-b border-gray-200 ${geologica.className}`}>
-                  <th className="py-3 sm:py-4 px-3 sm:px-4 font-semibold bg-[#0055c8] text-white">Database</th>
-                  <th className="py-3 sm:py-4 px-2 sm:px-4 font-semibold bg-[#0055c8] text-white text-center">Indexing Time (min)</th>
-                  <th className="py-3 sm:py-4 px-2 sm:px-4 font-semibold bg-[#0055c8] text-white text-center">Queries/Second</th>
-                  <th className="py-3 sm:py-4 px-2 sm:px-4 font-semibold bg-[#0055c8] text-white text-center">Precision</th>
+                  <th className="py-3 sm:py-4 px-4 sm:px-6 font-semibold bg-[#0055c8] text-white text-sm sm:text-base">Database</th>
+                  <th className="py-3 sm:py-4 px-4 sm:px-6 font-semibold bg-[#0055c8] text-white text-sm sm:text-base">Indexing Time (m)</th>
+                  <th className="py-3 sm:py-4 px-4 sm:px-6 font-semibold bg-[#0055c8] text-white text-sm sm:text-base">RPS</th>
+                  <th className="py-3 sm:py-4 px-4 sm:px-6 font-semibold bg-[#0055c8] text-white text-sm sm:text-base">Precision</th>
                 </tr>
               </thead>
-              <tbody className={afacad.className}>
+              <tbody className={`${afacad.className} divide-y divide-gray-200`}>
                 {benchmarkData.map((db, index) => (
                   <tr 
                     key={db.name} 
-                    className={`border-b border-gray-100 ${db.name === "Cosdata" ? "bg-blue-50" : ""}`}
+                    className={index === 0 ? "bg-blue-50" : index % 2 === 0 ? "bg-gray-50" : "bg-white"}
                   >
-                    <td className="py-3 sm:py-4 px-3 sm:px-4 font-medium">
+                    <td className="py-3 sm:py-4 px-4 sm:px-6 font-medium text-gray-900 whitespace-nowrap">
                       {db.name === "Cosdata" ? (
                         <span className="flex items-center">
                           {db.name}
@@ -50,13 +50,13 @@ const BenchmarksHighlight = () => {
                         </span>
                       ) : db.name}
                     </td>
-                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">{db.indexingTime}</td>
-                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center font-semibold">
+                    <td className="py-3 sm:py-4 px-4 sm:px-6 text-gray-700 whitespace-nowrap">{db.indexingTime}</td>
+                    <td className="py-3 sm:py-4 px-4 sm:px-6 text-gray-700 font-medium whitespace-nowrap">
                       {db.name === "Cosdata" ? (
                         <span className="text-green-600">{db.rps}</span>
                       ) : db.rps}
                     </td>
-                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">{db.precision}</td>
+                    <td className="py-3 sm:py-4 px-4 sm:px-6 text-gray-700 whitespace-nowrap">{db.precision}</td>
                   </tr>
                 ))}
               </tbody>
@@ -65,7 +65,7 @@ const BenchmarksHighlight = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-10">
-          <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center shadow-sm">
+          <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
               <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -77,7 +77,7 @@ const BenchmarksHighlight = () => {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center shadow-sm">
+          <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
               <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -89,7 +89,7 @@ const BenchmarksHighlight = () => {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center shadow-sm">
+          <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
             <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
               <svg className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -105,7 +105,7 @@ const BenchmarksHighlight = () => {
         <div className="text-center">
           <Link
             href="/resources/benchmarks"
-            className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-[#0055c8] hover:bg-[#004bb3] transition-colors duration-300"
+            className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-[#0055c8] hover:bg-[#004bb3] transition-colors duration-300"
           >
             View Detailed Benchmarks
             <svg className="ml-1.5 sm:ml-2 -mr-1 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

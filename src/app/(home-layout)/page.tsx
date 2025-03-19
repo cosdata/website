@@ -45,7 +45,6 @@ export default function Home() {
     <main className={`bg-transparent ${noto_sans_mono.className}`}>
       <HeroSection />
       <ProductsHighlight />
-      <Marquee />
       <BenchmarksHighlight />
       <PrecisionPerformanceSection />
       <EnterpisePowerSection />

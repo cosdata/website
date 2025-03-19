@@ -37,7 +37,7 @@ export default function UseCasesSection() {
     <section className="py-10 sm:py-12 md:py-16 bg-gray-50 px-4 sm:px-6">
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-8 sm:mb-12">
-          GraphRAG: The Future of Contextual Retrieval
+          Graph-Based RAG: The Future of Contextual Retrieval
         </h2>
 
         <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 mb-10 sm:mb-16">
