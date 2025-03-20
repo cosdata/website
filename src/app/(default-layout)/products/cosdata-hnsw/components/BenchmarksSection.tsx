@@ -2,15 +2,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { commonStyles } from '../../../../styles/common';
+import BenchmarkTable from '@/components/BenchmarkTable';
+import { benchmarkData } from '@/data/benchmarks';
 
 export default function BenchmarksSection() {
-  const benchmarkData = [
-    { name: "Cosdata", indexingTime: "14.98", rps: "1773", precision: ".98" },
-    { name: "Qdrant", indexingTime: "24.43", rps: "1238", precision: ".99" },
-    { name: "Weaviate", indexingTime: "13.94", rps: "1142", precision: ".97" },
-    { name: "Elastic Search", indexingTime: "83.72", rps: "716", precision: ".98" },
-  ];
-
   return (
     <section className="py-0 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-gray-100 px-4 sm:px-6">
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
@@ -27,39 +22,7 @@ export default function BenchmarksSection() {
         </div>
 
         <div className="overflow-hidden shadow-lg mb-8 sm:mb-12 border border-gray-200 rounded-lg">
-          <div className="overflow-x-auto">
-            <table className="min-w-full">
-              <thead>
-                <tr>
-                  <th className="py-3 sm:py-4 px-3 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Vector DB</th>
-                  <th className="py-3 sm:py-4 px-3 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Indexing Time (m)</th>
-                  <th className="py-3 sm:py-4 px-3 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">RPS</th>
-                  <th className="py-3 sm:py-4 px-3 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Precision</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {benchmarkData.map((db, index) => (
-                  <tr key={index} className={index === 0 ? "bg-blue-50" : index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                    <td className="py-2 sm:py-4 px-3 sm:px-6 whitespace-nowrap font-medium text-gray-900 text-sm sm:text-base">
-                      {index === 0 ? (
-                        <span className="flex items-center flex-wrap">
-                          {db.name}
-                          <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            Fastest
-                          </span>
-                        </span>
-                      ) : db.name}
-                    </td>
-                    <td className="py-2 sm:py-4 px-3 sm:px-6 whitespace-nowrap text-gray-700 text-sm sm:text-base">{db.indexingTime}</td>
-                    <td className="py-2 sm:py-4 px-3 sm:px-6 whitespace-nowrap text-gray-700 font-medium text-sm sm:text-base">
-                      {index === 0 ? <span className="text-green-600">{db.rps}</span> : db.rps}
-                    </td>
-                    <td className="py-2 sm:py-4 px-3 sm:px-6 whitespace-nowrap text-gray-700 text-sm sm:text-base">{db.precision}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <BenchmarkTable data={benchmarkData} />
         </div>
 
         <div className="text-center mb-10 sm:mb-16">
