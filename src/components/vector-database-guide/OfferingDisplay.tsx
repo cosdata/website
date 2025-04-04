@@ -9,7 +9,10 @@ export interface OfferingData {
   id: string;
   name: string;
   overview: string;
-  highlights: string[]; // Exactly 5 highlights
+  highlights?: string[]; // Exactly 5 highlights
+  pros?: string[]; // For backward compatibility
+  cons?: string[]; // For backward compatibility
+  bestFor?: string[]; // For backward compatibility
   benchmarkHighlights?: string[]; // Exactly 3 benchmark highlights
   benchmarkLinks?: Array<{ name: string; url: string }>;
   features: {
@@ -40,6 +43,35 @@ export interface OfferingDisplayProps {
   showCostComparison?: boolean;
 }
 
+// Helper function to convert old format to new format
+const getHighlights = (offering: OfferingData): string[] => {
+  // If highlights are already provided, use them
+  if (offering.highlights && offering.highlights.length > 0) {
+    return offering.highlights.slice(0, 5);
+  }
+  
+  // Otherwise, combine pros, cons, and bestFor into highlights
+  const combinedHighlights: string[] = [];
+  
+  // Add pros first
+  if (offering.pros) {
+    combinedHighlights.push(...offering.pros);
+  }
+  
+  // Add cons next
+  if (offering.cons) {
+    combinedHighlights.push(...offering.cons);
+  }
+  
+  // Add bestFor last
+  if (offering.bestFor) {
+    combinedHighlights.push(...offering.bestFor);
+  }
+  
+  // Return the first 5 (or fewer if not enough)
+  return combinedHighlights.slice(0, 5);
+};
+
 export function OfferingDisplay({
   title,
   description,
@@ -63,7 +95,7 @@ export function OfferingDisplay({
               key={offering.id}
               name={offering.name}
               overview={offering.overview}
-              highlights={offering.highlights}
+              highlights={getHighlights(offering)}
               benchmarkHighlights={offering.benchmarkHighlights}
               benchmarkLinks={offering.benchmarkLinks}
             />

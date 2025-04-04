@@ -6,21 +6,21 @@ export const ossOfferings: OfferingData[] = [
     id: "qdrant",
     name: "Qdrant",
     overview: "Qdrant is a vector similarity search engine that provides a production-ready service with a convenient API to store, search, and manage points (vectors with payload) in high-dimensional vector spaces.",
-    pros: [
+    highlights: [
       "Blazing fast performance with HNSW and filtering",
       "First-class filtering support",
       "Written in Rust for high performance and safety",
-      "Easy deployment with Docker, Kubernetes, etc."
+      "Easy deployment with Docker, Kubernetes, etc.",
+      "Great for production deployments with filtering requirements"
     ],
-    cons: [
-      "Younger project compared to some alternatives",
-      "Smaller community compared to established databases",
-      "Requires careful configuration for optimal performance"
+    benchmarkHighlights: [
+      "Consistent sub-10ms query times at 1M vectors",
+      "Maintains precision with filtered queries",
+      "Excellent memory efficiency"
     ],
-    bestFor: [
-      "Production deployments with filtering requirements",
-      "Projects needing performance at scale",
-      "Applications with real-time updates"
+    benchmarkLinks: [
+      { name: "Official Performance Benchmarks", url: "https://qdrant.tech/benchmarks/" },
+      { name: "ANN Benchmarks", url: "https://ann-benchmarks.com/" }
     ],
     features: {
       vectorSearch: true,

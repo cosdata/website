@@ -70,7 +70,7 @@ export function CostComparison({ offerings }: CostComparisonProps) {
           ))}
         </div>
         <div className="mt-4 text-sm text-gray-500">
-          <p>Note: Pricing may vary based on region and usage patterns. Always check the vendor's website for the most current pricing.</p>
+          <p>Note: Pricing may vary based on region and usage patterns. Always check the vendor&apos;s website for the most current pricing.</p>
         </div>
       </CardContent>
     </Card>
