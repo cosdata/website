@@ -7,8 +7,8 @@ export const afacad = Afacad({
 });
 
 export const noto_sans_mono = Noto_Sans_Mono({ 
+  subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
   display: 'swap',
 });
 

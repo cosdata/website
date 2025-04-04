@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="white" rx="8"/>
+  
+  <!-- Gradient Decorations -->
+  <circle cx="100" cy="100" r="60" fill="#0055c820" opacity="0.3"/>
+  <circle cx="700" cy="400" r="80" fill="#f2366520" opacity="0.3"/>
+  
+  <!-- Question Nodes -->
+  
+  <!-- Start Node -->
+  <g>
+    <rect x="350" y="30" width="100" height="50" rx="25" fill="#0055c8" filter="drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.1))"/>
+    <text x="400" y="60" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Start</text>
+  </g>
+  
+  <!-- Q1: Vector DB or RAG -->
+  <g>
+    <rect x="300" y="130" width="200" height="60" rx="8" fill="#0055c8" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="400" y="157" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Question 1</text>
+    <text x="400" y="177" font-family="Afacad, sans-serif" font-size="12" fill="white" text-anchor="middle">Vector DB or RAG Service?</text>
+  </g>
+  
+  <!-- Q2: Purpose-built or Hybrid -->
+  <g>
+    <rect x="180" y="250" width="200" height="60" rx="8" fill="#0055c8" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="280" y="277" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Question 2</text>
+    <text x="280" y="297" font-family="Afacad, sans-serif" font-size="12" fill="white" text-anchor="middle">Purpose-built or Hybrid?</text>
+  </g>
+  
+  <!-- Q3: Self-hosted, Serverless, Managed -->
+  <g>
+    <rect x="80" y="370" width="200" height="60" rx="8" fill="#0055c8" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="180" y="397" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Question 3</text>
+    <text x="180" y="417" font-family="Afacad, sans-serif" font-size="12" fill="white" text-anchor="middle">Self-hosted, Serverless, Managed?</text>
+  </g>
+  
+  <!-- End Nodes -->
+  
+  <!-- RAG Services End Node -->
+  <g>
+    <rect x="520" y="250" width="200" height="60" rx="8" fill="#4CAF50" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="620" y="285" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">RAG-as-a-Service</text>
+  </g>
+  
+  <!-- Hybrid Services End Node -->
+  <g>
+    <rect x="320" y="370" width="200" height="60" rx="8" fill="#9C27B0" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="420" y="405" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Hybrid Solutions</text>
+  </g>
+  
+  <!-- Self-hosted End Node -->
+  <g>
+    <rect x="15" y="450" width="130" height="40" rx="8" fill="#0066e8" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="80" y="475" font-family="Geologica, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="500">Self-hosted</text>
+  </g>
+  
+  <!-- Serverless End Node -->
+  <g>
+    <rect x="155" y="450" width="130" height="40" rx="8" fill="#0066e8" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="220" y="475" font-family="Geologica, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="500">Serverless</text>
+  </g>
+  
+  <!-- Managed End Node -->
+  <g>
+    <rect x="295" y="450" width="130" height="40" rx="8" fill="#0066e8" filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1))"/>
+    <text x="360" y="475" font-family="Geologica, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="500">Managed</text>
+  </g>
+  
+  <!-- Connecting Lines -->
+  
+  <!-- Start to Q1 -->
+  <path d="M400 80L400 130" stroke="#0055c8" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- Q1 to Q2 -->
+  <path d="M350 190L280 250" stroke="#0055c8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="300" y="220" font-family="Afacad, sans-serif" font-size="12" fill="#0055c8" text-anchor="middle">Vector DB</text>
+  
+  <!-- Q1 to RAG Services -->
+  <path d="M450 190L620 250" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="560" y="220" font-family="Afacad, sans-serif" font-size="12" fill="#4CAF50" text-anchor="middle">RAG Service</text>
+  
+  <!-- Q2 to Q3 -->
+  <path d="M230 310L180 370" stroke="#0055c8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="180" y="340" font-family="Afacad, sans-serif" font-size="12" fill="#0055c8" text-anchor="middle">Purpose-built</text>
+  
+  <!-- Q2 to Hybrid -->
+  <path d="M330 310L420 370" stroke="#9C27B0" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="390" y="340" font-family="Afacad, sans-serif" font-size="12" fill="#9C27B0" text-anchor="middle">Hybrid</text>
+  
+  <!-- Q3 to Self-hosted -->
+  <path d="M140 430L80 450" stroke="#0066e8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="85" y="440" font-family="Afacad, sans-serif" font-size="10" fill="#0066e8">Self-hosted</text>
+  
+  <!-- Q3 to Serverless -->
+  <path d="M180 430L220 450" stroke="#0066e8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="210" y="440" font-family="Afacad, sans-serif" font-size="10" fill="#0066e8">Serverless</text>
+  
+  <!-- Q3 to Managed -->
+  <path d="M220 430L360 450" stroke="#0066e8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="300" y="440" font-family="Afacad, sans-serif" font-size="10" fill="#0066e8">Managed</text>
+  
+  <!-- Arrow Definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+    </marker>
+  </defs>
+</svg> 

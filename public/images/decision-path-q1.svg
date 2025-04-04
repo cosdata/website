@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="200" viewBox="0 0 500 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="500" height="200" fill="white" rx="8"/>
+  
+  <!-- Question Box -->
+  <rect x="175" y="20" width="150" height="50" rx="8" fill="#0055c8" filter="drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1))"/>
+  <text x="250" y="44" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Question 1</text>
+  <text x="250" y="60" font-family="Afacad, sans-serif" font-size="12" fill="white" text-anchor="middle">Vector DB or RAG?</text>
+  
+  <!-- Left Option: Vector Database -->
+  <g>
+    <rect x="50" y="120" width="150" height="50" rx="8" fill="#0066e8" filter="drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1))"/>
+    <text x="125" y="144" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">Vector Database</text>
+    <text x="125" y="160" font-family="Afacad, sans-serif" font-size="11" fill="white" text-anchor="middle">Continue to Question 2</text>
+    
+    <!-- Icon: Database -->
+    <circle cx="55" cy="145" r="15" fill="white" opacity="0.9"/>
+    <path d="M55 138C51.13 138 48 139.34 48 141V149C48 150.66 51.13 152 55 152C58.87 152 62 150.66 62 149V141C62 139.34 58.87 138 55 138ZM55 140C58.31 140 60 141.01 60 141C60 141.01 58.31 142 55 142C51.69 142 50 141.01 50 141C50 141.01 51.69 140 55 140ZM60 149C60 149.01 58.31 150 55 150C51.69 150 50 149.01 50 149V146.42C51.07 147.13 52.93 147.5 55 147.5C57.07 147.5 58.93 147.13 60 146.42V149ZM60 144C60 144.01 58.31 145 55 145C51.69 145 50 144.01 50 144V142.42C51.07 143.13 52.93 143.5 55 143.5C57.07 143.5 58.93 143.13 60 142.42V144Z" fill="#0055c8"/>
+  </g>
+  
+  <!-- Right Option: RAG Service -->
+  <g>
+    <rect x="300" y="120" width="150" height="50" rx="8" fill="#4CAF50" filter="drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1))"/>
+    <text x="375" y="144" font-family="Geologica, sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="500">RAG-as-a-Service</text>
+    <text x="375" y="160" font-family="Afacad, sans-serif" font-size="11" fill="white" text-anchor="middle">Skip to RAG solutions</text>
+    
+    <!-- Icon: Cloud Service -->
+    <circle cx="315" cy="145" r="15" fill="white" opacity="0.9"/>
+    <path d="M321 149h-12c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71c.66-1.79 2.17-3 4.29-3 2.31 0 4 1.69 4 4v.29c1.79.66 3 2.17 3 4.29 0 1.31-1.19 2.42-2.5 2.42z" fill="#4CAF50"/>
+  </g>
+  
+  <!-- Connecting Lines -->
+  <path d="M225 70L125 120" stroke="#0055c8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M275 70L375 120" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow Definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+    </marker>
+  </defs>
+</svg> 
