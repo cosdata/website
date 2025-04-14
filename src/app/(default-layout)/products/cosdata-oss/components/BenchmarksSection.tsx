@@ -1,21 +1,21 @@
 "use client";
 import Image from 'next/image';
 import Link from 'next/link';
-import { commonStyles } from '../../../../styles/common';
+import { commonStyles, afacad, geologica } from '../../../../styles/common';
 import BenchmarkTable from '@/components/BenchmarkTable';
 import { benchmarkData } from '@/data/benchmarks';
 
 export default function BenchmarksSection() {
   return (
-    <section className="py-0 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-gray-100 px-4 sm:px-6">
+    <section className={`py-16 bg-gradient-to-r from-gray-50 to-white ${afacad.className} text-lg`}>
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-6 sm:mb-10">
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-6 sm:mb-10 ${geologica.className}`}>
           Industry-Leading Performance
         </h2>
 
         <div className="max-w-3xl mx-auto text-center mb-6 sm:mb-10">
-          <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8">
-            Cosdata&apos;s open-source HNSW vector database outperforms industry leaders across multiple key metrics.
+          <p className={`text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 ${commonStyles.paragraph}`}>
+            Cosdata&apos;s open-source vector database outperforms industry leaders across multiple key metrics.
             These results are from indexing DbPedia&apos;s 1M record, 1536-dimension dataset, using the same methodology as 
             <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium"> Qdrant&apos;s benchmarks</a>.
           </p>
@@ -51,16 +51,16 @@ export default function BenchmarksSection() {
             </div>
             
             <div className="order-1 md:order-2">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-[#0055c8]">Why We&apos;re Faster</h3>
-              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
+              <h3 className={`text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-[#0055c8] ${geologica.className}`}>Why We&apos;re Faster</h3>
+              <p className={`text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base ${commonStyles.paragraph}`}>
                 Our implementation achieves superior performance through:
               </p>
-              <ul className="space-y-2 sm:space-y-4 text-gray-700">
+              <ul className={`space-y-2 sm:space-y-4 text-gray-700 ${afacad.className}`}>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-3 sm:mr-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm sm:text-base">Optimized HNSW graph construction</span>
+                  <span className="text-sm sm:text-base">Optimized graph construction</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-3 sm:mr-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@ export default function BenchmarksSection() {
                 </li>
               </ul>
               <div className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-gray-200">
-                <p className="text-xs sm:text-sm text-gray-600 italic">
+                <p className={`text-xs sm:text-sm text-gray-600 italic ${commonStyles.paragraph}`}>
                   Benchmarks conducted using the same methodology as <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c]">Qdrant&apos;s benchmarks</a>, 
                   on identical hardware with 8 vCPUs and 32GB RAM.
                 </p>

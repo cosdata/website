@@ -15,10 +15,10 @@ import { noto_sans_mono } from '../styles/common';
 
 export const metadata: Metadata = {
   title: 'Cosdata - Next Generation Vector Search Technology',
-  description: 'Cosdata delivers high-performance vector search solutions, including HNSW and Serverless options, designed for enterprise-scale AI applications.',
+  description: 'Cosdata delivers high-performance vector search solutions, including OSS and Serverless options, designed for enterprise-scale AI applications.',
   openGraph: {
     title: 'Cosdata - Next Generation Vector Search Technology',
-    description: 'Cosdata delivers high-performance vector search solutions, including HNSW and Serverless options, designed for enterprise-scale AI applications.',
+    description: 'Cosdata delivers high-performance vector search solutions, including OSS and Serverless options, designed for enterprise-scale AI applications.',
     url: 'https://cosdata.io/',
     siteName: 'Cosdata',
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Cosdata - Next Generation Vector Search Technology',
-    description: 'Cosdata delivers high-performance vector search solutions, including HNSW and Serverless options, designed for enterprise-scale AI applications.',
+    description: 'Cosdata delivers high-performance vector search solutions, including OSS and Serverless options, designed for enterprise-scale AI applications.',
     images: ['/images/og-image-home.jpg'],
   },
 };

@@ -31,6 +31,14 @@ const nextConfig = {
       '127.0.0.1',
     ], 
   },
+  webpack(config) {
+    // Support loading SVGs as components
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
   async redirects() {
     return [
       {

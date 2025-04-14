@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { commonStyles } from '../../../../styles/common';
+import { commonStyles, afacad, geologica } from '../../../../styles/common';
 
 export default function FeaturesSection() {
   const features = [
@@ -62,19 +62,19 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="py-4 sm:py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6">
+    <section className={`py-4 sm:py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 ${afacad.className} text-lg`}>
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-8 sm:mb-12 md:mb-16">
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-8 sm:mb-12 md:mb-16 ${geologica.className}`}>
           Key Features
         </h2>
 
         {/* Hero feature section - no box, just content and illustration */}
         <div className="flex flex-col md:flex-row items-center mb-12 md:mb-16 lg:mb-24 gap-6 md:gap-8">
           <div className="md:w-1/2 md:pr-6 lg:pr-12">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4">
+            <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>
               Serverless Vector Search
             </h3>
-            <p className="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
+            <p className={`text-gray-700 text-base sm:text-lg mb-4 sm:mb-6 ${commonStyles.paragraph}`}>
               Cosdata Serverless is a fully managed vector database service that eliminates the operational complexity of running vector search at scale. Built with our innovative CHANNI technology, it delivers exceptional performance with the simplicity of serverless computing.
             </p>
             <button
@@ -96,8 +96,8 @@ export default function FeaturesSection() {
                 <svg className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-[#847CFC] mb-3 sm:mb-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
                 </svg>
-                <h4 className="text-lg sm:text-xl font-bold text-[#0055c8] mb-2">Serverless Architecture</h4>
-                <p className="text-gray-600 text-sm sm:text-base">Fully managed, auto-scaling vector database</p>
+                <h4 className={`text-lg sm:text-xl font-bold text-[#0055c8] mb-2 ${geologica.className}`}>Serverless Architecture</h4>
+                <p className={`text-gray-600 text-sm sm:text-base ${commonStyles.paragraph}`}>Fully managed, auto-scaling vector database</p>
               </div>
             </div>
           </div>
@@ -114,8 +114,8 @@ export default function FeaturesSection() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0055c8]">{feature.title}</h3>
-                  <p className="text-gray-700 text-sm sm:text-base">{feature.description}</p>
+                  <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0055c8] ${geologica.className}`}>{feature.title}</h3>
+                  <p className={`text-gray-700 text-sm sm:text-base ${commonStyles.paragraph}`}>{feature.description}</p>
                 </div>
               </div>
             ))}

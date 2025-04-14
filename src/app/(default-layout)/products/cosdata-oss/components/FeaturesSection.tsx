@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import { commonStyles } from '../../../../styles/common';
+import { commonStyles, afacad, geologica } from '../../../../styles/common';
 
 export default function FeaturesSection() {
   const features = [
@@ -62,19 +62,19 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="py-10 sm:py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6">
+    <section className={`py-10 sm:py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 ${afacad.className} text-lg`}>
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto`}>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-8 sm:mb-12">
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#0055c8] mb-8 sm:mb-12 ${geologica.className}`}>
           Key Features
         </h2>
 
         <div className="flex flex-col md:flex-row items-center mb-10 sm:mb-16 gap-6 md:gap-8">
           <div className="md:w-1/2 md:pr-0 lg:pr-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4">
+            <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>
               Next-Generation Vector Database
             </h3>
-            <p className="text-gray-700 text-base sm:text-lg mb-4 sm:mb-6">
-              Cosdata HNSW is a cutting-edge vector database designed for high performance, scalability, and ease of use. It combines advanced indexing algorithms with efficient resource utilization to deliver exceptional search performance for AI applications.
+            <p className={`text-gray-700 text-base sm:text-lg mb-4 sm:mb-6 ${commonStyles.paragraph}`}>
+              Cosdata OSS is a cutting-edge vector database designed for high performance, scalability, and ease of use. It combines advanced indexing algorithms with efficient resource utilization to deliver exceptional search performance for AI applications.
             </p>
             <a 
               href="https://github.com/cosdata/cosdata" 
@@ -109,14 +109,14 @@ export default function FeaturesSection() {
               <div className="mb-3 sm:mb-4 group-hover:text-[#0055c8] transition-colors duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0055c8] group-hover:text-[#f23665] transition-colors duration-300">{feature.title}</h3>
-              <p className="text-gray-700 text-sm sm:text-base">{feature.description}</p>
+              <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-[#0055c8] group-hover:text-[#f23665] transition-colors duration-300 ${geologica.className}`}>{feature.title}</h3>
+              <p className={`text-gray-700 text-sm sm:text-base ${commonStyles.paragraph}`}>{feature.description}</p>
             </div>
           ))}
         </div>
 
         <div className="mb-6 sm:mb-8 pt-6 sm:pt-8 border-t border-gray-200">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#0055c8] mb-6 sm:mb-8 text-center">
+          <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] mb-6 sm:mb-8 text-center ${geologica.className}`}>
             Additional Capabilities
           </h3>
           
@@ -127,8 +127,8 @@ export default function FeaturesSection() {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <div>
-                  <h4 className="text-base sm:text-lg font-semibold text-[#0055c8]">{feature.title}</h4>
-                  <p className="text-gray-700 mt-1 text-sm sm:text-base">{feature.description}</p>
+                  <h4 className={`text-base sm:text-lg font-semibold text-[#0055c8] ${geologica.className}`}>{feature.title}</h4>
+                  <p className={`text-gray-700 mt-1 text-sm sm:text-base ${commonStyles.paragraph}`}>{feature.description}</p>
                 </div>
               </div>
             ))}
