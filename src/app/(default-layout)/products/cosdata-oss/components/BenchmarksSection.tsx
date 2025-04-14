@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { commonStyles, afacad, geologica } from '../../../../styles/common';
 import BenchmarkTable from '@/components/BenchmarkTable';
-import { benchmarkData } from '@/data/benchmarks';
+import { vectorBenchmarkData } from '@/data/benchmarks';
 
 export default function BenchmarksSection() {
   return (
@@ -17,12 +17,51 @@ export default function BenchmarksSection() {
           <p className={`text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 ${commonStyles.paragraph}`}>
             Cosdata&apos;s open-source vector database outperforms industry leaders across multiple key metrics.
             These results are from indexing DbPedia&apos;s 1M record, 1536-dimension dataset, using the same methodology as 
-            <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium"> Qdrant&apos;s benchmarks</a>.
+            <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#3083FE] hover:text-[#2060cc] font-medium"> Qdrant&apos;s benchmarks</a>.
           </p>
         </div>
 
         <div className="overflow-hidden shadow-lg mb-8 sm:mb-12 border border-gray-200 rounded-lg">
-          <BenchmarkTable data={benchmarkData} />
+          <BenchmarkTable data={vectorBenchmarkData} />
+        </div>
+
+        {/* Full-text search highlight */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-8 sm:mb-12 border border-blue-100">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-2/3 mb-6 md:mb-0 md:pr-6">
+              <h3 className={`text-xl sm:text-2xl font-bold mb-4 text-[#3083FE] ${geologica.className}`}>
+                Full-Text Search Capabilities
+              </h3>
+              <p className={`text-gray-700 mb-4 text-base ${commonStyles.paragraph}`}>
+                Beyond vector search, Cosdata also provides lightning-fast full-text search that outperforms ElasticSearch by up to 16x in queries per second while maintaining similar recall and precision.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <div className="flex items-center bg-white px-3 py-1.5 rounded-full border border-blue-200">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  <span className="text-sm">Up to 41,000+ QPS</span>
+                </div>
+                <div className="flex items-center bg-white px-3 py-1.5 rounded-full border border-blue-200">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  <span className="text-sm">Comparable recall to ElasticSearch</span>
+                </div>
+                <div className="flex items-center bg-white px-3 py-1.5 rounded-full border border-blue-200">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  <span className="text-sm">Efficient memory usage</span>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/3 flex justify-center">
+              <Link 
+                href="/resources/benchmarks?tab=fts" 
+                className="inline-flex items-center px-4 py-2 bg-[#3083FE] hover:bg-[#2060cc] text-white rounded-lg transition-colors duration-300 text-sm"
+              >
+                View FTS Benchmarks
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className="text-center mb-10 sm:mb-16">
@@ -89,7 +128,7 @@ export default function BenchmarksSection() {
               </ul>
               <div className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-gray-200">
                 <p className={`text-xs sm:text-sm text-gray-600 italic ${commonStyles.paragraph}`}>
-                  Benchmarks conducted using the same methodology as <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c]">Qdrant&apos;s benchmarks</a>, 
+                  Benchmarks conducted using the same methodology as <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#3083FE] hover:text-[#2060cc]">Qdrant&apos;s benchmarks</a>, 
                   on identical hardware with 8 vCPUs and 32GB RAM.
                 </p>
               </div>

@@ -1,7 +1,7 @@
-import { BenchmarkData } from '../data/benchmarks';
+import { VectorBenchmarkData } from '../data/benchmarks';
 
 interface BenchmarkTableProps {
-  data: BenchmarkData[];
+  data: VectorBenchmarkData[];
   className?: string;
 }
 
@@ -14,7 +14,7 @@ export default function BenchmarkTable({ data, className = '' }: BenchmarkTableP
             <tr>
               <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Vector DB</th>
               <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Indexing Time (m)</th>
-              <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">RPS</th>
+              <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">QPS</th>
               <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Precision</th>
               <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">p50 (ms)</th>
               <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">p95 (ms)</th>
@@ -35,7 +35,7 @@ export default function BenchmarkTable({ data, className = '' }: BenchmarkTableP
                 </td>
                 <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{db.indexingTime}</td>
                 <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700 font-medium">
-                  {index === 0 ? <span className="text-green-600">{db.rps}</span> : db.rps}
+                  {index === 0 ? <span className="text-green-600">{db.qps}</span> : db.qps}
                 </td>
                 <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{db.precision}</td>
                 <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{db.p50}</td>

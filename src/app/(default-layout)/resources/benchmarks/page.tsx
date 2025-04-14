@@ -1,10 +1,31 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
-import { noto_sans_mono, commonStyles } from '../../../styles/common';
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { noto_sans_mono, commonStyles, geologica } from '../../../styles/common';
 import BenchmarkTable from '@/components/BenchmarkTable';
-import { benchmarkData } from '@/data/benchmarks';
+import FTSBenchmarkSection from '@/components/FTSBenchmarkSection';
+import { vectorBenchmarkData } from '@/data/benchmarks';
 
 export default function BenchmarksPage() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams ? searchParams.get('tab') : null;
+  
+  const [activeTab, setActiveTab] = useState<'vector' | 'fts'>(
+    tabParam === 'fts' ? 'fts' : 'vector'
+  );
+  
+  // Update the active tab if the URL parameter changes
+  useEffect(() => {
+    if (tabParam === 'fts') {
+      setActiveTab('fts');
+    } else if (tabParam === 'vector') {
+      setActiveTab('vector');
+    }
+  }, [tabParam]);
+
   const cosdataConfigData = [
     { 
       config: "ef_construction: 128, ef_search: 128, neighbors_count: 16, layer_0_neighbors_count: 32", 
@@ -36,137 +57,180 @@ export default function BenchmarksPage() {
     <main className={`bg-transparent ${noto_sans_mono.className}`}>
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12`}>
         <h1 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-center text-[#0055c8] mb-6 sm:mb-8 md:mb-10">
-          Vector Database Benchmarks
+          Cosdata Benchmarks
         </h1>
 
-        <div className="max-w-7xl mx-auto text-center mb-6 sm:mb-8 md:mb-10">
+        <div className="max-w-7xl mx-auto text-center mb-8 sm:mb-10">
           <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8">
-            Cosdata&apos;s open-source HNSW vector database outperforms industry leaders across multiple key metrics.
-            These results are from indexing DbPedia&apos;s 1M record, 1536-dimension dataset, using the same methodology as 
-            <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium"> Qdrant&apos;s benchmarks</a>.
+            Comprehensive benchmarks demonstrating Cosdata&apos;s superior performance in both vector search and full-text search applications.
           </p>
-        </div>
-
-        <div className="max-w-7xl mx-auto mb-8 sm:mb-10 md:mb-12">
-          <BenchmarkTable data={benchmarkData} />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto mb-8 sm:mb-10 md:mb-12">
-          <div className="bg-white p-4 sm:p-6 shadow-md border border-gray-200">
-            <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-bold mb-4 sm:mb-6 text-[#0055c8]">Benchmark Methodology</h2>
-            <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
-              Our benchmarks were conducted using the following methodology:
-            </p>
-            <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 text-sm sm:text-base text-gray-700">
-              <li>Dataset: DbPedia&apos;s 1M record dataset with 1536-dimensional vectors</li>
-              <li>Hardware: All tests were run on identical hardware (8 vCPUs, 32GB RAM)</li>
-              <li>Metrics measured: Indexing time, Requests per second (RPS), and Precision</li>
-              <li>Each test was run 5 times and the average results are reported</li>
-              <li>Methodology aligned with <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium">Qdrant&apos;s benchmarks</a> for fair comparison</li>
-            </ul>
-            <p className="text-sm sm:text-base text-gray-700">
-              The results demonstrate that Cosdata&apos;s HNSW implementation provides superior performance in terms of RPS while maintaining high precision. 
-              Our implementation is particularly optimized for high-throughput scenarios where query performance is critical.
-            </p>
-          </div>
-
-          <div className="bg-white p-4 sm:p-6 shadow-md border border-gray-200">
-            <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-bold mb-4 sm:mb-6 text-[#0055c8]">Performance Factors</h2>
-            <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
-              Cosdata&apos;s superior performance can be attributed to several key factors:
-            </p>
-            <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-700">
-              <li className="flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f23665] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span><strong>Optimized HNSW Implementation:</strong> Our implementation includes custom optimizations for graph construction and search algorithms</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f23665] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span><strong>SIMD Acceleration:</strong> Extensive use of SIMD instructions for distance calculations</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f23665] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span><strong>Memory Efficiency:</strong> Careful memory layout and management to maximize cache efficiency</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f23665] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span><strong>Parallel Processing:</strong> Effective utilization of multi-core architectures</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#f23665] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span><strong>Optimized Data Structures:</strong> Custom data structures designed for minimal overhead</span>
-              </li>
-            </ul>
+          
+          {/* Tab Navigation */}
+          <div className="flex justify-center mb-8 border-b border-gray-200">
+            <button
+              onClick={() => setActiveTab('vector')}
+              className={`py-3 px-6 text-sm font-medium transition-colors ${
+                activeTab === 'vector'
+                  ? 'text-[#3083FE] border-b-2 border-[#3083FE]'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Vector Search
+            </button>
+            <button
+              onClick={() => setActiveTab('fts')}
+              className={`py-3 px-6 text-sm font-medium transition-colors ${
+                activeTab === 'fts'
+                  ? 'text-[#3083FE] border-b-2 border-[#3083FE]'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Full-Text Search
+            </button>
           </div>
         </div>
 
-        <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-bold mb-4 sm:mb-6 text-[#0055c8] text-center">Cosdata Configuration Benchmarks</h2>
-        <div className="max-w-7xl mx-auto mb-8 sm:mb-10 md:mb-12">
-            <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
-              We&apos;ve conducted additional benchmarks with different Cosdata HNSW configurations to demonstrate the flexibility and performance characteristics of our implementation:
-            </p>
-            <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 mb-8 sm:mb-12 text-sm sm:text-base text-gray-700">
-              <li><strong>Dataset:</strong> 1 million text embeddings (768 dimensions) from <a href="https://huggingface.co/datasets/Sreenath/million-text-embeddings" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium">Hugging Face</a></li>
-              <li><strong>Hardware:</strong> x86 machine, 4C/8T, 32 GB RAM</li>
-              <li><strong>Metrics:</strong> Total insertion time, Average Recall@5, Requests Per Second (RPS)</li>
-            </ul>
-
-          <div className="overflow-hidden shadow-lg mb-8 sm:mb-10 md:mb-12 border border-gray-200">
-            <div className="overflow-x-auto">
-              <table className="min-w-full">
-                <thead>
-                  <tr>
-                    <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Configuration</th>
-                    <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Indexing Time</th>
-                    <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Recall@5</th>
-                    <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">RPS</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {cosdataConfigData.map((config, index) => (
-                    <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap font-medium text-gray-900">
-                        <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">{config.config}</code>
-                      </td>
-                      <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{config.indexingTime}</td>
-                      <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{config.recall}</td>
-                      <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700 font-medium">
-                        {index === 3 ? <span className="text-green-600">{config.rps}</span> : config.rps}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        {/* Vector Search Benchmarks */}
+        {activeTab === 'vector' && (
+          <>
+            <div className="max-w-7xl mx-auto mb-8 sm:mb-10">
+              <h2 className={`text-2xl sm:text-3xl font-bold mb-6 text-[#0055c8] text-center ${geologica.className}`}>
+                Vector Database Benchmarks
+              </h2>
+              <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8">
+                Cosdata&apos;s open-source HNSW vector database outperforms industry leaders across multiple key metrics.
+                These results are from indexing DbPedia&apos;s 1M record, 1536-dimension dataset, using the same methodology as 
+                <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium"> Qdrant&apos;s benchmarks</a>.
+              </p>
             </div>
-          </div>
-          <div className="mb-8 sm:mb-10 md:mb-12">
-            <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
-              <strong>Key Observations:</strong>
-            </p>
-            <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-700">
-              <li>Lower <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction</code> and <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_search</code> values result in faster indexing times and higher RPS</li>
-              <li>Higher <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction</code> and <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_search</code> values provide better recall accuracy</li>
-              <li>The configuration with <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction: 64, ef_search: 128</code> offers an excellent balance between speed and accuracy</li>
-              <li>For maximum throughput, the configuration with <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction: 32, ef_search: 32</code> delivers nearly 3,000 RPS</li>
-            </ul>
-          </div>
-        </div>
+
+            <div className="max-w-7xl mx-auto mb-8 sm:mb-10 md:mb-12">
+              <BenchmarkTable data={vectorBenchmarkData} />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto mb-8 sm:mb-10 md:mb-12">
+              <div className="bg-white p-4 sm:p-6 shadow-md border border-gray-200">
+                <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-bold mb-4 sm:mb-6 text-[#0055c8]">Benchmark Methodology</h2>
+                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
+                  Our benchmarks were conducted using the following methodology:
+                </p>
+                <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 text-sm sm:text-base text-gray-700">
+                  <li>Dataset: DbPedia&apos;s 1M record dataset with 1536-dimensional vectors</li>
+                  <li>Hardware: All tests were run on identical hardware (8 vCPUs, 32GB RAM)</li>
+                  <li>Metrics measured: Indexing time, Queries per second (QPS), and Precision</li>
+                  <li>Each test was run 5 times and the average results are reported</li>
+                  <li>Methodology aligned with <a href="https://qdrant.tech/benchmarks/" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium">Qdrant&apos;s benchmarks</a> for fair comparison</li>
+                </ul>
+                <p className="text-sm sm:text-base text-gray-700">
+                  The results demonstrate that Cosdata&apos;s HNSW implementation provides superior performance in terms of QPS while maintaining high precision. 
+                  Our implementation is particularly optimized for high-throughput scenarios where query performance is critical.
+                </p>
+              </div>
+
+              <div className="bg-white p-4 sm:p-6 shadow-md border border-gray-200">
+                <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-bold mb-4 sm:mb-6 text-[#0055c8]">Performance Factors</h2>
+                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
+                  Cosdata&apos;s superior performance can be attributed to several key factors:
+                </p>
+                <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-700">
+                  <li className="flex items-start">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#3083FE] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span><strong>Optimized HNSW Implementation:</strong> Our implementation includes custom optimizations for graph construction and search algorithms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#3083FE] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span><strong>SIMD Acceleration:</strong> Extensive use of SIMD instructions for distance calculations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#3083FE] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span><strong>Memory Efficiency:</strong> Careful memory layout and management to maximize cache efficiency</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#3083FE] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span><strong>Parallel Processing:</strong> Effective utilization of multi-core architectures</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#3083FE] mr-1.5 sm:mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span><strong>Optimized Data Structures:</strong> Custom data structures designed for minimal overhead</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-bold mb-4 sm:mb-6 text-[#0055c8] text-center">Cosdata Configuration Benchmarks</h2>
+            <div className="max-w-7xl mx-auto mb-8 sm:mb-10 md:mb-12">
+                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
+                  We&apos;ve conducted additional benchmarks with different Cosdata HNSW configurations to demonstrate the flexibility and performance characteristics of our implementation:
+                </p>
+                <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 mb-8 sm:mb-12 text-sm sm:text-base text-gray-700">
+                  <li><strong>Dataset:</strong> 1 million text embeddings (768 dimensions) from <a href="https://huggingface.co/datasets/Sreenath/million-text-embeddings" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium">Hugging Face</a></li>
+                  <li><strong>Hardware:</strong> x86 machine, 4C/8T, 32 GB RAM</li>
+                  <li><strong>Metrics:</strong> Total insertion time, Average Recall@5, Queries Per Second (QPS)</li>
+                </ul>
+
+              <div className="overflow-hidden shadow-lg mb-8 sm:mb-10 md:mb-12 border border-gray-200">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full">
+                    <thead>
+                      <tr>
+                        <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Configuration</th>
+                        <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Indexing Time</th>
+                        <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Recall@5</th>
+                        <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">QPS</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {cosdataConfigData.map((config, index) => (
+                        <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                          <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap font-medium text-gray-900">
+                            <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">{config.config}</code>
+                          </td>
+                          <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{config.indexingTime}</td>
+                          <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700">{config.recall}</td>
+                          <td className="py-3 sm:py-4 px-4 sm:px-6 whitespace-nowrap text-gray-700 font-medium">
+                            {index === 3 ? <span className="text-green-600">{config.rps}</span> : config.rps}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="mb-8 sm:mb-10 md:mb-12">
+                <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">
+                  <strong>Key Observations:</strong>
+                </p>
+                <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-700">
+                  <li>Lower <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction</code> and <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_search</code> values result in faster indexing times and higher QPS</li>
+                  <li>Higher <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction</code> and <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_search</code> values provide better recall accuracy</li>
+                  <li>The configuration with <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction: 64, ef_search: 128</code> offers an excellent balance between speed and accuracy</li>
+                  <li>For maximum throughput, the configuration with <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction: 32, ef_search: 32</code> delivers nearly 3,000 QPS</li>
+                </ul>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Full-Text Search Benchmarks */}
+        {activeTab === 'fts' && (
+          <FTSBenchmarkSection />
+        )}
 
         <div className="flex flex-col md:flex-row items-center bg-white shadow-md overflow-hidden border border-gray-200 max-w-7xl mx-auto">
           <div className="md:w-3/4 p-4 sm:p-6 md:p-8">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 text-[#0055c8]">Try Cosdata HNSW Today</h3>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-4 text-[#0055c8]">Try Cosdata Today</h3>
             <p className="text-sm sm:text-base text-gray-700 mb-4">
-              Experience the performance benefits of Cosdata HNSW in your own applications. Our open-source implementation is available on GitHub.
+              Experience the performance benefits of Cosdata in your own applications. Our open-source implementation is available on GitHub.
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 sm:px-5 py-2 sm:py-2.5 bg-black hover:bg-gray-800 text-white rounded-lg transition-colors duration-300 text-sm sm:text-base">
@@ -175,7 +239,7 @@ export default function BenchmarksPage() {
                 </svg>
                 View on GitHub
               </a>
-              <Link href="/products/cosdata-hnsw" className="inline-flex items-center px-4 sm:px-5 py-2 sm:py-2.5 bg-[#f23665] hover:bg-[#d92d5c] text-white rounded-lg transition-colors duration-300 text-sm sm:text-base">
+              <Link href="/products/cosdata-hnsw" className="inline-flex items-center px-4 sm:px-5 py-2 sm:py-2.5 bg-[#3083FE] hover:bg-[#2060cc] text-white rounded-lg transition-colors duration-300 text-sm sm:text-base">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -185,7 +249,7 @@ export default function BenchmarksPage() {
           </div>
           <div className="md:w-1/4 p-4 sm:p-6 md:p-8 flex justify-center">
             <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gray-100 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#0055c8]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#3083FE]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </div>
