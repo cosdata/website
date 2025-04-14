@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { commonStyles, afacad, geologica } from '../../../../styles/common';
+import { vectorBenchmarkData } from '@/data/benchmarks';
 
 const HeroSection = () => {
   return (
@@ -19,11 +20,13 @@ const HeroSection = () => {
             <h1 className={`text-[36px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-[#f23665] leading-tight ${geologica.className}`}>
               Cosdata OSS
             </h1>
-            <h2 className={`text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2 ${geologica.className}`}>
+            <h2 className={`text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2 leading-tight ${geologica.className}`}>
               High-Performance Vector Database
             </h2>
-            <p className={`mt-4 sm:mt-6 md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0 ${commonStyles.paragraph}`} style={{ fontSize: '1.4rem' }}>
-              Industry-leading performance with up to 1,770+ queries per second on a single node. Combines hybrid search capabilities with unmatched scalability and precision for enterprise-grade vector search at any scale.
+            <p className={`mt-4 sm:mt-6 md:text-xl text-white max-w-2xl mx-auto md:mx-0 ${commonStyles.paragraph}`} style={{ fontSize: '1.4rem' }}>
+              Benchmark-leading performance with {vectorBenchmarkData[0].qps}+ QPS on 1M-record datasets, 
+              outperforming leading vector databases while maintaining {parseFloat(vectorBenchmarkData[0].precision) * 100}% precision. 
+              Combines powerful vector and full-text search with enterprise-grade reliability.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
               <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" 
