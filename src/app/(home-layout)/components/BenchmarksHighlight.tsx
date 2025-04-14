@@ -1,167 +1,144 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { commonStyles, afacad, geologica } from '../../styles/common';
-import BenchmarkTable from '@/components/BenchmarkTable';
-import { vectorBenchmarkData, benchmarkHighlights } from '@/data/benchmarks';
+import { benchmarkHighlights, vectorBenchmarkData, ftsBenchmarkData } from '@/data/benchmarks';
 
 const BenchmarksHighlight = () => {
-  const [activeTab, setActiveTab] = useState<'vector' | 'fts'>('vector');
+  // Calculate actual speedups based on benchmark data
+  const calculateSpeedup = (dataset: string, metric: 'qps' | 'insertionTime') => {
+    const cosdata = ftsBenchmarkData.cosdata.find(d => d.dataset === dataset);
+    const elasticsearch = ftsBenchmarkData.elasticsearch.find(d => d.dataset === dataset);
+    
+    if (!cosdata || !elasticsearch) return '?x';
+    
+    if (metric === 'qps') {
+      const cosdataValue = parseFloat(cosdata.qps);
+      const elasticsearchValue = parseFloat(elasticsearch.qps);
+      return (cosdataValue / elasticsearchValue).toFixed(1) + 'x';
+    } else {
+      const cosdataValue = parseFloat(cosdata.insertionTime);
+      const elasticsearchValue = parseFloat(elasticsearch.insertionTime);
+      return (elasticsearchValue / cosdataValue).toFixed(1) + 'x';
+    }
+  };
 
   return (
     <section className="py-12 sm:py-16 px-4 sm:px-6">
       <div className={`${commonStyles.mainContainer}`}>
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className={`${commonStyles.sectionTitle} mb-4 sm:mb-6`}>
+        <div className="text-center mb-10 sm:mb-14">
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-[#0055c8] ${geologica.className}`}>
             Industry-Leading Performance
           </h2>
-          <p className={`${commonStyles.sectionSubtitle} max-w-3xl mx-auto`}>
-            Cosdata outperforms the competition with blazing-fast query speeds and superior efficiency
+          <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-gray-700 ${afacad.className}`}>
+            Cosdata consistently outperforms competing solutions across both vector and full-text search benchmarks
           </p>
         </div>
         
-        {/* Tab Navigation */}
-        <div className="flex justify-center mb-8 border-b border-gray-200">
-          <button
-            onClick={() => setActiveTab('vector')}
-            className={`py-3 px-6 text-sm font-medium transition-colors ${
-              activeTab === 'vector'
-                ? 'text-[#3083FE] border-b-2 border-[#3083FE]'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Vector Search
-          </button>
-          <button
-            onClick={() => setActiveTab('fts')}
-            className={`py-3 px-6 text-sm font-medium transition-colors ${
-              activeTab === 'fts'
-                ? 'text-[#3083FE] border-b-2 border-[#3083FE]'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Full-Text Search
-          </button>
-        </div>
-
-        {/* Vector Search Content */}
-        {activeTab === 'vector' && (
-          <>
-            <div className="bg-white rounded-xl overflow-hidden p-1 sm:p-2 mb-8 sm:mb-12">
-              <BenchmarkTable data={vectorBenchmarkData} />
-              <div className="p-3 bg-gray-50 text-xs text-gray-600 italic">
-                Dataset: {benchmarkHighlights.vector.dataset}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-10">
-              <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#3083FE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-center text-[#3083FE] ${geologica.className}`}>{benchmarkHighlights.vector.qpsAdvantage}</h3>
-                <p className={`text-gray-600 text-center text-base sm:text-lg ${afacad.className}`}>
-                  Industry-leading query performance with outstanding queries per second on a single node
-                </p>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#3083FE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-center text-[#3083FE] ${geologica.className}`}>{benchmarkHighlights.vector.precision}</h3>
-                <p className={`text-gray-600 text-center text-base sm:text-lg ${afacad.className}`}>
-                  High-quality results with improved recall and exceptional accuracy for complex queries
-                </p>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#3083FE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-center text-[#3083FE] ${geologica.className}`}>{benchmarkHighlights.vector.speedAdvantage}</h3>
-                <p className={`text-gray-600 text-center text-base sm:text-lg ${afacad.className}`}>
-                  Significantly faster than competing vector databases across both indexing and query operations
-                </p>
-              </div>
-            </div>
-          </>
-        )}
-
-        {/* Full-Text Search Content */}
-        {activeTab === 'fts' && (
-          <>
-            <div className="bg-white rounded-xl p-6 mb-8 sm:mb-12">
-              <h3 className={`text-xl font-bold mb-4 text-[#3083FE] text-center ${geologica.className}`}>Full-Text Search Performance</h3>
-              <p className={`text-gray-700 mb-6 text-center max-w-3xl mx-auto ${afacad.className}`}>
-                Cosdata outperforms ElasticSearch across multiple datasets, delivering exceptional full-text search speed and accuracy.
+        {/* Two-column layout for benchmarks */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* Column 1: Vector Search */}
+          <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <h3 className={`text-xl sm:text-2xl font-bold mb-4 text-[#0055c8] ${geologica.className}`}>
+              Dense Vector Search Performance
+            </h3>
+            <div className={`prose prose-lg max-w-none ${afacad.className} mb-8`}>
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
+                Our HNSW implementation delivers exceptional performance across all key metrics:
               </p>
-              
-              <div className="relative w-full h-[300px]">
-                <Image
-                  src="/images/fts-comparison-chart.png"
-                  alt="FTS Comparison Chart"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+              <ul className="list-disc pl-6 space-y-1.5 mb-4 text-base sm:text-lg text-gray-700 benchmark-list">
+                <li>Industry-leading <strong className="text-[#3083FE]">{vectorBenchmarkData[0].qps}+ QPS</strong> on 1M record datasets with 1536-dimensional vectors</li>
+                <li><strong className="text-[#3083FE]">{Math.round((parseInt(vectorBenchmarkData[0].qps) / parseInt(vectorBenchmarkData[1].qps) - 1) * 100)}% faster</strong> than Qdrant and {Math.round((parseInt(vectorBenchmarkData[0].qps) / parseInt(vectorBenchmarkData[2].qps) - 1) * 100)}% faster than Weaviate</li>
+                <li>Up to <strong className="text-[#3083FE]">{Math.round((parseInt(vectorBenchmarkData[0].qps) / parseInt(vectorBenchmarkData[3].qps) - 1) * 100)}% faster</strong> than ElasticSearch while maintaining high precision</li>
+                <li>Consistent <strong className="text-[#3083FE]">{parseFloat(vectorBenchmarkData[0].precision) * 100}%</strong> precision across challenging search tasks</li>
+              </ul>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-10">
-              <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#3083FE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+            <div className="pt-6 border-t border-gray-200">
+              <h4 className={`text-lg sm:text-xl font-bold mb-4 text-center text-[#0055c8] ${geologica.className}`}>What Makes Cosdata Different</h4>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">Efficient HNSW</h5>
+                  <p className="text-sm text-gray-700">Optimized graph traversal</p>
                 </div>
-                <h3 className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-center text-[#3083FE] ${geologica.className}`}>{benchmarkHighlights.fts.averageQpsAdvantage}</h3>
-                <p className={`text-gray-600 text-center text-base sm:text-lg ${afacad.className}`}>
-                  On average, Cosdata delivers full-text search queries 16x faster than ElasticSearch
-                </p>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#3083FE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">SIMD Acceleration</h5>
+                  <p className="text-sm text-gray-700">Hardware-accelerated distance</p>
                 </div>
-                <h3 className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-center text-[#3083FE] ${geologica.className}`}>{benchmarkHighlights.fts.topQps}</h3>
-                <p className={`text-gray-600 text-center text-base sm:text-lg ${afacad.className}`}>
-                  Peak performance of over 41,000 queries per second on smaller datasets
-                </p>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center border border-gray-200">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#3083FE]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">Memory Optimization</h5>
+                  <p className="text-sm text-gray-700">Improved cache efficiency</p>
                 </div>
-                <h3 className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-center text-[#3083FE] ${geologica.className}`}>{benchmarkHighlights.fts.memoryUsage}</h3>
-                <p className={`text-gray-600 text-center text-base sm:text-lg ${afacad.className}`}>
-                  Low memory footprint while maintaining high performance, enabling cost-effective deployments
-                </p>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">Smart Parallelization</h5>
+                  <p className="text-sm text-gray-700">Multi-threaded scaling</p>
+                </div>
               </div>
             </div>
-          </>
-        )}
+          </div>
+
+          {/* Column 2: Full-Text Search */}
+          <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
+            <h3 className={`text-xl sm:text-2xl font-bold mb-4 text-[#0055c8] ${geologica.className}`}>
+              Full-Text Search Excellence
+            </h3>
+            <div className={`prose prose-lg max-w-none ${afacad.className} mb-8`}>
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
+                Compared to ElasticSearch across multiple datasets, Cosdata delivers:
+              </p>
+              <ul className="list-disc pl-6 space-y-1.5 mb-4 text-base sm:text-lg text-gray-700 benchmark-list">
+                <li>Up to <strong className="text-[#3083FE]">16x higher QPS</strong> than ElasticSearch on comparable datasets</li>
+                <li><strong className="text-[#3083FE]">Significantly faster indexing</strong>, up to 12x faster on large datasets</li>
+                <li><strong className="text-[#3083FE]">Lower latency</strong> at both p50 and p95 percentiles across all tested datasets</li>
+                <li>Similar recall and NDCG scores while delivering <strong className="text-[#3083FE]">superior performance</strong></li>
+              </ul>
+            </div>
+
+            <div className="pt-6 border-t border-gray-200">
+              <h4 className={`text-lg sm:text-xl font-bold mb-4 text-center text-[#0055c8] ${geologica.className}`}>Dataset Performance</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">MSMARCO</h5>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('msmarco', 'qps')} faster QPS</p>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('msmarco', 'insertionTime')} faster indexing</p>
+                </div>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">FEVER</h5>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('fever', 'qps')} faster QPS</p>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('fever', 'insertionTime')} faster indexing</p>
+                </div>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">SCIFACT</h5>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('scifact', 'qps')} faster QPS</p>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('scifact', 'insertionTime')} faster indexing</p>
+                </div>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">TREC-COVID</h5>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('trec-covid', 'qps')} faster QPS</p>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('trec-covid', 'insertionTime')} faster indexing</p>
+                </div>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">NQ</h5>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('nq', 'qps')} faster QPS</p>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('nq', 'insertionTime')} faster indexing</p>
+                </div>
+                <div className="bg-blue-50 p-3 rounded-lg text-center">
+                  <h5 className="font-semibold text-[#3083FE] mb-1">FIQA</h5>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('fiqa', 'qps')} faster QPS</p>
+                  <p className="text-sm text-gray-700">{calculateSpeedup('fiqa', 'insertionTime')} faster indexing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="text-center">
           <Link
             href="/resources/benchmarks"
-            className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-[#3083FE] hover:bg-[#2060cc] transition-colors duration-300"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-base sm:text-lg font-medium rounded-md text-white bg-[#3083FE] hover:bg-[#2060cc] transition-colors duration-300 shadow-sm"
           >
             View Detailed Benchmarks
-            <svg className="ml-1.5 sm:ml-2 -mr-1 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>
