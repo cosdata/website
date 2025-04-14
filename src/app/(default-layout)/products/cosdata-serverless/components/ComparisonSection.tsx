@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { commonStyles, afacad, geologica } from '../../../../styles/common';
+import { vectorBenchmarkData } from '@/data/benchmarks';
 
 export default function ComparisonSection() {
 
@@ -127,7 +128,7 @@ export default function ComparisonSection() {
                 
                 <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-indigo-100">
                   <p className={`text-xs sm:text-sm text-gray-600 italic ${commonStyles.paragraph}`}>
-                    Built with components from our market-leading HNSW implementation that offers up to 1,770+ QPS on a single node.
+                    Built with components from our market-leading HNSW implementation that delivers {vectorBenchmarkData[0].qps}+ QPS on 1M-record datasets while maintaining {parseFloat(vectorBenchmarkData[0].precision) * 100}% precision.
                   </p>
                 </div>
               </div>
