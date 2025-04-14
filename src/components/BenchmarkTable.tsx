@@ -1,4 +1,5 @@
 import { VectorBenchmarkData } from '../data/benchmarks';
+import { afacad } from '@/app/styles/common';
 
 interface BenchmarkTableProps {
   data: VectorBenchmarkData[];
@@ -9,7 +10,7 @@ export default function BenchmarkTable({ data, className = '' }: BenchmarkTableP
   return (
     <div className={`overflow-hidden shadow-lg border border-gray-200 ${className}`}>
       <div className="overflow-x-auto">
-        <table className="min-w-full">
+        <table className={`min-w-full ${afacad.className}`}>
           <thead>
             <tr>
               <th className="py-3 sm:py-4 px-4 sm:px-6 text-left text-sm sm:text-base font-semibold bg-[#0055c8] text-white">Vector DB</th>

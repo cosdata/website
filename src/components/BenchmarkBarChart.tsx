@@ -77,6 +77,16 @@ export default function BenchmarkBarChart({
             return value;
           }
         }
+      },
+      x: {
+        ticks: {
+          padding: 10
+        }
+      }
+    },
+    layout: {
+      padding: {
+        bottom: 15
       }
     },
   };
