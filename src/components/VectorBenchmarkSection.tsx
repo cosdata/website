@@ -113,7 +113,7 @@ export default function VectorBenchmarkSection() {
         Engineering Insights
       </h3>
       <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
-        Cosdata's vector search performance advantages come from several key optimizations:
+        Cosdata&apos;s vector search performance advantages come from several key optimizations:
       </p>
       <ul className={`list-disc pl-6 space-y-2 mb-8 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
         <li><strong>Efficient HNSW implementation</strong> with optimized graph construction and traversal</li>
