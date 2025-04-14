@@ -4,18 +4,27 @@ export const afacad = Afacad({
   weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
   display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'Arial', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 export const noto_sans_mono = Noto_Sans_Mono({ 
   weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
   display: 'swap',
+  preload: true,
+  fallback: ['monospace'],
+  adjustFontFallback: true,
 });
 
 export const geologica = Geologica({ 
   weight: ['400', '500', '600', '700'],
   subsets: ["latin"],
   display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'Arial', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 export const commonStyles = {

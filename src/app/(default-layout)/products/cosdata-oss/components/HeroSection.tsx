@@ -1,11 +1,11 @@
 "use client";
 import Link from 'next/link';
 import Image from 'next/image';
-import { commonStyles } from '../../../../styles/common';
+import { commonStyles, afacad, geologica } from '../../../../styles/common';
 
 const HeroSection = () => {
   return (
-    <main className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden text-white px-4 sm:px-6">
+    <main className={`pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden text-white px-4 sm:px-6 ${afacad.className} text-lg`}>
       {/* Abstract background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
@@ -16,13 +16,13 @@ const HeroSection = () => {
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto relative z-10`}>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-3/5 text-center md:text-left mb-8 md:mb-0">
-            <h1 className="text-[36px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-[#f23665] leading-tight">
-              Cosdata HNSW
+            <h1 className={`text-[36px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-[#f23665] leading-tight ${geologica.className}`}>
+              Cosdata OSS
             </h1>
-            <h2 className="text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2">
+            <h2 className={`text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2 ${geologica.className}`}>
               High-Performance Vector Database
             </h2>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
+            <p className={`mt-4 sm:mt-6 md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0 ${commonStyles.paragraph}`} style={{ fontSize: '1.4rem' }}>
               Industry-leading performance with up to 1,770+ queries per second on a single node. Combines hybrid search capabilities with unmatched scalability and precision for enterprise-grade vector search at any scale.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
@@ -46,7 +46,7 @@ const HeroSection = () => {
             <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] bg-white bg-opacity-10 rounded-lg shadow-lg backdrop-blur-sm border border-gray-700">
               <Image 
                 src="/svgs/performance.svg" 
-                alt="HNSW Graph Visualization" 
+                alt="OSS Vector Database Visualization" 
                 fill 
                 className="object-contain p-4" 
                 priority

@@ -1,28 +1,28 @@
 "use client";
 import Link from 'next/link';
-import { commonStyles } from '../../../../styles/common';
+import { commonStyles, afacad, geologica } from '../../../../styles/common';
 
 const HeroSection = () => {
   return (
-    <main className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-950 via-[#564cb8] to-gray-950 relative overflow-hidden text-white px-4 sm:px-6">
+    <main className={`pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-900 via-[#9a1f3d] to-[#6d162c] relative overflow-hidden text-white px-4 sm:px-6 ${afacad.className} text-lg`}>
       {/* Abstract background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#847CFC] rounded-full opacity-15 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-24 w-64 sm:w-80 h-64 sm:h-80 bg-[#847CFC] rounded-full opacity-15 blur-3xl"></div>
-        <div className="absolute -bottom-24 right-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-indigo-600 rounded-full opacity-15 blur-3xl"></div>
+        <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#F23665] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute top-1/2 -left-24 w-64 sm:w-80 h-64 sm:h-80 bg-[#d92d59] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -bottom-24 right-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-[#ff7096] rounded-full opacity-10 blur-3xl"></div>
       </div>
       
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto relative z-10`}>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-3/5 text-center md:text-left mb-8 md:mb-0">
-            <h1 className="text-[36px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-[#f23665] leading-tight">
+            <h1 className={`text-[36px] sm:text-[42px] md:text-[56px] lg:text-[72px] font-bold text-white leading-tight ${geologica.className}`}>
               Cosdata Serverless
             </h1>
-            <h2 className="text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2">
+            <h2 className={`text-[22px] sm:text-[25px] md:text-[42px] lg:text-[48px] font-bold text-white mt-2 ${geologica.className}`}>
               Infinitely Scalable Vector Database
             </h2>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto md:mx-0">
-            Cosdata Serverless delivers unmatched scalability with zero operational overhead. Our CHANNI technology enables lightning-fast hybrid search through efficient memory clustering and optimized graph navigation. Experience superior performance with adaptive scaling and pay only for what you use.
+            <p className={`mt-4 sm:mt-6 text-white max-w-2xl mx-auto md:mx-0 ${commonStyles.paragraph}`} style={{ fontSize: '1.4rem' }}>
+            Cosdata Serverless delivers unmatched scalability with zero overhead. Our CHANNI technology enables lightning-fast hybrid search through efficient memory clustering and optimized graph navigation. Experience superior performance with adaptive scaling and pay only for what you use.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
               <button
@@ -30,7 +30,7 @@ const HeroSection = () => {
                   const event = new CustomEvent('openEarlyAccessModal');
                   window.dispatchEvent(event);
                 }}
-                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-[#f23665] hover:bg-[#d92d5c] transition-colors duration-300"
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-gradient-to-r from-[#0055c8] to-[#0077ff] hover:from-[#0044a8] hover:to-[#0066e6] transition-all duration-300"
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
@@ -38,7 +38,7 @@ const HeroSection = () => {
                 Get Early Access
               </button>
               <Link href="/tech/channi-paper" 
-                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-md text-gray-900 bg-white hover:bg-gray-100 transition-colors duration-300">
+                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-gray-300 text-sm sm:text-base font-medium rounded-md shadow-md text-white bg-transparent hover:bg-white/10 transition-colors duration-300">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
@@ -55,12 +55,12 @@ const HeroSection = () => {
                   <circle cx="250" cy="250" r="18" fill="white" opacity="0.9" />
                   
                   {/* Cluster nodes - larger and colorful */}
-                  <circle cx="150" cy="120" r="28" fill="#9061F9" opacity="0.8" />
-                  <circle cx="350" cy="120" r="28" fill="#6366F1" opacity="0.8" />
+                  <circle cx="150" cy="120" r="28" fill="#F23665" opacity="0.8" />
+                  <circle cx="350" cy="120" r="28" fill="#ff7096" opacity="0.8" />
                   <circle cx="400" cy="250" r="28" fill="#F472B6" opacity="0.8" />
-                  <circle cx="350" cy="380" r="28" fill="#4F46E5" opacity="0.8" />
-                  <circle cx="150" cy="380" r="28" fill="#8B5CF6" opacity="0.8" />
-                  <circle cx="100" cy="250" r="28" fill="#EC4899" opacity="0.8" />
+                  <circle cx="350" cy="380" r="28" fill="#d92d59" opacity="0.8" />
+                  <circle cx="150" cy="380" r="28" fill="#ff7096" opacity="0.8" />
+                  <circle cx="100" cy="250" r="28" fill="#F23665" opacity="0.8" />
                   
                   {/* Secondary nodes */}
                   <circle cx="200" cy="180" r="14" fill="white" opacity="0.7" />

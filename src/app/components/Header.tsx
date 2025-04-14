@@ -128,9 +128,8 @@ export default function Header() {
               </button>
               <div className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ${isProductsMenuOpen || 'opacity-0 invisible'} group-hover:opacity-100 group-hover:visible`}>
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="products-menu">
-                  <Link href="/products/cosdata-hnsw" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Cosdata HNSW</Link>
+                  <Link href="/products/cosdata-oss" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Cosdata OSS</Link>
                   <Link href="/products/cosdata-serverless" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Cosdata Serverless</Link>
-                  <Link href="/products/structured-search" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Structured Search</Link>
                 </div>
               </div>
             </div>
@@ -235,9 +234,8 @@ export default function Header() {
               </button>
               {isProductsMenuOpen && (
                 <div className="ml-4 mt-2 space-y-2">
-                  <Link href="/products/cosdata-hnsw" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Cosdata HNSW</Link>
+                  <Link href="/products/cosdata-oss" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Cosdata OSS</Link>
                   <Link href="/products/cosdata-serverless" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Cosdata Serverless</Link>
-                  <Link href="/products/structured-search" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Structured Search</Link>
                 </div>
               )}
             </div>
