@@ -53,7 +53,7 @@ export default function BenchmarksSection() {
           {/* Column 1: Vector Search */}
           <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
             <h3 className={`text-xl sm:text-2xl font-bold mb-4 text-[#0055c8] ${geologica.className}`}>
-              Vector Search Performance
+              Dense Vector Search Benchmark Highlights
             </h3>
             <div className={`prose prose-lg max-w-none ${afacad.className} mb-8`}>
               <p className="text-base sm:text-lg text-gray-700 mb-4">
@@ -66,34 +66,12 @@ export default function BenchmarksSection() {
                 <li>Consistent <strong className="text-[#3083FE]">{parseFloat(vectorBenchmarkData[0].precision) * 100}%</strong> precision across challenging search tasks</li>
               </ul>
             </div>
-
-            <div className="pt-6 border-t border-gray-200">
-              <h4 className={`text-lg sm:text-xl font-bold mb-4 text-center text-[#0055c8] ${geologica.className}`}>What Makes Cosdata Different</h4>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">Efficient HNSW</h5>
-                  <p className="text-sm text-gray-700">Optimized graph traversal</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">SIMD Acceleration</h5>
-                  <p className="text-sm text-gray-700">Hardware-accelerated distance</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">Memory Optimization</h5>
-                  <p className="text-sm text-gray-700">Improved cache efficiency</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">Smart Parallelization</h5>
-                  <p className="text-sm text-gray-700">Multi-threaded scaling</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Column 2: Full-Text Search */}
           <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200">
             <h3 className={`text-xl sm:text-2xl font-bold mb-4 text-[#0055c8] ${geologica.className}`}>
-              Full-Text Search Excellence
+              Full-Text Search Benchmark Highlights
             </h3>
             <div className={`prose prose-lg max-w-none ${afacad.className} mb-8`}>
               <p className="text-base sm:text-lg text-gray-700 mb-4">
@@ -105,42 +83,6 @@ export default function BenchmarksSection() {
                 <li><strong className="text-[#3083FE]">Lower latency</strong> at both p50 and p95 percentiles across all tested datasets</li>
                 <li>Similar recall and NDCG scores while delivering <strong className="text-[#3083FE]">superior performance</strong></li>
               </ul>
-            </div>
-
-            <div className="pt-6 border-t border-gray-200">
-              <h4 className={`text-lg sm:text-xl font-bold mb-4 text-center text-[#0055c8] ${geologica.className}`}>Dataset Performance</h4>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">MSMARCO</h5>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('msmarco', 'qps')} faster QPS</p>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('msmarco', 'insertionTime')} faster indexing</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">FEVER</h5>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('fever', 'qps')} faster QPS</p>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('fever', 'insertionTime')} faster indexing</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">SCIFACT</h5>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('scifact', 'qps')} faster QPS</p>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('scifact', 'insertionTime')} faster indexing</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">TREC-COVID</h5>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('trec-covid', 'qps')} faster QPS</p>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('trec-covid', 'insertionTime')} faster indexing</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">NQ</h5>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('nq', 'qps')} faster QPS</p>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('nq', 'insertionTime')} faster indexing</p>
-                </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center">
-                  <h5 className="font-semibold text-[#3083FE] mb-1">FIQA</h5>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('fiqa', 'qps')} faster QPS</p>
-                  <p className="text-sm text-gray-700">{calculateFTSSpeedup('fiqa', 'insertionTime')} faster indexing</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -81,50 +81,6 @@ export default function BenchmarksPage() {
             {/* Vector Search Benchmarks */}
             <VectorBenchmarkSection />
 
-            <h2 id="additional-configuration-data" className={`text-2xl sm:text-3xl font-bold mb-4 text-[#0055c8] scroll-mt-24 ${geologica.className}`}>
-              Additional Configuration Data
-            </h2>
-            
-            <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-3 ${afacad.className}`}>
-              We&apos;ve conducted additional benchmarks with different Cosdata HNSW configurations to demonstrate the flexibility and performance characteristics of our implementation:
-            </p>
-            <ul className={`list-disc pl-6 space-y-1.5 mb-6 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
-              <li><strong>Dataset:</strong> 1 million text embeddings (768 dimensions) from <a href="https://huggingface.co/datasets/Sreenath/million-text-embeddings" target="_blank" rel="noopener noreferrer" className="text-[#f23665] hover:text-[#d92d5c] font-medium">Hugging Face</a></li>
-              <li><strong>Hardware:</strong> x86 machine, 4C/8T, 32 GB RAM</li>
-              <li><strong>Metrics:</strong> Total insertion time, Average Recall@5, Queries Per Second (QPS)</li>
-            </ul>
-
-            <div className="overflow-x-auto mb-8">
-              <table className={`min-w-full border border-gray-200 ${afacad.className}`}>
-                <thead>
-                  <tr>
-                    <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">Configuration</th>
-                    <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">Indexing Time (seconds)</th>
-                    <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">Recall@5</th>
-                    <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">QPS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cosdataConfigData.map((config, index) => (
-                    <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="py-3 px-4 border-b">
-                        <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">{config.config}</code>
-                      </td>
-                      <td className="py-3 px-4 border-b">{config.indexingTime}</td>
-                      <td className="py-3 px-4 border-b">{config.recall}</td>
-                      <td className="py-3 px-4 border-b font-medium">
-                        {index === 3 ? <span className="text-green-600">{config.qps}</span> : config.qps}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            
-            <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-6 ${afacad.className}`}>
-              <strong>Key Observations:</strong> Lower <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction</code> and <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_search</code> values result in faster indexing times and higher QPS, while higher values provide better recall accuracy. The configuration with <code className="text-xs sm:text-sm bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded">ef_construction: 64, ef_search: 128</code> offers an excellent balance between speed and accuracy.
-            </p>
-
             {/* Full-Text Search Benchmarks */}
             <FTSBenchmarkSection />
 

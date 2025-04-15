@@ -8,6 +8,8 @@ import { commonStyles, geologica, afacad } from '@/app/styles/common';
 export default function VectorBenchmarkSection() {
   // Find Cosdata's entry
   const cosdataData = vectorBenchmarkData.find(item => item.name === "Cosdata");
+  // Format precision to two decimal places
+  const formattedPrecision = cosdataData ? parseFloat(cosdataData.precision).toFixed(2) : "0.00";
   // Calculate performance advantages
   const qpsAdvantages = vectorBenchmarkData
     .filter(item => item.name !== "Cosdata")
@@ -76,11 +78,11 @@ export default function VectorBenchmarkSection() {
             Query Performance
           </h3>
           <p className="text-base sm:text-lg text-gray-700 mb-4">
-            Cosdata achieves industry-leading query throughput of <strong>{cosdataData?.qps}+ QPS</strong>, outperforming:
+            Cosdata achieves industry-leading query throughput of <strong>{cosdataData?.qps}+ QPS</strong>, outperforming all competitors:
           </p>
           <ul className="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700 benchmark-list">
             {qpsAdvantages.map(item => (
-              <li key={item.name}><strong>{item.name}</strong>: {item.advantagePercent}% faster</li>
+              <li key={item.name}><strong>{item.advantagePercent}% faster</strong> than {item.name}</li>
             ))}
           </ul>
         </div>
@@ -94,33 +96,18 @@ export default function VectorBenchmarkSection() {
           </p>
           <ul className="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700 benchmark-list">
             <li>Significantly faster than Elastic Search ({Math.round((parseFloat(vectorBenchmarkData.find(item => item.name === "Elastic Search")?.indexingTime || "0") / parseFloat(cosdataData?.indexingTime || "1")) * 100) / 100}x faster indexing)</li>
-            <li>Maintains high precision of {cosdataData?.precision} across queries</li>
+            <li>Maintains high precision of {formattedPrecision} across queries</li>
             <li>Balanced performance profile optimized for production workloads</li>
           </ul>
         </div>
       </div>
 
-      {/* Benchmark Data/Table - MOVED BELOW PERFORMANCE HIGHLIGHTS */}
+      {/* Benchmark Data/Table */}
       <h2 id="vector-benchmark-data" className={`text-2xl sm:text-3xl font-bold mb-4 text-[#0055c8] scroll-mt-24 ${geologica.className}`}>
         Benchmark Data
       </h2>
       
-      <div className="mb-8">
-        <BenchmarkTable data={vectorBenchmarkData} />
-      </div>
-
-      <h3 className={`text-xl font-bold mb-3 text-gray-800 ${geologica.className}`}>
-        Engineering Insights
-      </h3>
-      <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
-        Cosdata&apos;s vector search performance advantages come from several key optimizations:
-      </p>
-      <ul className={`list-disc pl-6 space-y-2 mb-8 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
-        <li><strong>Efficient HNSW implementation</strong> with optimized graph construction and traversal</li>
-        <li><strong>SIMD-accelerated distance calculations</strong> for faster similarity comparisons</li>
-        <li><strong>Optimized memory management</strong> reducing overhead and improving cache efficiency</li>
-        <li><strong>Smart parallelization</strong> that scales effectively with available CPU cores</li>
-      </ul>
+      <BenchmarkTable data={vectorBenchmarkData} />
     </div>
   );
 } 

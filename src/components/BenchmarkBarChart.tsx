@@ -5,6 +5,7 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  LogarithmicScale,
   BarElement,
   Title,
   Tooltip,
@@ -15,6 +16,7 @@ import { Bar } from 'react-chartjs-2';
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  LogarithmicScale,
   BarElement,
   Title,
   Tooltip,
@@ -32,6 +34,7 @@ interface BenchmarkBarChartProps {
   higherIsBetter?: boolean;
   className?: string;
   maxValue?: number;
+  useLogScale?: boolean;
 }
 
 export default function BenchmarkBarChart({
@@ -40,13 +43,24 @@ export default function BenchmarkBarChart({
   labels,
   higherIsBetter = true,
   className = '',
-  maxValue
+  maxValue,
+  useLogScale = false
 }: BenchmarkBarChartProps) {
   const options = {
     responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         position: 'top' as const,
+        padding: 0,
+        labels: {
+          padding: 10,
+          boxWidth: 12,
+          boxHeight: 12
+        },
+        title: {
+          padding: 0
+        }
       },
       title: {
         display: true,
@@ -54,6 +68,10 @@ export default function BenchmarkBarChart({
         font: {
           size: 16,
           weight: 'bold' as const,
+        },
+        padding: {
+          top: 0,
+          bottom: 6,
         }
       },
       tooltip: {
@@ -67,7 +85,9 @@ export default function BenchmarkBarChart({
     },
     scales: {
       y: {
-        beginAtZero: true,
+        type: useLogScale ? 'logarithmic' as const : 'linear' as const,
+        beginAtZero: !useLogScale,
+        min: useLogScale ? 1 : 0, // Log scale can't handle 0
         max: maxValue,
         ticks: {
           callback: function(value: any) {
@@ -86,7 +106,8 @@ export default function BenchmarkBarChart({
     },
     layout: {
       padding: {
-        bottom: 15
+        top: 0,
+        bottom: 10
       }
     },
   };
@@ -97,9 +118,10 @@ export default function BenchmarkBarChart({
   };
 
   return (
-    <div className={`bg-white p-4 rounded-lg shadow ${className}`}>
-      <div className="mb-2 text-xs text-gray-500 italic">
+    <div className={`bg-white p-4 pt-2 rounded-lg shadow ${className} relative`}>
+      <div className="absolute top-1 left-3 text-xs text-gray-500 italic z-10">
         {higherIsBetter ? '(higher is better)' : '(lower is better)'}
+        {useLogScale && ' • Logarithmic scale'}
       </div>
       <Bar options={options} data={data} />
     </div>
