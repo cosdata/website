@@ -369,3 +369,26 @@ li{
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #0055c8;
 }
+
+/* Fix for bullet points in benchmarks */
+.benchmark-list {
+  list-style-type: none !important; /* Remove default bullets */
+}
+
+.benchmark-list li {
+  padding-left: 0 !important; /* Override the global li padding */
+  position: relative;
+  overflow: visible;
+}
+
+.benchmark-list li::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  position: absolute;
+  left: -15px;
+  top: 0.7em;
+}
