@@ -22,6 +22,16 @@ export default function VectorBenchmarkSection() {
         advantagePercent
       };
     });
+    
+  // Calculate indexing time advantage factors
+  const indexingTimeAdvantageFactor = cosdataData ? 
+    Math.round((parseFloat(vectorBenchmarkData.find(item => item.name === "Elastic Search")?.indexingTime || "0") / 
+    parseFloat(cosdataData.indexingTime || "1")) * 100) / 100 : 0;
+    
+  // Calculate QPS advantage factor (average)
+  const qpsAdvantageFactor = qpsAdvantages.length > 0 ? 
+    (qpsAdvantages.reduce((sum, item) => sum + parseFloat(item.advantagePercent), 0) / 
+    qpsAdvantages.length / 100 + 1).toFixed(1) : "0";
 
   return (
     <div className="mb-16">
@@ -67,43 +77,27 @@ export default function VectorBenchmarkSection() {
         <strong>Note:</strong> All benchmarks were conducted on identical hardware (8 vCPUs, 32GB RAM) with default configurations optimized for each database system. Each test was run 5 times and averaged to ensure consistency.
       </p>
 
-      {/* Performance highlights - MOVED ABOVE BENCHMARK DATA */}
+      {/* Performance highlights */}
       <h2 id="vector-performance-highlights" className={`text-2xl sm:text-3xl font-bold mb-4 text-[#0055c8] scroll-mt-24 ${geologica.className}`}>
         Performance Highlights
       </h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className={`bg-white p-6 rounded-lg border border-gray-200 shadow-sm ${afacad.className}`}>
-          <h3 className={`text-xl font-bold mb-3 text-[#3083FE] ${geologica.className}`}>
-            Query Performance
-          </h3>
-          <p className="text-base sm:text-lg text-gray-700 mb-4">
-            Cosdata achieves industry-leading query throughput of <strong>{cosdataData?.qps}+ QPS</strong>, outperforming all competitors:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700 benchmark-list">
-            {qpsAdvantages.map(item => (
-              <li key={item.name}><strong>{item.advantagePercent}% faster</strong> than {item.name}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <div className={`bg-white p-6 rounded-lg border border-gray-200 shadow-sm ${afacad.className}`}>
-          <h3 className={`text-xl font-bold mb-3 text-[#3083FE] ${geologica.className}`}>
-            Indexing Efficiency
-          </h3>
-          <p className="text-base sm:text-lg text-gray-700 mb-4">
-            Cosdata maintains competitive indexing times while delivering superior query performance:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-700 benchmark-list">
-            <li>Significantly faster than Elastic Search ({Math.round((parseFloat(vectorBenchmarkData.find(item => item.name === "Elastic Search")?.indexingTime || "0") / parseFloat(cosdataData?.indexingTime || "1")) * 100) / 100}x faster indexing)</li>
-            <li>Maintains high precision of {formattedPrecision} across queries</li>
-            <li>Balanced performance profile optimized for production workloads</li>
-          </ul>
-        </div>
+      <div className="mb-8">
+        <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
+          Cosdata demonstrates industry-leading performance across all key metrics:
+        </p>
+        <ul className={`list-disc pl-6 space-y-2 mb-6 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
+          <li>Industry-leading <strong className="text-[#3083FE]">{cosdataData?.qps}+ QPS</strong> on 1M record datasets with 1536-dimensional vectors</li>
+          {qpsAdvantages.map(item => (
+            <li key={item.name}><strong className="text-[#3083FE]">{item.advantagePercent}% faster</strong> than {item.name}</li>
+          ))}
+          <li>Consistent <strong className="text-[#3083FE]">{parseFloat(formattedPrecision) * 100}%</strong> precision across challenging search tasks</li>
+          <li>Significantly <strong className="text-[#3083FE]">faster indexing</strong> than Elastic Search while maintaining superior query performance</li>
+        </ul>
       </div>
-
-      {/* Benchmark Data/Table */}
-      <h2 id="vector-benchmark-data" className={`text-2xl sm:text-3xl font-bold mb-4 text-[#0055c8] scroll-mt-24 ${geologica.className}`}>
+      
+      {/* Benchmark Data table */}
+      <h2 id="vector-benchmark-data" className={`text-2xl sm:text-3xl font-bold mb-6 text-[#0055c8] scroll-mt-24 ${geologica.className}`}>
         Benchmark Data
       </h2>
       

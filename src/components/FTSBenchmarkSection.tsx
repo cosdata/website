@@ -19,25 +19,18 @@ const formatBenchmarkData = (data: any[]) => {
   }));
 };
 
-type ComparisonMetric = 'qps' | 'insertionTime' | 'p50Latency' | 'p95Latency' | 'recall' | 'ndcg';
+type ComparisonMetric = 'qps' | 'insertionTime' | 'p50Latency' | 'p95Latency' | 'ndcg';
 
 const metricOptions: {id: ComparisonMetric, label: string, higherIsBetter: boolean, title: string}[] = [
-  { id: 'qps', label: 'Queries Per Second (QPS)', higherIsBetter: true, title: 'Queries Per Second (QPS)' },
+  { id: 'qps', label: 'QPS', higherIsBetter: true, title: 'Queries Per Second (QPS)' },
   { id: 'insertionTime', label: 'Insertion Time', higherIsBetter: false, title: 'Insertion Time (seconds)' },
   { id: 'p50Latency', label: 'p50 Latency', higherIsBetter: false, title: 'p50 Latency (ms)' },
   { id: 'p95Latency', label: 'p95 Latency', higherIsBetter: false, title: 'p95 Latency (ms)' },
-  { id: 'recall', label: 'Recall@10', higherIsBetter: true, title: 'Recall@10' },
   { id: 'ndcg', label: 'NDCG@10', higherIsBetter: true, title: 'NDCG@10' }
 ];
 
 // Dataset categories
 const datasetCategories = [
-  { 
-    id: 'all', 
-    label: 'All Datasets', 
-    datasets: ['arguana', 'climate-fever', 'fever', 'fiqa', 'msmarco', 'nq', 'quora', 'scidocs', 'scifact', 'trec-covid', 'webis-touche2020'],
-    description: 'All available benchmark datasets'
-  },
   { 
     id: 'small_medium', 
     label: 'Small Datasets (<500K documents)', 
@@ -76,8 +69,6 @@ const getTakeaway = (metric: ComparisonMetric, categoryId: string, averageSpeedu
     case 'p50Latency':
     case 'p95Latency':
       return `Cosdata provides ${averageSpeedup.toFixed(1)}x lower ${metric === 'p50Latency' ? 'median' : '95th percentile'} latency across ${categoryLabel}.`;
-    case 'recall':
-      return `Cosdata maintains competitive recall scores across ${categoryLabel} while delivering superior performance.`;
     case 'ndcg':
       return `Cosdata achieves similar ranking quality (NDCG) to ElasticSearch across ${categoryLabel}.`;
     default:
@@ -92,7 +83,7 @@ export default function FTSBenchmarkSection() {
   // Sort datasets alphabetically
   const sortedDatasets = [...allDatasets].sort();
   
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('small_medium');
   const [selectedMetric, setSelectedMetric] = useState<ComparisonMetric>('qps');
 
   // Format benchmark data with latency
@@ -153,14 +144,6 @@ export default function FTSBenchmarkSection() {
             total += elasticsearchValue / cosdataValue; // Invert for "lower is better" metrics
             count++;
           }
-        } else if (selectedMetric === 'recall') {
-          // For recall, we just look at the relative difference
-          cosdataValue = parseFloat(cosdataItem.recall);
-          elasticsearchValue = parseFloat(elasticsearchItem.recall);
-          if (cosdataValue > 0 && elasticsearchValue > 0) {
-            total += cosdataValue / elasticsearchValue;
-            count++;
-          }
         } else if (selectedMetric === 'ndcg') {
           // For NDCG, we just look at the relative difference
           cosdataValue = parseFloat(cosdataItem.ndcg);
@@ -206,7 +189,7 @@ export default function FTSBenchmarkSection() {
       </h2>
       <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
         Our full-text search benchmarks were conducted using the BEIR benchmark suite, which provides a diverse set of information retrieval datasets.
-        All benchmarks were run on identical hardware configurations to ensure fair comparison.
+        All benchmarks were run on identical hardware configurations to ensure fair comparison. Cosdata&apos;s custom BM25 implementation was used for these benchmarks, showcasing our optimized approach to lexical search.
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -214,7 +197,6 @@ export default function FTSBenchmarkSection() {
           <h3 className={`text-lg font-semibold mb-2 text-gray-800 ${geologica.className}`}>Metrics</h3>
           <ul className={`list-disc pl-6 space-y-1 mb-4 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
             <li><strong>QPS:</strong> Queries per second (higher is better)</li>
-            <li><strong>Recall@10:</strong> Proportion of relevant documents in top 10 results</li>
             <li><strong>NDCG@10:</strong> Normalized Discounted Cumulative Gain at 10 results</li>
             <li><strong>Latency:</strong> Response time at p50 (median) and p95 percentiles (lower is better)</li>
             <li><strong>Insertion Time:</strong> Time taken to index the entire corpus</li>
@@ -244,8 +226,8 @@ export default function FTSBenchmarkSection() {
         Performance Highlights
       </h2>
       <ul className={`list-disc pl-6 space-y-2 mb-8 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
-        <li>Cosdata achieves up to <strong className="text-[#3083FE]">{Math.round(speedupRatios[0]?.ratio || 0)}x faster QPS</strong> than ElasticSearch on the {speedupRatios[0]?.dataset} dataset</li>
-        <li>Cosdata maintains similar recall and NDCG scores to ElasticSearch while delivering superior performance</li>
+        <li>Cosdata&apos;s custom BM25 implementation achieves up to <strong className="text-[#3083FE]">{Math.round(speedupRatios[0]?.ratio || 0)}x faster QPS</strong> than ElasticSearch on the {speedupRatios[0]?.dataset} dataset, with <strong className="text-[#3083FE]">~{Math.round(averageSpeedup)}x average improvement</strong> across all datasets</li>
+        <li>Cosdata maintains similar ranking quality (NDCG) to ElasticSearch while delivering superior performance</li>
         <li>Index creation is <strong className="text-[#3083FE]">significantly faster</strong> with Cosdata, up to 12x faster on large datasets</li>
         <li>Cosdata shows <strong className="text-[#3083FE]">lower latency</strong> at both p50 and p95 percentiles across all tested datasets</li>
       </ul>
@@ -268,19 +250,6 @@ export default function FTSBenchmarkSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div>
                 {/* First column of dataset categories */}
-                <div className="flex items-center mb-2">
-                  <input
-                    type="radio"
-                    id={`category-all`}
-                    name="datasetCategory"
-                    className="mr-2 h-4 w-4 text-[#3083FE] focus:ring-[#3083FE]"
-                    checked={selectedCategory === 'all'}
-                    onChange={() => setSelectedCategory('all')}
-                  />
-                  <label htmlFor={`category-all`} className="text-sm text-gray-700 cursor-pointer">
-                    All Datasets
-                  </label>
-                </div>
                 <div className="flex items-center mb-2">
                   <input
                     type="radio"
@@ -343,7 +312,7 @@ export default function FTSBenchmarkSection() {
           {/* Metric Selection */}
           <div>
             <p className="text-base font-medium text-gray-600 mb-3">Comparison Metric:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               {metricOptions.map(metric => (
                 <div key={metric.id} className="flex items-center">
                   <input
@@ -383,7 +352,7 @@ export default function FTSBenchmarkSection() {
             title={currentMetric.title}
             labels={filteredCosdataData
               .sort((a, b) => a.dataset.localeCompare(b.dataset))
-              .map(d => d.dataset)}
+              .map(d => `${d.dataset} (${d.corpusSize.toLocaleString()})`)}
             datasets={[
               {
                 label: "Cosdata",
@@ -393,7 +362,6 @@ export default function FTSBenchmarkSection() {
                   .map(d => 
                     selectedMetric === 'qps' ? parseFloat(d.formattedQps) :
                     selectedMetric === 'insertionTime' ? parseFloat(d.formattedInsertionTime) :
-                    selectedMetric === 'recall' ? parseFloat(d.formattedRecall) :
                     selectedMetric === 'ndcg' ? parseFloat(d.formattedNdcg) :
                     selectedMetric === 'p50Latency' ? d.p50Latency :
                     d.p95Latency
@@ -407,7 +375,6 @@ export default function FTSBenchmarkSection() {
                   .map(d => 
                     selectedMetric === 'qps' ? parseFloat(d.formattedQps) :
                     selectedMetric === 'insertionTime' ? parseFloat(d.formattedInsertionTime) :
-                    selectedMetric === 'recall' ? parseFloat(d.formattedRecall) :
                     selectedMetric === 'ndcg' ? parseFloat(d.formattedNdcg) :
                     selectedMetric === 'p50Latency' ? d.p50Latency :
                     d.p95Latency
@@ -432,7 +399,6 @@ export default function FTSBenchmarkSection() {
               <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">System</th>
               <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">Insertion Time (seconds)</th>
               <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">QPS</th>
-              <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">Recall@10</th>
               <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">NDCG@10</th>
               <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">p50 Latency (ms)</th>
               <th className="py-3 px-4 text-left text-sm font-semibold bg-gray-100 border-b">p95 Latency (ms)</th>
@@ -453,7 +419,6 @@ export default function FTSBenchmarkSection() {
                   <td className="py-2 px-4 border-b font-medium">Cosdata</td>
                   <td className="py-2 px-4 border-b">{cosdataItem.formattedInsertionTime}</td>
                   <td className="py-2 px-4 border-b text-green-600 font-medium">{cosdataItem.formattedQps}</td>
-                  <td className="py-2 px-4 border-b">{cosdataItem.formattedRecall}</td>
                   <td className="py-2 px-4 border-b">{cosdataItem.formattedNdcg}</td>
                   <td className="py-2 px-4 border-b">{cosdataItem.p50Latency}</td>
                   <td className="py-2 px-4 border-b">{cosdataItem.p95Latency}</td>
@@ -462,7 +427,6 @@ export default function FTSBenchmarkSection() {
                   <td className="py-2 px-4 border-b">ElasticSearch</td>
                   <td className="py-2 px-4 border-b">{elasticsearchItem.formattedInsertionTime}</td>
                   <td className="py-2 px-4 border-b">{elasticsearchItem.formattedQps}</td>
-                  <td className="py-2 px-4 border-b">{elasticsearchItem.formattedRecall}</td>
                   <td className="py-2 px-4 border-b">{elasticsearchItem.formattedNdcg}</td>
                   <td className="py-2 px-4 border-b">{elasticsearchItem.p50Latency}</td>
                   <td className="py-2 px-4 border-b">{elasticsearchItem.p95Latency}</td>
@@ -474,4 +438,4 @@ export default function FTSBenchmarkSection() {
       </div>
     </div>
   );
-} 
+}

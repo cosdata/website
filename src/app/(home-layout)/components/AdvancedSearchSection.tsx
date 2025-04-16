@@ -25,7 +25,7 @@ export default function AdvancedSearchSection() {
                 <span className='text-[#77ABFF] mr-1 text-xl'>▲</span>
                 Lexical Search (Sparse Vector):
               </strong>{" "}
-              We use an Inverted Index for sparse vector searches, ensuring efficient and accurate keyword matching, even in large-scale datasets—ideal for precise text queries.
+              We use an Inverted Index with our custom BM25 implementation for sparse vector searches, ensuring efficient and accurate keyword matching, even in large-scale datasets—ideal for precise text queries.
             </li>
             <li>
               <strong className="text-xl font-bold">

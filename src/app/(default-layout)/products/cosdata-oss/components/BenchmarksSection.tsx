@@ -75,13 +75,13 @@ export default function BenchmarksSection() {
             </h3>
             <div className={`prose prose-lg max-w-none ${afacad.className} mb-8`}>
               <p className="text-base sm:text-lg text-gray-700 mb-4">
-                Compared to ElasticSearch across multiple datasets, Cosdata delivers:
+                Compared to ElasticSearch across multiple datasets, Cosdata&apos;s custom BM25 implementation delivers:
               </p>
               <ul className="list-disc pl-6 space-y-1.5 mb-4 text-base sm:text-lg text-gray-700 benchmark-list">
                 <li>Up to <strong className="text-[#3083FE]">16x higher QPS</strong> than ElasticSearch on comparable datasets</li>
                 <li><strong className="text-[#3083FE]">Significantly faster indexing</strong>, up to 12x faster on large datasets</li>
                 <li><strong className="text-[#3083FE]">Lower latency</strong> at both p50 and p95 percentiles across all tested datasets</li>
-                <li>Similar recall and NDCG scores while delivering <strong className="text-[#3083FE]">superior performance</strong></li>
+                <li>Maintains similar recall and NDCG scores while <strong className="text-[#3083FE]">delivering superior performance</strong></li>
               </ul>
             </div>
           </div>

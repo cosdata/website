@@ -35,6 +35,7 @@ interface BenchmarkBarChartProps {
   className?: string;
   maxValue?: number;
   useLogScale?: boolean;
+  corpusSizes?: number[];
 }
 
 export default function BenchmarkBarChart({
@@ -44,7 +45,8 @@ export default function BenchmarkBarChart({
   higherIsBetter = true,
   className = '',
   maxValue,
-  useLogScale = false
+  useLogScale = false,
+  corpusSizes = []
 }: BenchmarkBarChartProps) {
   const options = {
     responsive: true,
@@ -79,6 +81,15 @@ export default function BenchmarkBarChart({
           label: function(context: any) {
             const value = context.parsed.y;
             return `${context.dataset.label}: ${value.toLocaleString()}`;
+          },
+          footer: function(tooltipItems: any[]) {
+            if (corpusSizes && corpusSizes.length > 0) {
+              const index = tooltipItems[0].dataIndex;
+              if (corpusSizes[index]) {
+                return `Corpus size: ${corpusSizes[index].toLocaleString()} documents`;
+              }
+            }
+            return '';
           }
         }
       }
@@ -124,6 +135,9 @@ export default function BenchmarkBarChart({
         {useLogScale && ' • Logarithmic scale'}
       </div>
       <Bar options={options} data={data} />
+      <div className="text-xs text-gray-500 text-center pb-2">
+        *Dataset labels include corpus size in documents
+      </div>
     </div>
   );
 } 

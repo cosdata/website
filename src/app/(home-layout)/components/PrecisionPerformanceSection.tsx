@@ -16,7 +16,7 @@ export default function PrecisionPerformanceSection() {
       title: "Optimized Indexing",
       points: [
         "Dense Vector Index: Achieve high-efficiency indexing using our optimized HNSW algorithm for precise search results.",
-        "Sparse Vector Index: Designed for SPLADE-generated sparse vectors, our system outperforms traditional BM25 indices for more accurate indexing.",
+        "Sparse Vector Index: Supporting SPLADE-generated sparse vectors alongside our custom BM25 implementation for comprehensive lexical search capabilities.",
       ],
       image: "/svgs/indexing.svg",
     },
