@@ -15,7 +15,10 @@ type BlogContentProps = {
 export default function BlogContent({ content }: BlogContentProps) {
   // Check if content is in Strapi Blocks format (array)
   const isBlocksFormat = Array.isArray(content);
-
+  
+  // Debug log content structure
+  console.log('Blog content type:', isBlocksFormat ? 'Strapi Blocks' : 'Markdown');
+  
   // If content is in Strapi Blocks format, use BlocksRenderer
   if (isBlocksFormat) {
     return (
@@ -71,23 +74,23 @@ export default function BlogContent({ content }: BlogContentProps) {
               </code>
             </pre>
           ),
-          image: ({ image }) => (
-            <figure className="mb-8">
-              <div className="relative aspect-[2/1]">
-                <Image 
-                  src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}`} 
-                  alt={image.alternativeText || ''} 
-                  fill
-                  className="object-cover rounded-lg shadow-md"
-                />
-              </div>
-              {image.alternativeText && (
-                <figcaption className="mt-2 text-center text-sm text-gray-600 italic">
-                  {image.alternativeText}
-                </figcaption>
-              )}
-            </figure>
-          ),
+          image: ({ image }) => {
+            // Debug log image object structure
+            console.log('Strapi image data:', JSON.stringify(image, null, 2));
+            
+            return (
+              <figure className="mb-8">
+                <div className="relative aspect-[2/1]">
+                  <Image 
+                    src={image.url.startsWith('http') ? image.url : `${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}`} 
+                    alt={image.alternativeText || ''} 
+                    fill
+                    className="object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              </figure>
+            );
+          },
           link: ({ children, url }) => (
             <Link 
               href={url} 
@@ -208,22 +211,22 @@ export default function BlogContent({ content }: BlogContentProps) {
             <code className={`bg-gray-100 px-2 py-1 rounded text-sm sm:text-base font-mono text-[#374151]`} {...props} />
           );
         },
-        img: ({ node, ...props }) => (
-          <figure className="mb-8">
-            <div className="relative aspect-[2/1]">
-              <img
-                className="rounded-lg shadow-md object-cover"
-                {...props}
-                alt={props.alt || ''}
-              />
-            </div>
-            {props.alt && (
-              <figcaption className="mt-2 text-center text-sm text-gray-600 italic">
-                {props.alt}
-              </figcaption>
-            )}
-          </figure>
-        ),
+        img: ({ node, ...props }) => {
+          // Debug log markdown image props
+          console.log('Rendering markdown image with props:', props);
+          
+          return (
+            <figure className="mb-8">
+              <div className="relative aspect-[2/1]">
+                <img
+                  className="rounded-lg shadow-md object-cover"
+                  {...props}
+                  alt={props.alt || ''}
+                />
+              </div>
+            </figure>
+          );
+        },
       }}
     >
       {content}

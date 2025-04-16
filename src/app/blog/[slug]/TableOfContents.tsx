@@ -48,14 +48,24 @@ export default function TableOfContents() {
     useEffect(() => {
         // Find all h1, h2, h3, h4, h5, and h6 elements in the article
         const elements = Array.from(document.querySelectorAll('article h1, article h2, article h3, article h4, article h5, article h6'));
-        const headingElements = elements.map((element) => ({
+        
+        // Filter out the first H1 (main title)
+        const filteredElements = elements.filter((element, index, array) => {
+            // Skip if this is the first H1 in the document
+            if (element.tagName === 'H1' && array.findIndex(el => el.tagName === 'H1') === index) {
+                return false;
+            }
+            return true;
+        });
+        
+        const headingElements = filteredElements.map((element) => ({
             id: element.id || `heading-${Math.random().toString(36).substr(2, 9)}`,
             text: element.textContent || '',
             level: parseInt(element.tagName.charAt(1)),
         }));
 
         // Add IDs to elements that don't have them
-        elements.forEach((element, index) => {
+        filteredElements.forEach((element, index) => {
             if (!element.id) {
                 element.id = headingElements[index].id;
             }
@@ -78,7 +88,7 @@ export default function TableOfContents() {
             }
         );
 
-        elements.forEach((element) => observer.observe(element));
+        filteredElements.forEach((element) => observer.observe(element));
 
         return () => observer.disconnect();
     }, []);

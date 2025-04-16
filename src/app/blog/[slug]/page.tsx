@@ -6,6 +6,7 @@ import SocialShare from './SocialShare';
 import { format } from 'date-fns';
 import axios from 'axios';
 import { commonStyles, afacad, geologica } from '../../styles/common';
+import { getImageUrl, getFullImageUrl } from '../../utils/imageUtils';
 
 // Enable revalidation every hour with ISR
 export const revalidate = 3600;
@@ -125,21 +126,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
     const readingTime = article.attributes.read_time || 5; // Default to 5 minutes if not set
 
-    const getFullImageUrl = (url: string) => {
-      if (!url) return '/placeholder-image.jpg';
-      if (url.startsWith('http')) return url;
-      return `${strapiUrl}${url}`;
-    };
-
     // Helper function to safely access nested properties
-    const getImageUrl = (imageField: any) => {
-      if (!imageField) return null;
-      if (!imageField.data) return null;
-      if (!imageField.data.attributes) return null;
-      return imageField.data.attributes.url;
-    };
-
-    // Get author information safely
     const authorName = typeof article.attributes.author === 'string' 
       ? article.attributes.author 
       : article.attributes.author?.name || 'Unknown Author';
@@ -189,16 +176,16 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             {/* Cover Image */}
             {article.attributes.cover_image && article.attributes.cover_image.data && (
               <div className="w-full mb-12">
-                <div className="relative w-full bg-white rounded-xl shadow-xl overflow-hidden">
-                  <Image
-                    src={getFullImageUrl(getImageUrl(article.attributes.cover_image))}
-                    alt={article.attributes.title}
-                    width={1200}
-                    height={630}
-                    className="w-full h-auto"
-                    priority
-                    style={{ objectFit: 'contain' }}
-                  />
+                <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src={getFullImageUrl(getImageUrl(article.attributes.cover_image))}
+                      alt={article.attributes.title}
+                      fill
+                      priority
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             )}
