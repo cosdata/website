@@ -7,12 +7,124 @@ import { format } from 'date-fns';
 import axios from 'axios';
 import { commonStyles, afacad, geologica } from '../../styles/common';
 import { getImageUrl, getFullImageUrl } from '../../utils/imageUtils';
+import type { Metadata } from 'next';
 
 // Enable revalidation every hour with ISR
 export const revalidate = 3600;
 
 // Enable dynamic routes - don't require static generation
 export const dynamicParams = true;
+
+// Metadata generation function
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  // Use environment variables for the base URLs
+  const baseUrl = process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3000' 
+    : (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.cosdata.io');
+  
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  
+  try {
+    // Fetch the article data
+    const strapiFetchUrl = `${strapiUrl}/api/articles?filters[slug][$eq]=${params.slug}&populate=*`;
+    const response = await fetch(strapiFetchUrl, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+      },
+      next: { revalidate: 3600 },
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Strapi fetch failed: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data.data || data.data.length === 0) {
+      return {
+        title: 'Blog Post Not Found',
+        description: 'The requested blog post could not be found.',
+      };
+    }
+    
+    // Extract article data
+    let article = data.data[0];
+    
+    // Handle article structure
+    if (!article.attributes) {
+      article = {
+        id: article.id,
+        attributes: {
+          title: article.title,
+          preview: article.preview,
+          slug: article.slug,
+          cover_image: article.cover_image ? {
+            data: {
+              attributes: {
+                url: article.cover_image.url || article.cover_image
+              }
+            }
+          } : article.cover ? {
+            data: {
+              attributes: {
+                url: article.cover.url || article.cover
+              }
+            }
+          } : null,
+        }
+      };
+    } else {
+      // Handle cover_image
+      if (!article.attributes.cover_image && article.attributes.cover && article.attributes.cover.data) {
+        article.attributes.cover_image = article.attributes.cover;
+      }
+    }
+    
+    // Extract needed metadata
+    const title = article.attributes.title;
+    const description = article.attributes.preview || 'Read this blog post on Cosdata.';
+    
+    // Get the cover image URL if available
+    let imageUrl = '/images/og-image.jpg'; // Default fallback image
+    if (article.attributes.cover_image && article.attributes.cover_image.data) {
+      imageUrl = getFullImageUrl(getImageUrl(article.attributes.cover_image));
+    }
+    
+    // Return the metadata object
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        url: `${baseUrl}/blog/${params.slug}`,
+        siteName: 'Cosdata',
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+        locale: 'en_US',
+        type: 'article',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [imageUrl],
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Blog Post',
+      description: 'Read our latest blog post on Cosdata.',
+    };
+  }
+}
 
 // Helper function to log timing
 function logTiming(label: string, startTime: number) {
