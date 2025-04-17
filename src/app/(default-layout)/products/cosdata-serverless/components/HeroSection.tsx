@@ -4,12 +4,12 @@ import { commonStyles, afacad, geologica } from '../../../../styles/common';
 
 const HeroSection = () => {
   return (
-    <main className={`pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-gray-900 via-[#9a1f3d] to-[#6d162c] relative overflow-hidden text-white px-4 sm:px-6 ${afacad.className} text-lg`}>
+    <main className={`pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-[#3F3F46] via-[#E03461] to-[#F23665] relative overflow-hidden text-white px-4 sm:px-6 ${afacad.className} text-lg`}>
       {/* Abstract background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#F23665] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-24 w-64 sm:w-80 h-64 sm:h-80 bg-[#d92d59] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-24 right-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-[#ff7096] rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#F23665] rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute top-1/2 -left-24 w-64 sm:w-80 h-64 sm:h-80 bg-[#F23665] rounded-full opacity-20 blur-3xl"></div>
+        <div className="absolute -bottom-24 right-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-[#ff7096] rounded-full opacity-20 blur-3xl"></div>
       </div>
       
       <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto relative z-10`}>
@@ -58,7 +58,7 @@ const HeroSection = () => {
                   <circle cx="150" cy="120" r="28" fill="#F23665" opacity="0.8" />
                   <circle cx="350" cy="120" r="28" fill="#ff7096" opacity="0.8" />
                   <circle cx="400" cy="250" r="28" fill="#F472B6" opacity="0.8" />
-                  <circle cx="350" cy="380" r="28" fill="#d92d59" opacity="0.8" />
+                  <circle cx="350" cy="380" r="28" fill="#F23665" opacity="0.8" />
                   <circle cx="150" cy="380" r="28" fill="#ff7096" opacity="0.8" />
                   <circle cx="100" cy="250" r="28" fill="#F23665" opacity="0.8" />
                   

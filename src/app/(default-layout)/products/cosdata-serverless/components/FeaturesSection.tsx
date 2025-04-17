@@ -9,7 +9,7 @@ export default function FeaturesSection() {
       description: "Scale from zero to billions of vectors without any infrastructure management. Our serverless architecture automatically handles capacity planning and scaling.",
       icon: (
         <svg className="w-10 h-10 sm:w-12 sm:h-12 text-[#f23665]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
+          <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd" />
         </svg>
       )
     },
@@ -68,36 +68,34 @@ export default function FeaturesSection() {
           Key Features
         </h2>
 
-        {/* Hero feature section - no box, just content and illustration */}
-        <div className="flex flex-col md:flex-row items-center mb-12 md:mb-16 lg:mb-24 gap-6 md:gap-8">
-          <div className="md:w-1/2 md:pr-6 lg:pr-12">
-            <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>
-              Serverless Vector Search
-            </h3>
-            <p className={`text-gray-700 text-base sm:text-lg mb-4 sm:mb-6 ${commonStyles.paragraph}`}>
-              Cosdata Serverless is a fully managed vector database service that eliminates the operational complexity of running vector search at scale. Built with our innovative CHANNI technology, it delivers exceptional performance with the simplicity of serverless computing.
-            </p>
-            <button
-              onClick={() => {
-                const event = new CustomEvent('openEarlyAccessModal');
-                window.dispatchEvent(event);
-              }}
-              className="inline-flex items-center text-[#f23665] font-medium hover:text-[#d92d5c] transition-colors text-sm sm:text-base"
-            >
-              Get early access
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-          <div className="md:w-1/2 mt-6 md:mt-0">
-            <div className="w-full h-[220px] sm:h-[250px] md:h-[300px] bg-gradient-to-br from-[#847CFC]/10 to-indigo-100 rounded-lg flex items-center justify-center p-4 sm:p-6">
-              <div className="text-center">
-                <svg className="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-[#847CFC] mb-3 sm:mb-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        {/* Hero feature section - full width with cloud icon */}
+        <div className="mb-12 md:mb-16 lg:mb-24 sm: px-20">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-3/4 pr-0 md:pr-8">
+              <h3 className={`text-xl sm:text-2xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>
+                Serverless Vector Search
+              </h3>
+              <p className={`text-gray-700 text-base sm:text-lg mb-4 sm:mb-6 ${commonStyles.paragraph}`}>
+                Cosdata Serverless is a fully managed vector database service that eliminates the operational complexity of running vector search at scale. Built with our innovative CHANNI technology, it delivers exceptional performance with the simplicity of serverless computing.
+              </p>
+              <button
+                onClick={() => {
+                  const event = new CustomEvent('openEarlyAccessModal');
+                  window.dispatchEvent(event);
+                }}
+                className="inline-flex items-center text-[#f23665] font-medium hover:text-[#d92d5c] transition-colors text-sm sm:text-base"
+              >
+                Get early access
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+            <div className="md:w-1/4 flex justify-center mt-6 md:mt-0">
+              <div className="h-24 w-24 sm:h-32 sm:w-32 text-[#F23665] flex items-center justify-center">
+                <svg className="w-full h-full" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
                 </svg>
-                <h4 className={`text-lg sm:text-xl font-bold text-[#0055c8] mb-2 ${geologica.className}`}>Serverless Architecture</h4>
-                <p className={`text-gray-600 text-sm sm:text-base ${commonStyles.paragraph}`}>Fully managed, auto-scaling vector database</p>
               </div>
             </div>
           </div>
