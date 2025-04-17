@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { ftsBenchmarkData } from '@/data/benchmarks';
 import BenchmarkBarChart from './BenchmarkBarChart';
 import { commonStyles, geologica, afacad } from '@/app/styles/common';
+import Link from 'next/link';
 
 // Format benchmark data with consistent decimal places
 const formatBenchmarkData = (data: any[]) => {
@@ -189,7 +190,11 @@ export default function FTSBenchmarkSection() {
       </h2>
       <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
         Our full-text search benchmarks were conducted using the BEIR benchmark suite, which provides a diverse set of information retrieval datasets.
-        All benchmarks were run on identical hardware configurations to ensure fair comparison. Cosdata&apos;s custom BM25 implementation was used for these benchmarks, showcasing our optimized approach to lexical search.
+        All benchmarks were run on identical hardware configurations to ensure fair comparison. Cosdata&apos;s custom BM25 implementation was used for these benchmarks, showcasing our optimized approach to lexical search.{' '}
+        <Link href="/blog/outpacing-elasticsearch-cosdata-bm25" className="text-[#0055c8] font-medium hover:underline">
+          Read our technical blog post
+        </Link>{' '}
+        to learn how our BM25 implementation outperforms ElasticSearch.
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
