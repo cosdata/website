@@ -6,10 +6,10 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { email, companyName, jobTitle, message } = body;
 
-    // Store in Postgres
+    // Store in Postgres - remove the message field from SQL query
     await sql`
-      INSERT INTO early_access_submissions (email, company_name, job_title, message)
-      VALUES (${email}, ${companyName}, ${jobTitle}, ${message})
+      INSERT INTO early_access_submissions (email, company_name, job_title)
+      VALUES (${email}, ${companyName}, ${jobTitle})
     `;
 
     // Only create MailerLite subscriber for early access requests (no message field)
