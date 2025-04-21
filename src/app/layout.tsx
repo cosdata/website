@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Script from 'next/script';
+import BodyWithAttributes from './components/BodyWithAttributes';
 
 export const metadata: Metadata = {
   title: "Cosdata - Next-gen Vector Database and Knowledge Graph Solution",
@@ -48,6 +49,7 @@ export const metadata: Metadata = {
   },
 };
 
+// Server component
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -69,13 +71,13 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>
+      <BodyWithAttributes>
         <Header />
         <div className="max-w-8xl mx-auto px-0 sm:px-0 lg:px-0">
           {children}
         </div>
         <Footer />
-      </body>
+      </BodyWithAttributes>
     </html>
   );
 }

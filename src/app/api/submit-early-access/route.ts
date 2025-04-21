@@ -6,20 +6,39 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { email, companyName, jobTitle, message } = body;
 
-    // Store in Postgres - remove the message field from SQL query
-    await sql`
-      INSERT INTO early_access_submissions (email, company_name, job_title)
-      VALUES (${email}, ${companyName}, ${jobTitle})
+    // Check if email already exists
+    const existingRecord = await sql`
+      SELECT * FROM early_access_submissions WHERE email = ${email}
     `;
+
+    if (existingRecord && existingRecord.rowCount && existingRecord.rowCount > 0) {
+      // Update existing record
+      await sql`
+        UPDATE early_access_submissions 
+        SET company_name = ${companyName}, job_title = ${jobTitle}, updated_at = NOW()
+        WHERE email = ${email}
+      `;
+    } else {
+      // Insert new record
+      await sql`
+        INSERT INTO early_access_submissions (email, company_name, job_title)
+        VALUES (${email}, ${companyName}, ${jobTitle})
+      `;
+    }
 
     // Only create MailerLite subscriber for early access requests (no message field)
     if (!message) {
-      const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle);
+      try {
+        const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle);
 
-      if (!mailerLiteResponse.ok) {
-        const errorData = await mailerLiteResponse.json();
-        console.error('MailerLite API error:', errorData);
-        throw new Error('Failed to create MailerLite subscriber');
+        if (!mailerLiteResponse.ok) {
+          // Log the error but don't fail the submission
+          const errorData = await mailerLiteResponse.json();
+          console.error('MailerLite API error:', errorData);
+        }
+      } catch (mailerError) {
+        // Log the error but don't fail the submission
+        console.error('MailerLite API exception:', mailerError);
       }
     }
 

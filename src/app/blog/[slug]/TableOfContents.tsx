@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { afacad } from '../../styles/common';
+import { slugify } from '../../utils/string';
 
 interface Heading {
     id: string;
@@ -46,11 +47,17 @@ export default function TableOfContents() {
     }, [tocElement, activeId]);
 
     useEffect(() => {
+        // This code only runs on the client side
         // Find all h1, h2, h3, h4, h5, and h6 elements in the article
         const elements = Array.from(document.querySelectorAll('article h1, article h2, article h3, article h4, article h5, article h6'));
         
-        // Filter out the first H1 (main title)
+        // Filter out the first H1 (main title) and elements with data-toc-exclude attribute
         const filteredElements = elements.filter((element, index, array) => {
+            // Skip if this element has data-toc-exclude attribute
+            if (element.hasAttribute('data-toc-exclude')) {
+                return false;
+            }
+            
             // Skip if this is the first H1 in the document
             if (element.tagName === 'H1' && array.findIndex(el => el.tagName === 'H1') === index) {
                 return false;
@@ -58,11 +65,16 @@ export default function TableOfContents() {
             return true;
         });
         
-        const headingElements = filteredElements.map((element) => ({
-            id: element.id || `heading-${Math.random().toString(36).substr(2, 9)}`,
-            text: element.textContent || '',
-            level: parseInt(element.tagName.charAt(1)),
-        }));
+        const headingElements = filteredElements.map((element) => {
+            const text = element.textContent || '';
+            // Generate consistent IDs based on text content instead of random values
+            const id = element.id || `heading-${slugify(text)}`;
+            return {
+                id,
+                text,
+                level: parseInt(element.tagName.charAt(1)),
+            };
+        });
 
         // Add IDs to elements that don't have them
         filteredElements.forEach((element, index) => {

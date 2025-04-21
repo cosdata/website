@@ -17,7 +17,7 @@ export default function SocialShare({ title }: SocialShareProps) {
 
     return (
         <div className="mt-12 mb-12 border-t border-gray-200 pt-8">
-            <h3 className="text-xl font-semibold mb-4">Share this article</h3>
+            <h3 className="text-xl font-semibold mb-4" data-toc-exclude>Share this article</h3>
             <div className="flex space-x-4">
                 <button
                     onClick={() => handleShare('twitter')}

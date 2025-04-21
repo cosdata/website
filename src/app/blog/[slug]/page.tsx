@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation';
 import BlogContent from './BlogContent';
 import TableOfContents from './TableOfContents';
 import SocialShare from './SocialShare';
+import CompactNewsletterCTA from '../CompactNewsletterCTA';
 import { format } from 'date-fns';
-import axios from 'axios';
 import { commonStyles, afacad, geologica } from '../../styles/common';
 import { getImageUrl, getFullImageUrl } from '../../utils/imageUtils';
 import type { Metadata } from 'next';
@@ -133,6 +133,41 @@ function logTiming(label: string, startTime: number) {
   return Date.now();
 }
 
+// Function to insert a CTA into Markdown content after a specific heading
+function insertCTAIntoMarkdown(content: string, headingPosition: number = 3): string {
+  if (typeof content !== 'string') {
+    console.warn('Content is not a string, cannot insert CTA');
+    return content;
+  }
+  
+  // Regular expression to match h1-h6 Markdown headings
+  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+  let headingCount = 0;
+  let lastIndex = 0;
+  let match;
+  
+  // Clone the content string
+  let result = content;
+  
+  // Find the position after the specified heading
+  while ((match = headingRegex.exec(content)) !== null) {
+    headingCount++;
+    
+    // After finding the target heading, insert the CTA
+    if (headingCount === headingPosition) {
+      lastIndex = match.index + match[0].length;
+      
+      // Insert CTA placeholder - we'll replace this with the actual component in BlogContent
+      const ctaPlaceholder = '\n\n<!-- NEWSLETTER_CTA_PLACEHOLDER -->\n\n';
+      result = content.substring(0, lastIndex) + ctaPlaceholder + content.substring(lastIndex);
+      break;
+    }
+  }
+  
+  console.log(`Found ${headingCount} headings in content, inserted CTA after heading ${headingPosition}`);
+  return result;
+}
+
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const startTime = Date.now();
   console.log(`[BlogPost][page] Starting to render post with slug: ${params.slug}`);
@@ -232,6 +267,19 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       }
     }
 
+    // Log the content structure to understand what format it's in
+    console.log('Content type:', typeof article.attributes.content);
+    console.log('Is array:', Array.isArray(article.attributes.content));
+    console.log('Content start:', typeof article.attributes.content === 'string' 
+      ? article.attributes.content.substring(0, 100) + '...' 
+      : 'Not a string');
+
+    // Process the content to insert the CTA at the server level
+    if (typeof article.attributes.content === 'string') {
+      article.attributes.content = insertCTAIntoMarkdown(article.attributes.content, 3);
+      console.log('CTA placeholder inserted into content');
+    }
+
     const formattedDate = article.attributes.publishedAt
       ? format(new Date(article.attributes.publishedAt), 'MMMM d, yyyy')
       : 'Date unavailable';
@@ -315,11 +363,18 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 prose-pre:bg-gray-900 prose-pre:text-gray-100
                 [&>*]:bg-transparent
               `}>
-                <BlogContent content={article.attributes.content} />
+                <BlogContent 
+                  content={article.attributes.content} 
+                />
+              </div>      
+              
+              {/* Newsletter CTA - Main */}
+              <div className="my-16 newsletter-main">
+                <CompactNewsletterCTA />
               </div>
 
               {/* Social Share Section */}
-              <SocialShare title={article.attributes.title} />
+              <SocialShare title={article.attributes.title} />        
 
               {/* Author Bio Section */}
               <footer className={`mb-12 p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-blue-100 shadow-sm ${afacad.className} text-lg`}>
