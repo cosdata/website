@@ -62,8 +62,11 @@ const FeaturedPost = ({ post, className, isFeatured = false }: FeaturedPostProps
                 <div className={afacad.className}>
                   <p className="font-medium text-[#374151]">{post.attributes.author}</p>
                   <div className="flex text-sm text-[#6b7280]">
-                    <time dateTime={post.attributes.publishedAt}>
-                      {new Date(post.attributes.publishedAt).toLocaleDateString('en-US', {
+                    <time dateTime={post.attributes.published_date || post.attributes.publishedAt}>
+                      {(post.attributes.published_date
+                        ? new Date(post.attributes.published_date)
+                        : new Date(post.attributes.publishedAt)
+                      ).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
@@ -128,7 +131,7 @@ const FeaturedPost = ({ post, className, isFeatured = false }: FeaturedPostProps
             <div>
               <p className="text-base font-medium text-[#374151]">{post.attributes.author}</p>
               <p className="text-sm text-[#6b7280]">
-                {new Date(post.attributes.publishedAt).toLocaleDateString('en-US', {
+                {new Date(post.attributes.published_date || post.attributes.publishedAt).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'
