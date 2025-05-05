@@ -43,6 +43,7 @@ function transformArticleData(articles: any[]) {
         publishedAt: article.publishedAt,
         createdAt: article.createdAt,
         updatedAt: article.updatedAt,
+        published_date: article.published_date,
         cover_image: article.cover_image ? {
           data: {
             attributes: {
@@ -122,7 +123,7 @@ export async function GET(request: Request) {
         'pagination[page]': page,
         'pagination[pageSize]': pageSize,
         'populate': '*',
-        'sort': 'publishedAt:desc',
+        'sort': 'published_date:desc',
       },
       headers: {
         Authorization: `Bearer ${strapiToken}`,

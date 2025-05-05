@@ -230,6 +230,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           publishedAt: article.publishedAt,
           createdAt: article.createdAt,
           updatedAt: article.updatedAt,
+          published_date: article.published_date,
           cover_image: article.cover_image ? {
             data: {
               attributes: {
@@ -266,22 +267,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         attributes.author = attributes.author.name || 'Unknown Author';
       }
     }
-
-    // Log the content structure to understand what format it's in
-    console.log('Content type:', typeof article.attributes.content);
-    console.log('Is array:', Array.isArray(article.attributes.content));
-    console.log('Content start:', typeof article.attributes.content === 'string' 
-      ? article.attributes.content.substring(0, 100) + '...' 
-      : 'Not a string');
-
     // Process the content to insert the CTA at the server level
     if (typeof article.attributes.content === 'string') {
       article.attributes.content = insertCTAIntoMarkdown(article.attributes.content, 3);
       console.log('CTA placeholder inserted into content');
     }
 
-    const formattedDate = article.attributes.publishedAt
-      ? format(new Date(article.attributes.publishedAt), 'MMMM d, yyyy')
+    const formattedDate = article.attributes.published_date
+      ? format(new Date(article.attributes.published_date), 'MMMM d, yyyy')
       : 'Date unavailable';
 
     const readingTime = article.attributes.read_time || 5; // Default to 5 minutes if not set
