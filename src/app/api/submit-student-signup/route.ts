@@ -4,7 +4,7 @@ import { sql } from '@vercel/postgres';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { email, companyName = '', jobTitle = '', studentForm = false } = body;
+    const { email, companyName = '', jobTitle = '' } = body;
 
     // Check if email already exists
     const existingRecord = await sql`
@@ -15,20 +15,20 @@ export async function POST(req: NextRequest) {
       // Update existing record
       await sql`
         UPDATE early_access_submissions 
-        SET company_name = ${companyName}, job_title = ${jobTitle}, updated_at = NOW(), student_form = ${studentForm}
+        SET company_name = ${companyName}, job_title = ${jobTitle}, updated_at = NOW()
         WHERE email = ${email}
       `;
     } else {
       // Insert new record
       await sql`
-        INSERT INTO early_access_submissions (email, company_name, job_title, student_form)
-        VALUES (${email}, ${companyName}, ${jobTitle}, ${studentForm})
+        INSERT INTO early_access_submissions (email, company_name, job_title)
+        VALUES (${email}, ${companyName}, ${jobTitle})
       `;
     }
 
-    // Tag as student form in MailerLite custom field if possible
+    // Add to MailerLite "Student_Form" group
     try {
-      const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle, studentForm);
+      const mailerLiteResponse = await createMailerLiteSubscriber(email, companyName, jobTitle);
       if (!mailerLiteResponse.ok) {
         // Log the error but don't fail the submission
         const errorData = await mailerLiteResponse.json();
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-async function createMailerLiteSubscriber(email: string, companyName: string, jobTitle: string, studentForm: boolean) {
+async function createMailerLiteSubscriber(email: string, companyName: string, jobTitle: string) {
   const apiKey = process.env.MAILERLITE_API_KEY;
   if (!apiKey) {
     throw new Error('MAILERLITE_API_KEY is not set');
@@ -54,14 +54,10 @@ async function createMailerLiteSubscriber(email: string, companyName: string, jo
 
   const url = 'https://connect.mailerlite.com/api/subscribers';
 
-  // Add a custom field for studentForm if supported by MailerLite
   const fields: Record<string, any> = {
     company: companyName,
     job_title: jobTitle,
   };
-  if (studentForm) {
-    fields.student_form = 'true'; // Use a string for MailerLite custom field
-  }
 
   const response = await fetch(url, {
     method: 'POST',
@@ -73,7 +69,7 @@ async function createMailerLiteSubscriber(email: string, companyName: string, jo
     body: JSON.stringify({
       email: email,
       fields,
-      groups: ["134010769999136177"] // Early access group
+      groups: ["154223260516484668"]
     })
   });
 
