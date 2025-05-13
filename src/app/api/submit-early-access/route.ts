@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       // Update existing record
       await sql`
         UPDATE early_access_submissions 
-        SET company_name = ${companyName}, job_title = ${jobTitle}, updated_at = NOW()
+        SET company_name = ${companyName}, job_title = ${jobTitle}
         WHERE email = ${email}
       `;
     } else {
@@ -24,6 +24,21 @@ export async function POST(req: NextRequest) {
         INSERT INTO early_access_submissions (email, company_name, job_title)
         VALUES (${email}, ${companyName}, ${jobTitle})
       `;
+    }
+
+    // Send to Google Apps Script Webhook (Google Sheets + Email)
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbxcFYDirgPLL59jsLTIUDpniwiVMDZm8b0OUfY41XOZcljx9Kgk9TSg8_POVr4ZNUdHFQ/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          companyName,
+          jobTitle
+        })
+      });
+    } catch (gsError) {
+      console.error('Error sending to Google Apps Script webhook:', gsError);
     }
 
     // Only create MailerLite subscriber for early access requests (no message field)

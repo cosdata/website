@@ -100,7 +100,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
-              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2 text-lg">Email *</label>
+              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2 text-lg text-left">Email *</label>
               <input
                 type="email"
                 id="email"
@@ -111,7 +111,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
               />
             </div>
             <div className="mb-6">
-              <label htmlFor="companyName" className="block text-gray-700 font-semibold mb-2 text-lg">Company Name</label>
+              <label htmlFor="companyName" className="block text-gray-700 font-semibold mb-2 text-lg text-left">Company Name</label>
               <input
                 type="text"
                 id="companyName"
@@ -121,7 +121,7 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
               />
             </div>
             <div className="mb-8">
-              <label htmlFor="jobTitle" className="block text-gray-700 font-semibold mb-2 text-lg">Job Title</label>
+              <label htmlFor="jobTitle" className="block text-gray-700 font-semibold mb-2 text-lg text-left">Job Title</label>
               <select
                 id="jobTitle"
                 value={jobTitle}

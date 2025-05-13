@@ -27,8 +27,8 @@ export const noto_sans_mono = Noto_Sans_Mono({ weight: ['400', '500', '600', '70
 export const geologica = Geologica({ weight: ['400', '500', '600', '700'], subsets: ["latin"], display: 'swap' })
 
 const dimensions = [768, 1024, 1536, 3072]
-const scaleMarkers = ['10k', '100k', '1m', '10m', '100m', '1b']
-const scaleValues = [10000, 100000, 1000000, 10000000, 100000000, 1000000000]
+const scaleMarkers = ['10k', '100k', '1m', '10m', '100m', '1b', '10b']
+const scaleValues = [10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000]
 
 function formatNumber(num: number): string {
   if (num >= 1000000000) return `${(num / 1000000000).toFixed(0)}B`
@@ -45,15 +45,30 @@ function parseInputValue(value: string): number {
   return parseFloat(cleanValue) || 0
 }
 
+function snapToScale(val: number) {
+  // Find the closest value in scaleValues
+  let closest = scaleValues[0];
+  let minDiff = Math.abs(val - closest);
+  for (let i = 1; i < scaleValues.length; i++) {
+    const diff = Math.abs(val - scaleValues[i]);
+    if (diff < minDiff) {
+      closest = scaleValues[i];
+      minDiff = diff;
+    }
+  }
+  return closest;
+}
+
 export default function Component() {
   const [selectedDimension, setSelectedDimension] = useState(1536)
   const [vectorsWritten, setVectorsWritten] = useState(1000000)
   const [queriesPerMonth, setQueriesPerMonth] = useState(1000000)
   const [totalVectors, setTotalVectors] = useState(1000000)
 
-  const writeCost = (vectorsWritten / 1000000) * 4 * (selectedDimension / 1536)
-  const queryCost = (queriesPerMonth / 1000000) * 10 * (selectedDimension / 1536)
-  const storageCost = (selectedDimension * 4 * totalVectors / 1000000000) * 0.33
+  // LanceDB pricing logic
+  const writeCost = (vectorsWritten / 1_000_000) * 4 * (selectedDimension / 1536)
+  const queryCost = (queriesPerMonth / 1_000_000) * 10 * (selectedDimension / 1536)
+  const storageCost = (selectedDimension * 4 * totalVectors / 1_000_000_000) * 0.33
   const totalCost = writeCost + queryCost + storageCost
 
   return (
@@ -101,36 +116,49 @@ export default function Component() {
                 value: totalVectors,
                 setValue: setTotalVectors,
               },
-            ].map((item) => (
-              <div key={item.label} className="space-y-6">
-                <div className="space-y-2">
-                  <label className={`text-sm xl:text-xl font-medium text-[#374151] ${afacad.className}`}>{item.label}</label>
-                  <div className="flex flex-col-reverse md:flex-row  gap-4">
-                    <div className="flex-1 sm:min-w-[300px]  lg:min-w-[400px] xl:min-w-[500px] xl:text-xl">
-                      <Slider
-                        value={[Math.log10(item.value)]}
-                        min={Math.log10(10000)}
-                        max={Math.log10(1000000000)}
-                        step={0.001}
-                        onValueChange={(value) => item.setValue(Math.pow(10, value[0]))}
-                        className="py-4"
-                      />
-                      <div className="flex justify-between text-sm xl:text-xl text-[#374151]">
-                        {scaleMarkers.map((marker) => (
-                          <span key={marker} className={`${afacad.className}`}>{marker}</span>
-                        ))}
+            ].map((item) => {
+              // Find the current index for the slider
+              const currentIndex = scaleValues.findIndex(v => v === item.value);
+              return (
+                <div key={item.label} className="space-y-6">
+                  <div className="space-y-2">
+                    <label className={`text-sm xl:text-xl font-medium text-[#374151] ${afacad.className}`}>{item.label}</label>
+                    <div className="flex flex-col-reverse md:flex-row  gap-4">
+                      <div className="flex-1 sm:min-w-[300px]  lg:min-w-[400px] xl:min-w-[500px] xl:text-xl">
+                        <Slider
+                          value={[currentIndex === -1 ? 2 : currentIndex]}
+                          min={0}
+                          max={scaleValues.length - 1}
+                          step={1}
+                          onValueChange={(value) => item.setValue(scaleValues[value[0]])}
+                          className="py-4"
+                        />
+                        <div className="flex justify-between text-sm xl:text-xl text-[#374151]">
+                          {scaleMarkers.map((marker, idx) => (
+                            <span key={marker} className={`${afacad.className}`}>{marker}</span>
+                          ))}
+                        </div>
                       </div>
+                      <Select
+                        value={item.value.toString()}
+                        onValueChange={val => item.setValue(snapToScale(parseInt(val)))}
+                      >
+                        <SelectTrigger className="w-32 xl:text-xl">
+                          <SelectValue placeholder="Select value" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {scaleValues.map((val, idx) => (
+                            <SelectItem key={val} value={val.toString()} className={`xl:text-xl ${afacad.className}`}>
+                              {formatNumber(val)}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
-                    <Input
-                      type="text"
-                      value={Math.floor(item.value)}
-                      onChange={(e) => item.setValue(parseInputValue(e.target.value))}
-                      className={`w-32 xl:text-xl ${afacad.className}`}
-                    />
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </CardContent>
         </Card>
 
@@ -144,19 +172,19 @@ export default function Component() {
             <TooltipProvider>
               {[
                 {
-                  label: "Writes",
+                  label: "Write",
                   cost: writeCost,
-                  tooltip: `$4 per million writes * (${selectedDimension} / 1536 dimensions)`,
+                  tooltip: `$4 per million writes * (dimensions / 1536)`
                 },
                 {
-                  label: "Queries",
+                  label: "Query",
                   cost: queryCost,
-                  tooltip: `$10 per million queries * (${selectedDimension} / 1536 dimensions)`,
+                  tooltip: `$10 per million queries * (dimensions / 1536)`
                 },
                 {
                   label: "Storage",
                   cost: storageCost,
-                  tooltip: `${selectedDimension} * 4 bytes * ${formatNumber(totalVectors)} vectors / 1B * $0.33/GB`,
+                  tooltip: `${selectedDimension} * 4 bytes * ${formatNumber(totalVectors)} vectors / 1B * $0.33/GB`
                 },
               ].map((item) => (
                 <div key={item.label} className="flex items-center justify-between">
