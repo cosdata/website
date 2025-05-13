@@ -71,6 +71,16 @@ export default function Component() {
   const storageCost = (selectedDimension * 4 * totalVectors / 1_000_000_000) * 0.33
   const totalCost = writeCost + queryCost + storageCost
 
+  // Tooltip open state for each cost row
+  const [openTooltip, setOpenTooltip] = useState<string | null>(null)
+
+  // Helper to handle tooltip open/close
+  const handleTooltipToggle = (label: string) => {
+    setOpenTooltip((prev) => (prev === label ? null : label))
+  }
+
+  const handleTooltipClose = () => setOpenTooltip(null)
+
   return (
     <div className={` ${geologica.className} ${commonStyles.mainContainer}  flex flex-col items-center`}>
       <div className="grid md:grid-cols-[2fr_1fr] w-full gap-6">
@@ -190,26 +200,31 @@ export default function Component() {
                 <div key={item.label} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className={`text-sm xl:text-xl text-[#374151] ${afacad.className}`}>{item.label}</span>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <Info className="h-4 w-4 text-[#374151]" />
+                    <Tooltip open={openTooltip === item.label} onOpenChange={open => setOpenTooltip(open ? item.label : null)}>
+                      <TooltipTrigger
+                        asChild
+                        onClick={e => {
+                          e.preventDefault();
+                          handleTooltipToggle(item.label)
+                        }}
+                        onMouseLeave={handleTooltipClose}
+                      >
+                        <button type="button" aria-label={`Show info for ${item.label}`} className="focus:outline-none">
+                          <Info className="h-4 w-4 text-[#374151]" />
+                        </button>
                       </TooltipTrigger>
-                      <TooltipContent>
+                      <TooltipContent side="top" align="center">
                         <p className="text-sm xl:text-xl">{item.tooltip}</p>
                       </TooltipContent>
                     </Tooltip>
                   </div>
-                  <span className={`text-sm xl:text-xl font-medium tabular-nums ${afacad.className}`}>
-                    ${item.cost.toFixed(2)}
-                  </span>
+                  <span className={`text-sm xl:text-xl font-medium tabular-nums ${afacad.className}`}>${item.cost.toFixed(2)}</span>
                 </div>
               ))}
               <div className="pt-4 mt-4 border-t border-gray-200">
                 <div className="flex items-center justify-between">
                   <span className={`text-sm xl:text-xl font-medium text-[#374151] ${afacad.className}`}>Total Cost</span>
-                  <span className={`text-sm xl:text-xl font-medium tabular-nums ${afacad.className}`}>
-                    ${totalCost.toFixed(2)}
-                  </span>
+                  <span className={`text-sm xl:text-xl font-medium tabular-nums ${afacad.className}`}>${totalCost.toFixed(2)}</span>
                 </div>
               </div>
             </TooltipProvider>
