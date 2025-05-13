@@ -46,7 +46,7 @@ export default function PriceGrid(Prop: PriceGridProps) {
                 {prices.map((price, index) => (
                     <div key={index} className="flex flex-col justify-between text-[#000000] transition-transform rounded-2xl bg-white shadow-xl hover:shadow-2xl gap-4 max-w-[500px] p-6">
                         {/* Colorful label pill/card */}
-                        <div className={`inline-block px-4 py-2 rounded-full font-bold text-[24px] mb-2 ${labelColors[index]} ${geologica.className}`}>{price.title}</div>
+                        <div className={`inline-block px-4 py-2 rounded-full font-bold text-[24px] mb-2 text-center ${labelColors[index]} ${geologica.className}`}>{price.title}</div>
                         <div className={`${afacad.className} text-[20px] mb-2`}>{price.description}</div>
                         <div className={`my-2 text-[18px] text-[#374151] ${afacad.className}`}>
                             <div className="pb-2 font-bold">{price.note}</div>
