@@ -36,7 +36,7 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
               </div>
               
               <div className="p-6">
-                <h2 className="text-xl font-bold text-[#0055c8] mb-3 group-hover:text-[#f23665] transition-colors duration-300 line-clamp-2">
+                <h2 className="text-xl font-bold text-[#0055c8] mb-3 group-hover:text-[#f23665] transition-colors duration-300 leading-normal">
                   {post.attributes.title}
                 </h2>
                 

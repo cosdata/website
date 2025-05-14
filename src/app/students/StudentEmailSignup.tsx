@@ -40,11 +40,11 @@ export default function StudentEmailSignup() {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       {status !== 'success' ? (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full max-w-[320px] mx-auto">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full max-w-[420px] mx-auto">
           <input
             type="email"
             placeholder="Enter your email"
-            className="w-full px-4 py-3 rounded-lg border-2 border-[#0055c8] focus:border-[#0055c8] outline-none text-base text-gray-800 bg-white ${afacad.className}"
+            className="flex-1 px-4 py-3 rounded-lg border-2 border-[#0055c8] focus:border-[#0055c8] outline-none text-base text-gray-800 bg-white ${afacad.className}"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -53,10 +53,11 @@ export default function StudentEmailSignup() {
           />
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-lg bg-[#0055c8] text-lg text-white font-semibold shadow hover:bg-blue-800 transition-colors text-base ${afacad.className}"
+            className="flex-shrink-0 px-6 py-3 rounded-lg bg-[#0055c8] text-lg text-white font-semibold shadow hover:bg-blue-800 transition-colors text-base ${afacad.className}"
             disabled={status === 'loading'}
+            style={{ minWidth: '110px' }}
           >
-            {status === 'loading' ? 'Subscribing...' : 'Get Student Updates'}
+            {status === 'loading' ? '...' : 'Submit'}
           </button>
         </form>
       ) : (

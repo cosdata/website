@@ -69,115 +69,58 @@ function transformArticleData(articles: any[]) {
   });
 }
 
-// Helper function to measure and log performance
-function createPerformanceLogger() {
-  const timestamps: Record<string, number> = {
-    start: Date.now(),
-  };
-  
-  const durations: Record<string, number> = {};
-  
-  return {
-    mark: (label: string) => {
-      timestamps[label] = Date.now();
-      if (label !== 'start') {
-        const previousMark = Object.keys(timestamps).slice(-2)[0];
-        durations[`${previousMark} to ${label}`] = timestamps[label] - timestamps[previousMark];
-      }
-      console.log(`[Posts API][${label}] Timestamp: ${new Date(timestamps[label]).toISOString()}`);
-    },
-    getDurations: () => {
-      // Calculate total duration
-      durations['total'] = timestamps[Object.keys(timestamps).slice(-1)[0]] - timestamps['start'];
-      return durations;
-    },
-    logDurations: () => {
-      const allDurations = durations;
-      allDurations['total'] = timestamps[Object.keys(timestamps).slice(-1)[0]] - timestamps['start'];
-      
-      console.log('[Posts API] Performance breakdown:');
-      Object.entries(allDurations).forEach(([stage, duration]) => {
-        console.log(`[Posts API] ${stage}: ${duration}ms`);
-      });
-    }
-  };
-}
-
 export async function GET(request: Request) {
-  const perf = createPerformanceLogger();
-  perf.mark('start');
-  
   const { searchParams } = new URL(request.url);
   const page = parseInt(searchParams.get('page') || '1', 10);
   const pageSize = parseInt(searchParams.get('pageSize') || '10', 10);
-
-  console.log(`[Posts API] Fetching posts, page: ${page}, pageSize: ${pageSize}`);
-  console.log(`[Posts API] Strapi URL: ${strapiUrl}`);
+  const category = searchParams.get('category');
 
   try {
-    console.log(`[Posts API] Fetching from: ${strapiUrl}/api/articles`);
-    perf.mark('fetch_start');
+    let params: any = {
+      'pagination[page]': page,
+      'pagination[pageSize]': pageSize,
+      'populate': '*',
+      'sort': 'published_date:desc',
+    };
+
+    // If category is provided, first get its ID
+    if (category) {
+      const categoryResponse = await axios.get(`${strapiUrl}/api/categories`, {
+        params: {
+          'filters[name][$eq]': category,
+        },
+        headers: {
+          Authorization: `Bearer ${strapiToken}`,
+        },
+      });
+
+      if (!categoryResponse.data.data || categoryResponse.data.data.length === 0) {
+        return NextResponse.json({ 
+          data: [], 
+          pagination: {},
+          error: `Category "${category}" not found` 
+        }, { status: 404 });
+      }
+
+      const categoryId = categoryResponse.data.data[0].id;
+      params['filters[category][id][$eq]'] = categoryId;
+    }
     
     const response = await axios.get(`${strapiUrl}/api/articles`, {
-      params: {
-        'pagination[page]': page,
-        'pagination[pageSize]': pageSize,
-        'populate': '*',
-        'sort': 'published_date:desc',
-      },
+      params,
       headers: {
         Authorization: `Bearer ${strapiToken}`,
       },
-      timeout: 15000, // Increase timeout to 15 seconds
     });
     
-    perf.mark('fetch_complete');
-    console.log(`[Posts API] Response received, found ${response.data.data?.length || 0} posts`);
-    console.log(`[Posts API] Response time: ${response.headers['x-response-time'] || 'unknown'}`);
-    console.log(`[Posts API] Response data size: ${JSON.stringify(response.data).length} bytes`);
-    
-    // Transform the data to match expected structure
-    perf.mark('transform_start');
     const transformedData = transformArticleData(response.data.data);
-    perf.mark('transform_complete');
-    
-    // Log memory usage
-    const memoryUsage = process.memoryUsage();
-    console.log(`[Posts API] Memory usage: RSS: ${Math.round(memoryUsage.rss / 1024 / 1024)}MB, Heap: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)}/${Math.round(memoryUsage.heapTotal / 1024 / 1024)}MB`);
-    
-    perf.mark('complete');
-    perf.logDurations();
     
     return NextResponse.json({
       data: transformedData,
       pagination: response.data.meta.pagination,
     });
   } catch (error: any) {
-    perf.mark('error');
-    console.error('[Posts API] Error fetching posts: ', error);
-    
-    if (axios.isAxiosError(error)) {
-      console.error(`[Posts API] Request URL: ${error.config?.url}`);
-      console.error(`[Posts API] Request params: ${JSON.stringify(error.config?.params)}`);
-      console.error(`[Posts API] Error message: ${error.message}`);
-      console.error(`[Posts API] Error code: ${error.code}`);
-      console.error(`[Posts API] Timeout setting: ${error.config?.timeout}ms`);
-      
-      if (error.response) {
-        console.error(`[Posts API] Response status: ${error.response.status}`);
-        console.error(`[Posts API] Response data: ${JSON.stringify(error.response.data)}`);
-      } else if (error.request) {
-        console.error('[Posts API] Request was made but no response was received');
-        console.error(`[Posts API] Request details: ${JSON.stringify({
-          method: error.config?.method,
-          url: error.config?.url,
-          headers: { ...error.config?.headers, Authorization: '*** REDACTED ***' },
-          timeout: error.config?.timeout
-        })}`);
-      }
-    }
-    
-    perf.logDurations();
+    console.error('Error fetching posts:', error);
     return NextResponse.json({ 
       data: [], 
       pagination: {},
