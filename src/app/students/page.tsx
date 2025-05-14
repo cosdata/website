@@ -15,9 +15,7 @@ export const metadata = {
     images: [
       {
         url: '/images/og-image-home.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Cosdata for Students',
+        alt: 'Cosdata for Students'
       },
     ],
     locale: 'en_US',
