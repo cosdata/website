@@ -117,7 +117,7 @@ function Footer() {
                 <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
                   <li><Link href="/products/cosdata-hnsw" className="hover:text-[#0055c8]">Cosdata HNSW</Link></li>
                   <li><Link href="/products/cosdata-serverless" className="hover:text-[#0055c8]">Cosdata Serverless</Link></li>
-                  <li><Link href="/products/structured-search" className="hover:text-[#0055c8]">Structured Search</Link></li>
+                  <li><Link href="/pricing" className="hover:text-[#0055c8]">Pricing</Link></li>
                 </ul>
               </div>
               
@@ -127,6 +127,7 @@ function Footer() {
                 <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
                   <li><Link href="/blog/introducing-cosdata" className="hover:text-[#0055c8]">About Us</Link></li>
                   <li><Link href="/company/careers" className="hover:text-[#0055c8]">Careers</Link></li>
+                  <li><Link href="/pricing" className="hover:text-[#0055c8]">Pricing</Link></li>
                   <li><Link href="/company/contact" className="hover:text-[#0055c8]">Contact Us</Link></li>
                   <li><Link href="/privacy" className="hover:text-[#0055c8]">Privacy Policy</Link></li>
                   <li><Link href="https://docs.cosdata.io" target="_blank" rel="noopener noreferrer" className="hover:text-[#0055c8] flex items-center">
@@ -164,6 +165,7 @@ function Footer() {
               <ul className={`space-y-1.5 sm:space-y-2 ${commonStyles.paragraph} text-gray-700 text-sm sm:text-base`}>
                 <li><Link href="/blog/introducing-cosdata" className="hover:text-[#0055c8]">About Us</Link></li>
                 <li><Link href="/company/careers" className="hover:text-[#0055c8]">Careers</Link></li>
+                <li><Link href="/pricing" className="hover:text-[#0055c8]">Pricing</Link></li>
                 <li><Link href="/company/contact" className="hover:text-[#0055c8]">Contact Us</Link></li>
                 <li><Link href="/privacy" className="hover:text-[#0055c8]">Privacy Policy</Link></li>
                 <li><Link href="https://docs.cosdata.io" target="_blank" rel="noopener noreferrer" className="hover:text-[#0055c8] flex items-center">
