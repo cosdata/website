@@ -36,6 +36,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# Ignore generated sitemap and robots.txt
+/public/sitemap.xml
+/public/sitemap-*.xml
+/public/robots.txt
 
 *docs
