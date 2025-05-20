@@ -32,7 +32,7 @@ export default function PricingPage() {
         button: {
           active: true,
           text: "View Docs",
-          link: "/docs/oss"
+          link: "https://docs.cosdata.io/"
         }
       },
       {
