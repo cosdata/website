@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: 'Cosdata',
     images: [
       {
-        url: '/images/og-image-hnsw.jpg',
+        url: '/images/og-image-hnsw.png',
         width: 1200,
         height: 630,
         alt: 'Cosdata OSS Vector Database',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cosdata OSS - High-Performance Vector Search Database',
     description: 'Experience unmatched performance with our open source vector database implementation. Designed for high-throughput vector search applications.',
-    images: ['/images/og-image-hnsw.jpg'],
+    images: ['/images/og-image-hnsw.png'],
   },
 };
 

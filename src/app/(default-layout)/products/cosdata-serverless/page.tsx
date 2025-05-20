@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: 'Cosdata',
     images: [
       {
-        url: '/images/og-image-serverless.jpg',
+        url: '/images/og-image-serverless.png',
         width: 1200,
         height: 630,
         alt: 'Cosdata Serverless Vector Database',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cosdata Serverless - Infinitely Scalable Vector Search',
     description: 'Harness the power of CHANNI architecture for unlimited scale and pay-per-use pricing with our serverless vector database solution.',
-    images: ['/images/og-image-serverless.jpg'],
+    images: ['/images/og-image-serverless.png'],
   },
 };
 

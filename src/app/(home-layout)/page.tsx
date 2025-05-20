@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'Cosdata',
     images: [
       {
-        url: '/images/og-image-home.jpg',
+        url: '/images/og-image-home.png',
         width: 1200,
         height: 630,
         alt: 'Cosdata - Next Generation Vector Search',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cosdata - Next Generation Vector Search Technology',
     description: 'Cosdata delivers high-performance vector search solutions, including OSS and Serverless options, designed for enterprise-scale AI applications.',
-    images: ['/images/og-image-home.jpg'],
+    images: ['/images/og-image-home.png'],
   },
 };
 
