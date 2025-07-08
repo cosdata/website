@@ -25,8 +25,7 @@ const nextConfig = {
     ],
     domains: [
       '38.45.67.216',
-      'http://38.45.67.216:1337',
-      'heroic-song-72b61c9d01.media.strapiapp.com',
+      'truthful-boot-0a4d1915e9.strapiapp.com:1337',
       'localhost',
       '127.0.0.1',
     ], 
