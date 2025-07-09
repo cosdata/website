@@ -1,107 +1,159 @@
-
 import BlogPosts from './BlogPosts';
 import CoverImage from './CoverImage';
 import FeaturedPost from './FeaturedPost';
-import Pagination from './Pagination';
 import NewsletterSignup from './NewsletterSignup';
-import ScrollRestoration from '../components/ScrollRestoration';
+import BlogPagination from './BlogPagination';
 import { commonStyles, noto_sans_mono } from '../styles/common';
-import { getCoverImageUrl } from '../utils/imageUtils';
 
-// Enable ISR: revalidate every 1 hour
 export const revalidate = 3600;
 
-interface Post {
-  id: number;
-  attributes: any;
-}
+function transformArticleData(articles: any[]) {
+  return articles.map(article => {
+    if (article.attributes) {
+      const attributes = article.attributes;
 
-interface PaginationInfo {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
-}
+      // Handle cover_image
+      if (!attributes.cover_image && attributes.cover && attributes.cover.data) {
+        attributes.cover_image = attributes.cover;
+      }
 
-interface PostsResponse {
-  data: Post[];
-  meta: {
-    pagination: PaginationInfo;
-  };
-}
+      // Handle author data if it's not in the expected format
+      if (attributes.author && typeof attributes.author !== 'string' && !attributes.author.data) {
+        const authorName = attributes.author.name || attributes.author;
+        attributes.author = authorName;
+      }
 
-function getStrapiUrl() {
-  return process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-}
+      return {
+        id: article.id,
+        attributes: attributes
+      };
+    }
 
-function getStrapiToken() {
-  return process.env.STRAPI_ARTICLES_READ_TOKEN;
-}
-
-async function fetchPosts(page: number, pageSize: number): Promise<PostsResponse> {
-  const strapiUrl = getStrapiUrl();
-  const url = `${strapiUrl}/api/articles?sort=published_date:desc&page=${page}&pageSize=${pageSize}&populate=*`;
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${getStrapiToken()}`,
-    },
-    next: { revalidate: 3600 },
+    return {
+      id: article.id,
+      attributes: {
+        title: article.title,
+        slug: article.slug,
+        content: article.content,
+        preview: article.preview,
+        read_time: article.read_time,
+        author: article.author && typeof article.author === 'object' ? article.author.name || 'Unknown Author' : article.author,
+        author_role: article.author_role,
+        publishedAt: article.publishedAt,
+        createdAt: article.createdAt,
+        updatedAt: article.updatedAt,
+        published_date: article.published_date,
+        cover_image: article.cover_image ? {
+          data: {
+            attributes: {
+              url: article.cover_image.url || article.cover_image
+            }
+          }
+        } : article.cover ? {
+          data: {
+            attributes: {
+              url: article.cover.url || article.cover
+            }
+          }
+        } : null,
+        author_headshot: article.author_headshot ? {
+          data: {
+            attributes: {
+              url: article.author_headshot.url || article.author_headshot
+            }
+          }
+        } : null
+      }
+    };
   });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch posts: ${res.status}`);
-  }
-  return res.json();
 }
 
-async function fetchFeaturedPost(): Promise<Post | null> {
-  const strapiUrl = getStrapiUrl();
-  const url = `${strapiUrl}/api/articles?sort=published_date:desc&page=1&pageSize=1&populate=*`;
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${getStrapiToken()}`,
-    },
-    next: { revalidate: 3600 },
-  });
-  if (!res.ok) {
-    return null;
-  }
-  const data = await res.json();
-  return data.data && data.data.length > 0 ? data.data[0] : null;
-}
-
-import { Suspense } from 'react';
-
-interface BlogPageProps {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export default async function Blog({ searchParams }: BlogPageProps) {
-  // Pagination from query params (default to 1)
-  const page = searchParams?.page ? Number(searchParams.page) : 1;
-  const pageSize = 9;
-
-  let featuredPost: Post | null = null;
-  let posts: Post[] = [];
-  let pagination: PaginationInfo = { page, pageSize, pageCount: 1, total: 0 };
-  let fetchError = false;
+async function fetchFeaturedPost() {
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
   try {
-    // Fetch featured post and posts in parallel
-    const [featured, postsRes] = await Promise.all([
-      fetchFeaturedPost(),
-      fetchPosts(page, pageSize),
-    ]);
-    featuredPost = featured;
-    posts = postsRes.data;
-    pagination = postsRes.meta.pagination;
-  } catch (e) {
-    fetchError = true;
+    const params = new URLSearchParams({
+      'pagination[page]': '1',
+      'pagination[pageSize]': '1',
+      'populate': '*',
+      'sort': 'published_date:desc',
+    });
+
+    const response = await fetch(`${strapiUrl}/api/articles?${params}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+      },
+      next: { revalidate: 3600 }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Strapi fetch failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const transformedData = transformArticleData(data.data);
+
+    return transformedData[0] || null;
+  } catch (error) {
+    console.error('Error fetching featured post:', error);
+    return null;
   }
+}
+
+async function fetchPosts(page: number = 1, pageSize: number = 9) {
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+
+  try {
+    const params = new URLSearchParams({
+      'pagination[page]': page.toString(),
+      'pagination[pageSize]': pageSize.toString(),
+      'populate': '*',
+      'sort': 'published_date:desc',
+    });
+
+    const response = await fetch(`${strapiUrl}/api/articles?${params}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+      },
+      next: { revalidate: 3600 }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Strapi fetch failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const transformedData = transformArticleData(data.data);
+
+    return {
+      data: transformedData,
+      pagination: data.meta.pagination
+    };
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return {
+      data: [],
+      pagination: { pageCount: 1, page: 1, total: 0 }
+    };
+  }
+}
+
+export default async function Blog({ searchParams }: { searchParams: { page?: string } }) {
+  const currentPage = parseInt(searchParams?.page || '1', 10);
+
+  // Fetch data in parallel
+  const [featuredPost, postsData] = await Promise.all([
+    fetchFeaturedPost(),
+    fetchPosts(currentPage, 9)
+  ]);
+
+  const { data: posts, pagination } = postsData;
 
   return (
     <div className={`min-h-screen ${noto_sans_mono.className}`}>
-      <ScrollRestoration />
       <CoverImage />
+
+      {/* Main Content Section */}
       <section className="bg-gradient-to-b from-white to-gray-50">
         <div className={`${commonStyles.mainContainer} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
           {/* Featured Post Section */}
@@ -110,29 +162,21 @@ export default async function Blog({ searchParams }: BlogPageProps) {
               <FeaturedPost post={featuredPost} className="overflow-hidden" isFeatured={true} />
             </div>
           )}
+
           {/* Latest Posts Section */}
           <div className="mb-16">
             <h2 className={`${commonStyles.sectionTitle} !mb-8`}>Latest Articles</h2>
-            {fetchError ? (
-              <div className="flex justify-center items-center h-64">
-                <div className="text-red-500">Failed to load posts.</div>
-              </div>
-            ) : posts.length === 0 ? (
-              <div className="flex justify-center items-center h-64">
-                <div className="text-gray-500">No posts found.</div>
-              </div>
-            ) : (
-              <BlogPosts posts={posts} />
-            )}
+            <BlogPosts posts={posts} />
           </div>
+
           {/* Pagination */}
           <div className="mb-16">
-            <Pagination
-              currentPage={pagination.page}
+            <BlogPagination
+              currentPage={currentPage}
               totalPages={pagination.pageCount}
-              onPageChange={() => { }} // handled by Link navigation
             />
           </div>
+
           {/* Newsletter Section */}
           <div className="mb-16">
             <NewsletterSignup />
