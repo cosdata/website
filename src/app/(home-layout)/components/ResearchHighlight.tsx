@@ -65,7 +65,7 @@ const ResearchHighlight = () => {
               </div>
               
               <Link 
-                href="/blog/channi-paper" 
+                href="/blog/channi-multi-level-vector-search-nested-graph-navigation" 
                 className="inline-flex items-center px-4 sm:px-5 py-2 sm:py-2.5 border border-transparent text-sm sm:text-base md:text-lg font-medium rounded-md text-white bg-[#0055C8] hover:bg-blue-800 transition-colors duration-300"
               >
                 Read the Paper
@@ -125,7 +125,7 @@ const ResearchHighlight = () => {
               </div>
               
               <Link 
-                href="/blog/mavann-metadata-filtering" 
+                href="/blog/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction" 
                 className="inline-flex items-center px-4 sm:px-5 py-2 sm:py-2.5 border border-transparent text-sm sm:text-base md:text-lg font-medium rounded-md text-white bg-[#F23665] hover:bg-purple-700 transition-colors duration-300"
               >
                 Read the Paper
