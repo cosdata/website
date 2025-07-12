@@ -5,7 +5,7 @@ import 'react-pdf/dist/Page/TextLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`;
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, FileText, Loader2 } from 'lucide-react';
 
 interface PDFViewerProps {
@@ -27,6 +27,41 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
         window.addEventListener('resize', updatePageWidth);
         return () => window.removeEventListener('resize', updatePageWidth);
     }, []);
+
+    // Keyboard navigation
+    const handleKeyDown = useCallback((event: KeyboardEvent) => {
+        // Prevent default behavior for navigation keys
+        const navigationKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'];
+        if (navigationKeys.includes(event.key)) {
+            event.preventDefault();
+        }
+
+        switch (event.key) {
+            case 'ArrowLeft':
+            case 'ArrowUp':
+            case 'PageUp':
+                previousPage();
+                break;
+            case 'ArrowRight':
+            case 'ArrowDown':
+            case 'PageDown':
+                nextPage();
+                break;
+            case 'Home':
+                setPageNumber(1);
+                break;
+            case 'End':
+                if (numPages > 0) {
+                    setPageNumber(numPages);
+                }
+                break;
+        }
+    }, [numPages]);
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [handleKeyDown]);
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
         setNumPages(numPages);
@@ -94,6 +129,7 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
                                                  hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                                                  disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-500
                                                  transition-all duration-200 shadow-sm"
+                                        title="Previous page (Left Arrow, Up Arrow, Page Up)"
                                     >
                                         <ChevronLeft className="w-4 h-4" />
                                         Previous
@@ -126,10 +162,16 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
                                                  hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
                                                  disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-500
                                                  transition-all duration-200 shadow-sm"
+                                        title="Next page (Right Arrow, Down Arrow, Page Down)"
                                     >
                                         Next
                                         <ChevronRight className="w-4 h-4" />
                                     </button>
+                                </div>
+
+                                {/* Keyboard shortcuts info */}
+                                <div className="hidden md:flex items-center gap-4 text-xs text-gray-500">
+                                    <span>Keyboard: ← → ↑ ↓ PgUp PgDn Home End</span>
                                 </div>
 
                                 {/* Progress Bar */}
