@@ -1,9 +1,8 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'http://localhost:3000',
+  siteUrl: process.env.SITE_URL || "http://localhost:3000",
   generateRobotsTxt: true,
   robotsTxtOptions: {
-    policies: [
-      { userAgent: '*', allow: '/' },
-    ],
+    policies: [{ userAgent: "*", allow: "/" }],
   },
-}; 
+  swcMinify: false,
+};
