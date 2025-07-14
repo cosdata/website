@@ -150,8 +150,8 @@ export default function Header() {
                   <Link href="/resources/benchmarks" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Benchmarks</Link>
                   <Link href="/tech/roadmap" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <div className="px-4 py-2 text-xl md:text-lg text-gray-700 font-semibold">Research</div>
-                  <Link href="/blog/channi-paper" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
-                  <Link href="/blog/mavann-metadata-filtering" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
+                  <Link href="/blog/channi-multi-level-vector-search-nested-graph-navigation" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
+                  <Link href="/blog/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
                   <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -260,8 +260,8 @@ export default function Header() {
                   <Link href="/resources/benchmarks" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Benchmarks</Link>
                   <Link href="/tech/roadmap" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <div className="text-black font-open-sans text-xl md:text-lg font-semibold leading-[30px] mt-2">Research</div>
-                  <Link href="/blog/channi-paper" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 ml-2" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
-                  <Link href="/blog/mavann-metadata-filtering" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 ml-2" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
+                  <Link href="/blog/channi-multi-level-vector-search-nested-graph-navigation" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 ml-2" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
+                  <Link href="/blog/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500 ml-2" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
                   <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" onClick={handleSubMenuLinkClick}>
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { commonStyles, afacad, geologica } from '../../styles/common';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 import { slugify } from '../../utils/string';
 import { ReactNode, useId, useState, useEffect } from 'react';
 import CompactNewsletterCTA from '../CompactNewsletterCTA';
@@ -184,7 +187,8 @@ export default function BlogContent({
     return (
       <div className="markdown-content">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex]}
           components={markdownComponents}
         >
           {content}
