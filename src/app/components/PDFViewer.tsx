@@ -6,7 +6,7 @@ import 'react-pdf/dist/Page/TextLayer.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`;
 
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, FileText, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, FileText, Loader2, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 
 interface PDFViewerProps {
     fileUrl: string;
@@ -16,6 +16,7 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
     const [numPages, setNumPages] = useState<number>(0);
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [pageWidth, setPageWidth] = useState<number>(800);
+    const [scale, setScale] = useState<number>(1.0);
 
     useEffect(() => {
         const updatePageWidth = () => {
@@ -28,12 +29,42 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
         return () => window.removeEventListener('resize', updatePageWidth);
     }, []);
 
+    // Zoom functions
+    const zoomIn = () => {
+        setScale(prevScale => Math.min(3.0, prevScale + 0.2));
+    };
+
+    const zoomOut = () => {
+        setScale(prevScale => Math.max(0.5, prevScale - 0.2));
+    };
+
+    const resetZoom = () => {
+        setScale(1.0);
+    };
+
     // Keyboard navigation
     const handleKeyDown = useCallback((event: KeyboardEvent) => {
         // Prevent default behavior for navigation keys
         const navigationKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'];
         if (navigationKeys.includes(event.key)) {
             event.preventDefault();
+        }
+
+        // Handle zoom shortcuts
+        if (event.ctrlKey && (event.key === '=' || event.key === '+')) {
+            event.preventDefault();
+            zoomIn();
+            return;
+        }
+        if (event.ctrlKey && event.key === '-') {
+            event.preventDefault();
+            zoomOut();
+            return;
+        }
+        if (event.ctrlKey && event.key === '0') {
+            event.preventDefault();
+            resetZoom();
+            return;
         }
 
         switch (event.key) {
@@ -56,7 +87,7 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
                 }
                 break;
         }
-    }, [numPages]);
+    }, [numPages, zoomIn, zoomOut, resetZoom]);
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
@@ -86,6 +117,59 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
 
     return (
         <div className="flex flex-col w-full min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                    .outline-custom .react-pdf__Outline {
+                        counter-reset: section;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline__item {
+                        margin: 4px 0;
+                        counter-increment: section;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline__item::before {
+                        content: counter(section, decimal) ". ";
+                        font-weight: 600;
+                        color: #374151;
+                        margin-right: 8px;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline__item a {
+                        text-decoration: none;
+                        color: #374151;
+                        padding: 6px 8px;
+                        border-radius: 6px;
+                        transition: all 0.2s ease;
+                        display: block;
+                        font-size: 14px;
+                        line-height: 1.4;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline__item a:hover {
+                        background-color: #f3f4f6;
+                        color: #1f2937;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline__item a:focus {
+                        outline: 2px solid #3b82f6;
+                        outline-offset: 2px;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline .react-pdf__Outline {
+                        padding-left: 16px;
+                        counter-reset: subsection;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline .react-pdf__Outline__item {
+                        counter-increment: subsection;
+                    }
+                    
+                    .outline-custom .react-pdf__Outline .react-pdf__Outline__item::before {
+                        content: counter(section, decimal) "." counter(subsection, decimal) " ";
+                    }
+                `
+            }} />
 
             <Document
                 file={fileUrl}
@@ -110,7 +194,7 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
                         <div className="flex-1 overflow-auto p-4">
                             <Outline
                                 onItemClick={onItemClick}
-                                className="text-sm"
+                                className="text-sm outline-custom"
                             />
                         </div>
                     </div>
@@ -169,9 +253,54 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
                                     </button>
                                 </div>
 
+                                {/* Zoom Controls */}
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        type="button"
+                                        onClick={zoomOut}
+                                        disabled={scale <= 0.5}
+                                        className="flex items-center gap-1 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium
+                                                 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2
+                                                 disabled:bg-gray-50 disabled:cursor-not-allowed disabled:text-gray-400
+                                                 transition-all duration-200"
+                                        title="Zoom out"
+                                    >
+                                        <ZoomOut className="w-4 h-4" />
+                                    </button>
+
+                                    <span className="text-sm text-gray-600 font-medium min-w-[3rem] text-center">
+                                        {Math.round(scale * 100)}%
+                                    </span>
+
+                                    <button
+                                        type="button"
+                                        onClick={zoomIn}
+                                        disabled={scale >= 3.0}
+                                        className="flex items-center gap-1 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium
+                                                 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2
+                                                 disabled:bg-gray-50 disabled:cursor-not-allowed disabled:text-gray-400
+                                                 transition-all duration-200"
+                                        title="Zoom in"
+                                    >
+                                        <ZoomIn className="w-4 h-4" />
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={resetZoom}
+                                        className="flex items-center gap-1 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium
+                                                 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2
+                                                 transition-all duration-200"
+                                        title="Reset zoom to 100%"
+                                    >
+                                        <RotateCcw className="w-4 h-4" />
+                                    </button>
+                                </div>
+
                                 {/* Keyboard shortcuts info */}
-                                <div className="hidden md:flex items-center gap-4 text-xs text-gray-500">
-                                    <span>Keyboard: ← → ↑ ↓ PgUp PgDn Home End</span>
+                                <div className="hidden lg:flex items-center gap-4 text-xs text-gray-500">
+                                    <span>Navigation: ← → ↑ ↓ PgUp PgDn Home End</span>
+                                    <span>Zoom: Ctrl + / Ctrl - / Ctrl 0</span>
                                 </div>
 
                                 {/* Progress Bar */}
@@ -194,7 +323,7 @@ export default function PDFViewer({ fileUrl }: PDFViewerProps) {
                             <div className="bg-white shadow-2xl rounded-lg overflow-hidden">
                                 <Page
                                     pageNumber={pageNumber}
-                                    width={pageWidth}
+                                    width={pageWidth * scale}
                                     className="max-w-full"
                                 />
                             </div>
