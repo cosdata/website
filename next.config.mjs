@@ -44,20 +44,20 @@ const nextConfig = {
       {
         source: "/tech/mavann-paper",
         destination:
-          "/tech/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction",
+          "/tech/mavann-metadata-aware-vector-approximate-nearest-neighbor",
         permanent: true,
       },
       {
         source: "/tech/channi-paper",
         destination:
-          "/blog/channi-multi-level-vector-search-nested-graph-navigation",
+          "/research/channi-multi-level-vector-search-nested-graph-navigation",
         permanent: true,
       },
       {
         source:
-          "/tech/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction",
+          "/tech/mavann-metadata-aware-vector-approximate-nearest-neighbor",
         destination:
-          "/blog/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction",
+          "/research/mavann-metadata-aware-vector-approximate-nearest-neighbor",
         permanent: true,
       },
     ];
