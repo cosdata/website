@@ -150,9 +150,9 @@ export default function Header() {
                   <Link href="/resources/benchmarks" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Benchmarks</Link>
                   <Link href="/tech/roadmap" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Roadmap</Link>
                   <Link href="/research" className="block px-4 py-2 text-xl md:text-lg text-gray-700 font-semibold hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Research</Link>
-                  <Link href="/research/dynamic-memory-ai-agents" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Dynamic Memory AI Agents</Link>
                   <Link href="/research/channi-multi-level-vector-search-nested-graph-navigation" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>CHANNI Paper</Link>
                   <Link href="/research/mavann-metadata-aware-vector-approximate-nearest-neighbor" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>MAVANN Paper</Link>
+                  <Link href="/research/dynamic-memory-ai-agents" className="block px-6 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>Agentic Memory</Link>
                   <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-xl md:text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" onClick={handleSubMenuLinkClick}>
                     <span className="flex items-center">
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
