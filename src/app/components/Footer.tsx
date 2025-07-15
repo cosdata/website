@@ -149,8 +149,8 @@ function Footer() {
                 <li><Link href="/blog" className="hover:text-[#0055c8]">Blog</Link></li>
                 <li><Link href="/resources/benchmarks" className="hover:text-[#0055c8]">Benchmarks</Link></li>
                 <li><Link href="/tech/roadmap" className="hover:text-[#0055c8]">Roadmap</Link></li>
-                <li><Link href="/blog/channi-multi-level-vector-search-nested-graph-navigation" className="hover:text-[#0055c8]">CHANNI Paper</Link></li>
-                <li><Link href="/blog/mavann-metadata-aware-vector-approximate-nearest-neighbor-introduction" className="hover:text-[#0055c8]">MAVANN Paper</Link></li>
+                <li><Link href="/research/channi-multi-level-vector-search-nested-graph-navigation" className="hover:text-[#0055c8]">CHANNI Paper</Link></li>
+                <li><Link href="/research/mavann-metadata-aware-vector-approximate-nearest-neighbor" className="hover:text-[#0055c8]">MAVANN Paper</Link></li>
                 <li>
                   <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="hover:text-[#0055c8] flex items-center">
                     GitHub
