@@ -5,7 +5,54 @@ import NewsletterSignup from './NewsletterSignup';
 import BlogPagination from './BlogPagination';
 import { commonStyles, noto_sans_mono } from '../styles/common';
 
-export const revalidate = 3600;
+// Disable dynamic params - use only statically generated routes
+export const dynamicParams = false;
+
+// Generate static params for all blog pages at build time
+export async function generateStaticParams() {
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+  const pageSize = 9; // Same as the pageSize used in fetchPosts
+
+  try {
+    console.log('[SSG] Fetching total article count for static page generation...');
+
+    // First, get the total count of articles
+    const response = await fetch(`${strapiUrl}/api/articles?pagination[page]=1&pagination[pageSize]=1`, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      console.error('[SSG] Failed to fetch articles count:', response.status);
+      return [{}]; // Return default page (page 1)
+    }
+
+    const data = await response.json();
+    const totalArticles = data.meta?.pagination?.total || 0;
+    const totalPages = Math.ceil(totalArticles / pageSize);
+
+    console.log(`[SSG] Found ${totalArticles} articles, generating ${totalPages} blog pages`);
+
+    // Generate params for all pages
+    const params = [];
+
+    // Add the default page (no page param)
+    params.push({});
+
+    // Add pages 2, 3, 4, etc.
+    for (let i = 2; i <= totalPages; i++) {
+      params.push({ page: i.toString() });
+    }
+
+    console.log(`[SSG] Generated static params for ${params.length} blog pages:`, params);
+
+    return params;
+  } catch (error) {
+    console.error('[SSG] Error fetching article count for static generation:', error);
+    return [{}]; // Return default page as fallback
+  }
+}
 
 function transformArticleData(articles: any[]) {
   return articles.map(article => {
@@ -83,7 +130,6 @@ async function fetchFeaturedPost() {
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
       },
-      next: { revalidate: 3600 }
     });
 
     if (!response.ok) {
@@ -95,7 +141,7 @@ async function fetchFeaturedPost() {
 
     return transformedData[0] || null;
   } catch (error) {
-    console.error('Error fetching featured post:', error);
+    console.error('[SSG] Error fetching featured post:', error);
     return null;
   }
 }
@@ -115,7 +161,6 @@ async function fetchPosts(page: number = 1, pageSize: number = 9) {
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
       },
-      next: { revalidate: 3600 }
     });
 
     if (!response.ok) {
@@ -130,7 +175,7 @@ async function fetchPosts(page: number = 1, pageSize: number = 9) {
       pagination: data.meta.pagination
     };
   } catch (error) {
-    console.error('Error fetching posts:', error);
+    console.error('[SSG] Error fetching posts:', error);
     return {
       data: [],
       pagination: { pageCount: 1, page: 1, total: 0 }
@@ -141,6 +186,8 @@ async function fetchPosts(page: number = 1, pageSize: number = 9) {
 export default async function Blog({ searchParams }: { searchParams: { page?: string } }) {
   const currentPage = parseInt(searchParams?.page || '1', 10);
 
+  console.log(`[SSG] Rendering blog page ${currentPage}`);
+
   // Fetch data in parallel
   const [featuredPost, postsData] = await Promise.all([
     fetchFeaturedPost(),
@@ -148,6 +195,8 @@ export default async function Blog({ searchParams }: { searchParams: { page?: st
   ]);
 
   const { data: posts, pagination } = postsData;
+
+  console.log(`[SSG] Fetched ${posts.length} posts for page ${currentPage}`);
 
   return (
     <div className={`min-h-screen ${noto_sans_mono.className}`}>

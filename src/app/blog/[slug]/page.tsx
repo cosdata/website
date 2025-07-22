@@ -9,21 +9,60 @@ import { commonStyles, afacad, geologica } from '../../styles/common';
 import { getImageUrl, getFullImageUrl } from '../../utils/imageUtils';
 import type { Metadata } from 'next';
 
-// Enable revalidation every hour with ISR
-export const revalidate = 3600;
+// Disable dynamic params - use only statically generated routes
+export const dynamicParams = false;
 
-// Enable dynamic routes - don't require static generation
-export const dynamicParams = true;
+// Generate static params for all blog posts at build time
+export async function generateStaticParams() {
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+
+  try {
+    console.log('[SSG] Fetching all article slugs for static generation...');
+
+    const response = await fetch(`${strapiUrl}/api/articles?fields[0]=slug`, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
+      },
+    });
+
+    if (!response.ok) {
+      console.error('[SSG] Failed to fetch articles:', response.status);
+      return [];
+    }
+
+    const data = await response.json();
+
+    if (!data.data || !Array.isArray(data.data)) {
+      console.warn('[SSG] No articles found or invalid response structure');
+      return [];
+    }
+
+    const slugs = data.data
+      .map((article: any) => {
+        // Handle both Strapi v4 format and direct format
+        const slug = article.attributes?.slug || article.slug;
+        return slug ? { slug } : null;
+      })
+      .filter(Boolean);
+
+    console.log(`[SSG] Found ${slugs.length} article slugs for static generation:`, slugs.map((s: { slug: string }) => s.slug));
+
+    return slugs;
+  } catch (error) {
+    console.error('[SSG] Error fetching article slugs:', error);
+    return [];
+  }
+}
 
 // Metadata generation function
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   // Use environment variables for the base URLs
-  const baseUrl = process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:3000' 
+  const baseUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
     : (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.cosdata.io');
-  
+
   const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-  
+
   try {
     // Fetch the article data
     const strapiFetchUrl = `${strapiUrl}/api/articles?filters[slug][$eq]=${params.slug}&populate=*`;
@@ -31,25 +70,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
       },
-      next: { revalidate: 3600 },
     });
-    
+
     if (!response.ok) {
       throw new Error(`Strapi fetch failed: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    
+
     if (!data.data || data.data.length === 0) {
       return {
         title: 'Blog Post Not Found',
         description: 'The requested blog post could not be found.',
       };
     }
-    
+
     // Extract article data
     let article = data.data[0];
-    
+
     // Handle article structure
     if (!article.attributes) {
       article = {
@@ -79,17 +117,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         article.attributes.cover_image = article.attributes.cover;
       }
     }
-    
+
     // Extract needed metadata
     const title = article.attributes.title;
     const description = article.attributes.preview || 'Read this blog post on Cosdata.';
-    
+
     // Get the cover image URL if available
     let imageUrl = '/images/og-image.jpg'; // Default fallback image
     if (article.attributes.cover_image && article.attributes.cover_image.data) {
       imageUrl = getFullImageUrl(getImageUrl(article.attributes.cover_image));
     }
-    
+
     // Return the metadata object
     return {
       title,
@@ -126,10 +164,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-// Helper function to log timing
+// Helper function to log timing for SSG
 function logTiming(label: string, startTime: number) {
   const duration = Date.now() - startTime;
-  console.log(`[BlogPost][${label}] Duration: ${duration}ms`);
+  console.log(`[SSG][BlogPost][${label}] Duration: ${duration}ms`);
   return Date.now();
 }
 
@@ -139,80 +177,79 @@ function insertCTAIntoMarkdown(content: string, headingPosition: number = 3): st
     console.warn('Content is not a string, cannot insert CTA');
     return content;
   }
-  
+
   // Regular expression to match h1-h6 Markdown headings
   const headingRegex = /^(#{1,6})\s+(.+)$/gm;
   let headingCount = 0;
   let lastIndex = 0;
   let match;
-  
+
   // Clone the content string
   let result = content;
-  
+
   // Find the position after the specified heading
   while ((match = headingRegex.exec(content)) !== null) {
     headingCount++;
-    
+
     // After finding the target heading, insert the CTA
     if (headingCount === headingPosition) {
       lastIndex = match.index + match[0].length;
-      
+
       // Insert CTA placeholder - we'll replace this with the actual component in BlogContent
       const ctaPlaceholder = '\n\n<!-- NEWSLETTER_CTA_PLACEHOLDER -->\n\n';
       result = content.substring(0, lastIndex) + ctaPlaceholder + content.substring(lastIndex);
       break;
     }
   }
-  
-  console.log(`Found ${headingCount} headings in content, inserted CTA after heading ${headingPosition}`);
+
+  console.log(`[SSG] Found ${headingCount} headings in content, inserted CTA after heading ${headingPosition}`);
   return result;
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const startTime = Date.now();
-  console.log(`[BlogPost][page] Starting to render post with slug: ${params.slug}`);
-  
+  console.log(`[SSG][BlogPost] Starting to render post with slug: ${params.slug}`);
+
   // Use environment variable for server-side
-  const baseUrl = process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:3000' 
+  const baseUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
     : (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.cosdata.io');
-  
+
   const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-  console.log('[BlogPost][page] Base URL:', baseUrl);
-  console.log('[BlogPost][page] Slug:', params.slug);
+  console.log('[SSG][BlogPost] Base URL:', baseUrl);
+  console.log('[SSG][BlogPost] Slug:', params.slug);
 
   try {
-    // Try fetching directly from Strapi first to avoid unnecessary API routes
+    // Fetch directly from Strapi for static generation
     const time = startTime;
-    console.log(`[BlogPost][page] Starting direct Strapi fetch for slug: ${params.slug}`);
+    console.log(`[SSG][BlogPost] Starting direct Strapi fetch for slug: ${params.slug}`);
     const fetchStart = Date.now();
-    
+
     const strapiFetchUrl = `${strapiUrl}/api/articles?filters[slug][$eq]=${params.slug}&populate=*`;
     const response = await fetch(strapiFetchUrl, {
       headers: {
         Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
       },
-      next: { revalidate: 3600 },
     });
-    
-    console.log(`[BlogPost][page] Strapi fetch took ${Date.now() - fetchStart}ms, status: ${response.status}`);
-    
+
+    console.log(`[SSG][BlogPost] Strapi fetch took ${Date.now() - fetchStart}ms, status: ${response.status}`);
+
     if (!response.ok) {
       throw new Error(`Strapi fetch failed: ${response.status}`);
     }
-    
+
     const jsonStart = Date.now();
     const data = await response.json();
-    console.log(`[BlogPost][page] JSON parsing took ${Date.now() - jsonStart}ms`);
-    
+    console.log(`[SSG][BlogPost] JSON parsing took ${Date.now() - jsonStart}ms`);
+
     if (!data.data || data.data.length === 0) {
-      console.log(`[BlogPost][page] No article found with slug: ${params.slug}`);
+      console.log(`[SSG][BlogPost] No article found with slug: ${params.slug}`);
       return notFound();
     }
-    
+
     // Extract and transform the article data
     let article = data.data[0];
-    
+
     // Check if post has the expected structure
     if (!article.attributes) {
       // If post is the direct data from Strapi without the expected structure,
@@ -256,21 +293,21 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     } else {
       // Ensure the post has the expected structure even if it already has attributes
       const attributes = article.attributes;
-      
+
       // Handle cover_image
       if (!attributes.cover_image && attributes.cover && attributes.cover.data) {
         attributes.cover_image = attributes.cover;
       }
-      
+
       // Handle author data if it's not in the expected format
       if (attributes.author && typeof attributes.author === 'object' && !attributes.author.data) {
         attributes.author = attributes.author.name || 'Unknown Author';
       }
     }
-    // Process the content to insert the CTA at the server level
+    // Process the content to insert the CTA at the server level during static generation
     if (typeof article.attributes.content === 'string') {
       article.attributes.content = insertCTAIntoMarkdown(article.attributes.content, 3);
-      console.log('CTA placeholder inserted into content');
+      console.log('[SSG] CTA placeholder inserted into content');
     }
 
     const formattedDate = article.attributes.published_date
@@ -280,12 +317,12 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const readingTime = article.attributes.read_time || 5; // Default to 5 minutes if not set
 
     // Helper function to safely access nested properties
-    const authorName = typeof article.attributes.author === 'string' 
-      ? article.attributes.author 
+    const authorName = typeof article.attributes.author === 'string'
+      ? article.attributes.author
       : article.attributes.author?.name || 'Unknown Author';
 
-    const authorRole = article.attributes.author_role || 
-      (typeof article.attributes.author !== 'string' ? article.attributes.author?.role : null) || 
+    const authorRole = article.attributes.author_role ||
+      (typeof article.attributes.author !== 'string' ? article.attributes.author?.role : null) ||
       'Contributor';
 
     return (
@@ -356,18 +393,18 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 prose-pre:bg-gray-900 prose-pre:text-gray-100
                 [&>*]:bg-transparent
               `}>
-                <BlogContent 
-                  content={article.attributes.content} 
+                <BlogContent
+                  content={article.attributes.content}
                 />
-              </div>      
-              
+              </div>
+
               {/* Newsletter CTA - Main */}
               <div className="my-16 newsletter-main">
                 <CompactNewsletterCTA />
               </div>
 
               {/* Social Share Section */}
-              <SocialShare title={article.attributes.title} />        
+              <SocialShare title={article.attributes.title} />
 
               {/* Author Bio Section */}
               <footer className={`mb-12 p-8 bg-white/50 backdrop-blur-sm rounded-xl border border-blue-100 shadow-sm ${afacad.className} text-lg`}>
