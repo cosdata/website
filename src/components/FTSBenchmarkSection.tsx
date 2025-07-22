@@ -22,7 +22,7 @@ const formatBenchmarkData = (data: any[]) => {
 
 type ComparisonMetric = 'qps' | 'insertionTime' | 'p50Latency' | 'p95Latency' | 'ndcg';
 
-const metricOptions: {id: ComparisonMetric, label: string, higherIsBetter: boolean, title: string}[] = [
+const metricOptions: { id: ComparisonMetric, label: string, higherIsBetter: boolean, title: string }[] = [
   { id: 'qps', label: 'QPS', higherIsBetter: true, title: 'Queries Per Second (QPS)' },
   { id: 'insertionTime', label: 'Insertion Time', higherIsBetter: false, title: 'Insertion Time (seconds)' },
   { id: 'p50Latency', label: 'p50 Latency', higherIsBetter: false, title: 'p50 Latency (ms)' },
@@ -32,27 +32,27 @@ const metricOptions: {id: ComparisonMetric, label: string, higherIsBetter: boole
 
 // Dataset categories
 const datasetCategories = [
-  { 
-    id: 'small_medium', 
-    label: 'Small Datasets (<500K documents)', 
+  {
+    id: 'small_medium',
+    label: 'Small Datasets (<500K documents)',
     datasets: ['arguana', 'scifact', 'fiqa', 'scidocs', 'trec-covid', 'webis-touche2020'],
     description: 'Datasets with fewer than 500,000 documents'
   },
-  { 
-    id: 'large', 
-    label: 'Large Datasets (>500K documents)', 
+  {
+    id: 'large',
+    label: 'Large Datasets (>500K documents)',
     datasets: ['quora', 'fever', 'climate-fever', 'nq', 'msmarco'],
     description: 'Large datasets with more than 500,000 documents'
   },
-  { 
-    id: 'scientific', 
-    label: 'Scientific Datasets', 
+  {
+    id: 'scientific',
+    label: 'Scientific Datasets',
     datasets: ['scidocs', 'scifact', 'trec-covid', 'climate-fever'],
     description: 'Datasets focused on scientific publications and fact-checking'
   },
-  { 
-    id: 'qa', 
-    label: 'Question-Answering Datasets', 
+  {
+    id: 'qa',
+    label: 'Question-Answering Datasets',
     datasets: ['nq', 'msmarco', 'quora', 'fiqa'],
     description: 'Datasets centered around question answering and information retrieval'
   }
@@ -61,7 +61,7 @@ const datasetCategories = [
 // Takeaways for each metric and dataset category combination
 const getTakeaway = (metric: ComparisonMetric, categoryId: string, averageSpeedup: number) => {
   const categoryLabel = datasetCategories.find(c => c.id === categoryId)?.label.toLowerCase() || '';
-  
+
   switch (metric) {
     case 'qps':
       return `Cosdata delivers ${averageSpeedup.toFixed(1)}x faster query throughput across ${categoryLabel}.`;
@@ -80,10 +80,10 @@ const getTakeaway = (metric: ComparisonMetric, categoryId: string, averageSpeedu
 export default function FTSBenchmarkSection() {
   // Get all available datasets
   const allDatasets = ftsBenchmarkData.cosdata.map(item => item.dataset);
-  
+
   // Sort datasets alphabetically
   const sortedDatasets = [...allDatasets].sort();
-  
+
   const [selectedCategory, setSelectedCategory] = useState('small_medium');
   const [selectedMetric, setSelectedMetric] = useState<ComparisonMetric>('qps');
 
@@ -98,13 +98,13 @@ export default function FTSBenchmarkSection() {
   }, [selectedCategory]);
 
   // Filter data based on selected datasets
-  const filteredCosdataData = useMemo(() => 
+  const filteredCosdataData = useMemo(() =>
     cosdataDataWithLatency.filter(item => selectedDatasets.includes(item.dataset))
-  , [cosdataDataWithLatency, selectedDatasets]);
-  
-  const filteredElasticsearchData = useMemo(() => 
+    , [cosdataDataWithLatency, selectedDatasets]);
+
+  const filteredElasticsearchData = useMemo(() =>
     elasticsearchDataWithLatency.filter(item => selectedDatasets.includes(item.dataset))
-  , [elasticsearchDataWithLatency, selectedDatasets]);
+    , [elasticsearchDataWithLatency, selectedDatasets]);
 
   // Get the selected metric configuration
   const currentMetric = metricOptions.find(m => m.id === selectedMetric) || metricOptions[0];
@@ -113,14 +113,14 @@ export default function FTSBenchmarkSection() {
   const averageSpeedup = useMemo(() => {
     let total = 0;
     let count = 0;
-    
+
     selectedDatasets.forEach(dataset => {
       const cosdataItem = cosdataDataWithLatency.find(item => item.dataset === dataset);
       const elasticsearchItem = elasticsearchDataWithLatency.find(item => item.dataset === dataset);
-      
+
       if (cosdataItem && elasticsearchItem) {
         let cosdataValue, elasticsearchValue;
-        
+
         if (selectedMetric === 'qps') {
           cosdataValue = parseFloat(cosdataItem.qps);
           elasticsearchValue = parseFloat(elasticsearchItem.qps);
@@ -140,7 +140,7 @@ export default function FTSBenchmarkSection() {
             cosdataValue = cosdataItem.p95Latency || 0;
             elasticsearchValue = elasticsearchItem.p95Latency || 0;
           }
-          
+
           if (cosdataValue > 0 && elasticsearchValue > 0) {
             total += elasticsearchValue / cosdataValue; // Invert for "lower is better" metrics
             count++;
@@ -156,7 +156,7 @@ export default function FTSBenchmarkSection() {
         }
       }
     });
-    
+
     return count > 0 ? total / count : 0;
   }, [selectedMetric, selectedDatasets, cosdataDataWithLatency, elasticsearchDataWithLatency]);
 
@@ -164,7 +164,7 @@ export default function FTSBenchmarkSection() {
   const speedupRatios = allDatasets.map(dataset => {
     const cosdataItem = cosdataDataWithLatency.find(item => item.dataset === dataset);
     const elasticsearchItem = elasticsearchDataWithLatency.find(item => item.dataset === dataset);
-    
+
     if (cosdataItem && elasticsearchItem && elasticsearchItem.qps !== '0') {
       return {
         dataset,
@@ -179,7 +179,7 @@ export default function FTSBenchmarkSection() {
       <h1 id="full-text-search-benchmarks" className={`text-3xl sm:text-4xl md:text-[40px] font-bold text-[#0055c8] mb-6 sm:mb-8 scroll-mt-24 ${geologica.className}`}>
         Full-Text Search Benchmarks
       </h1>
-      
+
       <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-6 ${afacad.className}`}>
         We benchmarked Cosdata&apos;s full-text search capabilities against ElasticSearch across multiple datasets to evaluate performance, accuracy, and efficiency.
       </p>
@@ -191,12 +191,12 @@ export default function FTSBenchmarkSection() {
       <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
         Our full-text search benchmarks were conducted using the BEIR benchmark suite, which provides a diverse set of information retrieval datasets.
         All benchmarks were run on identical hardware configurations to ensure fair comparison. Cosdata&apos;s custom BM25 implementation was used for these benchmarks, showcasing our optimized approach to lexical search.{' '}
-        <Link href="/blog/outpacing-elasticsearch-cosdata-bm25" className="text-[#0055c8] font-medium hover:underline">
+        <Link href="/blog/outpacing-elasticsearch-how-cosdata-rebuilt-bm-25-for-a-new-era-of-searching" className="text-[#0055c8] font-medium hover:underline">
           Read our technical blog post
         </Link>{' '}
         to learn how our BM25 implementation outperforms ElasticSearch.
       </p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div>
           <h3 className={`text-lg font-semibold mb-2 text-gray-800 ${geologica.className}`}>Metrics</h3>
@@ -207,7 +207,7 @@ export default function FTSBenchmarkSection() {
             <li><strong>Insertion Time:</strong> Time taken to index the entire corpus</li>
           </ul>
         </div>
-        
+
         <div>
           <h3 className={`text-lg font-semibold mb-2 text-gray-800 ${geologica.className}`}>Datasets</h3>
           <ul className={`list-disc pl-6 space-y-1 mb-4 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
@@ -361,15 +361,15 @@ export default function FTSBenchmarkSection() {
             datasets={[
               {
                 label: "Cosdata",
-                backgroundColor: "#3083FE", 
+                backgroundColor: "#3083FE",
                 data: filteredCosdataData
                   .sort((a, b) => a.dataset.localeCompare(b.dataset))
-                  .map(d => 
+                  .map(d =>
                     selectedMetric === 'qps' ? parseFloat(d.formattedQps) :
-                    selectedMetric === 'insertionTime' ? parseFloat(d.formattedInsertionTime) :
-                    selectedMetric === 'ndcg' ? parseFloat(d.formattedNdcg) :
-                    selectedMetric === 'p50Latency' ? d.p50Latency :
-                    d.p95Latency
+                      selectedMetric === 'insertionTime' ? parseFloat(d.formattedInsertionTime) :
+                        selectedMetric === 'ndcg' ? parseFloat(d.formattedNdcg) :
+                          selectedMetric === 'p50Latency' ? d.p50Latency :
+                            d.p95Latency
                   )
               },
               {
@@ -377,12 +377,12 @@ export default function FTSBenchmarkSection() {
                 backgroundColor: "#F23665",
                 data: filteredElasticsearchData
                   .sort((a, b) => a.dataset.localeCompare(b.dataset))
-                  .map(d => 
+                  .map(d =>
                     selectedMetric === 'qps' ? parseFloat(d.formattedQps) :
-                    selectedMetric === 'insertionTime' ? parseFloat(d.formattedInsertionTime) :
-                    selectedMetric === 'ndcg' ? parseFloat(d.formattedNdcg) :
-                    selectedMetric === 'p50Latency' ? d.p50Latency :
-                    d.p95Latency
+                      selectedMetric === 'insertionTime' ? parseFloat(d.formattedInsertionTime) :
+                        selectedMetric === 'ndcg' ? parseFloat(d.formattedNdcg) :
+                          selectedMetric === 'p50Latency' ? d.p50Latency :
+                            d.p95Latency
                   )
               }
             ]}
@@ -413,9 +413,9 @@ export default function FTSBenchmarkSection() {
             {sortedDatasets.flatMap(dataset => {
               const cosdataItem = cosdataDataWithLatency.find(item => item.dataset === dataset);
               const elasticsearchItem = elasticsearchDataWithLatency.find(item => item.dataset === dataset);
-              
+
               if (!cosdataItem || !elasticsearchItem) return [];
-              
+
               return [
                 <tr key={`${dataset}-cosdata`} className="bg-gray-50">
                   <td className="py-2 px-4 border-b font-medium text-gray-900" rowSpan={2}>
