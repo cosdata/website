@@ -11,29 +11,29 @@ import { vectorBenchmarkData } from '@/data/benchmarks';
 
 export default function BenchmarksPage() {
   const cosdataConfigData = [
-    { 
-      config: "ef_construction: 128, ef_search: 128, neighbors_count: 16, layer_0_neighbors_count: 32", 
-      indexingTime: "554.1", 
-      recall: "0.98", 
-      qps: "2274" 
+    {
+      config: "ef_construction: 128, ef_search: 128, neighbors_count: 16, layer_0_neighbors_count: 32",
+      indexingTime: "554.1",
+      recall: "0.98",
+      qps: "2274"
     },
-    { 
-      config: "ef_construction: 64, ef_search: 128, neighbors_count: 16, layer_0_neighbors_count: 32", 
-      indexingTime: "518.2", 
-      recall: "0.98", 
-      qps: "2242" 
+    {
+      config: "ef_construction: 64, ef_search: 128, neighbors_count: 16, layer_0_neighbors_count: 32",
+      indexingTime: "518.2",
+      recall: "0.98",
+      qps: "2242"
     },
-    { 
-      config: "ef_construction: 64, ef_search: 64, neighbors_count: 16, layer_0_neighbors_count: 32", 
-      indexingTime: "468.1", 
-      recall: "0.96", 
-      qps: "2621" 
+    {
+      config: "ef_construction: 64, ef_search: 64, neighbors_count: 16, layer_0_neighbors_count: 32",
+      indexingTime: "468.1",
+      recall: "0.96",
+      qps: "2621"
     },
-    { 
-      config: "ef_construction: 32, ef_search: 32, neighbors_count: 16, layer_0_neighbors_count: 32", 
-      indexingTime: "422.8", 
-      recall: "0.95", 
-      qps: "2960" 
+    {
+      config: "ef_construction: 32, ef_search: 32, neighbors_count: 16, layer_0_neighbors_count: 32",
+      indexingTime: "422.8",
+      recall: "0.95",
+      qps: "2960"
     },
   ];
 
@@ -47,21 +47,21 @@ export default function BenchmarksPage() {
             <div className="block lg:hidden mb-6">
               <BenchmarksTOC isMobile={true} />
             </div>
-            
+
             {/* Introduction Section */}
             <h1 id="our-benchmarking-approach" className={`text-3xl sm:text-4xl md:text-[40px] font-bold text-[#0055c8] mb-6 sm:mb-8 scroll-mt-24 ${geologica.className}`}>
               Our Benchmarking Approach
             </h1>
-            
+
             <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
-              Benchmarks should help clarify performance comparisons, but in vector databases, they often create more confusion than clarity. 
+              Benchmarks should help clarify performance comparisons, but in vector databases, they often create more confusion than clarity.
               At Cosdata, we believe in a different approach focused on transparency, real-world relevance, and understandable results.
             </p>
-            
+
             <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-4 ${afacad.className}`}>
               Our benchmarks are designed with three core principles:
             </p>
-              
+
             <ul className={`list-disc pl-6 space-y-2 mb-6 text-base sm:text-lg text-gray-700 benchmark-list ${afacad.className}`}>
               <li>
                 <strong>Understandable by Design</strong> - We provide context for each metric and explain their real-world implications, not just isolated numbers.
@@ -73,13 +73,46 @@ export default function BenchmarksPage() {
                 <strong>Real-World Relevance</strong> - We test both vector search and full-text search capabilities with scenarios that mirror actual production usage.
               </li>
             </ul>
-            
+
             <p className={`text-base sm:text-lg md:text-xl text-gray-700 mb-10 ${afacad.className}`}>
               No benchmark can perfectly simulate every use case, but we strive to make performance trade-offs more transparent and easier to reason about. The benchmarks on this page represent our ongoing commitment to honest, meaningful performance reporting.
             </p>
 
             {/* Vector Search Benchmarks */}
             <VectorBenchmarkSection />
+
+            {/* Cosdata HNSW Configuration */}
+            <div className="mt-4 mb-8">
+              <div className="flex justify-between items-center mb-2">
+                <p className="text-xs text-gray-500">
+                  <span className="font-medium">Cosdata HNSW Configuration:</span>
+                </p>
+                <button
+                  onClick={() => {
+                    const configText = `ef_construction=128,
+ef_search=64,
+neighbors_count=32,
+level_0_neighbors_count=32`;
+                    navigator.clipboard.writeText(configText);
+                  }}
+                  className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1 px-2 py-1 rounded hover:bg-gray-100 transition-colors"
+                  title="Copy configuration"
+                >
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy
+                </button>
+              </div>
+              <div className={`bg-gray-50 border rounded-md p-3 ${noto_sans_mono.className}`}>
+                <code className="text-xs text-gray-700 block leading-relaxed">
+                  ef_construction=128,<br />
+                  ef_search=64,<br />
+                  neighbors_count=32,<br />
+                  level_0_neighbors_count=32
+                </code>
+              </div>
+            </div>
 
             {/* Full-Text Search Benchmarks */}
             <FTSBenchmarkSection />
