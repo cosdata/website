@@ -4,31 +4,22 @@ import FeaturedPost from './FeaturedPost';
 import NewsletterSignup from './NewsletterSignup';
 import BlogPagination from './BlogPagination';
 import { commonStyles, noto_sans_mono } from '../styles/common';
+import { getArticleCount, getArticles, getFeaturedPost } from '../../lib/strapi';
 
 // Disable dynamic params - use only statically generated routes
 export const dynamicParams = false;
+export const dynamic = 'force-static';
+export const revalidate = 3600; // 1 hour cache
 
 // Generate static params for all blog pages at build time
 export async function generateStaticParams() {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
   const pageSize = 9; // Same as the pageSize used in fetchPosts
 
   try {
     console.log('[SSG] Fetching total article count for static page generation...');
 
     // First, get the total count of articles
-    const response = await fetch(`${strapiUrl}/api/articles?pagination[page]=1&pagination[pageSize]=1`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      console.error('[SSG] Failed to fetch articles count:', response.status);
-      return [{}]; // Return default page (page 1)
-    }
-
-    const data = await response.json();
+    const data = await getArticleCount();
     const totalArticles = data.meta?.pagination?.total || 0;
     const totalPages = Math.ceil(totalArticles / pageSize);
 
@@ -116,29 +107,9 @@ function transformArticleData(articles: any[]) {
 }
 
 async function fetchFeaturedPost() {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-
   try {
-    const params = new URLSearchParams({
-      'pagination[page]': '1',
-      'pagination[pageSize]': '1',
-      'populate': '*',
-      'sort': 'published_date:desc',
-    });
-
-    const response = await fetch(`${strapiUrl}/api/articles?${params}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Strapi fetch failed: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await getFeaturedPost();
     const transformedData = transformArticleData(data.data);
-
     return transformedData[0] || null;
   } catch (error) {
     console.error('[SSG] Error fetching featured post:', error);
@@ -147,27 +118,8 @@ async function fetchFeaturedPost() {
 }
 
 async function fetchPosts(page: number = 1, pageSize: number = 9) {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
-
   try {
-    const params = new URLSearchParams({
-      'pagination[page]': page.toString(),
-      'pagination[pageSize]': pageSize.toString(),
-      'populate': '*',
-      'sort': 'published_date:desc',
-    });
-
-    const response = await fetch(`${strapiUrl}/api/articles?${params}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_ARTICLES_READ_TOKEN}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Strapi fetch failed: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await getArticles(page, pageSize);
     const transformedData = transformArticleData(data.data);
 
     return {
