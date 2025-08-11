@@ -197,26 +197,7 @@ export default function BlogContent({
     );
   };
   
-  // For Markdown content (common case), split by the CTA placeholder and render with the CTA
-  if (typeof content === 'string' && content.includes('<!-- NEWSLETTER_CTA_PLACEHOLDER -->')) {
-    const contentParts = content.split('<!-- NEWSLETTER_CTA_PLACEHOLDER -->');
-    const beforeCTA = contentParts[0] || '';
-    const afterCTA = contentParts.length > 1 ? contentParts[1] : '';
-    
-    return (
-      <>
-        {beforeCTA && <SafeMarkdown content={beforeCTA} />}
-        
-        <div className="my-12">
-          <CompactNewsletterCTA />
-        </div>
-        
-        {afterCTA && <SafeMarkdown content={afterCTA} />}
-      </>
-    );
-  }
-  
-  // If no placeholder found, render the entire content
+  // Always render the entire content as markdown; no mid-content CTA
   return <SafeMarkdown content={content as string} />;
 }
 
