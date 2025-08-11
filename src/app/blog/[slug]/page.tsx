@@ -72,8 +72,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   const readingTime = article.read_time || 5;
 
-  // Insert CTA placeholder after 3rd heading
-  const contentWithCTA = insertCTA(article.content || '');
+  // Use original content without mid-content CTA
+  const content = article.content || '';
 
   return (
     <div className="min-h-screen bg-[#f0f7ff]">
@@ -109,9 +109,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </div>
 
           {article.cover && (
-            <div className="w-full my-12">
-              <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-                <div className="relative aspect-[16/9] w-full">
+            <div className="w-full my-12 flex justify-center">
+              <div className="overflow-hidden max-w-4xl w-full mx-auto">
+                <div className="relative aspect-[16/8] w-full">
                   <Image
                     src={getFullImageUrl(article.cover)}
                     alt={article.title}
@@ -136,9 +136,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                 prose-code:text-[#0055c8] prose-code:bg-white/50
                 prose-pre:bg-gray-900 prose-pre:text-gray-100`}
             >
-              <BlogContent content={contentWithCTA} />
+              <BlogContent content={content} />
             </div>
 
+            {/* Newsletter CTA only at the end */}
             <CompactNewsletterCTA />
             <SocialShare title={article.title} />
 
@@ -197,19 +198,3 @@ async function fetchArticle(slug: string) {
   }
 }
 
-function insertCTA(md: string, after = 3): string {
-  if (typeof md !== 'string') return md;
-
-  const regex = /^(#{1,6})\s.+/gm;
-  let count = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = regex.exec(md))) {
-    count++;
-    if (count === after) {
-      const pos = match.index + match[0].length;
-      return md.slice(0, pos) + '\n\n<!-- NEWSLETTER_CTA_PLACEHOLDER -->\n\n' + md.slice(pos);
-    }
-  }
-  return md;
-}

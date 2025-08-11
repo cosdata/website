@@ -29,7 +29,8 @@ function BlogPosts({ posts, className }: BlogPostsProps) {
                   src={getCoverImageUrl(post)}
                   alt={post.attributes.title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-300 group-hover:scale-102 max-h-[320px]"
+                  style={{ objectFit: 'cover' }}
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
