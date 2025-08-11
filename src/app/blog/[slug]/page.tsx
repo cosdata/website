@@ -109,9 +109,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </div>
 
           {article.cover && (
-            <div className="w-full my-12">
-              <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-                <div className="relative aspect-[16/9] w-full">
+            <div className="w-full my-12 flex justify-center">
+              <div className="overflow-hidden max-w-4xl w-full mx-auto">
+                <div className="relative aspect-[16/8] w-full">
                   <Image
                     src={getFullImageUrl(article.cover)}
                     alt={article.title}
