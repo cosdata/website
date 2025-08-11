@@ -166,6 +166,7 @@ export default function BlogContent({
               {children}
             </Link>
           ),
+          // Table blocks are not supported by Strapi BlocksRenderer as of 2025
         }}
         modifiers={{
           bold: ({ children }) => <strong className="font-semibold">{children}</strong>,
@@ -323,4 +324,15 @@ const markdownComponents = {
       </span>
     );
   },
+  // Responsive table rendering
+  table: ({ node, children, ...props }: any) => (
+    <div className="w-full overflow-x-auto my-8">
+      <table className="min-w-full border-collapse" {...props}>{children}</table>
+    </div>
+  ),
+  thead: ({ node, children, ...props }: any) => <thead className="bg-gray-100" {...props}>{children}</thead>,
+  tbody: ({ node, children, ...props }: any) => <tbody {...props}>{children}</tbody>,
+  tr: ({ node, children, ...props }: any) => <tr className="border-b last:border-b-0" {...props}>{children}</tr>,
+  th: ({ node, children, ...props }: any) => <th className="px-4 py-2 text-left font-semibold bg-gray-50" {...props}>{children}</th>,
+  td: ({ node, children, ...props }: any) => <td className="px-4 py-2 align-top" {...props}>{children}</td>,
 };
