@@ -6,8 +6,8 @@ import Script from 'next/script';
 import BodyWithAttributes from './components/BodyWithAttributes';
 
 export const metadata: Metadata = {
-  title: "Cosdata - Next-gen Vector Database and Knowledge Graph Solution",
-  description: "Powerful, scalable vector database and knowledge graph solutions for enterprise AI applications.",
+  title: "Cosdata - Context retrieval engine for AI agents",
+  description: " Delivering high-performance, scalable context intelligence for AI - turning unstructured and semi-structured data into precise, actionable insights.",
   metadataBase: new URL('https://cosdata.io'),
   icons: {
     icon: '/favicon.svg',
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://cosdata.io/',
     siteName: 'Cosdata',
-    title: 'Cosdata - Next-gen Vector Database and Knowledge Graph Solution',
-    description: 'Powerful, scalable vector database and knowledge graph solutions for enterprise AI applications.',
+    title: 'Cosdata - Context retrieval engine for AI agents',
+    description: ' Delivering high-performance, scalable context intelligence for AI - turning unstructured and semi-structured data into precise, actionable insights.',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cosdata - Next-gen Vector Database and Knowledge Graph Solution',
-    description: 'Powerful, scalable vector database and knowledge graph solutions for enterprise AI applications.',
+    title: 'Cosdata - Context retrieval engine for AI agents',
+    description: ' Delivering high-performance, scalable context intelligence for AI - turning unstructured and semi-structured data into precise, actionable insights.',
     images: ['/images/og-image.jpg'],
     creator: '@cosdata',
     site: '@cosdata',
