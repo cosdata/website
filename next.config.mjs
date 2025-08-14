@@ -62,6 +62,14 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/resources/why-cosdata.pdf',
+        destination: '/api/resources/why-cosdata.pdf',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
