@@ -21,6 +21,19 @@ interface ResearchPaper {
 
 const researchPapers: ResearchPaper[] = [
   {
+    id: 'hierarchical-sparse',
+    title: 'Hierarchical Sparse Vector Search and Recommendation',
+    subtitle: 'Two-Phase Term-Based Scoring for Explainable Ranking',
+    description: 'A unified search and recommendation system using sparse vector representations with hierarchical column-value pairs and term-level decomposition. Features a two-phase architecture for mathematically rigorous, explainable ranking without ML dependencies. Includes power law score distributions, cross-field amplification, and a unified framework for both search and recommendation.',
+    innovations: [
+      'Two-phase architecture: intra-field scoring (index-time) and inter-field ranking (query-time)',
+      'Sparse Hierarchical Vectors: column-value-term decomposition with zone prefixes.',
+      'Deterministic Relevance: power-law scoring + cross-field amplification without any ML models.',
+    ],
+    pdfUrl: '/pdfs/hierachial-sparse-vector-search-recommendation.pdf',
+    pageUrl: '/research/hierachial-sparse-vector-search-recommendation',
+  },
+  {
     id: 'channi',
     title: 'CHANNI: A Multi-Level Vector Search Index with Nested Graph Navigation',
     subtitle: 'A Disk-Based ANN Index For Massively Scaled Apps',
