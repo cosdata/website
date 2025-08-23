@@ -24,7 +24,7 @@ const researchPapers: ResearchPaper[] = [
     id: 'hierarchical-sparse',
     title: 'Hierarchical Sparse Vector Search and Recommendation',
     subtitle: 'Two-Phase Term-Based Scoring for Explainable Ranking',
-    description: 'A unified search and recommendation system using sparse vector representations with hierarchical column-value pairs and term-level decomposition. Features a two-phase architecture for mathematically rigorous, explainable ranking without ML dependencies. Includes power law score distributions, cross-field amplification, and a unified framework for both search and recommendation.',
+    description: 'A unified search and recommendation system using sparse vector representations with hierarchical column-value pairs and term-level decomposition. Features a two-phase scoring/ranking architecture with explainable ranking.',
     innovations: [
       'Two-phase architecture: intra-field scoring (index-time) and inter-field ranking (query-time)',
       'Sparse Hierarchical Vectors: column-value-term decomposition with zone prefixes.',
