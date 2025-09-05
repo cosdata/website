@@ -127,7 +127,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
         {/* Body */}
         <div className="flex justify-between items-start relative gap-12">
-          <div className="w-full lg:w-[calc(100%-20rem)]">
+          <div className={`w-full ${params.slug !== 'cosdata-vs-qdrant-a-comprehensive-vector-database-performance-benchmark' ? 'lg:w-[calc(100%-20rem)]' : ''}`}>
             <div
               className={`prose prose-lg max-w-none text-[#374151] ${afacad.className} text-lg sm:text-xl
                 prose-headings:text-[#0055c8] prose-headings:font-semibold
@@ -166,7 +166,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </footer>
           </div>
 
-          <TableOfContents />
+          {params.slug !== 'cosdata-vs-qdrant-a-comprehensive-vector-database-performance-benchmark' && <TableOfContents />}
         </div>
       </article>
     </div>
