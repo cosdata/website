@@ -7,8 +7,7 @@ const HeroSection = () => {
   const phrases = useMemo(() => [
     "Infinite Scalability",
     "Leading Benchmarks",
-    "Hybrid Search",
-    "Knowledge Graphs"
+    "Hybrid Search"
   ], []);
   const [currentPhrase, setCurrentPhrase] = useState('');
   const [phraseIndex, setPhraseIndex] = useState(0);
