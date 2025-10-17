@@ -206,12 +206,25 @@ export default function Header() {
               className="text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500" >
               Docs
             </Link>
+
+            <Link href="/hackathon" className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-xl md:text-lg">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="7" r="3" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="5" cy="10" r="2.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="19" cy="10" r="2.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 20c0-3 4-5 6-5s6 2 6 5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 20c0-2.5 2.5-4 5-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M22 20c0-2.5-2.5-4-5-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Hackathon 2025
+            </Link>
+            {/*
             <button onClick={openModal} className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
               </svg>
-              Get Early Access
-            </button>
+              Join Community
+            </button>*/}
           </nav>
 
           {/* Hamburger Icon */}
@@ -312,12 +325,17 @@ export default function Header() {
             <Link href="/pricing" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">
               Pricing
             </Link>
-            <button onClick={openModal} className="w-full mt-4 bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-xl md:text-lg">
+            <Link href="/hackathon" className="w-full mt-4 bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                <circle cx="12" cy="7" r="3" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="5" cy="10" r="2.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="19" cy="10" r="2.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 20c0-3 4-5 6-5s6 2 6 5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 20c0-2.5 2.5-4 5-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M22 20c0-2.5-2.5-4-5-4" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              Get Early Access
-            </button>
+              Hackathon 2025
+            </Link>
           </div>
         </div>
       )}
