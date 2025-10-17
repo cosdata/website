@@ -207,7 +207,7 @@ export default function Header() {
               Docs
             </Link>
 
-            <Link href="/hackathon" className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-xl md:text-lg">
+            <Link href="/students" className="inline-block bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="7" r="3" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="5" cy="10" r="2.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
@@ -325,7 +325,7 @@ export default function Header() {
             <Link href="/pricing" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">
               Pricing
             </Link>
-            <Link href="/hackathon" className="w-full mt-4 bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-xl md:text-lg">
+            <Link href="/students" className="w-full mt-4 bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="7" r="3" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="5" cy="10" r="2.5" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
