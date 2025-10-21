@@ -97,8 +97,8 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-xl p-6 sm:p-8">
                 <h2 className={`text-2xl sm:text-3xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>What You&apos;ll Get</h2>
                 <ul className={`benchmark-list space-y-1.5 text-base sm:text-lg text-[#374151] ${afacad.className}`}>
-                  <li>Cash prizes worth to ₹35,000(10K in Cash + 25K as in SaaS credits)</li>
-                  <li>Internship/Interview Call with Cosdata</li>
+                  <li>Win prizes worth 35K(10k in cash + 25k in Saas credits)for winner & runner up</li>
+                  <li>Internship opportunity with Cosdata</li>
                   <li>Project showcase on Cosdata’s official LinkedIn and GitHub
                   </li>
                   <li>Certification + Letter of Recognition</li>
@@ -134,7 +134,7 @@ export default async function StudentsPage() {
             {/* Requirements */}
             <div className="flex-1 bg-white rounded-xl shadow p-8">
               <h4 className={`text-lg font-bold text-[#0055c8] mb-3 ${geologica.className}`}>Requirements</h4>
-              <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-[#374151] ${afacad.className}">
+              <ul className="benchmark-list list-inside space-y-2 text-base sm:text-lg text-[#374151] ${afacad.className}">
                 <li>Must use Cosdata OSS in your build !</li>
                 <li>Share your project in Discord</li>
                 <li>Project must be published to the web <span className="text-[#0055c8]"> or </span> have a demo video</li>
@@ -144,10 +144,12 @@ export default async function StudentsPage() {
             {/* Rewards */}
             <div className="flex-1 bg-white rounded-xl shadow p-8">
               <h4 className={`text-lg font-bold text-[#f23665] mb-3 ${geologica.className}`}>What You Get</h4>
-              <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-[#374151] ${afacad.className}">
+              <ul className="benchmark-list list-inside space-y-2 text-base sm:text-lg text-[#374151] ${afacad.className}">
                 <li>All submissions receive feedback from the Cosdata team</li>
                 <li>All projects promoted on Cosdata&apos;s social channels</li>
-                <li><span className="font-bold text-[#f23665]">Winner receives ₹35,000(10K in Cash + 25K as in SaaS credits)</span></li>
+                <li>
+                  <span className="font-bold text-[#f23665]">Winner & Runner up receive ₹35,000(10K in Cash + 25K as in SaaS credits)</span>
+                  </li>
                 <li>internship opportunities for top performers</li>
                 <li>We hire all our devs from our contributor & builder pool!</li>
               </ul>
