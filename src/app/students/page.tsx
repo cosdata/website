@@ -55,93 +55,54 @@ export default async function StudentsPage() {
     <main className="bg-transparent">
       {/* Hero Section */}
       <section className="pt-24 pb-2 sm:pb-4 md:pb-8 flex flex-col items-center text-center bg-gradient-to-b from-[#f5dede] to-white px-4 sm:px-6 md:px-8 mb-6">
-        <h1 className={`text-[#f23665] text-4xl sm:text-5xl md:text-6xl font-bold mb-4 max-w-7xl ${geologica.className}`}>Join the Cosdata Student Community</h1>
-        <p className={`text-xl sm:text-2xl md:text-3xl max-w-6xl mx-auto text-[#374151] ${afacad.className}`}>Build AI apps, participate in hackathons, win prizes, and unlock internships, job opportunities, and certifications. Connect with other students, learn, and get recognized!</p>
+        <h1 className={`text-[#f23665] text-4xl sm:text-5xl md:text-6xl font-bold mb-4 max-w-7xl ${geologica.className}`}> Join the Cosdata Hackathon 2025</h1>
+        <p className={`text-xl sm:text-3xl font-semibold max-w-6xl mx-auto text-[#374151] ${afacad.className}`}>Build powerful AI-native apps using Cosdata’s open-source vector search engine.
+        Create AI agents, chatbots, recommendation systems, RAG pipelines, copilots, and context-aware automation tools and get recognized for your innovation!</p>
       </section>
 
       {/* How to Get Started Section */}
       <section id="getting-started" className="scroll-mt-24 pb-2 sm:pb-4 md:pb-8 px-4 sm:px-6 md:px-8 bg-transparent mb-12">
         <div className="max-w-7xl mx-auto flex flex-col gap-8 items-center">
-          <h2 className={`text-2xl sm:text-3xl font-bold text-[#0055c8] pb-2 sm:pb-4 md:pb-8 text-center ${geologica.className}`}>How to Get Started</h2>
-          <div className="max-w-5xl w-full grid grid-cols-1 sm:grid-cols-2 gap-6 gap-y-8 md:gap-8 justify-center items-stretch pb-2 sm:pb-4 md:pb-8">
-            {/* Step 1: Email Signup */}
-            <div className="flex flex-col min-h-[220px] bg-white rounded-xl py-6 sm:py-8 px-4 sm:px-6 md:px-8 justify-between items-center w-full">
-              <div className="w-full flex flex-col items-center">
-                <div className="text-3xl font-bold text-[#0055c8] mb-2">1</div>
-                <div className={`text-lg font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>Sign Up to Get Updates</div>
-              </div>
-              <div className="w-full flex flex-col justify-end mt-4">
-                <StudentEmailSignup />
-              </div>
-            </div>
-            {/* Step 2: Join Discord */}
-            <div className="flex flex-col min-h-[220px] bg-white rounded-xl py-6 sm:py-8 px-4 sm:px-6 md:px-8 justify-between items-center w-full">
-              <div className="w-full flex flex-col items-center">
-                <div className="text-3xl font-bold text-[#0055c8] mb-2">2</div>
-                <div className={`text-lg font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>Join our Discord</div>
-              </div>
-              <div className="w-full flex flex-col justify-end mt-4">
-                <a href="https://discord.gg/XMdtTBrtKT" target="_blank" rel="noopener noreferrer" className="inline-block w-full px-6 py-3 rounded-lg bg-[#0055c8] text-white font-semibold shadow hover:bg-blue-800 transition-colors text-lg text-center ${afacad.className}">Join Discord</a>
-              </div>
-            </div>
-            {/* Step 3: Star GitHub */}
-            <div className="flex flex-col min-h-[220px] bg-white rounded-xl py-6 sm:py-8 px-4 sm:px-6 md:px-8 justify-between items-center w-full">
-              <div className="w-full flex flex-col items-center">
-                <div className="text-3xl font-bold text-[#0055c8] mb-2">3</div>
-                <div className={`text-lg font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>Check out & Star our GitHub</div>
-              </div>
-              <div className="w-full flex flex-col justify-end mt-4">
-                <a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="inline-block w-full px-6 py-3 rounded-lg bg-[#0055c8] text-white font-semibold shadow hover:bg-blue-800 transition-colors text-lg text-center flex items-center justify-center gap-2 ${afacad.className}">
-                  <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z"/></svg>
-                  Star on GitHub
-                </a>
-              </div>
-            </div>
-            {/* Step 4: Enter a Hackathon */}
-            <div className="flex flex-col min-h-[220px] bg-white rounded-xl py-6 sm:py-8 px-4 sm:px-6 md:px-8 justify-between items-center w-full">
-              <div className="w-full flex flex-col items-center">
-                <div className="text-3xl font-bold text-[#0055c8] mb-2">4</div>
-                <div className={`text-lg font-semibold mb-4 text-[#0055c8] ${geologica.className}`}>Enter a Hackathon</div>
-              </div>
-              <div className="w-full flex flex-col justify-end mt-4">
-                <a href="#hackathons" className="inline-block w-full px-6 py-3 rounded-lg bg-[#f23665] text-white font-semibold shadow hover:bg-pink-700 transition-colors text-lg text-center ${afacad.className}">Learn More</a>
-              </div>
-            </div>
-          </div>
+          
           {/* Additional details from the original page */}
           <div className="w-full pb-2 sm:pb-4 md:pb-8">
             <div className="max-w-6xl mx-auto bg-white rounded-xl p-6 sm:p-8 px-4 sm:px-6 md:px-8 text-center">
               <h2 className={`text-3xl sm:text-4xl font-bold text-[#0055c8] mb-2 sm:mb-3 ${geologica.className}`}>Why Join?</h2>
-              <p className={`text-xl sm:text-2xl text-[#374151] mb-2 text-left sm:text-center sm:px-0 ${afacad.className}`}>As a Cosdata student, you&apos;ll get access to exclusive hackathons, project showcases, and a vibrant AI/ML community. Stand out with internship and job opportunities, earn certifications, and get your work recognized by industry leaders.</p>
+              <p className={`text-xl sm:text-3xl text-[#374151] mb-2 text-left sm:text-center sm:px-0 ${afacad.className}`}>As a Cosdata Hackathon participant, you’ll get hands-on experience building AI applications, connect with global developers, and unlock exciting rewards - from cash prizes, internship opportunities, and certification.
+              Get visibility across Cosdata’s social channels and stand out in the developer community.</p>
             </div>
             <div className="mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 gap-y-0 mt-8">
               <div className="bg-white rounded-xl p-6 sm:p-8">
                 <h2 className={`text-2xl sm:text-3xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>Who&apos;s it For?</h2>
-                <ul className={`benchmark-list space-y-1.5 text-base sm:text-lg text-[#374151] ${afacad.className}`}>
-                  <li>Students building final-year or side projects</li>
-                  <li>Hackathon participants</li>
+                <ul className={`benchmark-list space-y-1.5 text-base sm:text-xl text-[#374151] ${afacad.className}`}>
+                  <li>Students building final-year projects or side projects</li>
+                  <li>Hackathon enthusiasts and first-time builders</li>
                   <li>AI/ML club members</li>
-                  <li>Entrepreneurs building AI products</li>
+                  <li>Developers building AI products</li>
+                  <li>Anyone passionate about building AI applications</li>
                 </ul>
               </div>
               <div className="bg-white rounded-xl p-6 sm:p-8">
                 <h2 className={`text-2xl sm:text-3xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>What You Can Build?</h2>
-                <ul className={`benchmark-list space-y-1.5 text-base sm:text-lg text-[#374151] ${afacad.className}`}>
+                <ul className={`benchmark-list space-y-1.5 text-base sm:text-xl text-[#374151] ${afacad.className}`}>
                   <li>Semantic Search Tools</li>
-                  <li>Chatbots with RAG</li>
-                  <li>Personalized Recommenders</li>
-                  <li>Smart Knowledge Assistants</li>
+
+                  <li>AI Agents or Chatbots</li>
+                  <li>RAG-powered Knowledge Assistants</li>
+                  <li>Any AI project using Cosdata OSS</li>
+                  <li>Smart Search or Recommendation Systems</li>
                   <li>Project ideas welcome – build YOUR way!</li>
                 </ul>
               </div>
               <div className="bg-white rounded-xl p-6 sm:p-8">
                 <h2 className={`text-2xl sm:text-3xl font-bold text-[#0055c8] mb-3 sm:mb-4 ${geologica.className}`}>What You&apos;ll Get</h2>
-                <ul className={`benchmark-list space-y-1.5 text-base sm:text-lg text-[#374151] ${afacad.className}`}>
-                  <li>Internship/Interview Call with Cosdata</li>
-                  <li>Project Spotlight on our GitHub + LinkedIn</li>
+                <ul className={`benchmark-list space-y-1.5 text-base sm:text-xl text-[#374151] ${afacad.className}`}>
+                  <li>Win prizes worth 35K(10k in cash + 25k in Saas credits)for winner & runner up</li>
+                  <li>Internship opportunity with Cosdata</li>
+                  <li>Project showcase on Cosdata’s official LinkedIn and GitHub
+                  </li>
                   <li>Certification + Letter of Recognition</li>
-                  <li>Swag & Campus Fame</li>
-                  <li>Become a Campus Ambassador</li>
+                  <li>Community spotlight and networking opportunities</li>
                 </ul>
               </div>
             </div>
@@ -152,17 +113,19 @@ export default async function StudentsPage() {
       {/* Cosdata Hackathons Section */}
       <section id="hackathons" className="scroll-mt-24 pb-2 sm:pb-4 md:pb-8 px-4 bg-transparent">
         <div className="max-w-6xl mx-auto flex flex-col gap-8 items-center">
-          <h2 className={`text-3xl sm:text-4xl font-bold text-[#0055c8] mb-2 text-center ${geologica.className}`}>Cosdata Monthly Hackathons</h2>
-          <p className={`text-lg sm:text-xl text-[#374151] mb-6 text-center max-w-3xl ${afacad.className}`}>Build something awesome with Cosdata every month! Get feedback, get promoted, and win cash prizes. All skill levels welcome—this is the best way to join our builder community and get noticed for internships and jobs.</p>
+          <h2 className={`text-3xl sm:text-4xl font-bold text-[#0055c8] mb-2 text-center ${geologica.className}`}>Cosdata Hackathon Timeline</h2>
+          <p className={`text-lg sm:text-2xl  text-[#374151] mb-6 text-center max-w-3xl ${afacad.className}`}>Hackathon Dates: November 15th – 20th<br />
+          Build solo or in a team, submit your project, and present your demo to win!</p>
 
           {/* How it Works Steps */}
           <div className="w-full bg-white rounded-xl shadow p-8 mb-4">
             <h3 className={`text-xl font-bold text-[#0055c8] mb-4 ${geologica.className}`}>How It Works</h3>
-            <ol className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-decimal list-inside text-lg ${afacad.className}">
-              <li><a href="https://discord.gg/XMdtTBrtKT" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#0055c8] underline hover:text-[#f23665]">Join our Discord</a> to connect and share your project</li>
-              <li><a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#0055c8] underline hover:text-[#f23665]">Star our GitHub</a> to support the community</li>
-              <li><span className="font-semibold text-[#0055c8]">Build a project with Cosdata</span> (<a href="#learning-resources" className="text-[#0055c8] underline hover:text-[#f23665]">see Learning Resources below for help</a>)</li>
-              <li><a href="https://discord.gg/XMdtTBrtKT" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#0055c8] underline hover:text-[#f23665]">Share your project</a> in Discord, and post it on LinkedIn, X, or another social network (web link or demo video)</li>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-decimal list-inside text-xl text-[#374151] ${afacad.className}">
+              <li><a href="https://discord.gg/XMdtTBrtKT" target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg text-[#0055c8] underline hover:text-[#f23665]">Join our Discord</a> to collaborate and share your project</li>
+              <li><span className="text-base sm:text-lg text-[#0055c8]"> Build a project with Cosdata OSS </span> (<a href="#learning-resources" className="text-[#0055c8] underline hover:text-[#f23665]">see Learning Resources below for help</a>)</li>
+              <li><a href="https://github.com/cosdata/cosdata" target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg text-[#0055c8] underline hover:text-[#f23665]">Star our GitHub</a> to support the community</li>
+
+              <li><a href="https://discord.gg/XMdtTBrtKT" target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg text-[#0055c8] underline hover:text-[#0055c8]">Share your project</a> in Discord, and post it on LinkedIn, X, or another social network (and tag Cosdata!)</li>
             </ol>
           </div>
 
@@ -171,21 +134,23 @@ export default async function StudentsPage() {
             {/* Requirements */}
             <div className="flex-1 bg-white rounded-xl shadow p-8">
               <h4 className={`text-lg font-bold text-[#0055c8] mb-3 ${geologica.className}`}>Requirements</h4>
-              <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-[#374151] ${afacad.className}">
-                <li>Project must use Cosdata</li>
+              <ul className="benchmark-list list-inside space-y-2 text-base sm:text-xl text-[#374151] ${afacad.className}">
+                <li>Must use Cosdata OSS in your build !</li>
                 <li>Share your project in Discord</li>
-                <li>Project must be published to the web <span className="text-[#0055c8]">or</span> have a demo video</li>
+                <li>Project must be published to the web <span className="text-[#0055c8]"> or </span> have a demo video</li>
                 <li>Post your project on LinkedIn, X, or another social network</li>
               </ul>
             </div>
             {/* Rewards */}
             <div className="flex-1 bg-white rounded-xl shadow p-8">
               <h4 className={`text-lg font-bold text-[#f23665] mb-3 ${geologica.className}`}>What You Get</h4>
-              <ul className="list-disc list-inside space-y-2 text-base sm:text-lg text-[#374151] ${afacad.className}">
+              <ul className="benchmark-list list-inside space-y-2 text-base sm:text-xl text-[#374151] ${afacad.className}">
                 <li>All submissions receive feedback from the Cosdata team</li>
                 <li>All projects promoted on Cosdata&apos;s social channels</li>
-                <li><span className="font-bold text-[#f23665]">Winner receives $100</span></li>
-                <li>Outstanding contributors considered for paid internships</li>
+                <li>
+                  <span className="font-bold text-[#f23665]">Winner & Runner up receive ₹35,000(10K in Cash + 25K as in SaaS credits)</span>
+                  </li>
+                <li>internship opportunities for top performers</li>
                 <li>We hire all our devs from our contributor & builder pool!</li>
               </ul>
             </div>
@@ -216,7 +181,7 @@ export default async function StudentsPage() {
                   </div>
                 </div>
               ) : (
-                <p className={`text-base text-[#374151] ${afacad.className}`}>Explore our <Link href="/blog" className="text-blue-600 underline">blog</Link> for deep dives and the Foundations Series on vector search, RAG, and more.</p>
+                <p className={`text-2xl text-[#374151] ${afacad.className}`}>Explore our <Link href="/blog" className="text-blue-600 underline">blog</Link> for deep dives and the Foundations Series on vector search, RAG, and more.</p>
               )}
             </div>
           </div>
@@ -282,7 +247,7 @@ export default async function StudentsPage() {
       <section id="about-cosdata" className="scroll-mt-24 pb-24 px-4 bg-transparent">
         <div className="max-w-7xl mx-auto flex flex-col gap-8 items-center">
           <h2 className={`text-2xl sm:text-3xl font-bold text-[#0055c8] text-center ${geologica.className}`}>About Cosdata</h2>
-          <div className="w-full bg-white rounded-xl p-8 text-center text-lg text-[#374151] ${afacad.className}">
+          <div className="w-full bg-white rounded-xl p-8 text-center text-xl text-[#374151] ${afacad.className}">
             <p className="mb-4">Cosdata delivers high-performance vector search solutions, including open-source and serverless options, designed for enterprise-scale AI applications. We empower students to build GenAI projects with industry-leading performance, scale, and easy of use.</p>
             <p>As a student, you can access exclusive hackathons, project showcases, and a vibrant AI/ML community. Stand out with internship and job opportunities, earn certifications, win prizes, and get your work recognized by industry leaders.</p>
           </div>
