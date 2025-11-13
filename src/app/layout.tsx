@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HackathonPopup from "./components/HackathonPopup";
 import Script from 'next/script';
 import BodyWithAttributes from './components/BodyWithAttributes';
 
@@ -75,6 +76,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <HackathonPopup />
       </BodyWithAttributes>
     </html>
   );
