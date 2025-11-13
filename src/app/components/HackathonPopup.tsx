@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { commonStyles, afacad, geologica } from '../styles/common';
 
 const STORAGE_KEY = 'cosdata_hackathon_popup_dismissed';
-const STORAGE_DURATION = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+const STORAGE_DURATION = 1 * 24 * 60 * 60 * 1000; // 1 day in milliseconds
 const DELAY_TIME = 5000; // 5 seconds
 
 export default function HackathonPopup() {
