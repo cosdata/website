@@ -6,24 +6,30 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { email, companyName, jobTitle, message } = body;
 
+    console.log('Received submission:', { email, companyName, jobTitle, message });
+
     // Check if email already exists
     const existingRecord = await sql`
       SELECT * FROM early_access_submissions WHERE email = ${email}
     `;
 
+    console.log('Existing record check:', existingRecord?.rowCount || 0);
+
     if (existingRecord && existingRecord.rowCount && existingRecord.rowCount > 0) {
       // Update existing record
       await sql`
         UPDATE early_access_submissions 
-        SET company_name = ${companyName}, job_title = ${jobTitle}
+        SET company_name = ${companyName}, job_title = ${jobTitle}, updated_at = NOW()
         WHERE email = ${email}
       `;
+      console.log('Updated existing record');
     } else {
       // Insert new record
       await sql`
         INSERT INTO early_access_submissions (email, company_name, job_title)
         VALUES (${email}, ${companyName}, ${jobTitle})
       `;
+      console.log('Inserted new record');
     }
 
     // Send to Google Apps Script Webhook (Google Sheets + Email)
@@ -50,6 +56,8 @@ export async function POST(req: NextRequest) {
           // Log the error but don't fail the submission
           const errorData = await mailerLiteResponse.json();
           console.error('MailerLite API error:', errorData);
+        } else {
+          console.log('MailerLite subscriber created successfully');
         }
       } catch (mailerError) {
         // Log the error but don't fail the submission
@@ -57,17 +65,27 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    console.log('Submission processed successfully');
     return NextResponse.json({ message: 'Submission successful' }, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error processing submission:', error);
-    return NextResponse.json({ message: 'Error processing submission' }, { status: 500 });
+    console.error('Error details:', {
+      message: error?.message,
+      stack: error?.stack,
+      name: error?.name
+    });
+    return NextResponse.json({ 
+      message: 'Error processing submission',
+      error: process.env.NODE_ENV === 'development' ? error?.message : undefined
+    }, { status: 500 });
   }
 }
 
 async function createMailerLiteSubscriber(email: string, companyName: string, jobTitle: string) {
   const apiKey = process.env.MAILERLITE_API_KEY;
   if (!apiKey) {
-    throw new Error('MAILERLITE_API_KEY is not set');
+    console.log('MAILERLITE_API_KEY is not set, skipping MailerLite subscription');
+    return { ok: false, json: async () => ({ error: 'API key not configured' }) } as Response;
   }
 
   const url = 'https://connect.mailerlite.com/api/subscribers';
