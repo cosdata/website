@@ -107,7 +107,7 @@ export default function HackathonPopup() {
               <span className="text-xl">🗓️</span>
               <div>
                 <p className={`text-base sm:text-lg font-semibold text-[#0055c8] mb-1`}>Dates:</p>
-                <p className={`text-base sm:text-lg text-[#374151]`}>November 15 – 20, 2025</p>
+                <p className={`text-base sm:text-lg text-[#374151]`}>November 15 – 30th, 2025</p>
               </div>
             </div>
 
