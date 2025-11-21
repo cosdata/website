@@ -114,7 +114,7 @@ export default async function StudentsPage() {
       <section id="hackathons" className="scroll-mt-24 pb-2 sm:pb-4 md:pb-8 px-4 bg-transparent">
         <div className="max-w-6xl mx-auto flex flex-col gap-8 items-center">
           <h2 className={`text-3xl sm:text-4xl font-bold text-[#0055c8] mb-2 text-center ${geologica.className}`}>Cosdata Hackathon Timeline</h2>
-          <p className={`text-lg sm:text-2xl  text-[#374151] mb-6 text-center max-w-3xl ${afacad.className}`}>Hackathon Dates: November 15th – 20th<br />
+          <p className={`text-lg sm:text-2xl  text-[#374151] mb-6 text-center max-w-3xl ${afacad.className}`}>Hackathon Dates: November 15th – 30th<br />
           Build solo or in a team, submit your project, and present your demo to win!</p>
 
           {/* How it Works Steps */}
