@@ -76,7 +76,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
-        <HackathonPopup />
+       {/* <HackathonPopup /> */}
       </BodyWithAttributes>
     </html>
   );
