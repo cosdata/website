@@ -31,7 +31,10 @@ export const metadata = {
 
 async function getFoundationPosts() {
   try {
-    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.NEXT_PUBLIC_BASE_URL;
+    const baseUrl =
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.cosdata.io');
     const response = await axios.get(`${baseUrl}/api/posts`, {
       params: {
         page: 1,
