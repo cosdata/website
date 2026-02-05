@@ -200,6 +200,10 @@ export default function Header() {
               Pricing
             </Link>
 
+            <Link href="/community" className="text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">
+              Community
+            </Link>
+
             <Link href="https://docs.cosdata.io/getting-started/introduction/"
               target="_blank"
               rel="noopener noreferrer"
@@ -324,6 +328,9 @@ export default function Header() {
             </Link>
             <Link href="/pricing" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">
               Pricing
+            </Link>
+            <Link href="/community" className="block text-black font-open-sans text-xl md:text-lg font-normal leading-[30px] hover:text-pink-500">
+              Community
             </Link>
             <Link href="/students" className="w-full mt-4 bg-[#f23665] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#d92d5c] transition duration-300 flex items-center justify-center text-xl md:text-lg">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
